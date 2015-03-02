@@ -11,5 +11,19 @@
                 </a>
             </li>
         {{/each}}
+        <li>
+            <a {{action "showSubNav"}}>
+                <svg role="img" class="svgico">
+                    <use xlink:href="/assets/img/svg/sprite.svg#toolbox"></use>
+                </svg>
+                <span>SUB NAV</span>
+            </a>
+        </li>
     </ul>
+
+    {{#if showSubNav}}
+        {{view view.infoView}}
+    {{/if}}
 </header>
+
+
