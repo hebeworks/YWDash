@@ -1,8 +1,5 @@
 <header class="site-header">
-    NAVIGATION
-    <div class="site-logo">
-        {{#link-to 'index'}}{{siteTitle}}{{/link-to}}
-    </div>
+    {{#link-to 'index' class="site-logo"}}<small>Powered by:</small><span>{{siteTitle}}</span>{{/link-to}}
     <ul class="top-nav">
         {{#each item in navItems}}
             <li style="float:left">

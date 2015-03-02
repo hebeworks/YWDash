@@ -4,14 +4,19 @@
 
 body,
 html {
-	width:100%;
-	height:100%;
-	margin:0px;
-	padding:0px;
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
 }
 
-body > .ember-view {
-	height:100%;
+body {
+	font: {
+		family: $helvneue;
+	}
+	> .ember-view {
+		height:100%;
+	}
 }
 
 .site-wrapper {
@@ -31,11 +36,33 @@ body > .ember-view {
 }
 	.site-logo {
 		width: 335px;
-		height: 50px;
-		background: {
-			image: url('logo.svg');
-			size: 329px 50px;
-			repeat: no-repeat;
+		height: 73px;
+		display: block;
+		small {
+			width: 65px;
+			height: 23px;
+			float: left;
+			font: {
+				size: 12px;
+				weight: 100;
+			}
+			text: {
+				transform: lowercase;
+			}
+			display: inline-block;
+		}
+		span {
+			width: 326px;
+			height: 27px;
+			float: left;
+			clear: both;
+			display: inline-block;
+			text-indent: -9999px;
+			background: {
+				image: url('img/logo.svg');
+				size: contain;
+				repeat: no-repeat;
+			}
 		}
 	}
 
