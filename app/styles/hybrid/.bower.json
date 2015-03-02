@@ -1,0 +1,13 @@
+{
+  "name": "hybrid",
+  "version": "0.1.5",
+  "_release": "0.1.5",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.1.5",
+    "commit": "9811e1cdcb48de65b886368c817a7dc1d8f02f17"
+  },
+  "_source": "ssh://git@my.parall.ax:7999/bp/hybrid.git",
+  "_target": "~0.1.3",
+  "_originalSource": "hybrid"
+}

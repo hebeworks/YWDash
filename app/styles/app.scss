@@ -1,9 +1,16 @@
+/* -- Bourbon -- */
+@import "../../bower_components/bourbon/dist/bourbon";
+
+
+/* -- Hybrid -- */
+@import "hybrid/hybrid";
+
+
 /* -- Variables -- */
 @import "vars";
 
-
-/* -- Bourbon -- */
-@import "../../bower_components/bourbon/dist/bourbon";
+/* -- Fonts -- */
+@import "patterns/custom_fonts";
 
 
 /* -- Base -- */
