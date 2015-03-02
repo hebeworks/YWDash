@@ -16,5 +16,8 @@
   },
   "resolutions": {
     "bourbon": "3.2.1"
+  },
+  "devDependencies": {
+    "svg4everybody": "~1.0.0"
   }
 }

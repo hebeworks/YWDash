@@ -1,18 +1,43 @@
 .site-nav {
 	@include clean-list;
 	@include middle(xy);
+	width: auto;
+	height: 75px;
 	position: absolute;
 
 	li {
+		width: auto;
+		height: 75px;
+		float: left;
 		margin: {
 			right: 10px;
 			left: 10px;
 		}
 	}
-		a {
-			font: {
-				size: em(20px);
-				family: $helvneuelight;
+	a {
+		display: block;
+		font: {
+			size: em(20px);
+			family: $helvneuelight;
+		}
+		text: {
+			align: center;
+		}
+		&:hover {
+			color: #7ED321;
+			.svgico {
+				fill: #7ED321;
 			}
 		}
+		span {
+			width: 100%;
+			display: block;
+		}
+	}
+	.svgico {
+		width: 43px;
+		height: 42px;
+		display: inline-block;
+		fill: #000;
+	}
 }
