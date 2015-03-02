@@ -24,6 +24,7 @@ You will need the following things properly installed on your computer.
 * 'npm i ember-cli-scsslint'
 * 'npm install ember-cli-bourbon --save-dev'
 * 'ember g ember-cli-bourbon'
+	* 'when given the option, resolve to 3.2.1'
 * 'bower install bitters'
 * 'bower install neat'
 
