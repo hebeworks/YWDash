@@ -5,5 +5,4 @@ export default Ember.Route.extend({
         this.render('navigation-view',{ outlet: 'header' });
         this.render({ outlet: 'body' });
     }
-
 });

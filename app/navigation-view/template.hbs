@@ -1,12 +1,13 @@
 <div class="site-header">
     NAVIGATION
     <div class="header--logo">
-        {{#link-to 'index'}}SITE LOGO{{/link-to}}
+        {{#link-to 'index'}}{{siteTitle}}{{/link-to}}
     </div>
-    <ul>
-        <li>{{#link-to 'dashboard.list'}}Library{{/link-to}}</li>
+    <ul class="top-nav">
         {{#each item in navItems}}
-        <li>TEST{{item}}</li>
+            <li>
+                <button class="top-nav--item" {{action "gotoRoute" item.route}}>{{item.title}}</button>
+            </li>
         {{/each}}
     </ul>
 </div>

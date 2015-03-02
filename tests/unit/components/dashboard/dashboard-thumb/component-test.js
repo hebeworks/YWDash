@@ -3,7 +3,7 @@ import {
   test
 } from 'ember-qunit';
 
-moduleForComponent('header-dashboard', {
+moduleForComponent('dashboard/dashboard-thumb', {
   // specify the other units that are required for this test
   // needs: ['component:foo', 'helper:bar']
 });

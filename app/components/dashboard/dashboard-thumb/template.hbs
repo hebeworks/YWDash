@@ -1,0 +1,7 @@
+<div class="library-list--item-thumb">
+    DASHBOARD THUMB
+    {{if image}}<img {{bind-attr src=""}} />{{/if}}
+    {{if title}}<h4 class="library-list--title">{{title}}</h4>{{/if}}
+    {{if category}}<div class="library-list--cat-link">{{category}}</div>{{/if}}
+    {{yield}}
+</div>
