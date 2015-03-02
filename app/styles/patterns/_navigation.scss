@@ -2,4 +2,17 @@
 	@include clean-list;
 	@include middle(xy);
 	position: absolute;
+
+	li {
+		margin: {
+			right: 10px;
+			left: 10px;
+		}
+	}
+		a {
+			font: {
+				size: em(20px);
+				family: $helvneuelight;
+			}
+		}
 }

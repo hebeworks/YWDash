@@ -47,6 +47,28 @@
 }
 
 /*
+ * center an element horizontally
+ */
+@mixin centered {
+    margin: {
+        right: auto;
+        left: auto;
+    }
+}
+
+/*
+ * it will be full width for non-admins
+ * normal width for admins, so the crop tool isn't broken
+ */
+@include imgfull {
+    > img {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+}
+
+/*
  * converts the Photoshop kerning value to an em value
  */
 
