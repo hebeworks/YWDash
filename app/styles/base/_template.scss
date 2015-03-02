@@ -1,0 +1,42 @@
+* {
+    @include box-sizing(border-box);
+}
+
+body, html {
+    width:100%;
+    height:100%;
+    margin:0px;
+    padding:0px;
+}
+
+body>.ember-view {
+    height:100%;
+}
+
+.site-wrapper {
+    width:100%;
+    height:100%;
+    position:relative;
+}
+
+.site-header {
+    height:100px;
+    position:relative;
+    width:100%;
+    border:solid 4px yellow;
+}
+
+.site-header--logo {
+    position:relative;
+
+    height:50px;
+    width:100px;
+    border:solid 2px red;
+}
+
+.site-body {
+    width:100%;
+    height:100%;
+
+    border:solid 4px blue;
+}
