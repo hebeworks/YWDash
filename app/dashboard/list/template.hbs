@@ -1,33 +1,11 @@
 <div class="site-body">
     <div class="dashboard-list">
         LIST OF DASHBOARDS
-        <ul>
-            <li>Official</li>
-            <li>Featured</li>
-            <li>Categories</li>
-            <li>New</li>
-        </ul>
+
+        {{render "dashboard/list/tabs"}}
 
         {{outlet}}
 
 
-        <div class="tabs">
-            <div class="tabs--content">
-                Official
-            </div>
-            <div class="tabs--content">
-                Featured
-            </div>
-            <div class="tabs--content">
-                Categories
-
-                {{components-dasboard-dashboard-thumb title="1 Sports news & events in Leeds" category="Sports & Events" imageUrl="/images/icons/news.png" }}
-                
-
-            </div>
-            <div class="tabs--content">
-                New
-            </div>
-        </div>
     </div>
 </div>
