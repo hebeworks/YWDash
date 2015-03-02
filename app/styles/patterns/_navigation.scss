@@ -1,8 +1,5 @@
-.top-nav {
-
-}
-
-.top-nav--item {
-    display:inline-block;
-    margin:0 20px;
+.site-nav {
+	@include clean-list;
+	@include middle(xy);
+	position: absolute;
 }

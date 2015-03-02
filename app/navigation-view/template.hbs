@@ -1,13 +1,10 @@
-<div class="site-header">
-    NAVIGATION
-    <div class="header--logo">
-        {{#link-to 'index'}}{{siteTitle}}{{/link-to}}
-    </div>
-    <ul class="top-nav">
+<header class="site-header">
+    {{#link-to 'index' class="site-logo"}}<small>Powered by:</small><span>{{siteTitle}}</span>{{/link-to}}
+    <ul class="site-nav">
         {{#each item in navItems}}
             <li style="float:left">
-                <button class="top-nav--item" {{action "gotoRoute" item.route}}>{{item.title}}</button>
+                <a class="top-nav--item" {{action "gotoRoute" item.route}}>{{item.title}}</a>
             </li>
         {{/each}}
     </ul>
-</div>
+</header>
