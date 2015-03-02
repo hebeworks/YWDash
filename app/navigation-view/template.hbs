@@ -2,8 +2,13 @@
     {{#link-to 'index' class="site-logo"}}<small>Powered by:</small><span>{{siteTitle}}</span>{{/link-to}}
     <ul class="site-nav">
         {{#each item in navItems}}
-            <li style="float:left">
-                <a class="top-nav--item" {{action "gotoRoute" item.route}}>{{item.title}}</a>
+            <li>
+                <a {{action "gotoRoute" item.route}}>
+                	<svg role="img" class="svgico">
+						<use xlink:href="/assets/img/svg/sprite.svg#toolbox"></use>
+                	</svg>
+                	<span>{{item.title}}</span>
+                </a>
             </li>
         {{/each}}
     </ul>
