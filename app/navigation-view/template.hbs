@@ -5,7 +5,7 @@
     </div>
     <ul class="top-nav">
         {{#each item in navItems}}
-            <li>
+            <li style="float:left">
                 <button class="top-nav--item" {{action "gotoRoute" item.route}}>{{item.title}}</button>
             </li>
         {{/each}}
