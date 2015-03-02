@@ -1,7 +1,14 @@
-@import "bourbon";
-@import "../../bower_components/bitters/app/assets/stylesheets/base";
-@import "vars";
-@import "base";
-@import "patterns";
-@import "components";
+@import "../../bower_components/bourbon/dist/bourbon";
 
+
+/* -- Base -- */
+@import "base/template";
+
+
+/* -- Components -- */
+//@import "components/"
+
+
+/* -- Patterns -- */
+@import "patterns/navigation";
+@import "patterns/tabs";
