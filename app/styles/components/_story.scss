@@ -1,0 +1,68 @@
+.story {
+	padding: {
+		top: 20px;
+		right: 10px;
+		left: 10px;
+	}
+	display: block;
+	float: left;
+
+	@for $i from 1 through 3 {
+		&.-w#{$i} {
+			width: 230px * $i;
+		}
+		&.-h#{$i} {
+			height: 230px * $i;
+		}
+	}
+	&.-white .story__inner {
+		background: {
+			color: #fff;
+		}
+	}
+	&.-black .story__inner {
+		color: #fff;
+		background: {
+			color: #000;
+		}
+	}
+	&.-ivory .story__inner {
+		background: {
+			color: #fcfae6;
+		}
+	}
+	&.-blue .story__inner {
+		color: #fff;
+		background: {
+			color: #053257;
+		}
+	}
+	
+	// Box for adding a new story
+	&.story--add .story__inner {
+		text: {
+			indent: -9999px;
+		}
+		background: {
+			color: #e3e3e3;
+			image: url('img/icons/icon_add-story.png');
+			repeat: no-repeat;
+			position: center center;
+		}
+
+		&:hover {
+			background: {
+				color: #e9e9e9;
+			}
+		}
+	}
+
+	.story__inner {
+		height: 100%;
+		padding: 15px;
+		display: block;
+		border: {
+			radius: 10px;
+		}
+	}
+}
