@@ -30,6 +30,7 @@ a {
 	background: {
 		color: #fff;
 	}
+	z-index: 1;
 }
 	.site-logo {
 		width: 335px;
@@ -73,7 +74,7 @@ a {
 	@include cf;
 	width: 100%;
 	height: 100%;
-	padding: {
+	margin: {
 		top: 165px;
 	}
 	background: {
