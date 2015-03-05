@@ -17,7 +17,7 @@ var app = new EmberApp();
 // please specify an object with the list of modules as keys
 // along with the exports of each module as its value.
 
-app.import('bower_components/jquery.shapeshift/core/jquery.shapeshift.min.js');
-app.import('bower_components/jqueryui-touch-punch/jquery.ui.touch-punch.min.js');
+app.import('bower_components/packery/dist/packery.pkgd.min.js');
+app.import('bower_components/draggabilly/dist/draggabilly.pkgd.min.js');
 
 module.exports = app.toTree();

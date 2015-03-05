@@ -1,0 +1,19 @@
+.canvas-switcher {
+	@include clean-list;
+	height: 100%;
+	z-index: 1;
+}
+	.canvas {
+		height: 100%;
+		z-index: 2;
+	}
+		.canvas__inner {
+			@include cf;
+			@include centered;
+			width: 230px;
+			@for $i from 2 through 9 {
+				@include breakpoint(230px * $i) {
+					width: 230px * $i;
+				}
+			}
+		}

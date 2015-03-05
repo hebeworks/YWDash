@@ -30,45 +30,54 @@ a {
 	background: {
 		color: #fff;
 	}
-	z-index: 1;
+	z-index: 2;
 }
-	.site-logo {
-		width: 335px;
-		height: 73px;
-		display: block;
-		margin: {
-			top: 47px;
-			left: 59px;
+	.site-header__inner {
+		width: 100%;
+		height: 165px;
+		background: {
+			color: #fff;
 		}
-		small {
-			width: 65px;
-			height: 23px;
-			float: left;
-			font: {
-				family: $helvneuelight;
-				size: 12px;
-				weight: 300;
-			}
-			text: {
-				transform: lowercase;
-			}
-			display: inline-block;
-		}
-		span {
-			width: 327px;
-			height: 27px;
-			float: left;
-			clear: both;
-			display: inline-block;
-			text-indent: -9999px;
-			background: {
-				image: url('img/logo.png');
-				size: 327px 27px;
-				repeat: no-repeat;
-			}
-		}
+		position: absolute;
+		z-index: 2; // Top drawer sits just underneath at z-index 1
 	}
-	// .site-nav in ../patterns/navigation
+		.site-logo {
+			width: 335px;
+			height: 73px;
+			display: block;
+			margin: {
+				top: 47px;
+				left: 59px;
+			}
+			small {
+				width: 65px;
+				height: 23px;
+				float: left;
+				font: {
+					family: $helvneuelight;
+					size: 12px;
+					weight: 300;
+				}
+				text: {
+					transform: lowercase;
+				}
+				display: inline-block;
+			}
+			span {
+				width: 327px;
+				height: 27px;
+				float: left;
+				clear: both;
+				display: inline-block;
+				text-indent: -9999px;
+				background: {
+					image: url('img/logo.png');
+					size: 327px 27px;
+					repeat: no-repeat;
+				}
+			}
+		}
+		// .site-nav in ../patterns/navigation
 
 .site-body {
 	@include cf;
@@ -80,15 +89,6 @@ a {
 	background: {
 		color: #f1f1f1; // temporary
 	}
-}
-
-.site-container {
-	@include cf;
-	@include centered;
-	width: 230px;
-	@for $i from 2 through 9 {
-		@include breakpoint(230px * $i) {
-			width: 230px * $i;
-		}
-	}
+	position: relative;
+	z-index: 1;
 }

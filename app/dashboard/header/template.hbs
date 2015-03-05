@@ -1,4 +1,9 @@
 <header class="site-header">
-    {{#link-to 'index' class="site-logo"}}<small>Powered by:</small><span>{{siteTitle}}</span>{{/link-to}}
-    {{header-nav navItems=navItems subNavItems=navItems action="gotoRoute"}}
+    <div class="site-header__inner">
+    	{{#link-to 'index' class="site-logo"}}<small>Powered by:</small><span>{{siteTitle}}</span>{{/link-to}}
+    	{{header-nav navItems=navItems subNavItems=navItems action="gotoRoute"}}
+    </div>
+    <div class="drawer drawer--top">
+		Top Drawer
+    </div>
 </header>
