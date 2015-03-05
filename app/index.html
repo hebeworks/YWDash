@@ -23,17 +23,54 @@
 		{{content-for 'body-footer'}}
 		
 		<script>
-			$(function(){
-				var $container = $('.js-stories').packery({
-					itemSelector: '.story',
-					columnWidth: 230,
-					rowHeight: 230
-				});
+			// Cached jQuery objs
+			var $document = $(document);
+			var $window = $(window);
 
-				$container.find('.story').each(function(i, itemElem) {
-					var draggie = new Draggabilly(itemElem);
-					$container.packery('bindDraggabillyEvents', draggie);
-				});
+			$document.bind('ready', function(){
+
+				// Cached jQuery DOM objs
+				var $body = $('body');
+				var $header = $('.site-header');
+				var $canvases = $('.canvas');
+				var $storyContainer = $('.js-stories');
+
+				// Functions
+				function stretchACanvas(){
+					var canvasHeight = $window.height() - $header.height();
+					$canvases
+						.css({
+							'height': canvasHeight + 'px'
+						});
+				}
+
+				// Event handlers
+				$canvases
+					.on('mousedown', '.story--add', function(e){
+						e.preventDefault();
+
+						$body.addClass('-bottom-drawer-half');
+					});
+
+				$window
+					.resize(function(){
+						stretchACanvas();
+					});
+
+				// Initialize packery
+				$storyContainer
+					.packery({
+						itemSelector: '.story',
+						columnWidth: 230,
+						rowHeight: 230
+					})
+					.find('.story').each(function(i, itemElem) {
+						var draggie = new Draggabilly(itemElem);
+						$storyContainer.packery('bindDraggabillyEvents', draggie);
+					});
+
+				// Ensure canvases stretch to correct height
+				stretchACanvas();
 			});
 		</script>
 	</body>

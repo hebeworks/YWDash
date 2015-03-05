@@ -7,6 +7,32 @@ body {
 	> .ember-view {
 		height:100%;
 	}
+	
+	&.top-drawer {
+		.site-header__inner {
+			border: {
+				bottom: solid 1px #a3a3a3;
+			}
+		}
+		.drawer--top {
+			top: 165px;
+		}
+	}
+	&.-bottom-drawer-half {
+		.drawer--bottom {
+			top: 60%;
+		}
+	}
+	&.-bottom-drawer-full {
+		.site-header__inner {
+			border: {
+				bottom: solid 1px #a3a3a3;
+			}
+		}
+		.drawer--bottom {
+			top: 0;
+		}
+	}
 }
 
 a {
@@ -17,7 +43,12 @@ a {
 .site-wrapper {
 	width: 100%;
 	height: 100%;
-	position: relative;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	overflow: hidden;
 }
 
 /* -- Site content -- */

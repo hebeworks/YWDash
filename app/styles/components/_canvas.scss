@@ -2,15 +2,23 @@
 	@include clean-list;
 	height: 100%;
 	z-index: 1;
+	position: relative;
 }
 	.canvas {
 		height: 100%;
 		z-index: 2;
+		overflow: hidden;
+		overflow-y: auto;
+		padding: {
+			top: 20px;
+			bottom: 40px;
+		}
 	}
 		.canvas__inner {
 			@include cf;
 			@include centered;
 			width: 230px;
+			z-index: 3;
 			@for $i from 2 through 9 {
 				@include breakpoint(230px * $i) {
 					width: 230px * $i;
