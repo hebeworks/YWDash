@@ -30,21 +30,47 @@
 			$document.bind('ready', function(){
 
 				// Cached jQuery DOM objs
-				var $body = $('body');
-				var $header = $('.site-header');
-				var $canvases = $('.canvas');
-				var $storyContainer = $('.js-stories');
+				var $body = $('body'),
+					$header = $('.js-site-header'),
+					$siteNav = $('.js-site-nav'),
+					$canvasSwitcher = $('.js-canvas-switcher'),
+					$canvasSwitcherList = $('.js-canvas-switcher-list'),
+					$canvases = $('.js-canvas'),
+					$storyContainer = $('.js-stories'),
+					$drawers = $('.js-drawers');
 
 				// Functions
 				function stretchACanvas(){
+
+					var canvasWidth = $window.width();
+
+					$canvasSwitcherList
+						.css({
+							'width': (canvasWidth * $canvases.size()) + 'px'
+						});
+
 					var canvasHeight = $window.height() - $header.height();
 					$canvases
 						.css({
+							'width': canvasWidth,
 							'height': canvasHeight + 'px'
 						});
 				}
 
 				// Event handlers
+				$siteNav
+					.on('click', 'li:first', function(){ // @TODO: This needs a proper js-hook attaching to its class list
+						$body.toggleClass('-top-drawer');
+					});
+
+
+				$drawers
+					.on('click', '.js-change-canvas', function(e){
+						e.preventDefault();
+
+						$canvasSwitcher.toggleClass('-switching');
+					});
+
 				$canvases
 					.on('mousedown', '.story--add', function(e){
 						e.preventDefault();

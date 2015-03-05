@@ -1,27 +1,58 @@
 .canvas-switcher {
-	@include clean-list;
+	width: 100%;
 	height: 100%;
 	z-index: 1;
 	position: relative;
-}
-	.canvas {
-		height: 100%;
-		z-index: 2;
-		overflow: hidden;
-		overflow-y: auto;
-		padding: {
-			top: 20px;
-			bottom: 40px;
+	background: {
+		color: #f7f7f7;
+	}
+
+	&.-switching {
+		.canvas-switcher__list {
+			@include transform(scale(0.7) translateY(300px));
+		}
+		.canvas {
+			overflow-y: hidden;
+			border: {
+				radius: 5px;
+			}
+			background: {
+				color: #f1f1f1;
+			}
+			-webkit-box-shadow: 0px 4px 15px 1px rgba(122,122,122,1);
+			-moz-box-shadow: 0px 4px 15px 1px rgba(122,122,122,1);
+			box-shadow: 0px 4px 15px 1px rgba(122,122,122,1);
 		}
 	}
-		.canvas__inner {
-			@include cf;
-			@include centered;
-			width: 230px;
-			z-index: 3;
-			@for $i from 2 through 9 {
-				@include breakpoint(230px * $i) {
-					width: 230px * $i;
-				}
+}
+	.canvas-switcher__list {
+		@include clean-list;
+		width: 8000px;
+		height: 100%;
+		z-index: 1;
+		position: relative;
+		@include transition(all .5s);
+		@include transform-origin(0 top);
+	}
+		.canvas {
+			height: 100%;
+			z-index: 2;
+			overflow: hidden;
+			overflow-y: auto;
+			float: left;
+			padding: {
+				top: 20px;
+				bottom: 40px;
 			}
 		}
+			.canvas__inner {
+				@include cf;
+				@include centered;
+				width: 230px;
+				z-index: 3;
+				@for $i from 2 through 9 {
+					@include breakpoint(230px * $i) {
+						width: 230px * $i;
+					}
+				}
+			}
