@@ -37,7 +37,8 @@
 					$canvasSwitcherList = $('.js-canvas-switcher-list'),
 					$canvases = $('.js-canvas'),
 					$storyContainer = $('.js-stories'),
-					$drawers = $('.js-drawers');
+					$drawers = $('.js-drawers'),
+					$toolbox = $('.js-toolbox');
 
 				// Functions
 				function stretchACanvas(){
@@ -65,17 +66,24 @@
 
 
 				$drawers
-					.on('click', '.js-change-canvas', function(e){
+					.on('click', '.js-toolbox-change-canvas', function(e){
 						e.preventDefault();
 
 						$canvasSwitcher.toggleClass('-switching');
 					});
 
 				$canvases
-					.on('mousedown', '.story--add', function(e){
+					.on('mousedown', '.js-story-add', function(e){
 						e.preventDefault();
 
 						$body.addClass('-bottom-drawer-half');
+					});
+
+				$toolbox
+					.on('mousedown', '.js-story-add', function(e){
+						e.preventDefault();
+
+						$body.removeClass('-top-drawer').addClass('-bottom-drawer-half');
 					});
 
 				$window
