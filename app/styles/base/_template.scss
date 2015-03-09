@@ -15,7 +15,7 @@ body {
 			}
 		}
 		.drawer--top {
-			top: 165px;
+			@include transform(translateY(100%));
 		}
 	}
 	&.-bottom-drawer-half {
