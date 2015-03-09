@@ -20,7 +20,7 @@ body {
 	}
 	&.-bottom-drawer-half {
 		.drawer--bottom {
-			top: 60%;
+			@include transform(translateY(50%));
 		}
 	}
 	&.-bottom-drawer-full {
@@ -30,7 +30,7 @@ body {
 			}
 		}
 		.drawer--bottom {
-			top: 0;
+			@include transform(translateY(-0%));
 		}
 	}
 }

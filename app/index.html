@@ -70,6 +70,12 @@
 						e.preventDefault();
 
 						$canvasSwitcher.toggleClass('-switching');
+					})
+					.on('click', '.js-close-bottom-drawer', function(e){
+						e.preventDefault();
+
+						$body.removeClass('-bottom-drawer-half');
+						$canvasSwitcher.removeClass('-blurred');
 					});
 
 				$canvases
@@ -77,6 +83,7 @@
 						e.preventDefault();
 
 						$body.addClass('-bottom-drawer-half');
+						$canvasSwitcher.addClass('-blurred');
 					});
 
 				$toolbox
