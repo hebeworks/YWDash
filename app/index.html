@@ -6,7 +6,6 @@
 		<title>HebeDash</title>
 		<meta name="description" content="">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link href='http://fonts.googleapis.com/css?family=Roboto+Slab:100,300,400,700' rel='stylesheet' type='text/css'>
 
 		{{content-for 'head'}}
 
@@ -22,5 +21,91 @@
 		<script src="assets/hebe-dash.js"></script>
 
 		{{content-for 'body-footer'}}
+		
+		<script>
+			// Cached jQuery objs
+			var $document = $(document);
+			var $window = $(window);
+
+			$document.bind('ready', function(){
+
+				// Cached jQuery DOM objs
+				var $body = $('body'),
+					$header = $('.js-site-header'),
+					$siteNav = $('.js-site-nav'),
+					$canvasSwitcher = $('.js-canvas-switcher'),
+					$canvasSwitcherList = $('.js-canvas-switcher-list'),
+					$canvases = $('.js-canvas'),
+					$storyContainer = $('.js-stories'),
+					$drawers = $('.js-drawers'),
+					$toolbox = $('.js-toolbox');
+
+				// Functions
+				function stretchACanvas(){
+
+					var canvasWidth = $window.width();
+
+					$canvasSwitcherList
+						.css({
+							'width': (canvasWidth * $canvases.size()) + 'px'
+						});
+
+					var canvasHeight = $window.height() - $header.height();
+					$canvases
+						.css({
+							'width': canvasWidth,
+							'height': canvasHeight + 'px'
+						});
+				}
+
+				// Event handlers
+				$siteNav
+					.on('click', 'li:first', function(){ // @TODO: This needs a proper js-hook attaching to its class list
+						$body.toggleClass('-top-drawer');
+					});
+
+
+				$drawers
+					.on('click', '.js-toolbox-change-canvas', function(e){
+						e.preventDefault();
+
+						$canvasSwitcher.toggleClass('-switching');
+					});
+
+				$canvases
+					.on('mousedown', '.js-story-add', function(e){
+						e.preventDefault();
+
+						$body.addClass('-bottom-drawer-half');
+					});
+
+				$toolbox
+					.on('mousedown', '.js-story-add', function(e){
+						e.preventDefault();
+
+						$body.removeClass('-top-drawer').addClass('-bottom-drawer-half');
+					});
+
+				$window
+					.resize(function(){
+						stretchACanvas();
+					});
+
+				// Initialize packery
+				$storyContainer
+					.packery({
+						itemSelector: '.story',
+						columnWidth: 230,
+						rowHeight: 230
+					})
+					.find('.story').each(function(i, itemElem) {
+						var draggie = new Draggabilly(itemElem);
+						$storyContainer.packery('bindDraggabillyEvents', draggie);
+					});
+
+				// Ensure canvases stretch to correct height
+				stretchACanvas();
+			});
+		</script>
 	</body>
 </html>

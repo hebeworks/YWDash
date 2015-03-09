@@ -7,16 +7,48 @@ body {
 	> .ember-view {
 		height:100%;
 	}
+	
+	&.-top-drawer {
+		.site-header__inner {
+			border: {
+				bottom: solid 1px #a3a3a3;
+			}
+		}
+		.drawer--top {
+			top: 165px;
+		}
+	}
+	&.-bottom-drawer-half {
+		.drawer--bottom {
+			top: 60%;
+		}
+	}
+	&.-bottom-drawer-full {
+		.site-header__inner {
+			border: {
+				bottom: solid 1px #a3a3a3;
+			}
+		}
+		.drawer--bottom {
+			top: 0;
+		}
+	}
 }
 
 a {
 	color: #000;
 }
 
+/* -- Outer site wrapper */
 .site-wrapper {
 	width: 100%;
 	height: 100%;
-	position: relative;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	overflow: hidden;
 }
 
 /* -- Site content -- */
@@ -29,52 +61,65 @@ a {
 	background: {
 		color: #fff;
 	}
+	z-index: 2;
 }
-	.site-logo {
-		width: 335px;
-		height: 73px;
-		display: block;
-		margin: {
-			top: 47px;
-			left: 59px;
+	.site-header__inner {
+		width: 100%;
+		height: 165px;
+		background: {
+			color: #fff;
 		}
-		small {
-			width: 65px;
-			height: 23px;
-			float: left;
-			font: {
-				family: $helvneuelight;
-				size: 12px;
-				weight: 300;
-			}
-			text: {
-				transform: lowercase;
-			}
-			display: inline-block;
-		}
-		span {
-			width: 327px;
-			height: 27px;
-			float: left;
-			clear: both;
-			display: inline-block;
-			text-indent: -9999px;
-			background: {
-				image: url('img/logo.png');
-				size: 327px 27px;
-				repeat: no-repeat;
-			}
-		}
+		position: absolute;
+		z-index: 2; // Top drawer sits just underneath at z-index 1
 	}
-	// .site-nav in ../patterns/navigation
+		.site-logo {
+			width: 335px;
+			height: 73px;
+			display: block;
+			margin: {
+				top: 47px;
+				left: 59px;
+			}
+			small {
+				width: 65px;
+				height: 23px;
+				float: left;
+				font: {
+					family: $helvneuelight;
+					size: 12px;
+					weight: 300;
+				}
+				text: {
+					transform: lowercase;
+				}
+				display: inline-block;
+			}
+			span {
+				width: 327px;
+				height: 27px;
+				float: left;
+				clear: both;
+				display: inline-block;
+				text-indent: -9999px;
+				background: {
+					image: url('img/logo.png');
+					size: 327px 27px;
+					repeat: no-repeat;
+				}
+			}
+		}
+		// .site-nav in ../patterns/navigation
 
 .site-body {
-	width:100%;
-	height:100%;
-	padding: {
+	@include cf;
+	width: 100%;
+	height: 100%;
+	margin: {
 		top: 165px;
 	}
 	background: {
 		color: #f1f1f1; // temporary
 	}
+	position: relative;
+	z-index: 1;
 }

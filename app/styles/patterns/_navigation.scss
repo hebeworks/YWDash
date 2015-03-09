@@ -24,9 +24,9 @@
 			align: center;
 		}
 		&:hover {
-			color: #7ED321;
+			color: $lime;
 			.svgico {
-				fill: #7ED321;
+				fill: $lime;
 			}
 		}
 		span {

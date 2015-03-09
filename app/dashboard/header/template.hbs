@@ -1,4 +1,31 @@
-<header class="site-header">
-    {{#link-to 'index' class="site-logo"}}<small>Powered by:</small><span>{{siteTitle}}</span>{{/link-to}}
-    {{header-nav navItems=navItems subNavItems=navItems action="gotoRoute"}}
+<header class="js-site-header site-header">
+    <div class="site-header__inner">
+    	{{#link-to 'index' class="site-logo"}}<small>Powered by:</small><span>{{siteTitle}}</span>{{/link-to}}
+    	{{header-nav navItems=navItems subNavItems=navItems action="gotoRoute"}}
+    </div>
+    <div class="js-drawers js-toolbox drawer drawer--top">
+    	<ul class="icon-list">
+    		<li class="icon-list__item">
+				<a href="javascript:;" class="js-toolbox-change-canvas">Change canvas</a>
+			</li>
+			<li class="icon-list__item">
+				<a href="javascript:;" class="js-story-add">Add a story</a>
+			</li>
+			<li class="icon-list__item">
+				<a href="javascript:;" class="js-toolbox-duplicate">Duplicate</a>
+			</li>
+			<li class="icon-list__item -separator">
+				<a href="javascript:;" class="js-toolbox-edit-meta">Edit meta</a>
+			</li>
+    		<li class="icon-list__item">
+				<a href="javascript:;" class="js-toolbox-share">Share</a>
+			</li>
+			<li class="icon-list__item">
+				<a href="javascript:;" class="js-toolbox-presentation">Presentation</a>
+			</li>
+			<li class="icon-list__item">
+				<a href="javascript:;" class="js-toolbox-help">Help</a>
+			</li>
+		</ul>
+    </div>
 </header>
