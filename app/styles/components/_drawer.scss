@@ -4,7 +4,7 @@
 		color: #fff;
 	}
 	position: absolute;
-	@include transition(transform .5s ease-in-out);
+	@include transition(transform .3s ease-in-out);
 }
 .drawer--top {
 	height: 165px;
