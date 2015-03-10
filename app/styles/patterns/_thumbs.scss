@@ -1,11 +1,5 @@
 .thumb-list {
-    @include clean-list;
-    @include cf;
-    border-radius: 5px;
-    background-color: $off-white;
-    padding: 28px 28px 20px 28px;
-    overflow: scroll;
-    white-space: nowrap;
+    position: relative;
 
     &:before {
         content: '';
@@ -17,6 +11,16 @@
         background-color: $off-white;
         border-left: 1px solid $light-grey;
     }
+}
+
+.thumb-list__inner {
+    @include clean-list;
+    @include cf;
+    border-radius: 5px;
+    background-color: $off-white;
+    padding: 28px 28px 20px 28px;
+    overflow: scroll;
+    white-space: nowrap;
 
     + .thumb-list {
         margin-top: 1.5em;
