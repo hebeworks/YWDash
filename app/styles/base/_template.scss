@@ -31,6 +31,12 @@ body {
 		}
 		.drawer--bottom {
 			@include transform(translateY(-0%));
+
+			.drawer--bottom__section {
+				&.-visible {
+					display: none;
+				}
+			}
 		}
 	}
 }

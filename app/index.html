@@ -37,7 +37,7 @@
 					$canvasSwitcherList = $('.js-canvas-switcher-list'),
 					$canvases = $('.js-canvas'),
 					$storyContainer = $('.js-stories'),
-					$drawers = $('.js-drawers'),
+					$bottomDrawer = $('.js-bottom-drawer'),
 					$toolbox = $('.js-toolbox');
 
 				// Functions
@@ -68,23 +68,43 @@
 					});
 
 
-				$drawers
+				$toolbox
 					.on('click', '.js-toolbox-change-canvas', function(e){
 						e.preventDefault();
 
 						$canvasSwitcher.toggleClass('-switching');
-					})
+					});
+
+				$bottomDrawer
 					.on('click', '.js-drawer--bottom__categories', function(e){
 						e.preventDefault();
 
 						$body.removeClass('-bottom-drawer-half');
 						$body.addClass('-bottom-drawer-full');
+						$bottomDrawer.addClass('-drawer-show-categories');
+					})
+					.on('click', '.js-drawer--bottom__official', function(e){
+						e.preventDefault();
+
+						$body.removeClass('-bottom-drawer-half');
+						$body.addClass('-bottom-drawer-full');
+						$bottomDrawer.addClass('-drawer-show-official');
+					})
+					.on('click', '.js-drawer--bottom__search', function(e){
+						e.preventDefault();
+
+						$body.removeClass('-bottom-drawer-half');
+						$body.addClass('-bottom-drawer-full');
+						$bottomDrawer.addClass('-drawer-show-search');
 					})
 					.on('click', '.js-close-bottom-drawer', function(e){
 						e.preventDefault();
 
 						$body.removeClass('-bottom-drawer-half');
 						$body.removeClass('-bottom-drawer-full');
+						$bottomDrawer.removeClass('-drawer-show-categories');
+						$bottomDrawer.removeClass('-drawer-show-official');
+						$bottomDrawer.removeClass('-drawer-show-search');
 						$canvasSwitcher.removeClass('-blurred');
 					});
 

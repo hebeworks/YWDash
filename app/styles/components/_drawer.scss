@@ -30,7 +30,49 @@
 	}
 	@include transform(translateY(100%));
 	z-index: 2;
+
+	&.-drawer-show-categories {
+		.drawer--bottom__section {
+			&.-categories {
+				display: block;
+			}
+			&.-featured {
+				display: none;
+			}
+		}
+	}
+
+	&.-drawer-show-official {
+		.drawer--bottom__section {
+			&.-official {
+				display: block;
+			}
+			&.-featured {
+				display: none;
+			}
+		}
+	}
+
+	&.-drawer-show-search {
+		.drawer--bottom__section {
+			&.-search {
+				display: block;
+			}
+			&.-featured {
+				display: none;
+			}
+		}
+	}
 }
+
+	.drawer--bottom__section {
+
+		&.-categories,
+		&.-official,
+		&.-search, {
+			display: none;
+		}
+	}
 
 	.drawer--bottom__close {
 		position: absolute;
