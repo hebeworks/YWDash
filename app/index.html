@@ -76,6 +76,9 @@
 					});
 
 				$bottomDrawer
+					.on('click', function(e){
+						$body.removeClass('-top-drawer');
+					})
 					.on('click', '.js-drawer--bottom__button', function(e){
 						e.preventDefault();
 						$body.removeClass('-bottom-drawer-half');
