@@ -1,6 +1,7 @@
 .table {
     width: 100%;
     display: table;
+    position: relative;
 
     &.-fixed {
         table-layout: fixed;

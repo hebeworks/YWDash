@@ -6,16 +6,16 @@
     padding: 28px 28px 20px 28px;
     overflow: scroll;
     white-space: nowrap;
-    position: relative;
 
-    &:after {
+    &:before {
         content: '';
         position: absolute;
-        top: 0;
-        bottom: 0;
+        top: 14px;
+        bottom: 14px;
         right: 0;
         width: 28px;
         background-color: $off-white;
+        border-left: 1px solid $light-grey;
     }
 
     + .thumb-list {

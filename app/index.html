@@ -79,31 +79,23 @@
 					.on('click', function(e){
 						$body.removeClass('-top-drawer');
 					})
-					.on('click', '.js-drawer--bottom__button', function(e){
+					.on('click', '.js-bottom-drawer-button .btn', function(e){
 						e.preventDefault();
 						$body.removeClass('-bottom-drawer-half');
 						$body.addClass('-bottom-drawer-full');
-					})
-					.on('click', '.js-drawer--bottom__categories', function(e){
-						$bottomDrawer.addClass('-drawer-show-categories');
-					})
-					.on('click', '.js-drawer--bottom__official', function(e){
-						$bottomDrawer.addClass('-drawer-show-official');
-					})
-					.on('click', '.js-drawer--bottom__search', function(e){
-						$bottomDrawer.addClass('-drawer-show-search');
+
+						var $el = $(this);
+						var $drawerSection = $el.data('btn-type');
+						$bottomDrawer.addClass('-drawer-show-' + $drawerSection);
 					})
 					.on('click', '.js-close-bottom-drawer', function(e){
 						e.preventDefault();
-						$body.removeClass('-bottom-drawer-half');
-						$body.removeClass('-bottom-drawer-full');
+						$body.removeClass('-bottom-drawer-half -bottom-drawer-full');
 						$canvasSwitcher.removeClass('-blurred');
 
 						// Wait for drawer to slide off page before reverting section visibility
 						setTimeout(function() {
-							$bottomDrawer.removeClass('-drawer-show-categories');
-							$bottomDrawer.removeClass('-drawer-show-official');
-							$bottomDrawer.removeClass('-drawer-show-search');
+							$bottomDrawer.removeClass('-drawer-show-categories -drawer-show-official -drawer-show-search');
 						}, 300);
 					});
 

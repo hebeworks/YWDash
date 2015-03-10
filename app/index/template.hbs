@@ -131,11 +131,12 @@
 	</div>
 </main>
 <div class="js-bottom-drawer drawer drawer--bottom">
+
 	<section class="drawer--bottom__section -categories">
 		<h2 class="drawer--bottom__heading">Categories</h2>
 		<div class="js-close-bottom-drawer drawer--bottom__close"></div>
 		<h4>Transport</h4>
-		<ul class="thumb-list cf">
+		<ul class="thumb-list">
 			<li class="thumb">
 			    <div class="thumb__icon"></div>
 			    <h4 class="thumb__title">Sport news &amp; events in Leeds</h4>
@@ -178,7 +179,7 @@
 			</li>
 		</ul>
 		<h4>Health</h4>
-		<ul class="thumb-list cf">
+		<ul class="thumb-list">
 			<li class="thumb">
 			    <div class="thumb__icon"></div>
 			    <h4 class="thumb__title">Sport news &amp; events in Leeds</h4>
@@ -221,20 +222,21 @@
 			</li>
 		</ul>
 	</section>
+
 	<section class="drawer--bottom__section -featured">
 		<h2 class="drawer--bottom__heading">Add a story</h2>
 		<div class="js-close-bottom-drawer drawer--bottom__close"></div>
-		<div class="nav -options">
-			<button class="js-drawer--bottom__button js-drawer--bottom__categories btn -grey">Categories</button>
-			<button class="js-drawer--bottom__button js-drawer--bottom__featured btn -grey -selected">Featured</button>
-			<button class="js-drawer--bottom__button js-drawer--bottom__official btn -grey">Official</button>
-			<button class="js-drawer--bottom__button js-drawer--bottom__search btn -grey">Search</button>
+		<div class="js-bottom-drawer-button nav -options">
+			<button class="btn -grey" data-btn-type="categories">Categories</button>
+			<button class="btn -grey -selected" data-btn-type="featured">Featured</button>
+			<button class="btn -grey" data-btn-type="official">Official</button>
+			<button class="btn -grey" data-btn-type="search">Search</button>
 		</div>
 		<div class="table -fixed">
 			<div class="creator table-cell">
 				<div class="creator__inner"></div>
 			</div>
-			<ul class="thumb-list table-cell cf">
+			<ul class="thumb-list table-cell">
 				<li class="thumb">
 				    <div class="thumb__icon"></div>
 				    <h4 class="thumb__title">Sport news &amp; events in Leeds</h4>
@@ -278,13 +280,16 @@
 			</ul>
 		</div>
 	</section>
+
 	<section class="drawer--bottom__section -official">
 		<h2 class="drawer--bottom__heading">Official</h2>
 		<div class="js-close-bottom-drawer drawer--bottom__close"></div>
 	</section>
+
 	<section class="drawer--bottom__section -search">
 		<h2 class="drawer--bottom__heading">Search</h2>
 		<div class="js-close-bottom-drawer drawer--bottom__close"></div>
 	</section>
+
 </div>
 {{outlet}}
