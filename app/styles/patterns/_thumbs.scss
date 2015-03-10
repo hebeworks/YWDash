@@ -1,0 +1,45 @@
+.thumb-list {
+    @include clean-list;
+    @include cf;
+    border-radius: 5px;
+    background-color: $off-white;
+    padding: 28px 28px 20px 28px;
+    overflow: scroll;
+    white-space: nowrap;
+    position: relative;
+
+    &:after {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        width: 28px;
+        background-color: $off-white;
+    }
+}
+
+    .thumb {
+        width: 12%;
+        min-width: 100px;
+        max-width: 150px;
+        display: inline-block;
+        white-space: normal;
+        margin-right: 21px;
+    }
+
+        .thumb__icon {
+            padding-top: 100%;
+            border-radius: 10px;
+            background-color: #fff;
+        }
+
+        .thumb__title {
+            color: $blue;
+            margin: .5em 0 0;
+        }
+
+        .thumb__category {
+            color: $grey;
+            margin: .5em 0 0;
+        }

@@ -1,0 +1,15 @@
+.creator {
+    width: 224px;
+    position: relative;
+}
+
+    .creator__inner {
+        position: absolute;
+        top: 0;
+        right: 24px;
+        bottom: 0;
+        left: 0;
+        background-color: $blue;
+        border-radius: 10px;
+        cursor: pointer;
+    }

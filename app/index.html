@@ -62,6 +62,9 @@
 				$siteNav
 					.on('click', 'li:first', function(){ // @TODO: This needs a proper js-hook attaching to its class list
 						$body.toggleClass('-top-drawer');
+					})
+					.on('click', 'li:last', function(){ // @TODO: This needs a proper js-hook attaching to its class list
+						$body.toggleClass('-library');
 					});
 
 
@@ -71,10 +74,17 @@
 
 						$canvasSwitcher.toggleClass('-switching');
 					})
+					.on('click', '.js-drawer--bottom__categories', function(e){
+						e.preventDefault();
+
+						$body.removeClass('-bottom-drawer-half');
+						$body.addClass('-bottom-drawer-full');
+					})
 					.on('click', '.js-close-bottom-drawer', function(e){
 						e.preventDefault();
 
 						$body.removeClass('-bottom-drawer-half');
+						$body.removeClass('-bottom-drawer-full');
 						$canvasSwitcher.removeClass('-blurred');
 					});
 
@@ -91,6 +101,7 @@
 						e.preventDefault();
 
 						$body.removeClass('-top-drawer').addClass('-bottom-drawer-half');
+						$canvasSwitcher.addClass('-blurred');
 					});
 
 				$window

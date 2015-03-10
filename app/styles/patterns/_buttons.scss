@@ -1,0 +1,16 @@
+.btn {
+    @extend %delta;
+    border: 0;
+    padding: 1em 2em;
+    border-radius: 5px;
+    cursor: pointer;
+
+    &.-grey {
+        background-color: $light-grey;
+    }
+
+    &.-selected {
+        background-color: $lime;
+        color: #fff;
+    }
+}
