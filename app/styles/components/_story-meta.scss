@@ -1,0 +1,13 @@
+.story-meta {
+    width: 100%;
+    position: absolute;
+    top: 165px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 30px 40px;
+    background-color: $light-grey;
+    z-index: 2;
+    @include transition(transform .3s ease-in-out);
+    @include transform(translateX(100%));
+}

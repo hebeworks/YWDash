@@ -1,0 +1,15 @@
+.search {
+    background-color: $off-white;
+    position: absolute;
+    left: 0;
+    right: 0;
+    padding: 30px 40px;
+}
+
+    .search__input {
+        width: 100%;
+        background-color: $light-grey;
+        border: 0;
+        border-radius: 5px;
+        padding: 18px 0 18px 90px;
+    }

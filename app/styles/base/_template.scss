@@ -30,12 +30,30 @@ body {
 			}
 		}
 		.drawer--bottom {
-			@include transform(translateY(-0%));
+			@include transform(translateY(0%));
 
 			.drawer--bottom__section {
 				&.-visible {
 					display: none;
 				}
+			}
+		}
+	}
+	&.-story-meta {
+
+		.story-meta {
+			@include transform(translateX(0));
+		}
+
+		&.-bottom-drawer-half {
+			.drawer--bottom {
+				@include transform(translate(-100%, 40%));
+			}
+		}
+
+		&.-bottom-drawer-full {
+			.drawer--bottom {
+				@include transform(translate(-100%, 0));
 			}
 		}
 	}

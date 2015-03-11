@@ -38,7 +38,9 @@
 					$canvases = $('.js-canvas'),
 					$storyContainer = $('.js-stories'),
 					$bottomDrawer = $('.js-bottom-drawer'),
-					$toolbox = $('.js-toolbox');
+					$toolbox = $('.js-toolbox'),
+					$storyMeta = $('.js-story-meta'),
+					$thumbList= $('.js-thumb-list');
 
 				// Functions
 				function stretchACanvas(){
@@ -63,7 +65,7 @@
 					.on('click', 'li:first', function(){ // @TODO: This needs a proper js-hook attaching to its class list
 						$body.toggleClass('-top-drawer');
 					})
-					.on('click', 'li:last', function(){ // @TODO: This needs a proper js-hook attaching to its class list
+					.on('click', 'li:last', function(e){ // @TODO: This needs a proper js-hook attaching to its class list
 						$body.toggleClass('-library');
 					});
 
@@ -97,6 +99,20 @@
 						setTimeout(function() {
 							$bottomDrawer.removeClass('-drawer-show-categories -drawer-show-official -drawer-show-search');
 						}, 300);
+					});
+
+				$thumbList
+					.on('click', '.thumb', function(e) {
+						e.preventDefault();
+						
+						$body.addClass('-story-meta');
+					});
+
+				$storyMeta
+					.on('click', '.js-close-story-meta', function(e) {
+						e.preventDefault();
+						
+						$body.removeClass('-story-meta');
 					});
 
 				$canvases
