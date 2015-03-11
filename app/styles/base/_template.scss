@@ -14,13 +14,17 @@ body {
 				bottom: solid 1px #a3a3a3;
 			}
 		}
-		.drawer--top {
-			@include transform(translateY(100%));
+		.drawer {
+			&.-top {
+				@include transform(translateY(100%));
+			}
 		}
 	}
 	&.-bottom-drawer-half {
-		.drawer--bottom {
-			@include transform(translateY(40%));
+		.drawer {
+			&.-bottom {
+				@include transform(translateY(40%));
+			}
 		}
 	}
 	&.-bottom-drawer-full {
@@ -29,14 +33,17 @@ body {
 				bottom: solid 1px #a3a3a3;
 			}
 		}
-		.drawer--bottom {
-			@include transform(translateY(0%));
-
-			.drawer--bottom__section {
-				&.-visible {
-					display: none;
+		.drawer {
+			&.-bottom {
+				@include transform(translateY(0%));
+				
+				.drawer__section {
+					&.-visible {
+						display: none;
+					}
 				}
 			}
+
 		}
 	}
 	&.-story-meta {
@@ -46,14 +53,18 @@ body {
 		}
 
 		&.-bottom-drawer-half {
-			.drawer--bottom {
-				@include transform(translate(-100%, 40%));
+			.drawer {
+				&.-bottom {
+					@include transform(translate(-100%, 40%));
+				}
 			}
 		}
 
 		&.-bottom-drawer-full {
-			.drawer--bottom {
-				@include transform(translate(-100%, 0));
+			.drawer {
+				&.-bottom {
+					@include transform(translate(-100%, 0));
+				}
 			}
 		}
 	}
