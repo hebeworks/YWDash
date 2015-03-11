@@ -9,9 +9,18 @@
         background-color: $light-grey;
     }
 
+    &.-blue {
+        background-color: $blue;
+        color: #fff;
+    }
+
     &.-selected {
         background-color: $lime;
         color: #fff;
+    }
+
+    &.-center {
+        text-align: center;
     }
 
     &.-close {
@@ -22,5 +31,11 @@
         height: 50px;
         background: #000;
         cursor: pointer;
+    }
+
+    &.-back {
+        width: 50px;
+        height: 50px;
+        background: #aaa;
     }
 }

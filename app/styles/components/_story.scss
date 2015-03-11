@@ -6,7 +6,6 @@
 	}
 	display: block;
 	z-index: 3;
-	position: absolute;
 
 	@for $i from 1 through 3 {
 		&.-w#{$i} {
