@@ -11,6 +11,17 @@
         background-color: $off-white;
         border-left: 1px solid $light-grey;
     }
+
+    &.-dark {
+        .thumb-list__inner {
+            background-color: $light-grey;
+        }
+
+        &:after {
+            background-color: $light-grey;
+            border-color: $grey;
+        }
+    }
 }
 
 .thumb-list__inner {

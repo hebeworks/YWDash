@@ -6,6 +6,8 @@ body {
 	}
 	> .ember-view {
 		height:100%;
+		position: relative;
+		overflow: hidden;
 	}
 	
 	&.-top-drawer {
@@ -68,6 +70,15 @@ body {
 			}
 		}
 	}
+	&.-gallery {
+		.site-wrapper {
+			@include transform(translateX(-100%));
+		}
+
+		.gallery-wrapper {
+			@include transform(translateX(0));
+		}
+	}
 }
 
 a {
@@ -75,7 +86,8 @@ a {
 }
 
 /* -- Outer site wrapper */
-.site-wrapper {
+.site-wrapper,
+%site-wrapper {
 	width: 100%;
 	height: 100%;
 	position: absolute;
@@ -84,6 +96,7 @@ a {
 	right: 0;
 	bottom: 0;
 	overflow: hidden;
+	@include transition(transform .3s);
 }
 
 /* -- Site content -- */
@@ -145,10 +158,11 @@ a {
 		}
 		// .site-nav in ../patterns/navigation
 
-.site-body {
+.site-body,
+%site-body {
 	@include cf;
 	width: 100%;
-	height: 100%;
+	height: calc(100% - 165px);
 	margin: {
 		top: 165px;
 	}
@@ -157,4 +171,24 @@ a {
 	}
 	position: relative;
 	z-index: 1;
+}
+
+
+.gallery-wrapper {
+	@extend %site-wrapper;
+	@include transform(translateX(100%));
+}
+
+.gallery-body {
+	@extend %site-body;
+	padding: 20px 40px;
+}
+
+.gallery__inner {
+	position: absolute;
+	top: 105px;
+	right: 40px;
+	bottom: 0;
+	left: 40px;
+	overflow: scroll;
 }

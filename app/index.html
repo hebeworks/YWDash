@@ -26,6 +26,7 @@
 			// Cached jQuery objs
 			var $document = $(document);
 			var $window = $(window);
+			var svgCSS = 'assets/svg.css';
 
 			$document.bind('ready', function(){
 
@@ -40,7 +41,8 @@
 					$bottomDrawer = $('.js-bottom-drawer'),
 					$toolbox = $('.js-toolbox'),
 					$storyMeta = $('.js-story-meta'),
-					$thumbList= $('.js-thumb-list');
+					$thumbList= $('.js-thumb-list'),
+					$galleryWrapper = $('.js-gallery-wrapper');
 
 				// Functions
 				function stretchACanvas(){
@@ -66,7 +68,7 @@
 						$body.toggleClass('-top-drawer');
 					})
 					.on('click', 'li:last', function(e){ // @TODO: This needs a proper js-hook attaching to its class list
-						$body.toggleClass('-library');
+						$body.addClass('-gallery');
 					});
 
 
@@ -85,10 +87,13 @@
 						e.preventDefault();
 						$body.removeClass('-bottom-drawer-half');
 						$body.addClass('-bottom-drawer-full');
+						$bottomDrawer.find('.btn.-selected').removeClass('-selected');
 
 						var $el = $(this);
 						var $drawerSection = $el.data('btn-type');
-						$bottomDrawer.addClass('-drawer-show-' + $drawerSection);
+
+						$el.addClass('-selected');
+						$bottomDrawer.removeClass('-drawer-show-categories -drawer-show-official -drawer-show-search').addClass('-drawer-show-' + $drawerSection);
 					})
 					.on('click', '.js-close-bottom-drawer', function(e){
 						e.preventDefault();
@@ -131,6 +136,13 @@
 						$canvasSwitcher.addClass('-blurred');
 					});
 
+				$galleryWrapper
+					.on('click', '.js-gallery-back', function(e){
+						e.preventDefault();
+
+						$body.removeClass('-gallery');
+					});
+
 				$window
 					.resize(function(){
 						stretchACanvas();
@@ -150,7 +162,17 @@
 
 				// Ensure canvases stretch to correct height
 				stretchACanvas();
+				loadCSS(svgCSS);
 			});
+		</script>
+		<div class="svg-toolbox" data-grunticon-embed></div>
+		<script src="assets/img/svg/grunticon.loader.js"></script>
+		<script>
+			grunticon([
+				'assets/img/svg/icons.data.svg.css',
+				'assets/img/svg/icons.data.png.css',
+				'assets/img/svg/icons.fallback.css'
+			], grunticon.svgLoadedCallback);
 		</script>
 	</body>
 </html>

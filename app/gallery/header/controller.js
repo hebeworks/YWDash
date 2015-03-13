@@ -2,7 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
     siteTitle: function(){
-        return 'Leeds Dashboard Title';
+        return 'Leeds Gallery Title';
     }.property(),
 
     navItems: function(){
@@ -10,12 +10,6 @@ export default Ember.Controller.extend({
             { title: 'Toolbox', align: 'center', action: 'toggleSubNav' },
             { title: 'Gallery', align: 'right', action: 'toggleGallery' }
         ];
-    }.property(),
-
-    //actions: {
-    //    gotoRoute:function(route){
-    //        this.get('target').transitionTo(route);
-    //    }
-    //}
+    }.property()
 
 });

@@ -2,7 +2,16 @@
 
 var EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
-var app = new EmberApp();
+var app = new EmberApp({
+    outputPaths: {
+        app: {
+            css: {
+                'app': '/assets/hebe-dash.css',
+                'svg': '/assets/svg.css'
+            }
+        }
+    }
+});
 
 // Use `app.import` to add additional libraries to the generated
 // output files.
@@ -19,5 +28,6 @@ var app = new EmberApp();
 
 app.import('bower_components/packery/dist/packery.pkgd.min.js');
 app.import('bower_components/draggabilly/dist/draggabilly.pkgd.min.js');
+app.import('bower_components/loadcss/loadCSS.js');
 
 module.exports = app.toTree();
