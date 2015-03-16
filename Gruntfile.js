@@ -29,7 +29,7 @@ module.exports = function(grunt) {
                     expand: true,
                     cwd: 'public/assets/img/svg/embed',
                     src: '*.svg',
-                    dest: 'public/assets/img/svg'
+                    dest: 'vendor/embedsvg'
                 }],
                 options: {
                     enhanceSVG: true,
@@ -37,7 +37,6 @@ module.exports = function(grunt) {
                 }
             }
         }
-        
     });
 
     /**

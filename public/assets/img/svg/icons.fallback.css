@@ -1,6 +1,0 @@
-@mixin svg--icon-toolbox { background-image: url('png/icon-toolbox.png'); background-repeat: no-repeat; }
-
-@mixin svg--toolbox { background-image: url('png/toolbox.png'); background-repeat: no-repeat; }
-
-@mixin svg--tools { background-image: url('png/tools.png'); background-repeat: no-repeat; }
-

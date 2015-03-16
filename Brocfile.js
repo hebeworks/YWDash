@@ -26,8 +26,10 @@ var app = new EmberApp({
 // please specify an object with the list of modules as keys
 // along with the exports of each module as its value.
 
-app.import('bower_components/packery/dist/packery.pkgd.min.js');
-app.import('bower_components/draggabilly/dist/draggabilly.pkgd.min.js');
-app.import('bower_components/loadcss/loadCSS.js');
+app.import(app.bowerDirectory + '/packery/dist/packery.pkgd.min.js');
+app.import(app.bowerDirectory + '/draggabilly/dist/draggabilly.pkgd.min.js');
+app.import(app.bowerDirectory + '/loadcss/loadCSS.js');
+app.import('vendor/embedsvg/grunticon.loader.js');
+app.import('vendor/embedsvg/grunticon.inline.js');
 
 module.exports = app.toTree();
