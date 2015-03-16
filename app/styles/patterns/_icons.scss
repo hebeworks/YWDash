@@ -20,3 +20,11 @@
 			}
 		}
 	}
+
+/* Specific icons */
+.icon-toolbox {
+	@include centered;
+	width: 41px;
+	height: 40px;
+	display: inline-block;
+}

@@ -26,7 +26,7 @@
 			// Cached jQuery objs
 			var $document = $(document);
 			var $window = $(window);
-			var svgCSS = 'assets/svg.css';
+			//var svgCSS = 'assets/svg.css';
 
 			$document.bind('ready', function(){
 
@@ -45,7 +45,7 @@
 					$galleryWrapper = $('.js-gallery-wrapper');
 
 				// Functions
-				function stretchACanvas(){
+				function stretchCanvas(){
 
 					var canvasWidth = $window.width();
 
@@ -145,7 +145,7 @@
 
 				$window
 					.resize(function(){
-						stretchACanvas();
+						stretchCanvas();
 					});
 
 				// Initialize packery
@@ -161,8 +161,8 @@
 					});
 
 				// Ensure canvases stretch to correct height
-				stretchACanvas();
-				loadCSS(svgCSS);
+				stretchCanvas();
+				//loadCSS(svgCSS);
 			});
 		</script>
 	</body>

@@ -23,21 +23,20 @@
 		text: {
 			align: center;
 		}
+		text-decoration: none;
 		&:hover {
 			color: $lime;
-			.svgico {
+			.icon-toolbox svg {
 				fill: $lime;
 			}
+			.site-nav__title {
+				color: $lime;
+				text-decoration: none;
+			}
 		}
-		span {
-			width: 100%;
-			display: block;
-		}
-	}
-	.svgico {
-		width: 43px;
-		height: 42px;
-		display: inline-block;
-		fill: #000;
 	}
 }
+	.site-nav__title {
+		width: 100%;
+		display: block;
+	}
