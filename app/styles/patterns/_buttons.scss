@@ -1,0 +1,52 @@
+.btn-list {
+    padding: 20px 0;
+    &.-centered {
+        text-align: center;
+    }
+}
+
+.btn {
+    @extend %delta;
+    border: 0;
+    padding: .7em 1.7em;
+    border-radius: 5px;
+    cursor: pointer;
+
+    &.-grey {
+        background-color: $light-grey;
+    }
+
+    &.-white {
+        background-color: #fff;
+    }
+
+    &.-blue {
+        background-color: $blue;
+        color: #fff;
+    }
+
+    &.-selected {
+        background-color: $lime;
+        color: #fff;
+    }
+
+    &.-center {
+        text-align: center;
+    }
+
+    &.-close {
+        position: absolute;
+        top: 30px;
+        right: 40px;
+        width: 50px;
+        height: 50px;
+        background: #000;
+        cursor: pointer;
+    }
+
+    &.-back {
+        width: 50px;
+        height: 50px;
+        background: #aaa;
+    }
+}

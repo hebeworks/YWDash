@@ -6,6 +6,16 @@
 	background: {
 		color: #f7f7f7;
 	}
+	opacity: 1;
+	@include transform(translateZ(0));
+	@include filter(blur(0) brightness(100%));
+	@include transition(filter .3s, opacity .3s);
+	transition: -webkit-filter .3s, opacity .3s;
+
+	&.-blurred {
+		@include filter(blur(40px) brightness(79%));
+		opacity: .16;
+	}
 
 	&.-switching {
 		.canvas-switcher__list {
@@ -31,7 +41,7 @@
 		height: 100%;
 		z-index: 1;
 		position: relative;
-		@include transition(all .5s);
+		@include transition(all .3s);
 		@include transform-origin(0 top);
 	}
 		.canvas {

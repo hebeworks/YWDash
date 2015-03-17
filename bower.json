@@ -19,7 +19,8 @@
   },
   "devDependencies": {
     "breakpoint-sass": "~2.5.0",
-    "bourbon": "3.2.1"
+    "bourbon": "3.2.1",
+    "loadcss": "~0.1.6"
   },
   "resolutions": {
     "bourbon": "3.2.1"

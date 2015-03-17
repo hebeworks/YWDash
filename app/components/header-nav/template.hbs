@@ -1,18 +1,12 @@
-<ul class="js-site-nav site-nav">
-    {{#each item in navItems}}
-    <li>
-        {{nav-icon title=item.title action=item.action route=item.route}}
-    </li>
-    {{/each}}
-    <!--<li>
-        <a {{action "toggleSubNav"}}>
-            <svg role="img" class="svgico">
-                <use xlink:href="/assets/img/svg/sprite.svg#toolbox"></use>
-            </svg>
-            <span>SUB NAV</span>
-        </a>
-    </li>-->
-</ul>
+<nav class="nav">
+	<ul class="js-site-nav nav__list -main -header">
+	    {{#each item in navItems}}
+	    <li {{bind-attr class="item.dashed"}}>
+	        {{nav-icon title=item.title jshook=item.jshook iconclass=item.iconclass svgclass=item.svgclass action=item.action route=item.route}}
+	    </li>
+	    {{/each}}
+	</ul>
+</nav>
 
 {{#if showSubNav}}
 <div class="site-sub-nav">

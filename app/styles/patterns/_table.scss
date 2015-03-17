@@ -1,0 +1,29 @@
+.table {
+    width: 100%;
+    display: table;
+    position: relative;
+
+    &.-fixed {
+        table-layout: fixed;
+    }
+}
+
+    .table-cell {
+        display: table-cell;
+
+        &.-align-top {
+            vertical-align: top;
+        }
+
+        &.-align-middle {
+            vertical-align: middle;
+        }
+
+        &.-align-bottom {
+            vertical-align: bottom;
+        }
+
+        &.-align-baseline {
+            vertical-align: baseline;
+        }
+    }

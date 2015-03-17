@@ -18,11 +18,18 @@
 @import "patterns/custom_fonts";
 @import "patterns/headings";
 @import "patterns/navigation";
+@import "patterns/buttons";
 @import "patterns/tabs";
 @import "patterns/icons";
+@import "patterns/thumbs";
+@import "patterns/creator";
+@import "patterns/table";
+@import "patterns/search";
+@import "patterns/helper";
 
 
 /* -- Components -- */
 @import "components/drawer";
 @import "components/canvas";
 @import "components/story";
+@import "components/story-meta";

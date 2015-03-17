@@ -1,43 +1,80 @@
-.site-nav {
-	@include clean-list;
-	@include middle(xy);
-	width: auto;
-	height: 75px;
-	position: absolute;
+.nav {}
+.nav__list {
 
-	li {
-		width: auto;
-		height: 75px;
-		float: left;
-		margin: {
-			right: 10px;
-			left: 10px;
-		}
-	}
-	a {
+	/* A nav element in the header or top drawer */
+	&.-main {
+		@include clean-list;
+		@include middle(xy);
+		width: 100%;
+		height: 80px;
+		position: absolute;
 		display: block;
-		font: {
-			size: em(20px);
-			family: $helvneuelight;
-		}
-		text: {
-			align: center;
-		}
-		&:hover {
-			color: $lime;
-			.svgico {
-				fill: $lime;
+		text-align: center;
+
+		li {
+			width: auto;
+			height: 80px;
+			display: inline-block;
+			margin: {
+				right: 20px;
+				left: 20px;
+			}
+			&.-separator {
+				margin-right: 70px;
 			}
 		}
-		span {
-			width: 100%;
+		a {
 			display: block;
+			font: {
+				size: em(20px);
+				family: $helvneuelight;
+			}
+			text: {
+				align: center;
+			}
+			text-decoration: none;
+			&:hover {
+				color: $lime;
+				.icon svg {
+					fill: $lime;
+				}
+				.main-nav__title {
+					color: $lime;
+					text-decoration: none;
+				}
+			}
+		}
+		.icon {
+			@include centered;
+			width: 48px;
+			height: 48px;
+			display: inline-block;
 		}
 	}
-	.svgico {
-		width: 43px;
-		height: 42px;
-		display: inline-block;
-		fill: #000;
+
+	/* Nav in the header */
+	&.-header {
+		li {
+			&.-back {
+				position: absolute;
+				top: 2px;
+				left: 45px;
+			}
+			&.-gallery {
+				position: absolute;
+				top: 2px;
+				right: 45px;
+			}
+		}
 	}
+
+	/* Top drawer nav */
+	&.-top-drawer {
+		
+	}
+}
+
+.nav-main__title {
+	width: 100%;
+	display: block;
 }

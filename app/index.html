@@ -26,6 +26,7 @@
 			// Cached jQuery objs
 			var $document = $(document);
 			var $window = $(window);
+			//var svgCSS = 'assets/svg.css';
 
 			$document.bind('ready', function(){
 
@@ -37,11 +38,14 @@
 					$canvasSwitcherList = $('.js-canvas-switcher-list'),
 					$canvases = $('.js-canvas'),
 					$storyContainer = $('.js-stories'),
-					$drawers = $('.js-drawers'),
-					$toolbox = $('.js-toolbox');
+					$bottomDrawer = $('.js-bottom-drawer'),
+					$toolbox = $('.js-toolbox'),
+					$storyMeta = $('.js-story-meta'),
+					$thumbList= $('.js-thumb-list'),
+					$galleryWrapper = $('.js-gallery-wrapper');
 
 				// Functions
-				function stretchACanvas(){
+				function stretchCanvas(){
 
 					var canvasWidth = $window.width();
 
@@ -60,16 +64,62 @@
 
 				// Event handlers
 				$siteNav
-					.on('click', 'li:first', function(){ // @TODO: This needs a proper js-hook attaching to its class list
+					.on('click', '.js-open-toolbox', function(e){
+						$(this).toggleClass('-selected');
 						$body.toggleClass('-top-drawer');
+					})
+					.on('click', '.js-open-gallery', function(e){
+						$(this).toggleClass('-selected');
+						$body.addClass('-gallery');
 					});
 
 
-				$drawers
+				$toolbox
 					.on('click', '.js-toolbox-change-canvas', function(e){
 						e.preventDefault();
 
 						$canvasSwitcher.toggleClass('-switching');
+					});
+
+				$bottomDrawer
+					.on('click', function(e){
+						$body.removeClass('-top-drawer');
+					})
+					.on('click', '.js-bottom-drawer-button .btn', function(e){
+						e.preventDefault();
+						$body.removeClass('-bottom-drawer-half');
+						$body.addClass('-bottom-drawer-full');
+						$bottomDrawer.find('.btn.-selected').removeClass('-selected');
+
+						var $el = $(this);
+						var $drawerSection = $el.data('btn-type');
+
+						$el.addClass('-selected');
+						$bottomDrawer.removeClass('-drawer-show-categories -drawer-show-official -drawer-show-search').addClass('-drawer-show-' + $drawerSection);
+					})
+					.on('click', '.js-close-bottom-drawer', function(e){
+						e.preventDefault();
+						$body.removeClass('-bottom-drawer-half -bottom-drawer-full');
+						$canvasSwitcher.removeClass('-blurred');
+
+						// Wait for drawer to slide off page before reverting section visibility
+						setTimeout(function() {
+							$bottomDrawer.removeClass('-drawer-show-categories -drawer-show-official -drawer-show-search');
+						}, 300);
+					});
+
+				$thumbList
+					.on('click', '.thumb', function(e) {
+						e.preventDefault();
+						
+						$body.addClass('-story-meta');
+					});
+
+				$storyMeta
+					.on('click', '.js-close-story-meta', function(e) {
+						e.preventDefault();
+						
+						$body.removeClass('-story-meta');
 					});
 
 				$canvases
@@ -77,6 +127,7 @@
 						e.preventDefault();
 
 						$body.addClass('-bottom-drawer-half');
+						$canvasSwitcher.addClass('-blurred');
 					});
 
 				$toolbox
@@ -84,11 +135,19 @@
 						e.preventDefault();
 
 						$body.removeClass('-top-drawer').addClass('-bottom-drawer-half');
+						$canvasSwitcher.addClass('-blurred');
+					});
+
+				$galleryWrapper
+					.on('click', '.js-gallery-back', function(e){
+						e.preventDefault();
+
+						$body.removeClass('-gallery');
 					});
 
 				$window
 					.resize(function(){
-						stretchACanvas();
+						stretchCanvas();
 					});
 
 				// Initialize packery
@@ -104,7 +163,8 @@
 					});
 
 				// Ensure canvases stretch to correct height
-				stretchACanvas();
+				stretchCanvas();
+				//loadCSS(svgCSS);
 			});
 		</script>
 	</body>
