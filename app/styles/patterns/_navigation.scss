@@ -1,63 +1,74 @@
-.site-nav {
-	@include clean-list;
-	@include middle(xy);
-	width: 100%;
-	height: 75px;
-	position: absolute;
-	display: block;
-	text-align: center;
+.nav {
 
-	li {
-		width: auto;
-		height: 75px;
-		display: inline-block;
-		margin: {
-			right: 10px;
-			left: 10px;
-		}
-		&.-gallery {
-			position: absolute;
-			top: 2px;
-			right: 45px;
-		}
-	}
-	a {
+	/* A nav element in the header or top drawer */
+	&.-main {
+		@include clean-list;
+		@include middle(xy);
+		width: 100%;
+		height: 80px;
+		position: absolute;
 		display: block;
-		font: {
-			size: em(20px);
-			family: $helvneuelight;
-		}
-		text: {
-			align: center;
-		}
-		text-decoration: none;
-		&:hover {
-			color: $lime;
-			.icon svg {
-				fill: $lime;
+		text-align: center;
+
+		li {
+			width: auto;
+			height: 80px;
+			display: inline-block;
+			margin: {
+				right: 10px;
+				left: 10px;
 			}
-			.site-nav__title {
+			&.-separator {
+				margin-right: 70px;
+			}
+		}
+		a {
+			display: block;
+			font: {
+				size: em(20px);
+				family: $helvneuelight;
+			}
+			text: {
+				align: center;
+			}
+			text-decoration: none;
+			&:hover {
 				color: $lime;
-				text-decoration: none;
+				.icon svg {
+					fill: $lime;
+				}
+				.main-nav__title {
+					color: $lime;
+					text-decoration: none;
+				}
+			}
+		}
+		.icon {
+			@include centered;
+			width: 48px;
+			height: 48px;
+			display: inline-block;
+		}
+	}
+
+	/* Nav in the header */
+	&.-header {
+		li {
+			&.-gallery {
+				position: absolute;
+				top: 2px;
+				right: 45px;
 			}
 		}
 	}
-	.icon {
-		@include centered;
-		width: 43px;
-		height: 43px;
-		display: inline-block;
-	}
-	.icon-gallery {
-		padding: {
-			top: 3px;
-		}
-		margin: {
-			bottom: 7px;
-		}
+
+	/* Top drawer nav */
+	&.-top-drawer {
+		
 	}
 }
-	.site-nav__title {
-		width: 100%;
-		display: block;
-	}
+
+.nav-main__title {
+	width: 100%;
+	display: block;
+}
