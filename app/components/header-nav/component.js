@@ -6,9 +6,9 @@ export default Ember.Component.extend({
         gotoRoute:function(route){
             this.sendAction('action',route);
         },
-        toggleSubNav : function(){
+        /*toggleSubNav : function(){
             this.$().addClass('subNav');
             this.set('showSubNav',true);
-        }
+        }*/
     }
 });

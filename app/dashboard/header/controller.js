@@ -8,14 +8,16 @@ export default Ember.Controller.extend({
     navItems: function(){
 
         var items = [
-            { title: 'Toolbox', align: 'center', action: 'toggleSubNav' },
-            { title: 'Gallery', align: 'right', action: 'toggleGallery' }
+            { title: 'Toolbox' },//, action: 'toggleSubNav' },
+            { title: 'Gallery' }//, action: 'toggleGallery' }
         ];
 
         for (var i = 0; i < items.length; i++) {
-            items[i].dashed = '-' + items[i].title.dasherize();
-            items[i].iconclass = 'icon' + items[i].dashed;
-            items[i].svgclass = 'svg' + items[i].dashed;
+            var dashed = items[i].title.dasherize();
+            items[i].dashed = '-' + dashed;
+            items[i].jshook = 'js-open-' + dashed;
+            items[i].iconclass = 'icon-' + dashed;
+            items[i].svgclass = 'svg-' + dashed;
         }
 
         return items;

@@ -1,7 +1,7 @@
 <ul class="js-site-nav nav -main -header">
     {{#each item in navItems}}
     <li {{bind-attr class="item.dashed"}}>
-        {{nav-icon title=item.title iconclass=item.iconclass svgclass=item.svgclass action=item.action route=item.route}}
+        {{nav-icon title=item.title jshook=item.jshook iconclass=item.iconclass svgclass=item.svgclass action=item.action route=item.route}}
     </li>
     {{/each}}
 </ul>

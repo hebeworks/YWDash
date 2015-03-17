@@ -64,10 +64,12 @@
 
 				// Event handlers
 				$siteNav
-					.on('click', 'li:first', function(){ // @TODO: This needs a proper js-hook attaching to its class list
+					.on('click', '.js-open-toolbox', function(e){
+						$(this).toggleClass('-selected');
 						$body.toggleClass('-top-drawer');
 					})
-					.on('click', 'li:last', function(e){ // @TODO: This needs a proper js-hook attaching to its class list
+					.on('click', '.js-open-gallery', function(e){
+						$(this).toggleClass('-selected');
 						$body.addClass('-gallery');
 					});
 
