@@ -33,7 +33,7 @@
 				align: center;
 			}
 			text-decoration: none;
-			&:hover {
+			&:hover, &.-selected {
 				color: $lime;
 				.icon svg {
 					fill: $lime;
