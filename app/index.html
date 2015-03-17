@@ -40,6 +40,8 @@
 					$storyContainer = $('.js-stories'),
 					$bottomDrawer = $('.js-bottom-drawer'),
 					$toolbox = $('.js-toolbox'),
+					$openToolbox = $('.js-open-toolbox'),
+					$addStory = $('.js-add-story'),
 					$storyMeta = $('.js-story-meta'),
 					$thumbList= $('.js-thumb-list'),
 					$galleryWrapper = $('.js-gallery-wrapper');
@@ -64,27 +66,36 @@
 
 				// Event handlers
 				$siteNav
-					.on('click', '.js-open-toolbox', function(e){
+					.on('mousedown', '.js-open-toolbox', function(e){
 						$(this).toggleClass('-selected');
-						$body.toggleClass('-top-drawer');
+						$body.toggleClass('-top-drawer').removeClass('-bottom-drawer-half -bottom-drawer');
 					})
-					.on('click', '.js-open-gallery', function(e){
+					.on('mousedown', '.js-open-gallery', function(e){
 						$body.addClass('-gallery');
 					});
 
 
 				$toolbox
-					.on('click', '.js-toolbox-change-canvas', function(e){
+					.on('mousedown', '.js-toolbox-change-canvas', function(e){
 						e.preventDefault();
 
+						$(this).toggleClass('-selected');
 						$canvasSwitcher.toggleClass('-switching');
+					})
+					.on('mousedown', '.js-add-story', function(e){
+						e.preventDefault();
+
+						$(this).removeClass('-selected');
+						$openToolbox.removeClass('-selected');
+						$body.removeClass('-top-drawer').addClass('-bottom-drawer-half');
+						$canvasSwitcher.addClass('-blurred');
 					});
 
 				$bottomDrawer
-					.on('click', function(e){
+					.on('mousedown', function(e){
 						$body.removeClass('-top-drawer');
 					})
-					.on('click', '.js-bottom-drawer-button .btn', function(e){
+					.on('mousedown', '.js-bottom-drawer-button .btn', function(e){
 						e.preventDefault();
 						$body.removeClass('-bottom-drawer-half');
 						$body.addClass('-bottom-drawer-full');
@@ -96,8 +107,11 @@
 						$el.addClass('-selected');
 						$bottomDrawer.removeClass('-drawer-show-categories -drawer-show-official -drawer-show-search').addClass('-drawer-show-' + $drawerSection);
 					})
-					.on('click', '.js-close-bottom-drawer', function(e){
+					.on('mousedown', '.js-close-bottom-drawer', function(e){
 						e.preventDefault();
+
+						$openToolbox.removeClass('-selected');
+						$addStory.removeClass('-selected');
 						$body.removeClass('-bottom-drawer-half -bottom-drawer-full');
 						$canvasSwitcher.removeClass('-blurred');
 
@@ -108,14 +122,14 @@
 					});
 
 				$thumbList
-					.on('click', '.thumb', function(e) {
+					.on('mousedown', '.thumb', function(e) {
 						e.preventDefault();
 						
 						$body.addClass('-story-meta');
 					});
 
 				$storyMeta
-					.on('click', '.js-close-story-meta', function(e) {
+					.on('mousedown', '.js-close-story-meta', function(e) {
 						e.preventDefault();
 						
 						$body.removeClass('-story-meta');
@@ -129,16 +143,8 @@
 						$canvasSwitcher.addClass('-blurred');
 					});
 
-				$toolbox
-					.on('mousedown', '.js-add-story', function(e){
-						e.preventDefault();
-
-						$body.removeClass('-top-drawer').addClass('-bottom-drawer-half');
-						$canvasSwitcher.addClass('-blurred');
-					});
-
 				$galleryWrapper
-					.on('click', '.js-gallery-back', function(e){
+					.on('mousedown', '.js-gallery-back', function(e){
 						e.preventDefault();
 
 						$body.removeClass('-gallery');
