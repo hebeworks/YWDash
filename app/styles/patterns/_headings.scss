@@ -6,11 +6,10 @@
         @include font-size($giga-size);
     }
 
-    @media screen and (min-width: 769px) {
+    @include breakpoint(769px) {
         @include font-size($peta-size);
     }
-
-    @media screen and (min-width: 1220px) {
+    @include breakpoint(1220px) {
         @include font-size($zetta-size);
     }
 }
@@ -19,11 +18,10 @@
 %exa {
     @include font-size($giga-size);
 
-    @media screen and (min-width: 769px) {
+    @include breakpoint(769px) {
         @include font-size($peta-size);
     }
-
-    @media screen and (min-width: 1220px) {
+    @include breakpoint(1220px) {
         @include font-size($exa-size);
     }
 }
@@ -32,11 +30,10 @@
 %peta {
     @include font-size($kilo-size);
 
-    @media screen and (min-width: 769px) {
+    @include breakpoint(769px) {
         @include font-size($giga-size);
     }
-
-    @media screen and (min-width: 1220px) {
+    @include breakpoint(1220px) {
         @include font-size($peta-size);
     }
 }
@@ -45,11 +42,10 @@
 %tera {
     @include font-size($kilo-size);
 
-    @media screen and (min-width: 769px) {
+    @include breakpoint(769px) {
         @include font-size($giga-size);
     }
-
-    @media screen and (min-width: 1220px) {
+    @include breakpoint(1220px) {
         @include font-size($tera-size);
     }
 }
@@ -58,11 +54,10 @@
 %giga {
     @include font-size($kilo-size);
 
-    @media screen and (min-width: 769px) {
+    @include breakpoint(769px) {
     @include font-size($mega-size);
     }
-
-    @media screen and (min-width: 1220px) {
+    @include breakpoint(1220px) {
     @include font-size($giga-size);
     }
   
@@ -72,11 +67,10 @@
 %mega {
     @include font-size($h1-size);
     
-    @media screen and (min-width: 769px) {
+    @include breakpoint(769px) {
       @include font-size($kilo-size);
     }
-
-    @media screen and (min-width: 1220px) {
+    @include breakpoint(1220px) {
       @include font-size($mega-size);
     }
 }
@@ -85,7 +79,7 @@
 %kilo {
     @include font-size($h2-size);
     
-    @media screen and (min-width: 769px) {
+    @include breakpoint(769px) {
       @include font-size($kilo-size);
     }
 }
@@ -94,7 +88,7 @@
 %hecto {
     @include font-size($h2-size);
     
-    @media screen and (min-width: 769px) {
+    @include breakpoint(769px) {
       @include font-size($hecto-size);
     }
 }
@@ -105,10 +99,10 @@ h1,
     @include font-size($h3-size);
     line-height: 1.125em;
   
-    @media screen and (min-width: 769px) {
+    @include breakpoint(769px) {
         @include font-size($h2-size);
     }
-    @media screen and (min-width: 1220px) {
+    @include breakpoint(1220px) {
         @include font-size($h1-size);
     }
 }
@@ -119,10 +113,10 @@ h2,
     @include font-size($h4-size);
     line-height: 1.1851851852em;
     
-    @media screen and (min-width: 769px) {
+    @include breakpoint(769px) {
         @include font-size($h3-size);
     }
-    @media screen and (min-width: 1220px) {
+    @include breakpoint(1220px) {
         @include font-size($h2-size);
     }
 }
@@ -132,10 +126,10 @@ h3,
 %gamma {
     @include font-size($h5-size);
     
-    @media screen and (min-width: 769px) {
+    @include breakpoint(769px) {
         @include font-size($h4-size);
     }
-    @media screen and (min-width: 1220px) {
+    @include breakpoint(1220px) {
         @include font-size($h3-size);
     }
 }
@@ -147,10 +141,10 @@ h4,
     line-height: 1.2em;
     font-weight: 300;
     
-    @media screen and (min-width: 769px) {
+    @include breakpoint(769px) {
         @include font-size($h5-size);
     }
-    @media screen and (min-width: 1220px) {
+    @include breakpoint(1220px) {
         @include font-size($h4-size);
     }
 }
@@ -160,7 +154,7 @@ h5,
 %epsilon {
     @include font-size($h6-size);
 
-    @media screen and (min-width: 769px) {
+    @include breakpoint(769px) {
         @include font-size($h5-size);
     }
 }
@@ -174,7 +168,7 @@ h6,
 p {
     @include font-size($h5-size);
     
-    @media screen and (min-width: 769px) {
+    @include breakpoint(769px) {
         @include font-size($h4-size);
     }
 }
