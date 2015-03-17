@@ -1,24 +1,7 @@
 <div class="js-gallery-wrapper gallery-wrapper">
     <header class="js-site-header site-header">
         <div class="site-header__inner">
-            <a href="#" class="js-gallery-back">Back</a>
-            <ul class="js-site-nav nav -main -header">
-                <li>
-                    <a>
-                        <span>Browse</span>
-                    </a>
-                </li>
-                <li>
-                    <a>
-                        <span>My Collection</span>
-                    </a>
-                </li>
-                <li>
-                    <a>
-                        <span>Search</span>
-                    </a>
-                </li>
-            </ul>
+            {{gallery-header-nav navItems=galleryNavItems action="gotoRoute"}}
         </div>
     </header>
 

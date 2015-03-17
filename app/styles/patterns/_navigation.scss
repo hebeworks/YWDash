@@ -1,4 +1,5 @@
-.nav {
+.nav {}
+.nav__list {
 
 	/* A nav element in the header or top drawer */
 	&.-main {
@@ -15,8 +16,8 @@
 			height: 80px;
 			display: inline-block;
 			margin: {
-				right: 10px;
-				left: 10px;
+				right: 20px;
+				left: 20px;
 			}
 			&.-separator {
 				margin-right: 70px;
@@ -54,6 +55,11 @@
 	/* Nav in the header */
 	&.-header {
 		li {
+			&.-back {
+				position: absolute;
+				top: 2px;
+				left: 45px;
+			}
 			&.-gallery {
 				position: absolute;
 				top: 2px;
