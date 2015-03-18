@@ -41,5 +41,8 @@
     "grunt-grunticon": "^2.1.2",
     "load-grunt-tasks": "^3.1.0",
     "rimraf": "2.2.8"
+  },
+  "dependencies": {
+    "grunt-shell": "^1.1.2"
   }
 }

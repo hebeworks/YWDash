@@ -8,6 +8,16 @@ module.exports = function(grunt) {
          */
         pkg: grunt.file.readJSON('package.json'),
 
+
+        shell: {
+            serve: {
+                command: 'ember serve'
+            },
+            build: {
+                command: 'ember build --environment production'
+            }
+        },
+
         /**
          * Create data URIs in a CSS file for SVGs
          */
@@ -49,4 +59,8 @@ module.exports = function(grunt) {
      */
 
     grunt.registerTask('svg', ['grunticon:embed', 'grunticon:nonembedsvg']);
+    grunt.registerTask('default', ['svg', 'shell:build']);
+    grunt.registerTask('serve', ['svg', 'shell:serve']);
+
+    grunt.loadNpmTasks('grunt-shell');
 };
