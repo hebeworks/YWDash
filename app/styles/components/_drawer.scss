@@ -77,12 +77,14 @@
 
 		.drawer__heading {
 			display: inline-block;
-			margin: 0;
+			margin: {
+				bottom: 0.8148148148em;
+			}
 		}
 
 	.drawer__inner {
 		position: absolute;
-		top: 150px;
+		top: 167px;
 		right: 40px;
 		bottom: 0;
 		left: 40px;
