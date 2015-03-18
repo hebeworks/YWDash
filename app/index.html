@@ -14,7 +14,7 @@
 
 		{{content-for 'head-footer'}}
 	</head>
-	<body class=" -bottom-drawer-half">
+	<body>
 		{{content-for 'body'}}
 
 		<script src="assets/vendor.js"></script>
@@ -40,14 +40,14 @@
 					$storyContainer = $('.js-stories'),
 					$bottomDrawer = $('.js-bottom-drawer'),
 					$toolbox = $('.js-toolbox'),
-					$openToolbox = $('.js-open-toolbox'),
-					$addStory = $('.js-add-story'),
+					$btnOpenToolbox = $('.js-open-toolbox'),
+					$btnAddStory = $('.js-add-story'),
 					$storyMeta = $('.js-story-meta'),
-					$thumbList= $('.js-thumb-list'),
+					$thumbList = $('.js-thumb-list'),
 					$galleryWrapper = $('.js-gallery-wrapper');
 
 				// Functions
-				function stretchCanvas(){
+				function stretchCanvas() {
 
 					var canvasWidth = $window.width();
 
@@ -64,14 +64,51 @@
 						});
 				}
 
+				function drawerAction(drawer, action, extent) {
+
+					if (typeof drawer !== 'undefined') {
+
+						if (drawer == 'top') {
+							$body.toggleClass('-top-drawer');
+						}
+						else if (drawer == 'bottom' && typeof action !== 'undefined') {
+
+							if (action == 'open') {
+								$body.addClass('-bottom-drawer');
+								if (typeof extent !== 'undefined' && extent == 'full') {
+									$body.addClass('-bd-full');
+								}
+							}
+							else if (action == 'close') {
+								$body.removeClass('-bottom-drawer -bd-full');
+							}
+						}
+					}
+				}
+
+				function galleryAction(action) {
+
+					if (typeof action !== 'undefined') {
+
+						if (action == 'open') {
+							$body.addClass('-gallery');
+						}
+						else if (action == 'close') {
+							$body.addClass('-gallery');
+						}
+					}
+				}
+
 				// Event handlers
 				$siteNav
 					.on('mousedown', '.js-open-toolbox', function(e){
 						$(this).toggleClass('-selected');
-						$body.toggleClass('-top-drawer').removeClass('-bottom-drawer-half -bottom-drawer');
+						drawerAction('top');
+						drawerAction('bottom', 'close');
 					})
 					.on('mousedown', '.js-open-gallery', function(e){
-						$body.addClass('-gallery');
+
+						galleryAction('open');
 					});
 
 
@@ -86,9 +123,11 @@
 						e.preventDefault();
 
 						$(this).removeClass('-selected');
-						$openToolbox.removeClass('-selected');
-						$body.removeClass('-top-drawer').addClass('-bottom-drawer-half');
+						$btnOpenToolbox.removeClass('-selected');
 						$canvasSwitcher.addClass('-blurred');
+
+						drawerAction('top');
+						drawerAction('bottom', 'open');
 					});
 
 				$bottomDrawer
@@ -97,27 +136,30 @@
 					})
 					.on('mousedown', '.js-bottom-drawer-button .btn', function(e){
 						e.preventDefault();
-						$body.removeClass('-bottom-drawer-half');
-						$body.addClass('-bottom-drawer-full');
-						$bottomDrawer.find('.btn.-selected').removeClass('-selected');
 
 						var $el = $(this);
-						var $drawerSection = $el.data('btn-type');
+						var drawerSection = $el.data('btn-type');
 
 						$el.addClass('-selected');
-						$bottomDrawer.removeClass('-drawer-show-categories -drawer-show-official -drawer-show-search').addClass('-drawer-show-' + $drawerSection);
+
+						drawerAction('bottom', 'open', 'full');
+						$bottomDrawer
+							.removeClass('-bd-show-categories -bd-show-official -bd-show-search')
+							.addClass('-bd-show-' + drawerSection)
+							.find('.btn.-selected').removeClass('-selected');
 					})
 					.on('mousedown', '.js-close-bottom-drawer', function(e){
 						e.preventDefault();
 
-						$openToolbox.removeClass('-selected');
-						$addStory.removeClass('-selected');
-						$body.removeClass('-bottom-drawer-half -bottom-drawer-full');
+						$btnOpenToolbox.removeClass('-selected');
+						$btnAddStory.removeClass('-selected');
 						$canvasSwitcher.removeClass('-blurred');
+
+						drawerAction('bottom', 'close');
 
 						// Wait for drawer to slide off page before reverting section visibility
 						setTimeout(function() {
-							$bottomDrawer.removeClass('-drawer-show-categories -drawer-show-official -drawer-show-search');
+							$bottomDrawer.removeClass('-bd-show-categories -bd-show-official -bd-show-search');
 						}, 300);
 					});
 
@@ -139,7 +181,7 @@
 					.on('mousedown', '.js-add-story', function(e){
 						e.preventDefault();
 
-						$body.addClass('-bottom-drawer-half');
+						drawerAction('bottom', 'open');
 						$canvasSwitcher.addClass('-blurred');
 					});
 
@@ -147,7 +189,7 @@
 					.on('mousedown', '.js-gallery-back', function(e){
 						e.preventDefault();
 
-						$body.removeClass('-gallery');
+						galleryAction('close');
 					});
 
 				$window

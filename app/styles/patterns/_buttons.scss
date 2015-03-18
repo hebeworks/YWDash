@@ -23,7 +23,7 @@
 
     &.-selected {
         background-color: $lime;
-        color: #fff;
+        color: #d9f2bd;
     }
 
     &.-center {
@@ -69,11 +69,10 @@
     }
 
     .btn {
-        padding: {
-            top: .7em;
-            right: 1.7em;
-            bottom: .7em;
-            left: 1.7em;
+        width: 160px;
+        height: 61px;
+        &.-search {
+            width: 206px;
         }
     }
 }

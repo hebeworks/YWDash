@@ -22,30 +22,30 @@ body {
 			}
 		}
 	}
-	&.-bottom-drawer-half {
+	&.-bottom-drawer {
 		.drawer {
 			&.-bottom {
 				@include transform(translateY(40%));
 			}
 		}
-	}
-	&.-bottom-drawer-full {
-		.site-header__inner {
-			border: {
-				bottom: solid 1px #a3a3a3;
-			}
-		}
-		.drawer {
-			&.-bottom {
-				@include transform(translateY(0%));
-				
-				.drawer__section {
-					&.-visible {
-						display: none;
-					}
+		&.-bd-full {
+			.site-header__inner {
+				border: {
+					bottom: solid 1px #a3a3a3;
 				}
 			}
+			.drawer {
+				&.-bottom {
+					@include transform(translateY(0%));
+					
+					.drawer__section {
+						&.-visible {
+							display: none;
+						}
+					}
+				}
 
+			}
 		}
 	}
 	&.-story-meta {

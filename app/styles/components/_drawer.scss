@@ -28,6 +28,11 @@
 		@include transform(translateY(100%));
 		z-index: 2;
 
+		// Hack to get scrolling working properly
+		&.-overflow-y-scroll {
+			overflow-y: auto;
+		}
+
 		.drawer__section {
 			&.-categories,
 			&.-official,
@@ -36,7 +41,7 @@
 			}
 		}
 
-		&.-drawer-show-categories {
+		&.-bd-show-categories {
 			.drawer__section {
 				&.-categories {
 					display: block;
@@ -47,7 +52,7 @@
 			}
 		}
 
-		&.-drawer-show-official {
+		&.-bd-show-official {
 			.drawer__section {
 				&.-official {
 					display: block;
@@ -58,7 +63,7 @@
 			}
 		}
 
-		&.-drawer-show-search {
+		&.-bd-show-search {
 			.drawer__section {
 				&.-search {
 					display: block;
@@ -84,11 +89,10 @@
 
 	.drawer__inner {
 		position: absolute;
-		top: 167px;
+		top: 183px;
 		right: 40px;
 		bottom: 0;
 		left: 40px;
-		overflow-y: auto;
 		padding: {
 			right: 15px;
 		}
