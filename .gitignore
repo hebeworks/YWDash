@@ -16,3 +16,6 @@
 /libpeerconnection.log
 npm-debug.log
 testem.log
+*.sln
+*.proj
+*.suo
