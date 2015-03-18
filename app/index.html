@@ -68,19 +68,28 @@
 
 					if (typeof drawer !== 'undefined') {
 
+						var $topDrawer = $('.js-top-drawer');
+						var $bottomDrawer = $('.js-bottom-drawer');
+
 						if (drawer == 'top') {
-							$body.toggleClass('-top-drawer');
+							$topDrawer.toggleClass('-open');
 						}
 						else if (drawer == 'bottom' && typeof action !== 'undefined') {
 
 							if (action == 'open') {
-								$body.addClass('-bottom-drawer');
+								$bottomDrawer.addClass('-open');
 								if (typeof extent !== 'undefined' && extent == 'full') {
-									$body.addClass('-bd-full');
+									$bottomDrawer.addClass('-full');
 								}
+
+								// Hack to reapply overflow otherwise vertical scroll doesn't work on drawer
+								$bottomDrawer.removeClass('-overflow-y-scroll');
+								setTimeout(function(){
+									$bottomDrawer.addClass('-overflow-y-scroll');
+								}, 500);
 							}
 							else if (action == 'close') {
-								$body.removeClass('-bottom-drawer -bd-full');
+								$bottomDrawer.removeClass('-open -full');
 							}
 						}
 					}
@@ -103,6 +112,9 @@
 				$siteNav
 					.on('mousedown', '.js-open-toolbox', function(e){
 						$(this).toggleClass('-selected');
+
+						$canvasSwitcher.removeClass('-blurred');
+						
 						drawerAction('top');
 						drawerAction('bottom', 'close');
 					})

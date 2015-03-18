@@ -11,7 +11,11 @@
 		@include transform(translateY(0));
 		z-index: 1;
 		border: {
+			top: solid 1px #A3A3A3;
 			bottom: solid 1px #A3A3A3;
+		}
+		&.-open {
+			@include transform(translateY(100%));
 		}
 	}
 	&.-bottom {
@@ -25,12 +29,25 @@
 			bottom: 30px;
 			left: 40px;
 		}
-		@include transform(translateY(100%));
 		z-index: 2;
+		@include transform(translateY(100%));
 
 		// Hack to get scrolling working properly
 		&.-overflow-y-scroll {
 			overflow-y: auto;
+		}
+
+		&.-open {
+			@include transform(translateY(40%));
+			&.-full {
+				@include transform(translateY(0%));
+
+				.drawer__section {
+					&.-visible {
+						display: none;
+					}
+				}
+			}
 		}
 
 		.drawer__section {
