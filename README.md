@@ -28,7 +28,7 @@ You will need the following things properly installed on your computer.
 
 ## Running / Development
 
-* `grunt serve ~~ember server~~` (changed to include grunt tasks)
+* `grunt serve` ~~ember server~~ (changed to include grunt tasks)
 * Visit your app at [http://localhost:4200](http://localhost:4200).
 
 ### SVGs
@@ -48,8 +48,8 @@ Make use of the many generators for code, try `ember help generate` for more det
 ### Building
 
 * 'grunt' (production) (changed to include grunt tasks)
-* ~~`ember build` (development)~~
-* ~~`ember build --environment production` (production)~~
+* ~~ember build (development)~~
+* ~~ember build --environment production~~ (production)
 
 ### Deploying
 
