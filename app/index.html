@@ -34,17 +34,21 @@
 				var $body = $('body'),
 					$header = $('.js-site-header'),
 					$siteNav = $('.js-site-nav'),
+
+					$dashboardWrapper = $('.js-dashboard-wrapper'),
+					$galleryWrapper = $('.js-gallery-wrapper'),
+
 					$canvasSwitcher = $('.js-canvas-switcher'),
 					$canvasSwitcherList = $('.js-canvas-switcher-list'),
 					$canvases = $('.js-canvas'),
+
 					$storyContainer = $('.js-stories'),
-					$bottomDrawer = $('.js-bottom-drawer'),
+					$dashboardBottomDrawer = $('.js-dashboard-bottom-drawer'),
 					$toolbox = $('.js-toolbox'),
 					$btnOpenToolbox = $('.js-open-toolbox'),
 					$btnAddStory = $('.js-add-story'),
 					$storyMeta = $('.js-story-meta'),
-					$thumbList = $('.js-thumb-list'),
-					$galleryWrapper = $('.js-gallery-wrapper');
+					$thumbList = $('.js-thumb-list');
 
 				// Functions
 				function stretchCanvas() {
@@ -69,7 +73,7 @@
 					if (typeof drawer !== 'undefined') {
 
 						var $topDrawer = $('.js-top-drawer');
-						var $bottomDrawer = $('.js-bottom-drawer');
+						var $bottomDrawer = $('.js-dashboard-bottom-drawer');
 
 						if (drawer == 'top') {
 							$topDrawer.toggleClass('-open');
@@ -95,15 +99,17 @@
 					}
 				}
 
-				function galleryAction(action) {
+				function switchWrapper(wrapper) {
 
-					if (typeof action !== 'undefined') {
+					if (typeof wrapper !== 'undefined') {
 
-						if (action == 'open') {
-							$body.addClass('-gallery');
+						if (wrapper == 'dashboard') {
+							$dashboardWrapper.addClass('-open');
+							$galleryWrapper.removeClass('-open');
 						}
-						else if (action == 'close') {
-							$body.addClass('-gallery');
+						else if (wrapper == 'gallery') {
+							$dashboardWrapper.removeClass('-open');
+							$galleryWrapper.addClass('-open');
 						}
 					}
 				}
@@ -114,13 +120,13 @@
 						$(this).toggleClass('-selected');
 
 						$canvasSwitcher.removeClass('-blurred');
-						
+
 						drawerAction('top');
 						drawerAction('bottom', 'close');
 					})
 					.on('mousedown', '.js-open-gallery', function(e){
 
-						galleryAction('open');
+						switchWrapper('gallery');
 					});
 
 
@@ -142,7 +148,7 @@
 						drawerAction('bottom', 'open');
 					});
 
-				$bottomDrawer
+				$dashboardBottomDrawer
 					.on('mousedown', function(e){
 						$body.removeClass('-top-drawer');
 					})
@@ -152,13 +158,13 @@
 						var $el = $(this);
 						var drawerSection = $el.data('btn-type');
 
-						$el.addClass('-selected');
-
 						drawerAction('bottom', 'open', 'full');
-						$bottomDrawer
+						$dashboardBottomDrawer
 							.removeClass('-bd-show-categories -bd-show-official -bd-show-search')
 							.addClass('-bd-show-' + drawerSection)
 							.find('.btn.-selected').removeClass('-selected');
+
+						$el.addClass('-selected');
 					})
 					.on('mousedown', '.js-close-bottom-drawer', function(e){
 						e.preventDefault();
@@ -171,7 +177,7 @@
 
 						// Wait for drawer to slide off page before reverting section visibility
 						setTimeout(function() {
-							$bottomDrawer.removeClass('-bd-show-categories -bd-show-official -bd-show-search');
+							$dashboardBottomDrawer.removeClass('-bd-show-categories -bd-show-official -bd-show-search');
 						}, 300);
 					});
 
@@ -201,7 +207,7 @@
 					.on('mousedown', '.js-gallery-back', function(e){
 						e.preventDefault();
 
-						galleryAction('close');
+						switchWrapper('dashboard');
 					});
 
 				$window

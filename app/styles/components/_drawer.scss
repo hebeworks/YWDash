@@ -40,6 +40,9 @@
 		&.-open {
 			@include transform(translateY(40%));
 			&.-full {
+				border: {
+					top: solid 1px #A3A3A3;
+				}
 				@include transform(translateY(0%));
 
 				.drawer__section {
