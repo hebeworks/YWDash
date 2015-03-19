@@ -132,6 +132,9 @@
 							'height': canvasHeight + 'px'
 						})
 						.find('.canvas__inner')
+						.css({
+							'width': canvasWidth
+						})
 						.style('height', canvasHeight + 'px', 'important');
 				}
 
@@ -282,23 +285,26 @@
 						stretchCanvas();
 					});
 
+				// Ensure canvases stretch to correct height
+				stretchCanvas();
+
 				// Initialize packery
 				$storyContainer
 					.packery({
 						itemSelector: '.story',
-						columnWidth: 10,
-						rowHeight: 10
+						columnWidth: 170,
+						rowHeight: 170
 					});
 				var $itemEls = $storyContainer.find('.story').draggable({
+					cursor: 'move',
+					containment: 'body',
 					scroll: true,
-					scrollSensitivity: 200,
-					scrollSpeed: 20
+					scrollSensitivity: 100,
+					scrollSpeed: 25,
+					zIndex: 4
 				});
 
 				$storyContainer.packery('bindUIDraggableEvents', $itemEls);
-
-				// Ensure canvases stretch to correct height
-				stretchCanvas();
 				//loadCSS(svgCSS);
 			});
 		</script>
