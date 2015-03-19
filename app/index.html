@@ -219,12 +219,30 @@
 				$storyContainer
 					.packery({
 						itemSelector: '.story',
-						columnWidth: 230,
-						rowHeight: 230
+						columnWidth: 10,
+						rowHeight: 10
 					})
 					.find('.story').each(function(i, itemElem) {
 						var draggie = new Draggabilly(itemElem);
 						$storyContainer.packery('bindDraggabillyEvents', draggie);
+
+						var yStart = 0;
+
+						draggie.on('dragMove', function( event, pointer, moveVector ) {
+
+							var $windowHeight = $(window).height();
+
+							console.log(event.dragPoint.y);
+							console.log(($windowHeight - 300));
+
+							if (event.dragPoint.y > 200) {
+								console.log('scroll');
+								$('.canvas').animate({
+        							scrollTop: (event.dragPoint.y + 30) + 'px'
+        						});
+							}
+
+						});
 					});
 
 				// Ensure canvases stretch to correct height

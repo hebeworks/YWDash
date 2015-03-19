@@ -51,7 +51,7 @@
 			overflow-y: auto;
 			float: left;
 			padding: {
-				top: 20px;
+				top: 0px;
 				bottom: 40px;
 			}
 		}
@@ -61,8 +61,8 @@
 				width: 230px;
 				z-index: 3;
 				@for $i from 2 through 9 {
-					@include breakpoint(230px * $i) {
-						width: 230px * $i;
+					@include breakpoint(170px * $i) {
+						width: 170px * $i;
 					}
 				}
 			}

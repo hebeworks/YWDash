@@ -9,10 +9,10 @@
 
 	@for $i from 1 through 3 {
 		&.-w#{$i} {
-			width: 230px * $i;
+			width: 170px * $i;
 		}
 		&.-h#{$i} {
-			height: 230px * $i;
+			height: 170px * $i;
 		}
 	}
 	&.-white .story__inner {
@@ -67,8 +67,8 @@
 	}
 }
 .ss-placeholder-child {
-	width: 230px;
-	height: 230px;
+	width: 80px;
+	height: 80px;
 	padding: 10px;
 	position: absolute;
 	display: block;
