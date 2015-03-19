@@ -295,9 +295,15 @@
 						columnWidth: 170,
 						rowHeight: 170
 					});
-				var $itemEls = $storyContainer.find('.story').draggable({
+
+				var $stories = $storyContainer.find('.story');
+
+				var $itemEls = $stories.draggable({
 					cursor: 'move',
 					containment: 'body',
+					delay: 300,
+					//distance: 30,
+					//handle: '.draggy',
 					scroll: true,
 					scrollSensitivity: 100,
 					scrollSpeed: 25,

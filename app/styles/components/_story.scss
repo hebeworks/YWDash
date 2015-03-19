@@ -37,6 +37,13 @@
 			color: #053257;
 		}
 	}
+
+	&.ui-draggable-dragging {
+		@include transform(rotate(-1.5deg));
+		.story__inner {
+			box-shadow: 0 0 5px 2px rgba(0,0,0,.15);
+		}
+	}
 	
 	// Box for adding a new story
 	&.story--add .story__inner {
