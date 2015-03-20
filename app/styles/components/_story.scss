@@ -8,7 +8,10 @@
 	}
 	display: block;
 	z-index: 3;
-	perspective: 1000;
+	@include perspective(1000);
+	-ms-transform: perspective(1000px);
+	-moz-transform: perspective(1000px);
+	@include transform-style(preserve-3d);
 
 	@for $i from 1 through 3 {
 		&.-w#{$i} {
@@ -18,26 +21,40 @@
 			height: 170px * $i;
 		}
 	}
-	&.-white .story__card {
-		background: {
+	&.-white {
+		.story__card {
+			background: {
+				color: #fff;
+			}
+		}
+	}
+	&.-black {
+		.story__card {
 			color: #fff;
+			background: {
+				color: #000;
+			}
+		}
+		.story__inner .icon-cogs {
+			fill: #fff;
 		}
 	}
-	&.-black .story__card {
-		color: #fff;
-		background: {
-			color: #000;
+	&.-ivory {
+		.story__card {
+			background: {
+				color: #fcfae6;
+			}
 		}
 	}
-	&.-ivory .story__card {
-		background: {
-			color: #fcfae6;
+	&.-blue {
+		.story__card {
+			color: #fff;
+			background: {
+				color: #053257;
+			}
 		}
-	}
-	&.-blue .story__card {
-		color: #fff;
-		background: {
-			color: #053257;
+		.story__inner .icon-cogs {
+			fill: #fff;
 		}
 	}
 
@@ -72,29 +89,26 @@
 		display: block;
 		-webkit-touch-callout: none;
 		//-webkit-user-select: none;
-		transition: .6s;
-		transform-style: preserve-3d;
+		
+		@include transform-style(preserve-3d);
+		@include transition(.6s);
+
 		position: relative;
 		&.-flip {
 			@include transform(rotateY(180deg));
 			.story__card {
 				&.-front {
-					z-index: 1;
-					.story__content {
-						
-					}
-				}
-				&.-back {
 					z-index: 2;
 					.story__content {
 						
 					}
 				}
-			}
-		}
-		&:hover {
-			.icon-cogs {
-				opacity: 1;
+				&.-back {
+					z-index: 1;
+					.story__content {
+						
+					}
+				}
 			}
 		}
 		.icon-cogs {
@@ -102,6 +116,9 @@
 			position: absolute;
 			top: 15px;
 			right: 15px;
+			&:hover {
+				opacity: 1;
+			}
 		}
 	}
 		.story__card {
@@ -114,7 +131,7 @@
 			border: {
 				radius: 10px;
 			}
-			backface-visibility: hidden;
+			@include backface-visibility(hidden);
 			&.-front {
 				z-index: 2;
 				@include transform(rotateY(0deg));
@@ -125,6 +142,7 @@
 			&.-back {
 				z-index: 1;
 				@include transform(rotateY(180deg));
+				background-color: blue;
 				.story__content {
 					
 				}
