@@ -304,7 +304,7 @@
 						e.stopPropagation();
 
 						var $el = $(this);
-						$el.closest('.story__inner').addClass('-flip');
+						$el.closest('.story__inner').toggleClass('-flip');
 					});
 
 				var $itemEls = $stories.draggable({
