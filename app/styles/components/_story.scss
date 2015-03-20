@@ -274,6 +274,13 @@
 								}
 								border-radius: 100%;
 							}
+							&:hover {
+								&:before {
+									background: {
+										color: #000;
+									}
+								}
+							}
 							&.-selected {
 								&:before {
 									background: {
