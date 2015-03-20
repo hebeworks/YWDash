@@ -1,5 +1,5 @@
-.zetta,
-%zetta {
+.-zetta,
+%-zetta {
     @include font-size($kilo-size);
 
     @media screen and (min-width: 640px) {
@@ -14,8 +14,8 @@
     }
 }
 
-.exa,
-%exa {
+.-exa,
+%-exa {
     @include font-size($giga-size);
 
     @include breakpoint(769px) {
@@ -26,8 +26,8 @@
     }
 }
 
-.peta,
-%peta {
+.-peta,
+%-peta {
     @include font-size($kilo-size);
 
     @include breakpoint(769px) {
@@ -38,8 +38,8 @@
     }
 }
 
-.tera,
-%tera {
+.-tera,
+%-tera {
     @include font-size($kilo-size);
 
     @include breakpoint(769px) {
@@ -50,8 +50,8 @@
     }
 }
 
-.giga,
-%giga {
+.-giga,
+%-giga {
     @include font-size($kilo-size);
 
     @include breakpoint(769px) {
@@ -63,8 +63,8 @@
   
 }
 
-.mega,
-%mega {
+.-mega,
+%-mega {
     @include font-size($h1-size);
     
     @include breakpoint(769px) {
@@ -75,8 +75,8 @@
     }
 }
 
-.kilo,
-%kilo {
+.-kilo,
+%-kilo {
     @include font-size($h2-size);
     
     @include breakpoint(769px) {
@@ -84,8 +84,8 @@
     }
 }
 
-.hecto,
-%hecto {
+.-hecto,
+%-hecto {
     @include font-size($h2-size);
     
     @include breakpoint(769px) {
@@ -94,8 +94,8 @@
 }
 
 h1, 
-.alpha,
-%alpha {
+.-alpha,
+%-alpha {
     @include font-size($h3-size);
     line-height: 1.125em;
   
@@ -108,8 +108,8 @@ h1,
 }
 
 h2, 
-.beta,
-%beta {
+.-beta,
+%-beta {
     @include font-size($h4-size);
     line-height: 1.1851851852em;
     
@@ -122,8 +122,8 @@ h2,
 }
 
 h3, 
-.gamma,
-%gamma {
+.-gamma,
+%-gamma {
     @include font-size($h5-size);
     
     @include breakpoint(769px) {
@@ -135,8 +135,8 @@ h3,
 }
 
 h4, 
-.delta,
-%delta {
+.-delta,
+%-delta {
     @include font-size($h6-size);
     line-height: 1.2em;
     font-weight: 300;
@@ -150,8 +150,8 @@ h4,
 }
 
 h5, 
-.epsilon,
-%epsilon {
+.-epsilon,
+%-epsilon {
     @include font-size($h6-size);
 
     @include breakpoint(769px) {
@@ -160,8 +160,8 @@ h5,
 }
 
 h6, 
-.zeta,
-%zeta {
+.-zeta,
+%-zeta {
     @include font-size($h6-size);
 }
 

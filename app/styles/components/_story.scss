@@ -160,6 +160,24 @@
 			}
 			.story__content {
 				@include transition(opacity .6);
+				.heading {
+					margin: {
+						bottom: 5px;
+					}
+					&.-sub {
+						margin: {
+							bottom: 10px;
+						}
+					}
+				}
+				.image {
+					margin: {
+						bottom: 10px;
+					}
+					&.-wide {
+						width: 100%;
+					}
+				}
 			}
 
 .ss-placeholder-child {
