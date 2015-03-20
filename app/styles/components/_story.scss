@@ -179,6 +179,57 @@
 					}
 				}
 			}
+			.story__footer {
+				border: {
+					top: dotted 1px #7e7d73;
+				}
+				padding: {
+					top: 5px;
+				}
+				text-align: center;
+				.pg-of {
+					color: #000;
+					opacity: .24;
+					font: {
+						size: em(12px);
+					}
+					margin: {
+						top: 2px;
+					}
+					float: left;
+				}
+				ul {
+					@include clean-list;
+					font: {
+						size: em(12px);
+					}
+					li {
+						display: inline-block;
+					}
+					a {
+						display: inline-block;
+						text-indent: -99999px;
+						&.-prev {
+							&:before {
+								content: '';
+								@include triangle(4px, gray, left);
+							}
+						}
+						&.-num {
+							
+						}
+						&.-next {
+							&:before {
+								content: '';
+								@include triangle(4px, gray, right);
+							}
+						}
+					}
+				}
+				img {
+					float: right;
+				}
+			}
 
 .ss-placeholder-child {
 	width: 80px;
