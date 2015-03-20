@@ -108,6 +108,8 @@
 					$canvases = $('.js-canvas'),
 
 					$storyContainer = $('.js-stories'),
+					$stories = $('.js-story'),
+
 					$dashboardBottomDrawer = $('.js-dashboard-bottom-drawer'),
 					$toolbox = $('.js-toolbox'),
 					$btnOpenToolbox = $('.js-open-toolbox'),
@@ -296,19 +298,54 @@
 						rowHeight: 170
 					});
 
-				var $stories = $storyContainer.find('.story');
+				$stories
+					.on('click', '.js-cogs', function(e){
+						e.preventDefault();
+						e.stopPropagation();
+
+						var $el = $(this);
+						$el.closest('.story__inner').addClass('-flip');
+					});
 
 				var $itemEls = $stories.draggable({
 					cursor: 'move',
 					containment: 'body',
-					delay: 300,
+					//delay: 1000,
 					//distance: 30,
-					//handle: '.draggy',
+					handle: '.js-story-handle',
 					scroll: true,
 					scrollSensitivity: 100,
 					scrollSpeed: 25,
 					zIndex: 4
 				});
+
+				var dragHold;
+				$('.story__inner')
+					.on('mousedown touchstart', function(e){
+
+						var $el = $(this);
+
+						dragHold = setTimeout(function(){
+							console.log('start');
+							$el.parent().addClass('ui-draggable-dragging');
+							var $handle = $el.find('.js-story-handle');
+
+						    var coords = {
+						        clientX: e.clientX,
+						        clientY: e.clientY
+						    };
+
+						    $handle.simulate("mousedown", coords);
+						}, 100);
+					})
+					.on('mouseup touchend', function(){
+						var $el = $(this);
+						$el.parent().removeClass('ui-draggable-dragging');
+						clearTimeout(dragHold);
+					})
+					.on('mousemove touchmove', function(){
+						clearTimeout(dragHold);
+					});
 
 				$storyContainer.packery('bindUIDraggableEvents', $itemEls);
 				//loadCSS(svgCSS);

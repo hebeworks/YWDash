@@ -31,6 +31,7 @@ app.import(app.bowerDirectory + '/jquery-ui/ui/core.js');
 app.import(app.bowerDirectory + '/jquery-ui/ui/widget.js');
 app.import(app.bowerDirectory + '/jquery-ui/ui/mouse.js');
 app.import(app.bowerDirectory + '/jquery-ui/ui/draggable.js');
+app.import('vendor/jquery.simulate.js');
 app.import(app.bowerDirectory + '/jqueryui-touch-punch/jquery.ui.touch-punch.min.js');
 //app.import(app.bowerDirectory + '/draggabilly/dist/draggabilly.pkgd.min.js');
 app.import(app.bowerDirectory + '/loadcss/loadCSS.js');
