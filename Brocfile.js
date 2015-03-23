@@ -27,7 +27,14 @@ var app = new EmberApp({
 // along with the exports of each module as its value.
 
 app.import(app.bowerDirectory + '/packery/dist/packery.pkgd.min.js');
-app.import(app.bowerDirectory + '/draggabilly/dist/draggabilly.pkgd.min.js');
+app.import(app.bowerDirectory + '/jquery-ui/ui/core.js');
+app.import(app.bowerDirectory + '/jquery-ui/ui/widget.js');
+app.import(app.bowerDirectory + '/jquery-ui/ui/mouse.js');
+app.import(app.bowerDirectory + '/jquery-ui/ui/draggable.js');
+app.import('vendor/css-style-declaration.js');
+app.import('vendor/jquery.simulate.js');
+app.import(app.bowerDirectory + '/jqueryui-touch-punch/jquery.ui.touch-punch.min.js');
+app.import(app.bowerDirectory + '/caroufredsel/jquery.carouFredSel-6.2.1-packed.js');
 app.import(app.bowerDirectory + '/loadcss/loadCSS.js');
 app.import(app.bowerDirectory + '/moment/moment.js');
 app.import('vendor/embedsvg/grunticon.loader.js');
