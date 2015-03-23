@@ -285,8 +285,12 @@
 				$storyContainer.packery('bindUIDraggableEvents', $itemEls);
 
 				$storyCarousels.each(function(){
-					var $el = $(this);
-					var $pager = $el.next('.story__footer').find('.carousel-pager');
+					var $el = $(this),
+						$storyFooter = $el.next('.story__footer'),
+						$pageCounter = $storyFooter.find('.pg-of'),
+						$pager = $storyFooter.find('.carousel-pager');
+
+					$pageCounter.find('.pg-of__y').text($el.children('li').size());
 
 					$el.caroufredsel({
 						prev: {
@@ -300,7 +304,14 @@
 							onTouch: true,
 							onMouse: true
 						},
-						auto: false
+						auto: false,
+						scroll: {
+							onBefore: function(){
+								$el.trigger('currentPosition', function(index){
+									$pageCounter.find('.pg-of__x').text((index+1));
+								});
+							}
+						}
 					});
 				});
 
