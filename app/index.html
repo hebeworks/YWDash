@@ -30,6 +30,10 @@
 
 			$document.bind('ready', function(){
 
+                $.get('http://thecitytalking.com/content/?format=json').then(function(data) {
+                    console.log(data);
+                });
+
 				// Cached jQuery DOM objs
 				var $body = $('body'),
 					$header = $('.js-site-header'),

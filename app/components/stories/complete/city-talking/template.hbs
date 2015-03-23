@@ -1,0 +1,12 @@
+{{#stories/story-base title=title color="-white" width="-w2" height="-h2" data-ss-colspan="2"}}
+    {{#stories/story-slider}}
+        {{#each item in items}}
+            {{#stories/story-slide}}
+                <img style="width:100%;" {{bind-attr src=item.assetUrl}}{{bind-attr alt=item.title}}>
+                <a target="_blank" {{bind-attr href=item.url}}><h3>{{item.title}}</h3></a>
+                {{item.date}}<br>
+                {{item.excerpt}}
+            {{/stories/story-slide}}
+        {{/each}}
+    {{/stories/story-slider}}
+{{/stories/story-base}}

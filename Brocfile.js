@@ -29,6 +29,7 @@ var app = new EmberApp({
 app.import(app.bowerDirectory + '/packery/dist/packery.pkgd.min.js');
 app.import(app.bowerDirectory + '/draggabilly/dist/draggabilly.pkgd.min.js');
 app.import(app.bowerDirectory + '/loadcss/loadCSS.js');
+app.import(app.bowerDirectory + '/moment/moment.js');
 app.import('vendor/embedsvg/grunticon.loader.js');
 app.import('vendor/embedsvg/grunticon.inline.js');
 

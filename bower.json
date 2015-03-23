@@ -20,7 +20,8 @@
   "devDependencies": {
     "breakpoint-sass": "~2.5.0",
     "bourbon": "3.2.1",
-    "loadcss": "~0.1.6"
+    "loadcss": "~0.1.6",
+    "moment": "~2.9.0"
   },
   "resolutions": {
     "bourbon": "3.2.1"
