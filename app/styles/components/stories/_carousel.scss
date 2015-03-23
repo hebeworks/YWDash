@@ -19,20 +19,22 @@
 }
 	.carousel-pager__btn {
 		float: left;
+		height: 11px;
+		outline: none;
+		cursor: pointer;
+		text-indent: -9999px;
+		background-color: transparent;
+		border: 0;
+		padding: 0;
+		margin: {
+			right: 5px;
+			left: 5px;
+		}
 		&:before {
 			content: '';
 			display: block;
 			width: 7px;
 			height: 10px;
-		}
-		&.-prev,
-		&.-next {
-			height: 10px;
-			outline: none;
-			cursor: pointer;
-			text-indent: -9999px;
-			background-color: transparent;
-			border: 0;
 		}
 		&.-prev {
 			&:before {
