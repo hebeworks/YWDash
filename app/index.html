@@ -234,52 +234,33 @@
 						rowHeight: 170
 					});
 
-				$stories
-					.on('click', '.js-cogs', function(e){
-						e.preventDefault();
-						e.stopPropagation();
-
-						var $el = $(this);
-						$el.closest('.story__inner').toggleClass('-flip');
-					});
-
 				var $itemEls = $stories.draggable({
 					cursor: 'move',
 					containment: 'body',
 					//delay: 1000,
 					//distance: 30,
-					handle: '.js-story-handle',
+					handle: '.js-cogs',
 					scroll: true,
 					scrollSensitivity: 100,
 					scrollSpeed: 25,
 					zIndex: 4
 				});
 
-				var dragHold;
-				$('.story__inner')
+				var dragging;
+				$('.js-cogs')
 					.on('mousedown touchstart', function(e){
 
-						var $el = $(this);
-
-						dragHold = setTimeout(function(){
-							$el.parent().addClass('ui-draggable-dragging');
-							var $handle = $el.find('.js-story-handle');
-
-						    var coords = {
-						        clientX: e.clientX,
-						        clientY: e.clientY
-						    };
-
-						    $handle.simulate("mousedown", coords);
-						}, 100);
-					})
-					.on('mouseup touchend', function(){
-						var $el = $(this);
-						$el.parent().removeClass('ui-draggable-dragging');
-						clearTimeout(dragHold);
+						dragging = false;
 					})
 					.on('mousemove touchmove', function(){
-						clearTimeout(dragHold);
+						dragging = true;
+					})
+					.on('mouseup touchend', function(){
+
+						var $el = $(this);
+						if (! dragging) {
+							$el.closest('.story__inner').toggleClass('-flip');
+						}
 					});
 
 				$storyContainer.packery('bindUIDraggableEvents', $itemEls);
