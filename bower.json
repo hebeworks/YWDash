@@ -17,7 +17,8 @@
     "draggabilly": "~1.1.2",
     "loadcss": "~0.1.6",
     "caroufredsel": "~6.2.1",
-    "moment": "~2.9.0"
+    "moment": "~2.9.0",
+    "jquery-touchswipe": "~1.6.8"
   },
   "devDependencies": {
     "breakpoint-sass": "~2.5.0",

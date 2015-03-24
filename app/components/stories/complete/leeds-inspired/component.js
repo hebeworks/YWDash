@@ -2,6 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
     tagName: '',
+    loaded: false,
     didInsertElement: function() {
         this.set('title', 'Leeds Inspired');
         this.fetchData();
@@ -14,6 +15,7 @@ export default Ember.Component.extend({
             contentType: 'application/json'
         }).then(function(data) {
             console.log(data);
+            this.set('loaded', true);
         });
     }
 });
