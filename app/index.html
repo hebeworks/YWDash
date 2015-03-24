@@ -241,20 +241,9 @@
 						rowHeight: 170
 					});
 
-				$stories
-					.on('click', '.js-cogs', function(e){
-						e.preventDefault();
-						e.stopPropagation();
-
-						var $el = $(this);
-						$el.closest('.story__inner').toggleClass('-flip');
-					});
-
 				var $itemEls = $stories.draggable({
 					cursor: 'move',
 					containment: 'body',
-					//delay: 1000,
-					//distance: 30,
 					handle: '.js-cogs',
 					scroll: true,
 					scrollSensitivity: 100,
@@ -299,8 +288,6 @@
 							$storyFooter = $el.closest('.story__content').find('.story__footer'),
 							$pageCounter = $storyFooter.find('.pg-of'),
 							$pager = $storyFooter.find('.carousel-pager');
-
-						console.log($el, $storyFooter, $pageCounter, $pager);
 
 						$pageCounter.find('.pg-of__y').text($el.children('li').size());
 

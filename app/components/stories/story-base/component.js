@@ -2,7 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
     tagName: 'div',
-    classNames: ['story'],
+    classNames: ['js-story story'],
     classNameBindings: ['color', 'width', 'height'],
     attributeBindings: ['data-ss-colspan']
 });
