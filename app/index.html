@@ -28,70 +28,6 @@
 			var $window = $(window);
 			//var svgCSS = 'assets/svg.css';
 
-			(function($) {    
-			  if ($.fn.style) {
-			    return;
-			  }
-
-			  // Escape regex chars with \
-			  var escape = function(text) {
-			    return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
-			  };
-
-			  // For those who need them (< IE 9), add support for CSS functions
-			  var isStyleFuncSupported = !!CSSStyleDeclaration.prototype.getPropertyValue;
-			  if (!isStyleFuncSupported) {
-			    CSSStyleDeclaration.prototype.getPropertyValue = function(a) {
-			      return this.getAttribute(a);
-			    };
-			    CSSStyleDeclaration.prototype.setProperty = function(styleName, value, priority) {
-			      this.setAttribute(styleName, value);
-			      var priority = typeof priority != 'undefined' ? priority : '';
-			      if (priority != '') {
-			        // Add priority manually
-			        var rule = new RegExp(escape(styleName) + '\\s*:\\s*' + escape(value) +
-			            '(\\s*;)?', 'gmi');
-			        this.cssText =
-			            this.cssText.replace(rule, styleName + ': ' + value + ' !' + priority + ';');
-			      }
-			    };
-			    CSSStyleDeclaration.prototype.removeProperty = function(a) {
-			      return this.removeAttribute(a);
-			    };
-			    CSSStyleDeclaration.prototype.getPropertyPriority = function(styleName) {
-			      var rule = new RegExp(escape(styleName) + '\\s*:\\s*[^\\s]*\\s*!important(\\s*;)?',
-			          'gmi');
-			      return rule.test(this.cssText) ? 'important' : '';
-			    }
-			  }
-
-			  // The style function
-			  $.fn.style = function(styleName, value, priority) {
-			    // DOM node
-			    var node = this.get(0);
-			    // Ensure we have a DOM node
-			    if (typeof node == 'undefined') {
-			      return this;
-			    }
-			    // CSSStyleDeclaration
-			    var style = this.get(0).style;
-			    // Getter/Setter
-			    if (typeof styleName != 'undefined') {
-			      if (typeof value != 'undefined') {
-			        // Set style property
-			        priority = typeof priority != 'undefined' ? priority : '';
-			        style.setProperty(styleName, value, priority);
-			        return this;
-			      } else {
-			        // Get style property
-			        return style.getPropertyValue(styleName);
-			      }
-			    } else {
-			      // Get CSSStyleDeclaration
-			      return style;
-			    }
-			  };
-			})(jQuery);
 
 			var hebe_dash = (function () {
 			    function setupDOM() {
@@ -109,6 +45,7 @@
 
                         $storyContainer = $('.js-stories'),
                         $stories = $('.js-story'),
+                        $storyCarousels = $('.js-story-carousel'),
 
                         $dashboardBottomDrawer = $('.js-dashboard-bottom-drawer'),
                         $toolbox = $('.js-toolbox'),
@@ -298,55 +235,70 @@
                             rowHeight: 170
                         });
 
-			        $stories
-                        .on('click', '.js-cogs', function (e) {
-                            e.preventDefault();
-                            e.stopPropagation();
-
-                            var $el = $(this);
-                            $el.closest('.story__inner').toggleClass('-flip');
-                        });
-
 			        var $itemEls = $stories.draggable({
 			            cursor: 'move',
 			            containment: 'body',
 			            //delay: 1000,
 			            //distance: 30,
-			            handle: '.js-story-handle',
+			            handle: '.js-cogs',
 			            scroll: true,
 			            scrollSensitivity: 100,
 			            scrollSpeed: 25,
 			            zIndex: 4
 			        });
 
-			        var dragHold;
-			        $('.story__inner')
+			        var dragging;
+			        $('.js-cogs')
                         .on('mousedown touchstart', function (e) {
 
-                            var $el = $(this);
-
-                            dragHold = setTimeout(function () {
-                                $el.parent().addClass('ui-draggable-dragging');
-                                var $handle = $el.find('.js-story-handle');
-
-                                var coords = {
-                                    clientX: e.clientX,
-                                    clientY: e.clientY
-                                };
-
-                                $handle.simulate("mousedown", coords);
-                            }, 100);
-                        })
-                        .on('mouseup touchend', function () {
-                            var $el = $(this);
-                            $el.parent().removeClass('ui-draggable-dragging');
-                            clearTimeout(dragHold);
+                            dragging = false;
                         })
                         .on('mousemove touchmove', function () {
-                            clearTimeout(dragHold);
+                            dragging = true;
+                        })
+                        .on('mouseup touchend', function () {
+
+                            var $el = $(this);
+                            if (!dragging) {
+                                $el.closest('.story__inner').toggleClass('-flip');
+                            }
                         });
 
 			        $storyContainer.packery('bindUIDraggableEvents', $itemEls);
+
+			        $storyCarousels.each(function () {
+			            var $el = $(this),
+                            $storyFooter = $el.next('.story__footer'),
+                            $pageCounter = $storyFooter.find('.pg-of'),
+                            $pager = $storyFooter.find('.carousel-pager');
+
+			            $pageCounter.find('.pg-of__y').text($el.children('li').size());
+
+			            $el
+                            .caroufredsel({
+                                prev: {
+                                    button: $pager.find('.carousel-pager__btn.-prev')
+                                },
+                                pagination: $pager.find('.carousel-pager__numbers'),
+                                next: {
+                                    button: $pager.find('.carousel-pager__btn.-next')
+                                },
+                                swipe: {
+                                    onTouch: true,
+                                    onMouse: true
+                                },
+                                auto: false,
+                                scroll: {
+                                    onBefore: function () {
+                                        $el.trigger('currentPosition', function (index) {
+                                            $pageCounter.find('.pg-of__x').text((index + 1));
+                                        });
+                                    }
+                                }
+                            })
+                            .swipe();
+			        });
+
 			        //loadCSS(svgCSS);
 			    }
 
