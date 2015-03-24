@@ -1,6 +1,7 @@
 import DS from 'ember-data';
 
 var story = DS.Model.extend({
+    title: DS.attr()
 });
 
 //story.reopenClass({
