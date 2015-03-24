@@ -19,9 +19,16 @@
 	@for $i from 1 through 3 {
 		&.-w#{$i} {
 			width: 170px * $i;
+			.story__content,
+			.story__footer {
+				width: 145px * $i;
+			}
 		}
 		&.-h#{$i} {
 			height: 170px * $i;
+			.story__content {
+				height: 145px * $i;
+			}
 		}
 	}
 	&.-white {
@@ -126,6 +133,7 @@
 			}
 		}
 		.icon-cogs {
+			z-index: 1;
 			opacity: .2;
 			position: absolute;
 			top: 15px;
@@ -162,16 +170,6 @@
 				}
 			}
 		}
-			.story__handle {
-				width: 10px;
-				height: 10px;
-				position: absolute;
-				left: -9999px;
-				// top: 30px;
-				// left: 20px;
-				//background-color: #f00;
-				text-indent: -99999px;
-			}
 			.story__content {
 				@include transition(opacity .6);
 				.heading {
@@ -197,6 +195,9 @@
 				}
 			}
 			.story__footer {
+				position: absolute;
+				bottom: 5px;
+				left: 15px;
 				border: {
 					top: dotted 1px #7e7d73;
 				}

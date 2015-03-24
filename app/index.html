@@ -48,6 +48,7 @@
 
 					$storyContainer = $('.js-stories'),
 					$stories = $('.js-story'),
+					$storyCogs = $('.js-cogs'),
 					$storyCarousels = $('.js-story-carousel'),
 
 					$dashboardBottomDrawer = $('.js-dashboard-bottom-drawer'),
@@ -56,6 +57,8 @@
 					$btnAddStory = $('.js-add-story'),
 					$storyMeta = $('.js-story-meta'),
 					$thumbList = $('.js-thumb-list');
+
+				var isTouchDevice = 'ontouchstart' in document.documentElement;
 
 				// Functions
 				function stretchCanvas() {
@@ -252,63 +255,80 @@
 					containment: 'body',
 					//delay: 1000,
 					//distance: 30,
-					handle: '.js-story-handle',
+					handle: '.js-cogs',
 					scroll: true,
 					scrollSensitivity: 100,
 					scrollSpeed: 25,
 					zIndex: 4
 				});
 
-				var dragHold;
-				/*$('.story__inner')
-					.on('mousedown touchstart', function(e){
-
-						var $el = $(this);
-
-						dragHold = setTimeout(function(){
-							$el.parent().addClass('ui-draggable-dragging');
-							var $handle = $el.find('.js-story-handle');
-
-						    var coords = {
-						        clientX: e.clientX,
-						        clientY: e.clientY
-						    };
-
-						    $handle.simulate("mousedown", coords);
-						}, 100);
+				var dragging = false;
+				$storyCogs
+					.on('touchstart mousedown', function(e){
+						dragging = false;
 					})
-					.on('mouseup touchend', function(){
-						var $el = $(this);
-						$el.parent().removeClass('ui-draggable-dragging');
-						clearTimeout(dragHold);
-					})
-					.on('mousemove touchmove', function(){
-						clearTimeout(dragHold);
-					});*/
+					.on('touchmove mousemove', function(e){
+						dragging = true;
+					});
+
+				if (isTouchDevice) {
+					$storyCogs
+						.on('touchend', function(e){
+
+							var $el = $(this);
+							if (! dragging) {
+								$el.closest('.story__inner').toggleClass('-flip');
+							}
+						});
+				} else {
+					$storyCogs
+						.on('mouseup', function(e){
+
+							var $el = $(this);
+							if (! dragging) {
+								$el.closest('.story__inner').toggleClass('-flip');
+							}
+						});
+				}
 
 				$storyContainer.packery('bindUIDraggableEvents', $itemEls);
 
-                setTimeout(function() {
-//                    $storyCarousels.each(function(){
-//                        var $el = $(this);
-//                        var $pager = $el.next('.story__footer').find('.carousel-pager');
-//
-//                        $el.caroufredsel({
-//                            prev: {
-//                                button: $pager.find('.carousel-pager__btn.-prev')
-//                            },
-//                            pagination: $pager.find('.carousel-pager__numbers'),
-//                            next: {
-//                                button: $pager.find('.carousel-pager__btn.-next')
-//                            },
-//                            swipe: {
-//                                onTouch: true,
-//                                onMouse: true
-//                            },
-//                            auto: false
-//                        });
-//                    });
-                }, 3000);
+				setTimeout(function(){
+					$storyCarousels.each(function(){
+						var $el = $(this),
+							$storyFooter = $el.closest('.story__content').find('.story__footer'),
+							$pageCounter = $storyFooter.find('.pg-of'),
+							$pager = $storyFooter.find('.carousel-pager');
+
+						console.log($el, $storyFooter, $pageCounter, $pager);
+
+						$pageCounter.find('.pg-of__y').text($el.children('li').size());
+
+						$el
+							.caroufredsel({
+								prev: {
+									button: $pager.find('.carousel-pager__btn.-prev')
+								},
+								pagination: $pager.find('.carousel-pager__numbers'),
+								next: {
+									button: $pager.find('.carousel-pager__btn.-next')
+								},
+								swipe: {
+									onTouch: true,
+									onMouse: true
+								},
+								auto: false,
+								scroll: {
+									onBefore: function(){
+										$el.trigger('currentPosition', function(index){
+											$pageCounter.find('.pg-of__x').text((index+1));
+										});
+									}
+								}
+							});
+							//.swipe();
+					});
+				}, 3000);
 
 				//loadCSS(svgCSS);
 			});

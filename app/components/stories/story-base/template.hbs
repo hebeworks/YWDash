@@ -1,14 +1,18 @@
 <div class="story__inner">
-    <span class="js-story-handle story__handle">Handle</span>
-    <a href="javascript:;" class="js-cogs icon icon-cogs svg-cogs" data-grunticon-embed>Settings</a>
     <div class="story__card -front">
+        <a href="javascript:;" class="js-cogs icon icon-cogs svg-cogs" data-grunticon-embed>Settings</a>
         <div class="story__content">
             <header>
                 <h2 class="heading">{{title}}</h2>
-
                 <h3 class="heading -delta">{{subTitle}}</h3>
             </header>
         {{yield}}
+        </div>
+    </div>
+    <div class="story__card -back">
+        <a href="javascript:;" class="js-cogs icon icon-cogs svg-cogs" data-grunticon-embed>Settings</a>
+        <div class="story__content">
+            
         </div>
     </div>
 </div>
