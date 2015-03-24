@@ -1,19 +1,15 @@
-.btn-list {
-    padding: 20px 0;
-    &.-centered {
-        text-align: center;
-    }
-}
-
 .btn {
     @extend %delta;
     border: 0;
-    padding: .7em 1.7em;
     border-radius: 5px;
     cursor: pointer;
 
     &.-grey {
         background-color: $light-grey;
+        &:hover {
+            color: #fff;
+            background-color: $lime;
+        }
     }
 
     &.-white {
@@ -27,7 +23,7 @@
 
     &.-selected {
         background-color: $lime;
-        color: #fff;
+        color: #d9f2bd;
     }
 
     &.-center {
@@ -35,18 +31,48 @@
     }
 
     &.-close {
+        width: 30px;
+        height: 30px;
+        display: block;
         position: absolute;
-        top: 30px;
-        right: 40px;
-        width: 50px;
-        height: 50px;
-        background: #000;
-        cursor: pointer;
+        top: 28px;
+        right: 43px;
+        .icon {
+            width: 30px;
+            height: 30px;
+            display: block;
+        }
     }
 
     &.-back {
         width: 50px;
         height: 50px;
         background: #aaa;
+    }
+}
+
+.btn-list {
+    padding: {
+        top: 8px;
+        bottom: 8px;
+    }
+    margin: {
+        bottom: 20px;
+    }
+    border: {
+        top: dashed 1px #868080;
+        bottom: dashed 1px #868080;
+    }
+
+    &.-centered {
+        text-align: center;
+    }
+
+    .btn {
+        width: 160px;
+        height: 61px;
+        &.-search {
+            width: 206px;
+        }
     }
 }
