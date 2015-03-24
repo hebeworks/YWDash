@@ -289,25 +289,25 @@
 				$storyContainer.packery('bindUIDraggableEvents', $itemEls);
 
                 setTimeout(function() {
-                    $storyCarousels.each(function(){
-                        var $el = $(this);
-                        var $pager = $el.next('.story__footer').find('.carousel-pager');
-
-                        $el.caroufredsel({
-                            prev: {
-                                button: $pager.find('.carousel-pager__btn.-prev')
-                            },
-                            pagination: $pager.find('.carousel-pager__numbers'),
-                            next: {
-                                button: $pager.find('.carousel-pager__btn.-next')
-                            },
-                            swipe: {
-                                onTouch: true,
-                                onMouse: true
-                            },
-                            auto: false
-                        });
-                    });
+//                    $storyCarousels.each(function(){
+//                        var $el = $(this);
+//                        var $pager = $el.next('.story__footer').find('.carousel-pager');
+//
+//                        $el.caroufredsel({
+//                            prev: {
+//                                button: $pager.find('.carousel-pager__btn.-prev')
+//                            },
+//                            pagination: $pager.find('.carousel-pager__numbers'),
+//                            next: {
+//                                button: $pager.find('.carousel-pager__btn.-next')
+//                            },
+//                            swipe: {
+//                                onTouch: true,
+//                                onMouse: true
+//                            },
+//                            auto: false
+//                        });
+//                    });
                 }, 3000);
 
 				//loadCSS(svgCSS);

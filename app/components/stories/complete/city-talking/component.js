@@ -17,24 +17,25 @@ export default Ember.Component.extend({
             });
             console.log(data.items);
             this.set('items', data.items);
-            //this.renderCarousel();
+            setTimeout(() => {
+                this.renderCarousel();
+            });
         });
     },
     renderCarousel: function() {
-        var $el = Ember.$(this.get('element')).find('.js-story-carousel');
-        console.log($el);
+        var $el = Ember.$(this.get('element')).find(".js-story-carousel");
+
         var $pager = $el.next('.story__footer').find('.carousel-pager');
-        console.log($pager);
-        
+
         $el.caroufredsel({
-            prev:       {
+            prev: {
                 button: $pager.find('.carousel-pager__btn.-prev')
             },
             pagination: $pager.find('.carousel-pager__numbers'),
-            next:       {
+            next: {
                 button: $pager.find('.carousel-pager__btn.-next')
             },
-            swipe:      {
+            swipe: {
                 onTouch: true,
                 onMouse: true
             },
