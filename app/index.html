@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="utf-8">
@@ -93,262 +93,277 @@
 			  };
 			})(jQuery);
 
-			$document.bind('ready', function(){
+			var hebe_dash = (function () {
+			    function setupDOM() {
+			        // Cached jQuery DOM objs
+			        var $body = $('body'),
+                        $header = $('.js-site-header'),
+                        $siteNav = $('.js-site-nav'),
 
-				// Cached jQuery DOM objs
-				var $body = $('body'),
-					$header = $('.js-site-header'),
-					$siteNav = $('.js-site-nav'),
+                        $dashboardWrapper = $('.js-dashboard-wrapper'),
+                        $galleryWrapper = $('.js-gallery-wrapper'),
 
-					$dashboardWrapper = $('.js-dashboard-wrapper'),
-					$galleryWrapper = $('.js-gallery-wrapper'),
+                        $canvasSwitcher = $('.js-canvas-switcher'),
+                        $canvasSwitcherList = $('.js-canvas-switcher-list'),
+                        $canvases = $('.js-canvas'),
 
-					$canvasSwitcher = $('.js-canvas-switcher'),
-					$canvasSwitcherList = $('.js-canvas-switcher-list'),
-					$canvases = $('.js-canvas'),
+                        $storyContainer = $('.js-stories'),
+                        $stories = $('.js-story'),
 
-					$storyContainer = $('.js-stories'),
-					$stories = $('.js-story'),
+                        $dashboardBottomDrawer = $('.js-dashboard-bottom-drawer'),
+                        $toolbox = $('.js-toolbox'),
+                        $btnOpenToolbox = $('.js-open-toolbox'),
+                        $btnAddStory = $('.js-add-story'),
+                        $storyMeta = $('.js-story-meta'),
+                        $thumbList = $('.js-thumb-list');
 
-					$dashboardBottomDrawer = $('.js-dashboard-bottom-drawer'),
-					$toolbox = $('.js-toolbox'),
-					$btnOpenToolbox = $('.js-open-toolbox'),
-					$btnAddStory = $('.js-add-story'),
-					$storyMeta = $('.js-story-meta'),
-					$thumbList = $('.js-thumb-list');
+			        // Functions
+			        function stretchCanvas() {
 
-				// Functions
-				function stretchCanvas() {
+			            var canvasWidth = $window.width();
 
-					var canvasWidth = $window.width();
+			            $canvasSwitcherList
+                            .css({
+                                'width': (canvasWidth * $canvases.size()) + 'px'
+                            });
 
-					$canvasSwitcherList
-						.css({
-							'width': (canvasWidth * $canvases.size()) + 'px'
-						});
+			            var canvasHeight = $window.height() - $header.height();
+			            $canvases
+                            .css({
+                                'width': canvasWidth,
+                                'height': canvasHeight + 'px'
+                            })
+                            .find('.canvas__inner')
+                            .css({
+                                'width': canvasWidth
+                            })
+                            .style('height', canvasHeight + 'px', 'important');
+			        }
 
-					var canvasHeight = $window.height() - $header.height();
-					$canvases
-						.css({
-							'width': canvasWidth,
-							'height': canvasHeight + 'px'
-						})
-						.find('.canvas__inner')
-						.css({
-							'width': canvasWidth
-						})
-						.style('height', canvasHeight + 'px', 'important');
-				}
+			        function drawerAction(drawer, action, extent) {
 
-				function drawerAction(drawer, action, extent) {
+			            if (typeof drawer !== 'undefined') {
 
-					if (typeof drawer !== 'undefined') {
+			                var $topDrawer = $('.js-top-drawer');
+			                var $bottomDrawer = $('.js-dashboard-bottom-drawer');
 
-						var $topDrawer = $('.js-top-drawer');
-						var $bottomDrawer = $('.js-dashboard-bottom-drawer');
+			                if (drawer == 'top') {
+			                    $topDrawer.toggleClass('-open');
+			                }
+			                else if (drawer == 'bottom' && typeof action !== 'undefined') {
 
-						if (drawer == 'top') {
-							$topDrawer.toggleClass('-open');
-						}
-						else if (drawer == 'bottom' && typeof action !== 'undefined') {
+			                    if (action == 'open') {
+			                        $bottomDrawer.addClass('-open');
+			                        if (typeof extent !== 'undefined' && extent == 'full') {
+			                            $bottomDrawer.addClass('-full');
+			                        }
 
-							if (action == 'open') {
-								$bottomDrawer.addClass('-open');
-								if (typeof extent !== 'undefined' && extent == 'full') {
-									$bottomDrawer.addClass('-full');
-								}
+			                        // Hack to reapply overflow otherwise vertical scroll doesn't work on drawer
+			                        $bottomDrawer.removeClass('-overflow-y-scroll');
+			                        setTimeout(function () {
+			                            $bottomDrawer.addClass('-overflow-y-scroll');
+			                        }, 500);
+			                    }
+			                    else if (action == 'close') {
+			                        $bottomDrawer.removeClass('-open -full');
+			                    }
+			                }
+			            }
+			        }
 
-								// Hack to reapply overflow otherwise vertical scroll doesn't work on drawer
-								$bottomDrawer.removeClass('-overflow-y-scroll');
-								setTimeout(function(){
-									$bottomDrawer.addClass('-overflow-y-scroll');
-								}, 500);
-							}
-							else if (action == 'close') {
-								$bottomDrawer.removeClass('-open -full');
-							}
-						}
-					}
-				}
+			        function switchWrapper(wrapper) {
 
-				function switchWrapper(wrapper) {
+			            if (typeof wrapper !== 'undefined') {
 
-					if (typeof wrapper !== 'undefined') {
+			                if (wrapper == 'dashboard') {
+			                    $dashboardWrapper.addClass('-open');
+			                    $galleryWrapper.removeClass('-open');
+			                }
+			                else if (wrapper == 'gallery') {
+			                    $dashboardWrapper.removeClass('-open');
+			                    $galleryWrapper.addClass('-open');
+			                }
+			            }
+			        }
 
-						if (wrapper == 'dashboard') {
-							$dashboardWrapper.addClass('-open');
-							$galleryWrapper.removeClass('-open');
-						}
-						else if (wrapper == 'gallery') {
-							$dashboardWrapper.removeClass('-open');
-							$galleryWrapper.addClass('-open');
-						}
-					}
-				}
+			        // Event handlers
+			        $siteNav
+                        .on('mousedown', '.js-open-toolbox', function (e) {
+                            $(this).toggleClass('-selected');
 
-				// Event handlers
-				$siteNav
-					.on('mousedown', '.js-open-toolbox', function(e){
-						$(this).toggleClass('-selected');
+                            $canvasSwitcher.removeClass('-blurred');
 
-						$canvasSwitcher.removeClass('-blurred');
+                            drawerAction('top');
+                            drawerAction('bottom', 'close');
+                        })
+                        .on('mousedown', '.js-open-gallery', function (e) {
 
-						drawerAction('top');
-						drawerAction('bottom', 'close');
-					})
-					.on('mousedown', '.js-open-gallery', function(e){
-
-						switchWrapper('gallery');
-					});
+                            switchWrapper('gallery');
+                        });
 
 
-				$toolbox
-					.on('mousedown', '.js-toolbox-change-canvas', function(e){
-						e.preventDefault();
+			        $toolbox
+                        .on('mousedown', '.js-toolbox-change-canvas', function (e) {
+                            e.preventDefault();
 
-						$(this).toggleClass('-selected');
-						$canvasSwitcher.toggleClass('-switching');
-					})
-					.on('mousedown', '.js-add-story', function(e){
-						e.preventDefault();
+                            $(this).toggleClass('-selected');
+                            $canvasSwitcher.toggleClass('-switching');
+                        })
+                        .on('mousedown', '.js-add-story', function (e) {
+                            e.preventDefault();
 
-						$(this).removeClass('-selected');
-						$btnOpenToolbox.removeClass('-selected');
-						$canvasSwitcher.addClass('-blurred');
+                            $(this).removeClass('-selected');
+                            $btnOpenToolbox.removeClass('-selected');
+                            $canvasSwitcher.addClass('-blurred');
 
-						drawerAction('top');
-						drawerAction('bottom', 'open');
-					});
+                            drawerAction('top');
+                            drawerAction('bottom', 'open');
+                        });
 
-				$dashboardBottomDrawer
-					.on('mousedown', function(e){
-						$body.removeClass('-top-drawer');
-					})
-					.on('mousedown', '.js-bottom-drawer-button .btn', function(e){
-						e.preventDefault();
+			        $dashboardBottomDrawer
+                        .on('mousedown', function (e) {
+                            $body.removeClass('-top-drawer');
+                        })
+                        .on('mousedown', '.js-bottom-drawer-button .btn', function (e) {
+                            e.preventDefault();
 
-						var $el = $(this);
-						var drawerSection = $el.data('btn-type');
+                            var $el = $(this);
+                            var drawerSection = $el.data('btn-type');
 
-						drawerAction('bottom', 'open', 'full');
-						$dashboardBottomDrawer
-							.removeClass('-bd-show-categories -bd-show-official -bd-show-search')
-							.addClass('-bd-show-' + drawerSection)
-							.find('.btn.-selected').removeClass('-selected');
+                            drawerAction('bottom', 'open', 'full');
+                            $dashboardBottomDrawer
+                                .removeClass('-bd-show-categories -bd-show-official -bd-show-search')
+                                .addClass('-bd-show-' + drawerSection)
+                                .find('.btn.-selected').removeClass('-selected');
 
-						$el.addClass('-selected');
-					})
-					.on('mousedown', '.js-close-bottom-drawer', function(e){
-						e.preventDefault();
+                            $el.addClass('-selected');
+                        })
+                        .on('mousedown', '.js-close-bottom-drawer', function (e) {
+                            e.preventDefault();
 
-						$btnOpenToolbox.removeClass('-selected');
-						$btnAddStory.removeClass('-selected');
-						$canvasSwitcher.removeClass('-blurred');
+                            $btnOpenToolbox.removeClass('-selected');
+                            $btnAddStory.removeClass('-selected');
+                            $canvasSwitcher.removeClass('-blurred');
 
-						drawerAction('bottom', 'close');
+                            drawerAction('bottom', 'close');
 
-						// Wait for drawer to slide off page before reverting section visibility
-						setTimeout(function() {
-							$dashboardBottomDrawer.removeClass('-bd-show-categories -bd-show-official -bd-show-search');
-						}, 300);
-					});
+                            // Wait for drawer to slide off page before reverting section visibility
+                            setTimeout(function () {
+                                $dashboardBottomDrawer.removeClass('-bd-show-categories -bd-show-official -bd-show-search');
+                            }, 300);
+                        });
 
-				$thumbList
-					.on('mousedown', '.thumb', function(e) {
-						e.preventDefault();
-						
-						$body.addClass('-story-meta');
-					});
+			        $thumbList
+                        .on('mousedown', '.thumb', function (e) {
+                            e.preventDefault();
 
-				$storyMeta
-					.on('mousedown', '.js-close-story-meta', function(e) {
-						e.preventDefault();
-						
-						$body.removeClass('-story-meta');
-					});
+                            $body.addClass('-story-meta');
+                        });
 
-				$canvases
-					.on('mousedown', '.js-add-story', function(e){
-						e.preventDefault();
+			        $storyMeta
+                        .on('mousedown', '.js-close-story-meta', function (e) {
+                            e.preventDefault();
 
-						drawerAction('bottom', 'open');
-						$canvasSwitcher.addClass('-blurred');
-					});
+                            $body.removeClass('-story-meta');
+                        });
 
-				$galleryWrapper
-					.on('mousedown', '.js-gallery-back', function(e){
-						e.preventDefault();
+			        $canvases
+                        .on('mousedown', '.js-add-story', function (e) {
+                            e.preventDefault();
 
-						switchWrapper('dashboard');
-					});
+                            drawerAction('bottom', 'open');
+                            $canvasSwitcher.addClass('-blurred');
+                        });
 
-				$window
-					.resize(function(){
-						stretchCanvas();
-					});
+			        $galleryWrapper
+                        .on('mousedown', '.js-gallery-back', function (e) {
+                            e.preventDefault();
 
-				// Ensure canvases stretch to correct height
-				stretchCanvas();
+                            switchWrapper('dashboard');
+                        });
 
-				// Initialize packery
-				$storyContainer
-					.packery({
-						itemSelector: '.story',
-						columnWidth: 170,
-						rowHeight: 170
-					});
+			        $window
+                        .resize(function () {
+                            stretchCanvas();
+                        });
 
-				$stories
-					.on('click', '.js-cogs', function(e){
-						e.preventDefault();
-						e.stopPropagation();
+			        // Ensure canvases stretch to correct height
+			        stretchCanvas();
 
-						var $el = $(this);
-						$el.closest('.story__inner').toggleClass('-flip');
-					});
+			        // Initialize packery
+			        $storyContainer
+                        .packery({
+                            itemSelector: '.story',
+                            columnWidth: 170,
+                            rowHeight: 170
+                        });
 
-				var $itemEls = $stories.draggable({
-					cursor: 'move',
-					containment: 'body',
-					//delay: 1000,
-					//distance: 30,
-					handle: '.js-story-handle',
-					scroll: true,
-					scrollSensitivity: 100,
-					scrollSpeed: 25,
-					zIndex: 4
-				});
+			        $stories
+                        .on('click', '.js-cogs', function (e) {
+                            e.preventDefault();
+                            e.stopPropagation();
 
-				var dragHold;
-				$('.story__inner')
-					.on('mousedown touchstart', function(e){
+                            var $el = $(this);
+                            $el.closest('.story__inner').toggleClass('-flip');
+                        });
 
-						var $el = $(this);
+			        var $itemEls = $stories.draggable({
+			            cursor: 'move',
+			            containment: 'body',
+			            //delay: 1000,
+			            //distance: 30,
+			            handle: '.js-story-handle',
+			            scroll: true,
+			            scrollSensitivity: 100,
+			            scrollSpeed: 25,
+			            zIndex: 4
+			        });
 
-						dragHold = setTimeout(function(){
-							$el.parent().addClass('ui-draggable-dragging');
-							var $handle = $el.find('.js-story-handle');
+			        var dragHold;
+			        $('.story__inner')
+                        .on('mousedown touchstart', function (e) {
 
-						    var coords = {
-						        clientX: e.clientX,
-						        clientY: e.clientY
-						    };
+                            var $el = $(this);
 
-						    $handle.simulate("mousedown", coords);
-						}, 100);
-					})
-					.on('mouseup touchend', function(){
-						var $el = $(this);
-						$el.parent().removeClass('ui-draggable-dragging');
-						clearTimeout(dragHold);
-					})
-					.on('mousemove touchmove', function(){
-						clearTimeout(dragHold);
-					});
+                            dragHold = setTimeout(function () {
+                                $el.parent().addClass('ui-draggable-dragging');
+                                var $handle = $el.find('.js-story-handle');
 
-				$storyContainer.packery('bindUIDraggableEvents', $itemEls);
-				//loadCSS(svgCSS);
-			});
+                                var coords = {
+                                    clientX: e.clientX,
+                                    clientY: e.clientY
+                                };
+
+                                $handle.simulate("mousedown", coords);
+                            }, 100);
+                        })
+                        .on('mouseup touchend', function () {
+                            var $el = $(this);
+                            $el.parent().removeClass('ui-draggable-dragging');
+                            clearTimeout(dragHold);
+                        })
+                        .on('mousemove touchmove', function () {
+                            clearTimeout(dragHold);
+                        });
+
+			        $storyContainer.packery('bindUIDraggableEvents', $itemEls);
+			        //loadCSS(svgCSS);
+			    }
+
+			    function setup() {
+			        setupDOM();
+			    }
+
+			    return {
+			        init: function () {
+			            setup();
+			        }
+			    };
+			})();
+			hebe_dash.init();
+
+			$document.bind('ready', hebe_dash.init);
+
 		</script>
 	</body>
 </html>
