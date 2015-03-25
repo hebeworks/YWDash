@@ -5,8 +5,11 @@
         fill: steelblue;
     }
     text {
-        fill: white;
+        fill: grey;
         font: 10px sans-serif;
         text-anchor: end;
+    }
+    .domain {
+        stroke-width: 1px;
     }
 }
