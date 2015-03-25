@@ -6,15 +6,9 @@ var Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-  this.resource('dashboard',function() {
-      this.route('list');
-      this.route('view',{ path: "/view/:id" });
-  });
-  this.resource('development', function() {
-      this.route('home');
-      this.route('dash-list');
-  });
-  this.resource('widget', function() {});
+    this.resource('canvas', { path: '/canvas' }, function() {
+        this.resource('/:canvas_id');
+    });
 });
 
 export default Router;
