@@ -36,6 +36,7 @@
 	}
 }
 	.canvas-switcher__list {
+		@include cf;
 		@include clean-list;
 		width: 8000px;
 		height: 100%;
@@ -47,22 +48,24 @@
 		.canvas {
 			height: 100%;
 			z-index: 2;
-			overflow: hidden;
-			overflow-y: auto;
 			float: left;
+			list-style: none;
 			padding: {
-				top: 20px;
+				top: 0px;
 				bottom: 40px;
 			}
 		}
 			.canvas__inner {
 				@include cf;
 				@include centered;
-				width: 230px;
+				//width: 230px;
+				overflow: hidden;
+				overflow-x: hidden;
+				overflow-y: auto;
 				z-index: 3;
-				@for $i from 2 through 9 {
-					@include breakpoint(230px * $i) {
-						width: 230px * $i;
+				/* @for $i from 2 through 9 {
+					@include breakpoint(170px * $i) {
+						width: 170px * $i;
 					}
-				}
+				} */
 			}

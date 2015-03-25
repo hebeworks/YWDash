@@ -69,43 +69,43 @@ module.exports = function(grunt) {
          * Create data URIs in a CSS file for SVGs
          */
         grunticon: {
-        nonembedsvg: {
-                    files: [{
-                        expand: true,
-                        cwd: 'public/assets/img/svg',
-                        src: '*.svg',
-                        dest: 'public/assets/img/svg'
-                    }],
-                    options: {
-                datasvgcss: '../../../../app/styles/components/_svg_icons.scss',
-                cssprefix: '@mixin svg--'
-                    }
-        },
+            nonembedsvg: {
+                files: [{
+                    expand: true,
+                    cwd: 'public/assets/img/svg',
+                    src: '*.svg',
+                    dest: 'public/assets/img/svg'
+                }],
+                options: {
+                    datasvgcss: '../../../../app/styles/components/_svg_icons.scss',
+                    cssprefix: '@mixin svg--'
+                }
+            },
             embed: {
-                    files: [{
-                        expand: true,
-                        cwd: 'public/assets/img/svg/embed',
-                        src: '*.svg',
-                        dest: 'vendor/embedsvg'
-                    }],
-                    options: {
+                files: [{
+                    expand: true,
+                    cwd: 'public/assets/img/svg/embed',
+                    src: '*.svg',
+                    dest: 'vendor/embedsvg'
+                }],
+                options: {
                     enhanceSVG: true,
                     cssprefix: '.svg-'
-                    }
+                }
             }
         }
-});
+    });
 
-/**
- * Generates a list of grunt tasks
- */
-require('load-grunt-tasks')(grunt);
+    /**
+     * Generates a list of grunt tasks
+     */
+    require('load-grunt-tasks')(grunt);
 
-/**
- * Define a workflow of tasks that will be run on deployment
- */
+    /**
+     * Define a workflow of tasks that will be run on deployment
+     */
 
-grunt.registerTask('svg', ['clean:grunticon', 'grunticon:embed', 'grunticon:nonembedsvg', 'copy:grunticon']);
-grunt.registerTask('default', ['svg', 'shell:build']);
-grunt.registerTask('serve', ['svg', 'shell:serve']);
+    grunt.registerTask('svg', ['clean:grunticon', 'grunticon:embed', 'grunticon:nonembedsvg', 'copy:grunticon']);
+    grunt.registerTask('default', ['svg', 'shell:build']);
+    grunt.registerTask('serve', ['svg', 'shell:serve']);
 };

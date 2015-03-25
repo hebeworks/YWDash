@@ -19,3 +19,4 @@ testem.log
 *.sln
 *.proj
 *.suo
+.idea/watcherTasks.xml

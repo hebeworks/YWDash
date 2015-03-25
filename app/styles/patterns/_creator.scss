@@ -12,4 +12,19 @@
         background-color: $blue;
         border-radius: 10px;
         cursor: pointer;
+        &:hover {
+            background-color: lighten($blue, 5%);
+        }
     }
+        .creator__title {
+            @include middle(xy);
+            width: 140px;
+            display: block;
+            position: absolute;
+            color: #fff;
+            text-align: center;
+            font-size: em(21px);
+            .icon-conversation {
+                display: block;
+            }
+        }
