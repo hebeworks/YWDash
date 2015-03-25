@@ -234,12 +234,18 @@
 					// Ensure canvases stretch to correct height
 					stretchCanvas();
 
-					// Initialize packery
+					// Initialize isotope
 					$storyContainer
-						.packery({
+						.isotope({
 							itemSelector: '.story',
-							columnWidth: 170,
-							rowHeight: 170
+							masonry: {
+								columnWidth: 170,
+								rowHeight: 170
+							},
+							getSortData: {
+								order: '[data-order]'
+							},
+							sortBy: ['order']
 						});
 
 					var $itemEls = $stories.draggable({
@@ -281,7 +287,7 @@
 							});
 					}
 
-					$storyContainer.packery('bindUIDraggableEvents', $itemEls);
+					$storyContainer.isotope('bindUIDraggableEvents', $itemEls);
 
 					setTimeout(function(){
 						$storyCarousels.each(function(){

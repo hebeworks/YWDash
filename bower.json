@@ -13,7 +13,7 @@
     "ember-qunit-notifications": "0.0.7",
     "qunit": "~1.17.1",
     "jqueryui-touch-punch": "*",
-    "packery": "~1.3.2",
+    "isotope": "~2.1.1",
     "draggabilly": "~1.1.2",
     "loadcss": "~0.1.6",
     "caroufredsel": "~6.2.1",
