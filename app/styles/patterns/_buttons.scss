@@ -69,13 +69,36 @@
     }
 
     .btn {
-        width: 160px;
-        height: 61px;
+        width: 140px;
+        height: 50px;
         font: {
-            size: em(20px);
+            size: em(14px);
         }
         &.-search {
-            width: 206px;
+            width: 180px;
+        }
+        &.-add-story {
+            width: 160px;
+            float: right;
+            background-color: $blue;
+            cursor: pointer;
+            &:hover {
+                background-color: lighten($blue, 5%);
+            }
+            .icon-conversation {
+                width: 15px;
+                display: inline-block;
+                vertical-align: middle;
+                margin: {
+                    top: -1px;
+                    right: 3px;
+                }
+                svg {
+                    width: 100%;
+                    height: auto;
+                    display: block;
+                }
+            }
         }
     }
 }

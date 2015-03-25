@@ -87,39 +87,20 @@ a {
 		z-index: 2; // Top drawer sits just underneath at z-index 1
 	}
 		.site-logo {
-			width: 335px;
-			height: 73px;
+			width: 260px;
+			height: 61px;
 			display: block;
 			margin: {
-				top: 21px;
-				left: 59px;
+				top: 19px;
+				left: 40px;
 			}
-			small {
-				width: 65px;
-				height: 23px;
-				float: left;
-				font: {
-					family: $helvneuelight;
-					size: 12px;
-					weight: 300;
-				}
-				text: {
-					transform: lowercase;
-				}
-				display: inline-block;
-			}
-			span {
-				width: 327px;
-				height: 27px;
-				float: left;
-				clear: both;
-				display: inline-block;
-				text-indent: -9999px;
-				background: {
-					image: url('img/logo.png');
-					size: 327px 27px;
-					repeat: no-repeat;
-				}
+			position: relative;
+			z-index: 2;
+			text-indent: -99999px;
+			svg {
+				width: 100%;
+				height: auto;
+				display: block;
 			}
 		}
 		// .site-nav in ../patterns/navigation
