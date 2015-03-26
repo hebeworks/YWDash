@@ -1,5 +1,6 @@
 import Ember from 'ember';
 
+
 export default Ember.Component.extend({
     tagName: 'div',
     loaded: false,
@@ -19,7 +20,7 @@ export default Ember.Component.extend({
             this.set('items', data.items);
             setTimeout(() => {
                 this.set('loaded', true);
-            })
+            });
         });
     },
     stripHTML: function(html) {

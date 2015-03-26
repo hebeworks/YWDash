@@ -15,6 +15,7 @@
 		{{content-for 'head-footer'}}
 	</head>
 	<body>
+
 		{{content-for 'body'}}
 
 		<script src="assets/vendor.js"></script>
@@ -45,6 +46,7 @@
 
 						$canvasSwitcher = $('.js-canvas-switcher'),
 						$canvasSwitcherList = $('.js-canvas-switcher-list'),
+						$canvasSwitcherFooter = $('.js-canvas-switcher-footer'),
 						$canvases = $('.js-canvas'),
 
 						$storyContainer = $('.js-stories'),
@@ -59,27 +61,76 @@
 						$storyMeta = $('.js-story-meta'),
 						$thumbList = $('.js-thumb-list');
 
+
 					var isTouchDevice = 'ontouchstart' in document.documentElement;
 
 					// Functions
-					function stretchCanvas() {
+					function setupCanvases() {
 
 						var canvasWidth = $window.width();
+						var canvasHeight = $window.height() - $header.height();
 
-						$canvasSwitcherList
+						$canvasSwitcher
 							.css({
-								'width': (canvasWidth * $canvases.size()) + 'px'
+								height: canvasHeight + 'px'
 							});
 
+						$canvasSwitcherList.each(function(){
+
+							var $el = $(this),
+								$pageCounter = $canvasSwitcherFooter.find('.pg-of'),
+								$pager = $canvasSwitcherFooter.find('.carousel-pager');
+
+							$pageCounter.find('.pg-of__y').text($el.children('li').size());
+
+							setTimeout(function(){
+
+								$el
+									.caroufredsel({
+										prev: {
+											button: $pager.find('.carousel-pager__btn.-prev')
+										},
+										pagination: $pager.find('.carousel-pager__numbers'),
+										next: {
+											button: $pager.find('.carousel-pager__btn.-next')
+										},
+										swipe: {
+											onTouch: true,
+											onMouse: true
+										},
+										auto: false,
+										scroll: {
+											onBefore: function(){
+												$el.trigger('currentPosition', function(index){
+													$pageCounter.find('.pg-of__x').text((index+1));
+												});
+											}
+										}
+									})
+									.css({
+										'width': (canvasWidth * $canvases.size()) + 'px',
+										'height': canvasHeight + 'px'
+									})
+									.children('li')
+									.each(function(){
+										$(this).css({
+											width: canvasWidth + 'px'
+										});
+									});
+								}, 0);
+						});
+	
+						var canvasMinusPadding = canvasWidth - 60;
 						var canvasHeight = $window.height() - $header.height();
 						$canvases
 							.css({
-								'width': canvasWidth,
+								'width': canvasMinusPadding + 'px',
 								'height': canvasHeight + 'px'
 							})
 							.find('.canvas__inner')
 							.css({
-								'width': canvasWidth
+								'width': canvasMinusPadding + 'px',
+								'height': canvasHeight + 'px'
 							})
 							.style('height', canvasHeight + 'px', 'important');
 					}
@@ -152,6 +203,7 @@
 
 							$(this).toggleClass('-selected');
 							$canvasSwitcher.toggleClass('-switching');
+							$canvasSwitcherFooter.toggleClass('-switching');
 						})
 						.on('mousedown', '.js-add-story', function(e){
 							e.preventDefault();
@@ -200,14 +252,14 @@
 					$thumbList
 						.on('mousedown', '.thumb', function(e) {
 							e.preventDefault();
-							
+
 							$body.addClass('-story-meta');
 						});
 
 					$storyMeta
 						.on('mousedown', '.js-close-story-meta', function(e) {
 							e.preventDefault();
-							
+
 							$body.removeClass('-story-meta');
 						});
 
@@ -226,13 +278,13 @@
 							switchWrapper('dashboard');
 						});
 
+					// Stretch canvases & set up canvas switcher carousel
+					setupCanvases();
+
 					$window
 						.resize(function(){
-							stretchCanvas();
+							setupCanvases();
 						});
-
-					// Ensure canvases stretch to correct height
-					stretchCanvas();
 
 					// Initialize packery
 					$storyContainer
@@ -282,41 +334,6 @@
 					}
 
 					$storyContainer.packery('bindUIDraggableEvents', $itemEls);
-
-					setTimeout(function(){
-						$storyCarousels.each(function(){
-							var $el = $(this),
-								$storyFooter = $el.closest('.story__content').find('.story__footer'),
-								$pageCounter = $storyFooter.find('.pg-of'),
-								$pager = $storyFooter.find('.carousel-pager');
-
-							$pageCounter.find('.pg-of__y').text($el.children('li').size());
-	
-							$el
-								.caroufredsel({
-									prev: {
-										button: $pager.find('.carousel-pager__btn.-prev')
-									},
-									pagination: $pager.find('.carousel-pager__numbers'),
-									next: {
-										button: $pager.find('.carousel-pager__btn.-next')
-									},
-									swipe: {
-										onTouch: true,
-										onMouse: true
-									},
-									auto: false,
-									scroll: {
-										onBefore: function(){
-											$el.trigger('currentPosition', function(index){
-												$pageCounter.find('.pg-of__x').text((index+1));
-											});
-										}
-									}
-								});
-								//.swipe();
-						});
-					}, 3000);
 
 					//loadCSS(svgCSS);
 			    }

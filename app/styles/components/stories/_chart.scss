@@ -1,0 +1,15 @@
+.story__chart {
+    margin-top: 20px;
+    height: 100%;
+    rect {
+        fill: steelblue;
+    }
+    text {
+        fill: grey;
+        font: 10px sans-serif;
+        text-anchor: end;
+    }
+    .domain {
+        stroke-width: 1px;
+    }
+}
