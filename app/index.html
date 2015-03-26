@@ -24,29 +24,173 @@
         
         <script>
             // Cached jQuery objs
-            var $document = $(document);
-            var $window = $(window);
-            //var svgCSS = 'assets/svg.css';
+            var $document = $(document),
+                $window = $(window),
+                $body,
+                $header,
+                canvas = {};
 
-            var hebe_dash = (function () {
+            canvas.dimensions = {}; // width & height
+            canvas.carousel = {};
+
+            var canvas_switcher = (function(){
+
+                var open = function() {
+                    canvas.$switcher.addClass('-switching');
+                };
+
+                var close = function() {
+                    canvas.$switcher.removeClass('-switching');
+                };
+
+                var stretch = function() {
+                    canvas.carousel.$switcher
+                        .css({
+                            height: canvas.dimensions.height + 'px'
+                        });
+
+                    canvas.carousel.$canvases
+                        .css({
+                            'width': canvas.dimensions.width + 'px',
+                            'height': canvas.dimensions.height + 'px'
+                        })
+                        .find('.canvas__inner')
+                        .css({
+                            'width': canvas.dimensions.width + 'px',
+                            'height': canvas.dimensions.height + 'px'
+                        })
+                        .style('height', canvas.dimensions.height + 'px', 'important');
+                };
+
+                var setupFooter = function(){
+                    canvas.carousel.$pageXofY.find('.pg-of__y').text(canvas.carousel.slideCount);
+
+                    // Generate pagination, which we'll manage ourselves for more control
+                    var pagerNumbersArr = [];
+                    for (var i = 1; i <= slideCount; i++) {
+                        var $link = $('<a href="javascript:;"><span></span></a>');
+                        if (i == 1) $link.addClass('selected');
+                        pagerNumbersArr.push($link);
+                    }
+                    canvas.carousel.$pagerNumbers.append(pagerNumbersArr);
+
+                    canvas.carousel.$pagerNumbers
+                        .on('mousedown', 'a', function(e){
+                            e.preventDefault();
+                            e.stopPropagation();
+
+                            console.log('number clicked');
+                        });
+                };
+
+                var init_carousel = function(){
+
+                    setTimeout(function(){
+
+                        canvas.carousel.$list
+                            .caroufredsel({
+                                circular: false,
+                                infinite: false,
+                                swipe: {
+                                    onTouch: true,
+                                    onMouse: true
+                                },
+                                auto: false,
+                                scroll: {
+                                    onBefore: function(){
+                                        canvas.carousel.$list
+                                            .trigger('currentPosition', function(index){
+                                                canvas.carousel.$pageXofY.find('.pg-of__x').text((index+1));
+                                            });
+                                    }
+                                }
+                            })
+                            .css({
+                                'width': (canvas.dimensions.width * canvas.carousel.$canvases.size()) + 'px',
+                                'height': canvas.dimensions.height + 'px'
+                            })
+                            .children('li')
+                            .each(function(){
+                                $(this).css({
+                                    width: canvas.dimensions.width + 'px'
+                                });
+                            });
+                    }, 0);
+                };
+
+                var setup_events = function() {
+                    canvas.carousel.$canvases
+                        .on('mousedown', '.js-add-story', function(e){
+                            e.preventDefault();
+
+                            //drawerAction('bottom', 'open');
+                            canvas.carousel.$switcher.addClass('-blurred');
+                        });
+
+                    
+                };
+
+                return {
+                    init: function() {
+
+                        canvas.dimensions.width = $window.width();
+                        canvas.dimensions.height = $window.height() - $header.height();
+
+                        setTimeout(function(){
+
+                            // Now they're available, assign these hooks to global canvas carousel object
+                            $.extend(canvas.carousel, {
+                                $switcher:     $('.js-canvas-switcher'),
+                                $list:         $('.js-canvas-switcher-list'),
+                                $footer:       $('.js-canvas-switcher-footer'),
+                                $canvases:     $('.js-canvas')
+                            });
+
+                            // Now hooks are available, assign child hooks to global canvas carousel object
+                            $.extend(canvas.carousel, {
+                                $pageXofY:     canvas.carousel.$footer.find('.pg-of'),
+                                $pager:        canvas.carousel.$footer.find('.carousel-pager'),
+                                slideCount:    canvas.carousel.$list.children('li').size()
+                            });
+                            $.extend(canvas.carousel, {
+                                $pagerNumbers: canvas.carousel.$pager.find('.carousel-pager__numbers')
+                            });
+
+                            // Ensure the canvas fits the screen
+                            stretch();
+
+                            // Initialise caroufredsel
+                            init_carousel();
+
+                            // Setup events
+                            setup_events();
+
+                            console.log(canvas);
+                        }, 0);
+                    },
+
+                    stretch: function() {
+                        stretch();
+                    }
+                };
+            })();
+
+            var hebe_dash = (function() {
+
                 function setupDOM() {
 
-                    $.get('http://thecitytalking.com/content/?format=json').then(function(data) {
+                    /*$.get('http://thecitytalking.com/content/?format=json').then(function(data) {
                         console.log(data);
-                    });
+                    });*/
 
                     // Cached jQuery DOM objs
-                    var $body = $('body'),
-                        $header = $('.js-site-header'),
-                        $siteNav = $('.js-site-nav'),
+                    $header = $('.js-site-header');
+                    $body = $('body');
+
+                    var $siteNav = $('.js-site-nav'),
 
                         $dashboardWrapper = $('.js-dashboard-wrapper'),
-                        $galleryWrapper = $('.js-gallery-wrapper'),
-
-                        $canvasSwitcher = $('.js-canvas-switcher'),
-                        $canvasSwitcherList = $('.js-canvas-switcher-list'),
-                        $canvasSwitcherFooter = $('.js-canvas-switcher-footer'),
-                        $canvases = $('.js-canvas'),
+                        $galleryWrapper = $('.js-gallery-wrapper');
 
                         $storyContainer = $('.js-stories'),
                         $stories = $('.js-story'),
@@ -60,80 +204,9 @@
                         $storyMeta = $('.js-story-meta'),
                         $thumbList = $('.js-thumb-list');
 
-
                     var isTouchDevice = 'ontouchstart' in document.documentElement;
 
                     // Functions
-                    function setupCanvases() {
-
-                        var canvasWidth = $window.width();
-                        var canvasHeight = $window.height() - $header.height();
-
-                        $canvasSwitcher
-                            .css({
-                                height: canvasHeight + 'px'
-                            });
-
-                        /*$canvasSwitcherList.each(function(){
-
-                            var $el = $(this),
-                                $pageCounter = $canvasSwitcherFooter.find('.pg-of'),
-                                $pager = $canvasSwitcherFooter.find('.carousel-pager');
-
-                            $pageCounter.find('.pg-of__y').text($el.children('li').size());
-
-                            setTimeout(function(){
-
-                                $el
-                                    .caroufredsel({
-                                        prev: {
-                                            button: $pager.find('.carousel-pager__btn.-prev')
-                                        },
-                                        pagination: $pager.find('.carousel-pager__numbers'),
-                                        next: {
-                                            button: $pager.find('.carousel-pager__btn.-next')
-                                        },
-                                        swipe: {
-                                            onTouch: true,
-                                            onMouse: true
-                                        },
-                                        auto: false,
-                                        scroll: {
-                                            onBefore: function(){
-                                                $el.trigger('currentPosition', function(index){
-                                                    $pageCounter.find('.pg-of__x').text((index+1));
-                                                });
-                                            }
-                                        }
-                                    })
-                                    .css({
-                                        'width': (canvasWidth * $canvases.size()) + 'px',
-                                        'height': canvasHeight + 'px'
-                                    })
-                                    .children('li')
-                                    .each(function(){
-                                        $(this).css({
-                                            width: canvasWidth + 'px'
-                                        });
-                                    });
-                                }, 0);
-                        });*/
-    
-                        var canvasMinusPadding = canvasWidth - 60;
-                        var canvasHeight = $window.height() - $header.height();
-                        $canvases
-                            .css({
-                                'width': canvasMinusPadding + 'px',
-                                'height': canvasHeight + 'px'
-                            })
-                            .find('.canvas__inner')
-                            .css({
-                                'width': canvasMinusPadding + 'px',
-                                'height': canvasHeight + 'px'
-                            })
-                            .style('height', canvasHeight + 'px', 'important');
-                    }
-
                     function drawerAction(drawer, action, extent) {
 
                         if (typeof drawer !== 'undefined') {
@@ -262,27 +335,11 @@
                             $body.removeClass('-story-meta');
                         });
 
-                    $canvases
-                        .on('mousedown', '.js-add-story', function(e){
-                            e.preventDefault();
-
-                            drawerAction('bottom', 'open');
-                            $canvasSwitcher.addClass('-blurred');
-                        });
-
                     $galleryWrapper
                         .on('mousedown', '.js-gallery-back', function(e){
                             e.preventDefault();
 
                             switchWrapper('dashboard');
-                        });
-
-                    // Stretch canvases & set up canvas switcher carousel
-                    setupCanvases();
-
-                    $window
-                        .resize(function(){
-                            setupCanvases();
                         });
 
                     // Initialize packery
@@ -345,7 +402,7 @@
 
                                 $pageCounter.find('.pg-of__y').text($el.children('li').size());
                                 
-                                $el.caroufredsel({
+                                /*$el.caroufredsel({
                                     prev: {
                                         button: $pager.find('.carousel-pager__btn.-prev')
                                     },
@@ -365,10 +422,15 @@
                                             });
                                         }
                                     }
-                                });
+                                });*/
                             }
                         });
-                }, 1000);
+                    }, 1000);
+                    
+                    $window
+                        .resize(function(){
+                            carousel_switcher.stretch();
+                        });
 
                     //loadCSS(svgCSS);
                 }
@@ -384,6 +446,7 @@
                 };
             })();
             hebe_dash.init();
+            canvas_switcher.init();
 
             $document.bind('ready', hebe_dash.init);
 
