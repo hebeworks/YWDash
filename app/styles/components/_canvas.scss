@@ -46,7 +46,7 @@
 		height: 100%;
 		z-index: 1;
 		position: relative;
-		@include transition(all .3s);
+		//@include transition(all .3s);
 		@include transform-origin(0 top);
 		background-color: #f7f7f7;
 		> li {

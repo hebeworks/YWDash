@@ -88,7 +88,19 @@
                     setTimeout(function(){
 
                         canvas.carousel.$list
-                            /*.caroufredsel({
+                            .css({
+                                'width': (canvas.dimensions.width * canvas.carousel.$canvases.size()) + 'px',
+                                'height': canvas.dimensions.height + 'px'
+                            })
+                            .children('li')
+                            .each(function(){
+                                $(this).css({
+                                    width: canvas.dimensions.width + 'px'
+                                });
+                            });
+
+                        /*canvas.carousel.$list
+                            .caroufredsel({
                                 circular: false,
                                 infinite: false,
                                 swipe: {
@@ -103,18 +115,12 @@
                                                 canvas.carousel.$pageXofY.find('.pg-of__x').text((index+1));
                                             });
                                     }
+                                },
+                                onCreate: function(){
+                                    // canvas.carousel.$switcher.toggleClass('-switching');
+                                    // canvas.carousel.$footer.toggleClass('-switching');
                                 }
-                            })*/
-                            .css({
-                                'width': (canvas.dimensions.width * canvas.carousel.$canvases.size()) + 'px',
-                                'height': canvas.dimensions.height + 'px'
-                            })
-                            .children('li')
-                            .each(function(){
-                                $(this).css({
-                                    width: canvas.dimensions.width + 'px'
-                                });
-                            });
+                            });*/
 
                         setupFooter();
                     }, 0);
@@ -271,9 +277,31 @@
                         .on('mousedown', '.js-toolbox-change-canvas', function(e){
                             e.preventDefault();
 
-                            $(this).toggleClass('-selected');
-                            canvas.carousel.$switcher.toggleClass('-switching');
-                            canvas.carousel.$footer.toggleClass('-switching');
+                            var $el = $(this);
+                            $el.toggleClass('-selected');
+
+                            canvas.carousel.$list
+                                .caroufredsel({
+                                    circular: false,
+                                    infinite: false,
+                                    swipe: {
+                                        onTouch: true,
+                                        onMouse: true
+                                    },
+                                    auto: false,
+                                    scroll: {
+                                        onBefore: function(){
+                                            canvas.carousel.$list
+                                                .trigger('currentPosition', function(index){
+                                                    canvas.carousel.$pageXofY.find('.pg-of__x').text((index+1));
+                                                });
+                                        }
+                                    },
+                                    onCreate: function(){
+                                        canvas.carousel.$switcher.toggleClass('-switching');
+                                        canvas.carousel.$footer.toggleClass('-switching');
+                                    }
+                                });
                         })
                         .on('mousedown', '.js-add-story', function(e){
                             e.preventDefault();
