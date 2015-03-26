@@ -33,7 +33,7 @@ export default Ember.Component.extend({
             .tickSize(1);
 
         // Create our chart element - it needs to be larger than the size of our data domain by the widths / heights of our margins, to allow for the axes.
-        var chart = d3.select(".js-line-chart")
+        var chart = d3.select(this.get('element')).select(".js-line-chart")
             .attr("width", width + margin.left + margin.right)
             .attr("height", height + margin.bottom + margin.top)
             .append("g")

@@ -10,7 +10,6 @@ export default Ember.Component.extend({
         }
     }.observes('loaded'),
     renderCarousel: function() {
-        console.log("rendering");
         var $el = Ember.$(this.get('element')).find('.js-story-carousel');
         console.log($el);
         var $pager = $el.next('.story__footer').find('.carousel-pager');
