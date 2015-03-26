@@ -6,10 +6,20 @@
 
     &.-grey {
         background-color: $light-grey;
+    
+        &:hover {
+            color: #fff;
+            background-color: $lime;
+        }
     }
 
     &.-white {
         background-color: #fff;
+    
+        &:hover {
+            color: #fff;
+            background-color: $lime;
+        }
     }
 
     &.-blue {
@@ -20,11 +30,6 @@
     &.-selected {
         background-color: $lime;
         color: #d9f2bd;
-    }
-    
-    &:hover {
-        color: #fff;
-        background-color: $lime;
     }
 
     &.-center {
