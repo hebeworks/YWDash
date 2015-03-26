@@ -38,6 +38,8 @@ app.import(app.bowerDirectory + '/caroufredsel/jquery.carouFredSel-6.2.1-packed.
 app.import(app.bowerDirectory + '/loadcss/loadCSS.js');
 app.import(app.bowerDirectory + '/moment/moment.js');
 app.import(app.bowerDirectory + '/d3/d3.js');
+app.import(app.bowerDirectory + '/c3/c3.js');
+app.import(app.bowerDirectory + '/c3/c3.css');
 app.import('vendor/embedsvg/grunticon.loader.js');
 app.import('vendor/embedsvg/grunticon.inline.js');
 
