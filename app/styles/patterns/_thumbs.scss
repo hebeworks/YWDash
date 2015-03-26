@@ -1,10 +1,10 @@
 .thumb-list {
     position: relative;
+    margin-bottom: 1em;
 
     &:after {
         content: '';
         width: 18px;
-        height: 237px;
         position: absolute;
         top: 14px;
         bottom: 14px;
@@ -25,12 +25,16 @@
     }
 }
 
+.thumb-list-heading {
+    margin-bottom: 10px;
+}
+
 .thumb-list__inner {
     @include clean-list;
     @include cf;
     border-radius: 5px;
     background-color: $off-white;
-    padding: 28px 18px 20px 28px;
+    padding: 20px 10px 12px 20px;
     overflow-x: auto;
     white-space: nowrap;
 
@@ -40,9 +44,7 @@
 }
 
     .thumb {
-        width: 12%;
-        min-width: 100px;
-        max-width: 150px;
+        width: 85px;
         display: inline-block;
         white-space: normal;
         margin-right: 21px;

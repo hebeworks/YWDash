@@ -6,6 +6,7 @@
 
     &.-grey {
         background-color: $light-grey;
+    
         &:hover {
             color: #fff;
             background-color: $lime;
@@ -14,6 +15,11 @@
 
     &.-white {
         background-color: #fff;
+    
+        &:hover {
+            color: #fff;
+            background-color: $lime;
+        }
     }
 
     &.-blue {
@@ -52,6 +58,7 @@
 }
 
 .btn-list {
+    overflow: hidden;
     padding: {
         top: 8px;
         bottom: 8px;
@@ -77,7 +84,7 @@
         &.-search {
             width: 180px;
         }
-        &.-add-story {
+        &.-create {
             width: 160px;
             float: right;
             background-color: $blue;
@@ -99,6 +106,9 @@
                     display: block;
                 }
             }
+        }
+        + .btn {
+            margin-left: 15px;
         }
     }
 }
