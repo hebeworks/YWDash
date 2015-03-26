@@ -3,18 +3,13 @@ import Ember from 'ember';
 export default Ember.Component.extend({
     classNames: ['story__chart-wrapper'],
     didInsertElement: function() {
-        console.log("testing");
-        var chart = c3.generate({
+
+        var customParams = this.get('graphParams');
+
+        var defaultParams = {
             bindto: '#' + this.elementId + '>.story__chart',
             legend: {
                 show: false
-            },
-            data: {
-                columns: [
-                    ['data1', 30, 200, 100, 400, 150, 250],
-                    ['data2', 130, 100, 140, 200, 150, 50]
-                ],
-                type: 'bar'
             },
             bar: {
                 width: {
@@ -31,7 +26,11 @@ export default Ember.Component.extend({
                     show: true
                 }
             }
-        });
+        }
+
+        var params = Ember.$.extend(defaultParams, customParams);
+
+        var chart = c3.generate(params);
 
         // Generate our custom legend
 
