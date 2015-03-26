@@ -83,7 +83,7 @@
                         });
                 };
 
-                var init_carousel = function(){
+                var initCarousel = function(){
 
                     setTimeout(function(){
 
@@ -118,7 +118,7 @@
                     }, 0);
                 };
 
-                var setup_events = function() {
+                var setupEvents = function() {
                     canvas.carousel.$canvases
                         .on('mousedown', '.js-add-story', function(e){
                             e.preventDefault();
@@ -126,8 +126,6 @@
                             //drawerAction('bottom', 'open');
                             canvas.carousel.$switcher.addClass('-blurred');
                         });
-
-                    
                 };
 
                 return {
@@ -160,12 +158,10 @@
                             stretch();
 
                             // Initialise caroufredsel
-                            init_carousel();
+                            initCarousel();
 
                             // Setup events
-                            setup_events();
-
-                            console.log(canvas);
+                            setupEvents();
                         }, 0);
                     },
 
