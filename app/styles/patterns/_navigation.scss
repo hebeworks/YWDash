@@ -36,8 +36,13 @@
 			text-decoration: none;
 			&:hover, &.-selected {
 				color: $lime;
-				.icon svg {
-					fill: $lime;
+				.icon {
+					svg {
+						fill: $lime;
+					}
+					&.icon-edit-meta svg * {
+						stroke: $lime;
+					}
 				}
 				.main-nav__title {
 					color: $lime;
