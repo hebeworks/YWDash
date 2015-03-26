@@ -88,7 +88,7 @@
                     setTimeout(function(){
 
                         canvas.carousel.$list
-                            .caroufredsel({
+                            /*.caroufredsel({
                                 circular: false,
                                 infinite: false,
                                 swipe: {
@@ -104,7 +104,7 @@
                                             });
                                     }
                                 }
-                            })
+                            })*/
                             .css({
                                 'width': (canvas.dimensions.width * canvas.carousel.$canvases.size()) + 'px',
                                 'height': canvas.dimensions.height + 'px'
@@ -131,10 +131,10 @@
                 return {
                     init: function() {
 
-                        canvas.dimensions.width = $window.width();
-                        canvas.dimensions.height = $window.height() - $header.height();
-
                         setTimeout(function(){
+
+                            canvas.dimensions.width = $window.width();
+                            canvas.dimensions.height = $window.height() - $header.height();
 
                             // Now they're available, assign these hooks to global canvas carousel object
                             $.extend(canvas.carousel, {
@@ -254,7 +254,7 @@
                         .on('mousedown', '.js-open-toolbox', function(e){
                             $(this).toggleClass('-selected');
 
-                            $canvasSwitcher.removeClass('-blurred');
+                            canvas.carousel.$switcher.removeClass('-blurred');
 
                             drawerAction('top');
                             drawerAction('bottom', 'close');
@@ -270,15 +270,15 @@
                             e.preventDefault();
 
                             $(this).toggleClass('-selected');
-                            $canvasSwitcher.toggleClass('-switching');
-                            $canvasSwitcherFooter.toggleClass('-switching');
+                            canvas.carousel.$switcher.toggleClass('-switching');
+                            canvas.carousel.$footer.toggleClass('-switching');
                         })
                         .on('mousedown', '.js-add-story', function(e){
                             e.preventDefault();
 
                             $(this).removeClass('-selected');
                             $btnOpenToolbox.removeClass('-selected');
-                            $canvasSwitcher.addClass('-blurred');
+                            canvas.carousel.$switcher.addClass('-blurred');
 
                             drawerAction('top');
                             drawerAction('bottom', 'open');
@@ -307,7 +307,7 @@
 
                             $btnOpenToolbox.removeClass('-selected');
                             $btnAddStory.removeClass('-selected');
-                            $canvasSwitcher.removeClass('-blurred');
+                            canvas.carousel.$switcher.removeClass('-blurred');
 
                             drawerAction('bottom', 'close');
 

@@ -7,8 +7,8 @@
 		color: #f7f7f7;
 	}
 	opacity: 1;
-	/* @include transform(translateZ(0));
-	@include filter(blur(0) brightness(100%));
+	@include transform(translateZ(0));
+	/*@include filter(blur(0) brightness(100%));
 	@include transition(filter .3s, opacity .3s);
 	transition: -webkit-filter .3s, opacity .3s; */
 
@@ -23,8 +23,7 @@
 
 	&.-switching {
 		.canvas-switcher__list {
-			@include transform(scale(0.7));
-			top: 180px;
+			@include transform(scale(0.7) translateY(180px));
 		}
 		.canvas {
 			overflow-y: hidden;
@@ -47,7 +46,8 @@
 		height: 100%;
 		z-index: 1;
 		position: relative;
-		//@include transform-origin(0 top);
+		@include transition(all .3s);
+		@include transform-origin(0 top);
 		background-color: #f7f7f7;
 		> li {
 			float: left;
@@ -87,7 +87,7 @@
 	text-align: center;
 	z-index: 2;
 	color: #d7d7d7;
-	//opacity: 0;
+	opacity: 0;
 	@include transition(all .3s);
 
 	&.-switching {
