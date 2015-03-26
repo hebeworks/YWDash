@@ -3,11 +3,12 @@
 
     &:after {
         content: '';
+        width: 18px;
+        height: 243px;
         position: absolute;
         top: 14px;
         bottom: 14px;
         right: 0;
-        width: 28px;
         background-color: $off-white;
         border-left: 1px solid $light-grey;
     }
@@ -29,8 +30,8 @@
     @include cf;
     border-radius: 5px;
     background-color: $off-white;
-    padding: 28px 28px 20px 28px;
-    overflow: scroll;
+    padding: 28px 18px 20px 28px;
+    overflow-x: auto;
     white-space: nowrap;
 
     + .thumb-list {

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="utf-8">
@@ -28,144 +28,313 @@
 			var $window = $(window);
 			//var svgCSS = 'assets/svg.css';
 
-			$document.bind('ready', function(){
+			var hebe_dash = (function () {
+			    function setupDOM() {
 
-				// Cached jQuery DOM objs
-				var $body = $('body'),
-					$header = $('.js-site-header'),
-					$siteNav = $('.js-site-nav'),
-					$canvasSwitcher = $('.js-canvas-switcher'),
-					$canvasSwitcherList = $('.js-canvas-switcher-list'),
-					$canvases = $('.js-canvas'),
-					$storyContainer = $('.js-stories'),
-					$bottomDrawer = $('.js-bottom-drawer'),
-					$toolbox = $('.js-toolbox'),
-					$storyMeta = $('.js-story-meta'),
-					$thumbList= $('.js-thumb-list'),
-					$galleryWrapper = $('.js-gallery-wrapper');
+	                $.get('http://thecitytalking.com/content/?format=json').then(function(data) {
+	                    console.log(data);
+	                });
 
-				// Functions
-				function stretchCanvas(){
+					// Cached jQuery DOM objs
+					var $body = $('body'),
+						$header = $('.js-site-header'),
+						$siteNav = $('.js-site-nav'),
 
-					var canvasWidth = $window.width();
+						$dashboardWrapper = $('.js-dashboard-wrapper'),
+						$galleryWrapper = $('.js-gallery-wrapper'),
 
-					$canvasSwitcherList
-						.css({
-							'width': (canvasWidth * $canvases.size()) + 'px'
+						$canvasSwitcher = $('.js-canvas-switcher'),
+						$canvasSwitcherList = $('.js-canvas-switcher-list'),
+						$canvases = $('.js-canvas'),
+
+						$storyContainer = $('.js-stories'),
+						$stories = $('.js-story'),
+						$storyCogs = $('.js-cogs'),
+						$storyCarousels = $('.js-story-carousel'),
+
+						$dashboardBottomDrawer = $('.js-dashboard-bottom-drawer'),
+						$toolbox = $('.js-toolbox'),
+						$btnOpenToolbox = $('.js-open-toolbox'),
+						$btnAddStory = $('.js-add-story'),
+						$storyMeta = $('.js-story-meta'),
+						$thumbList = $('.js-thumb-list');
+
+					var isTouchDevice = 'ontouchstart' in document.documentElement;
+
+					// Functions
+					function stretchCanvas() {
+
+						var canvasWidth = $window.width();
+
+						$canvasSwitcherList
+							.css({
+								'width': (canvasWidth * $canvases.size()) + 'px'
+							});
+
+						var canvasHeight = $window.height() - $header.height();
+						$canvases
+							.css({
+								'width': canvasWidth,
+								'height': canvasHeight + 'px'
+							})
+							.find('.canvas__inner')
+							.css({
+								'width': canvasWidth
+							})
+							.style('height', canvasHeight + 'px', 'important');
+					}
+
+					function drawerAction(drawer, action, extent) {
+
+						if (typeof drawer !== 'undefined') {
+
+							var $topDrawer = $('.js-top-drawer');
+							var $bottomDrawer = $('.js-dashboard-bottom-drawer');
+
+							if (drawer == 'top') {
+								$topDrawer.toggleClass('-open');
+							}
+							else if (drawer == 'bottom' && typeof action !== 'undefined') {
+
+								if (action == 'open') {
+									$bottomDrawer.addClass('-open');
+									if (typeof extent !== 'undefined' && extent == 'full') {
+										$bottomDrawer.addClass('-full');
+									}
+
+									// Hack to reapply overflow otherwise vertical scroll doesn't work on drawer
+									$bottomDrawer.removeClass('-overflow-y-scroll');
+									setTimeout(function(){
+										$bottomDrawer.addClass('-overflow-y-scroll');
+									}, 500);
+								}
+								else if (action == 'close') {
+									$bottomDrawer.removeClass('-open -full');
+								}
+							}
+						}
+					}
+
+					function switchWrapper(wrapper) {
+
+						if (typeof wrapper !== 'undefined') {
+
+							if (wrapper == 'dashboard') {
+								$dashboardWrapper.addClass('-open');
+								$galleryWrapper.removeClass('-open');
+							}
+							else if (wrapper == 'gallery') {
+								$dashboardWrapper.removeClass('-open');
+								$galleryWrapper.addClass('-open');
+							}
+						}
+					}
+
+					// Event handlers
+					$siteNav
+						.on('mousedown', '.js-open-toolbox', function(e){
+							$(this).toggleClass('-selected');
+
+							$canvasSwitcher.removeClass('-blurred');
+
+							drawerAction('top');
+							drawerAction('bottom', 'close');
+						})
+						.on('mousedown', '.js-open-gallery', function(e){
+
+							switchWrapper('gallery');
 						});
 
-					var canvasHeight = $window.height() - $header.height();
+
+					$toolbox
+						.on('mousedown', '.js-toolbox-change-canvas', function(e){
+							e.preventDefault();
+
+							$(this).toggleClass('-selected');
+							$canvasSwitcher.toggleClass('-switching');
+						})
+						.on('mousedown', '.js-add-story', function(e){
+							e.preventDefault();
+
+							$(this).removeClass('-selected');
+							$btnOpenToolbox.removeClass('-selected');
+							$canvasSwitcher.addClass('-blurred');
+
+							drawerAction('top');
+							drawerAction('bottom', 'open');
+						});
+
+					$dashboardBottomDrawer
+						.on('mousedown', function(e){
+							$body.removeClass('-top-drawer');
+						})
+						.on('mousedown', '.js-bottom-drawer-button .btn', function(e){
+							e.preventDefault();
+
+							var $el = $(this);
+							var drawerSection = $el.data('btn-type');
+
+							drawerAction('bottom', 'open', 'full');
+							$dashboardBottomDrawer
+								.removeClass('-bd-show-categories -bd-show-official -bd-show-search')
+								.addClass('-bd-show-' + drawerSection)
+								.find('.btn.-selected').removeClass('-selected');
+
+							$el.addClass('-selected');
+						})
+						.on('mousedown', '.js-close-bottom-drawer', function(e){
+							e.preventDefault();
+
+							$btnOpenToolbox.removeClass('-selected');
+							$btnAddStory.removeClass('-selected');
+							$canvasSwitcher.removeClass('-blurred');
+
+							drawerAction('bottom', 'close');
+
+							// Wait for drawer to slide off page before reverting section visibility
+							setTimeout(function() {
+								$dashboardBottomDrawer.removeClass('-bd-show-categories -bd-show-official -bd-show-search');
+							}, 300);
+						});
+
+					$thumbList
+						.on('mousedown', '.thumb', function(e) {
+							e.preventDefault();
+							
+							$body.addClass('-story-meta');
+						});
+
+					$storyMeta
+						.on('mousedown', '.js-close-story-meta', function(e) {
+							e.preventDefault();
+							
+							$body.removeClass('-story-meta');
+						});
+
 					$canvases
-						.css({
-							'width': canvasWidth,
-							'height': canvasHeight + 'px'
+						.on('mousedown', '.js-add-story', function(e){
+							e.preventDefault();
+
+							drawerAction('bottom', 'open');
+							$canvasSwitcher.addClass('-blurred');
 						});
-				}
 
-				// Event handlers
-				$siteNav
-					.on('click', '.js-open-toolbox', function(e){
-						$(this).toggleClass('-selected');
-						$body.toggleClass('-top-drawer');
-					})
-					.on('click', '.js-open-gallery', function(e){
-						$(this).toggleClass('-selected');
-						$body.addClass('-gallery');
+					$galleryWrapper
+						.on('mousedown', '.js-gallery-back', function(e){
+							e.preventDefault();
+
+							switchWrapper('dashboard');
+						});
+
+					$window
+						.resize(function(){
+							stretchCanvas();
+						});
+
+					// Ensure canvases stretch to correct height
+					stretchCanvas();
+
+					// Initialize packery
+					$storyContainer
+						.packery({
+							itemSelector: '.story',
+							columnWidth: 170,
+							rowHeight: 170
+						});
+
+					var $itemEls = $stories.draggable({
+						cursor: 'move',
+						containment: 'body',
+						handle: '.js-cogs',
+						scroll: true,
+						scrollSensitivity: 100,
+						scrollSpeed: 25,
+						zIndex: 4
 					});
 
+					var dragging = false;
+					$storyCogs
+						.on('touchstart mousedown', function(e){
+							dragging = false;
+						})
+						.on('touchmove mousemove', function(e){
+							dragging = true;
+						});
 
-				$toolbox
-					.on('click', '.js-toolbox-change-canvas', function(e){
-						e.preventDefault();
+					if (isTouchDevice) {
+						$storyCogs
+							.on('touchend', function(e){
 
-						$canvasSwitcher.toggleClass('-switching');
-					});
+								var $el = $(this);
+								if (! dragging) {
+									$el.closest('.story__inner').toggleClass('-flip');
+								}
+							});
+					} else {
+						$storyCogs
+							.on('mouseup', function(e){
 
-				$bottomDrawer
-					.on('click', function(e){
-						$body.removeClass('-top-drawer');
-					})
-					.on('click', '.js-bottom-drawer-button .btn', function(e){
-						e.preventDefault();
-						$body.removeClass('-bottom-drawer-half');
-						$body.addClass('-bottom-drawer-full');
-						$bottomDrawer.find('.btn.-selected').removeClass('-selected');
+								var $el = $(this);
+								if (! dragging) {
+									$el.closest('.story__inner').toggleClass('-flip');
+								}
+							});
+					}
 
-						var $el = $(this);
-						var $drawerSection = $el.data('btn-type');
+					$storyContainer.packery('bindUIDraggableEvents', $itemEls);
 
-						$el.addClass('-selected');
-						$bottomDrawer.removeClass('-drawer-show-categories -drawer-show-official -drawer-show-search').addClass('-drawer-show-' + $drawerSection);
-					})
-					.on('click', '.js-close-bottom-drawer', function(e){
-						e.preventDefault();
-						$body.removeClass('-bottom-drawer-half -bottom-drawer-full');
-						$canvasSwitcher.removeClass('-blurred');
+					setTimeout(function(){
+						$storyCarousels.each(function(){
+							var $el = $(this),
+								$storyFooter = $el.closest('.story__content').find('.story__footer'),
+								$pageCounter = $storyFooter.find('.pg-of'),
+								$pager = $storyFooter.find('.carousel-pager');
 
-						// Wait for drawer to slide off page before reverting section visibility
-						setTimeout(function() {
-							$bottomDrawer.removeClass('-drawer-show-categories -drawer-show-official -drawer-show-search');
-						}, 300);
-					});
+							$pageCounter.find('.pg-of__y').text($el.children('li').size());
+	
+							$el
+								.caroufredsel({
+									prev: {
+										button: $pager.find('.carousel-pager__btn.-prev')
+									},
+									pagination: $pager.find('.carousel-pager__numbers'),
+									next: {
+										button: $pager.find('.carousel-pager__btn.-next')
+									},
+									swipe: {
+										onTouch: true,
+										onMouse: true
+									},
+									auto: false,
+									scroll: {
+										onBefore: function(){
+											$el.trigger('currentPosition', function(index){
+												$pageCounter.find('.pg-of__x').text((index+1));
+											});
+										}
+									}
+								});
+								//.swipe();
+						});
+					}, 3000);
 
-				$thumbList
-					.on('click', '.thumb', function(e) {
-						e.preventDefault();
-						
-						$body.addClass('-story-meta');
-					});
+					//loadCSS(svgCSS);
+			    }
 
-				$storyMeta
-					.on('click', '.js-close-story-meta', function(e) {
-						e.preventDefault();
-						
-						$body.removeClass('-story-meta');
-					});
+			    function setup() {
+			        setupDOM();
+			    }
 
-				$canvases
-					.on('mousedown', '.js-add-story', function(e){
-						e.preventDefault();
+			    return {
+			        init: function () {
+			            setup();
+			        }
+			    };
+			})();
+			hebe_dash.init();
 
-						$body.addClass('-bottom-drawer-half');
-						$canvasSwitcher.addClass('-blurred');
-					});
+			$document.bind('ready', hebe_dash.init);
 
-				$toolbox
-					.on('mousedown', '.js-add-story', function(e){
-						e.preventDefault();
-
-						$body.removeClass('-top-drawer').addClass('-bottom-drawer-half');
-						$canvasSwitcher.addClass('-blurred');
-					});
-
-				$galleryWrapper
-					.on('click', '.js-gallery-back', function(e){
-						e.preventDefault();
-
-						$body.removeClass('-gallery');
-					});
-
-				$window
-					.resize(function(){
-						stretchCanvas();
-					});
-
-				// Initialize packery
-				$storyContainer
-					.packery({
-						itemSelector: '.story',
-						columnWidth: 230,
-						rowHeight: 230
-					})
-					.find('.story').each(function(i, itemElem) {
-						var draggie = new Draggabilly(itemElem);
-						$storyContainer.packery('bindDraggabillyEvents', draggie);
-					});
-
-				// Ensure canvases stretch to correct height
-				stretchCanvas();
-				//loadCSS(svgCSS);
-			});
 		</script>
 	</body>
 </html>

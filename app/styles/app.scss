@@ -17,6 +17,7 @@
 /* -- Patterns -- */
 @import "patterns/custom_fonts";
 @import "patterns/headings";
+@import "patterns/typography";
 @import "patterns/navigation";
 @import "patterns/buttons";
 @import "patterns/tabs";
@@ -33,3 +34,7 @@
 @import "components/canvas";
 @import "components/story";
 @import "components/story-meta";
+
+// Stories 
+@import "components/stories/event";
+@import "components/stories/carousel";
