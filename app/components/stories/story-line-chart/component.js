@@ -7,6 +7,7 @@ export default Ember.Component.extend({
 
         var data = this.get('data');
         var $el = Ember.$(this.get('element'));
+
         var fullWidth = $el.innerWidth();
         var fullHeight = $el.innerHeight();
 
@@ -32,7 +33,7 @@ export default Ember.Component.extend({
             .tickSize(1);
 
         // Create our chart element - it needs to be larger than the size of our data domain by the widths / heights of our margins, to allow for the axes.
-        var chart = d3.select(".js-bar-chart")
+        var chart = d3.select(".js-line-chart")
             .attr("width", width + margin.left + margin.right)
             .attr("height", height + margin.bottom + margin.top)
             .append("g")
@@ -44,7 +45,6 @@ export default Ember.Component.extend({
             return d.x;
         }));
 
-        // Add axes
         chart.append("g")
             .attr("class", "x axis")
             .attr("height", 1)
@@ -72,20 +72,20 @@ export default Ember.Component.extend({
             .attr("transform", "rotate(-90)")
             .text(this.get('yLabel'));
 
-        chart.selectAll(".bar")
-            .data(data)
-            .enter().append("rect")
-            .attr("class", "bar")
-            .attr("x", function (d) {
+        var lineFunc = d3.svg.line()
+            .x(function(d) {
                 return x(d.x);
             })
-            .attr("y", function (d) {
+            .y(function(d) {
                 return y(d.y);
             })
-            .attr("height", function (d) {
-                return height - y(d.y) - 1;
-            })
-            .attr("width", x.rangeBand());
+            .interpolate('linear');
+
+        chart.append('svg:path')
+            .attr('d', lineFunc(data))
+            .attr('stroke', 'steelblue')
+            .attr('stroke-width', 2)
+            .attr('fill', 'none');
     },
     didInsertElement: function() {
         this.renderChart();
