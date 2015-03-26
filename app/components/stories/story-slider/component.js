@@ -6,12 +6,12 @@ export default Ember.Component.extend({
     loaded: false,
     loadedChanged: function() {
         if (this.loaded) {
-            this.renderCarousel();
+            //this.renderCarousel();
         }
     }.observes('loaded'),
     renderCarousel: function() {
 
-        var $el = Ember.$(this.get('element')).find('.js-story-carousel'),
+        /*var $el = Ember.$(this.get('element')).find('.js-story-carousel'),
             $storyFooter = $el.closest('.story__content').find('.story__footer'),
             $pageCounter = $storyFooter.find('.pg-of'),
             $pager = $storyFooter.find('.carousel-pager');
@@ -39,6 +39,6 @@ export default Ember.Component.extend({
                         });
                     }
                 }
-            });
+            });*/
     }
 });
