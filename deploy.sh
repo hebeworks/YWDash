@@ -42,6 +42,7 @@ if [[ -d node_modules ]]; then
   exitWithMessageOnError "node_modules removal failed"
 fi
 
+
 SCRIPT_DIR="${BASH_SOURCE[0]%\\*}"
 SCRIPT_DIR="${SCRIPT_DIR%/*}"
 ARTIFACTS=$SCRIPT_DIR/../artifacts
