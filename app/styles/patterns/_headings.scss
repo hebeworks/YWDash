@@ -153,6 +153,7 @@ h5,
 .-epsilon,
 %-epsilon {
     @include font-size($h6-size);
+    line-height: 1.2em;
 
     @include breakpoint(769px) {
         @include font-size($h5-size);

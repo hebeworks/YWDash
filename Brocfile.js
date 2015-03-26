@@ -37,6 +37,7 @@ app.import(app.bowerDirectory + '/jquery-touchswipe/jquery.touchSwipe.min.js');
 app.import(app.bowerDirectory + '/caroufredsel/jquery.carouFredSel-6.2.1-packed.js');
 app.import(app.bowerDirectory + '/loadcss/loadCSS.js');
 app.import(app.bowerDirectory + '/moment/moment.js');
+app.import(app.bowerDirectory + '/d3/d3.js');
 app.import('vendor/embedsvg/grunticon.loader.js');
 app.import('vendor/embedsvg/grunticon.inline.js');
 
