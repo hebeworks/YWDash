@@ -1,5 +1,6 @@
 .thumb-list {
     position: relative;
+    margin-bottom: 1em;
 
     &:after {
         content: '';
@@ -22,6 +23,10 @@
             border-color: $grey;
         }
     }
+}
+
+.thumb-list-heading {
+    margin-bottom: 10px;
 }
 
 .thumb-list__inner {
