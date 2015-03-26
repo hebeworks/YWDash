@@ -52,6 +52,7 @@
 }
 
 .btn-list {
+    overflow: hidden;
     padding: {
         top: 8px;
         bottom: 8px;
@@ -72,10 +73,13 @@
         width: 160px;
         height: 61px;
         font: {
-            size: em(20px);
+            size: em(16px);
         }
         &.-search {
             width: 206px;
+        }
+        + .btn {
+            margin-left: 15px;
         }
     }
 }

@@ -1,0 +1,11 @@
+.float--right {
+    float: right;
+}
+
+.float--left {
+    float: left;
+}
+
+.cf {
+    @include cf;
+}
