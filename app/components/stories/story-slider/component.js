@@ -6,27 +6,39 @@ export default Ember.Component.extend({
     loaded: false,
     loadedChanged: function() {
         if (this.loaded) {
-            this.renderCarousel();
+            //this.renderCarousel();
         }
     }.observes('loaded'),
     renderCarousel: function() {
-        var $el = Ember.$(this.get('element')).find('.js-story-carousel');
-        console.log($el);
-        var $pager = $el.next('.story__footer').find('.carousel-pager');
 
-        $el.caroufredsel({
-            prev: {
-                button: $pager.find('.carousel-pager__btn.-prev')
-            },
-            pagination: $pager.find('.carousel-pager__numbers'),
-            next: {
-                button: $pager.find('.carousel-pager__btn.-next')
-            },
-            swipe: {
-                onTouch: true,
-                onMouse: true
-            },
-            auto: false
-        });
+        /*var $el = Ember.$(this.get('element')).find('.js-story-carousel'),
+            $storyFooter = $el.closest('.story__content').find('.story__footer'),
+            $pageCounter = $storyFooter.find('.pg-of'),
+            $pager = $storyFooter.find('.carousel-pager');
+
+        $pageCounter.find('.pg-of__y').text($el.children('li').size());
+        
+        $el
+            .caroufredsel({
+                prev: {
+                    button: $pager.find('.carousel-pager__btn.-prev')
+                },
+                pagination: $pager.find('.carousel-pager__numbers'),
+                next: {
+                    button: $pager.find('.carousel-pager__btn.-next')
+                },
+                swipe: {
+                    onTouch: true,
+                    onMouse: true
+                },
+                auto: false,
+                scroll: {
+                    onBefore: function(){
+                        $el.trigger('currentPosition', function(index){
+                            $pageCounter.find('.pg-of__x').text((index+1));
+                        });
+                    }
+                }
+            });*/
     }
 });

@@ -7,10 +7,14 @@
 		color: #f7f7f7;
 	}
 	opacity: 1;
-	@include transform(translateZ(0));
+	/* @include transform(translateZ(0));
 	@include filter(blur(0) brightness(100%));
 	@include transition(filter .3s, opacity .3s);
-	transition: -webkit-filter .3s, opacity .3s;
+	transition: -webkit-filter .3s, opacity .3s; */
+
+	> .caroufredsel_wrapper {
+		width: 100% !important;
+	}
 
 	&.-blurred {
 		@include filter(blur(40px) brightness(79%));
@@ -19,7 +23,7 @@
 
 	&.-switching {
 		.canvas-switcher__list {
-			@include transform(scale(0.7) translateY(300px));
+			@include transform(scale(0.7) translateY(180px));
 		}
 		.canvas {
 			overflow-y: hidden;
@@ -44,6 +48,14 @@
 		position: relative;
 		@include transition(all .3s);
 		@include transform-origin(0 top);
+		background-color: #f7f7f7;
+		> li {
+			float: left;
+			padding: {
+				right: 30px;
+				left: 30px;
+			}
+		}
 	}
 		.canvas {
 			height: 100%;
@@ -69,3 +81,29 @@
 					}
 				} */
 			}
+
+.canvas-switcher-footer {
+	width: 100%;
+	height: 40px;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	text-align: center;
+	z-index: 2;
+	color: #d7d7d7;
+	opacity: 0;
+	@include transition(all .3s);
+
+	&.-switching {
+		opacity: 1;
+	}
+	
+	.pg-of {
+		float: left;
+		margin-left: 30px;
+	}
+	.carousel-pager {
+		@include middle(x);
+		height: 20px;
+	}
+}

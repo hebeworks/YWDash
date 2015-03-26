@@ -139,8 +139,8 @@
 			z-index: 1;
 			opacity: .2;
 			position: absolute;
-			top: 15px;
-			right: 15px;
+			top: 5px;
+			right: 10px;
 			&:hover {
 				opacity: 1;
 			}
@@ -156,6 +156,7 @@
 			border: {
 				radius: 10px;
 			}
+			overflow: hidden;
 			@include backface-visibility(hidden);
 			&.-front {
 				z-index: 2;
