@@ -20,3 +20,11 @@ testem.log
 *.proj
 *.suo
 .idea/watcherTasks.xml
+.idea/dictionaries
+.idea/encodings.xml
+.idea/hebe.iml
+.idea/misc.xml
+.idea/modules.xml
+.idea/scopes
+.idea/vcs.xml
+.idea/workspace.xml

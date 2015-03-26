@@ -15,6 +15,7 @@
 		{{content-for 'head-footer'}}
 	</head>
 	<body>
+
 		{{content-for 'body'}}
 
 		<script src="assets/vendor.js"></script>
@@ -200,14 +201,14 @@
 					$thumbList
 						.on('mousedown', '.thumb', function(e) {
 							e.preventDefault();
-							
+
 							$body.addClass('-story-meta');
 						});
 
 					$storyMeta
 						.on('mousedown', '.js-close-story-meta', function(e) {
 							e.preventDefault();
-							
+
 							$body.removeClass('-story-meta');
 						});
 
@@ -291,7 +292,7 @@
 								$pager = $storyFooter.find('.carousel-pager');
 
 							$pageCounter.find('.pg-of__y').text($el.children('li').size());
-	
+
 							$el
 								.caroufredsel({
 									prev: {
