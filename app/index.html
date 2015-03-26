@@ -67,7 +67,7 @@
 
                     // Generate pagination, which we'll manage ourselves for more control
                     var pagerNumbersArr = [];
-                    for (var i = 1; i <= slideCount; i++) {
+                    for (var i = 1; i <= canvas.carousel.slideCount; i++) {
                         var $link = $('<a href="javascript:;"><span></span></a>');
                         if (i == 1) $link.addClass('selected');
                         pagerNumbersArr.push($link);
@@ -115,6 +115,8 @@
                                     width: canvas.dimensions.width + 'px'
                                 });
                             });
+
+                        setupFooter();
                     }, 0);
                 };
 
