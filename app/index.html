@@ -343,22 +343,25 @@
                         });
 
                     // Initialize packery
-                    $storyContainer
-                        .packery({
-                            itemSelector: '.story',
-                            columnWidth: 170,
-                            rowHeight: 170
-                        });
+                    setTimeout(function(){
+                        $storyContainer
+                            .packery({
+                                itemSelector: '.story',
+                                columnWidth: 170,
+                                rowHeight: 170
+                            });
 
-                    var $itemEls = $stories.draggable({
-                        cursor: 'move',
-                        containment: 'body',
-                        handle: '.js-cogs',
-                        scroll: true,
-                        scrollSensitivity: 100,
-                        scrollSpeed: 25,
-                        zIndex: 4
-                    });
+                        var $itemEls = $stories.draggable({
+                            cursor: 'move',
+                            containment: 'body',
+                            handle: '.js-cogs',
+                            scroll: true,
+                            scrollSensitivity: 100,
+                            scrollSpeed: 25,
+                            zIndex: 4
+                        });
+                        $storyContainer.packery('bindUIDraggableEvents', $itemEls);
+                    }, 0);
 
                     var dragging = false;
                     $storyCogs
@@ -389,8 +392,6 @@
                             });
                     }
 
-                    $storyContainer.packery('bindUIDraggableEvents', $itemEls);
-
                     setTimeout(function(){
                         $stories.each(function(){
                             var $el = $(this).find('.js-story-carousel'),
@@ -402,7 +403,7 @@
 
                                 $pageCounter.find('.pg-of__y').text($el.children('li').size());
                                 
-                                /*$el.caroufredsel({
+                                $el.caroufredsel({
                                     prev: {
                                         button: $pager.find('.carousel-pager__btn.-prev')
                                     },
@@ -422,7 +423,7 @@
                                             });
                                         }
                                     }
-                                });*/
+                                });
                             }
                         });
                     }, 1000);
