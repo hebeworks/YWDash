@@ -76,6 +76,10 @@
                         drawers.$top.removeClass('-open');
                     },
 
+                    toggleTop: function() {
+                        drawers.$top.toggleClass('-open');
+                    },
+
                     openBottomHalf: function(drawer) {
                         drawers.$bottom.addClass('-open');
                         bottomDrawerScrollHack();
@@ -368,7 +372,7 @@
 
                             canvas.carousel.$switcher.removeClass('-blurred');
 
-                            Drawer.openTop();
+                            Drawer.toggleTop();
                             Drawer.closeBottom();
                         })
                         .on('mousedown', '.js-open-gallery', function(e){
