@@ -23,17 +23,80 @@
         {{content-for 'body-footer'}}
         
         <script>
-            // Cached jQuery objs
-            var $document = $(document),
+            var isTouchDevice,
+
+                $document = $(document),
                 $window = $(window),
                 $body,
                 $header,
-                canvas = {};
+                $siteNav,
+                $toolbox,
+                $btnOpenToolbox,
+                $btnAddStory,
+                $storyMeta,
+                $thumbList,
+
+                wrappers = {},
+                drawers = {},
+                canvas = {},
+                stories = {};
 
             canvas.dimensions = {}; // width & height
             canvas.carousel = {};
 
-            var canvas_switcher = (function(){
+            var Wrapper = (function(){
+
+                return {
+                    switchToDashboard: function() {
+
+                        wrappers.$dashboard.addClass('-open');
+                        wrappers.$gallery.removeClass('-open');
+                    },
+
+                    switchToGallery: function() {
+
+                        wrappers.$dashboard.removeClass('-open');
+                        wrappers.$gallery.addClass('-open');
+                    }
+                }
+            })();
+
+            var Drawer = (function(){
+
+                var bottomDrawerScrollHack = function() {
+                    // Hack to reapply overflow otherwise vertical scroll doesn't work on drawer
+                    drawers.$bottom.removeClass('-overflow-y-scroll');
+                    setTimeout(function(){
+                        drawers.$bottom.addClass('-overflow-y-scroll');
+                    }, 500);
+                };
+
+                return {
+                    openTop: function() {
+                        drawers.$top.addClass('-open');
+                    },
+
+                    closeTop: function() {
+                        drawers.$top.removeClass('-open');
+                    },
+
+                    openBottomHalf: function(drawer) {
+                        drawers.$bottom.addClass('-open');
+                        bottomDrawerScrollHack();
+                    },
+
+                    openBottomFull: function() {
+                        drawers.$bottom.addClass('-open -full');
+                        bottomDrawerScrollHack();
+                    },
+
+                    closeBottom: function() {
+                        drawers.$bottom.removeClass('-open -full');
+                    }
+                };
+            })();
+
+            var Canvas = (function(){
 
                 var open = function() {
                     canvas.$switcher.addClass('-switching');
@@ -131,7 +194,7 @@
                         .on('mousedown', '.js-add-story', function(e){
                             e.preventDefault();
 
-                            //drawerAction('bottom', 'open');
+                            Drawer.openBottomHalf();
                             canvas.carousel.$switcher.addClass('-blurred');
                         });
                 };
@@ -179,97 +242,159 @@
                 };
             })();
 
-            var hebe_dash = (function() {
+            var Story = (function(){
 
-                function setupDOM() {
+                
+            })();
 
-                    /*$.get('http://thecitytalking.com/content/?format=json').then(function(data) {
-                        console.log(data);
-                    });*/
+            var HebeDash = (function() {
 
-                    // Cached jQuery DOM objs
-                    $header = $('.js-site-header');
+                var setupDOM = function() {
+
+                    isTouchDevice = 'ontouchstart' in document.documentElement;
+
+                    // When they become available, assign to global scope
                     $body = $('body');
 
-                    var $siteNav = $('.js-site-nav'),
+                    // Header
+                    $header = $('.js-site-header');
+                    $btnOpenToolbox = $('.js-open-toolbox');
+                    $siteNav = $('.js-site-nav');
 
-                        $dashboardWrapper = $('.js-dashboard-wrapper'),
-                        $galleryWrapper = $('.js-gallery-wrapper');
+                    // 'Screens'
+                    wrappers.$dashboard = $('.js-dashboard-wrapper');
+                    wrappers.$gallery = $('.js-gallery-wrapper');
 
-                        $storyContainer = $('.js-stories'),
-                        $stories = $('.js-story'),
-                        $storyCogs = $('.js-cogs'),
-                        $storyCarousels = $('.js-story-carousel'),
+                    // Drawers
+                    drawers.$top = $('.js-top-drawer');
+                    drawers.$bottom = $('.js-dashboard-bottom-drawer');
 
-                        $dashboardBottomDrawer = $('.js-dashboard-bottom-drawer'),
-                        $toolbox = $('.js-toolbox'),
-                        $btnOpenToolbox = $('.js-open-toolbox'),
-                        $btnAddStory = $('.js-add-story'),
-                        $storyMeta = $('.js-story-meta'),
-                        $thumbList = $('.js-thumb-list');
+                    // Stories
+                    stories.$container = $('.js-stories');
+                    stories.$allStories = $('.js-story');
+                    stories.$allStoryCogs = $('.js-cogs');
+                    //stories.$storyCarousels = $('.js-story-carousel');
 
-                    var isTouchDevice = 'ontouchstart' in document.documentElement;
+                    // Toolbox
+                    $toolbox = $('.js-toolbox');
+                    $btnAddStory = $('.js-add-story');
 
-                    // Functions
-                    function drawerAction(drawer, action, extent) {
+                    // Meta slide
+                    $storyMeta = $('.js-story-meta');
 
-                        if (typeof drawer !== 'undefined') {
+                    // Story thumbnails
+                    $thumbList = $('.js-thumb-list');
 
-                            var $topDrawer = $('.js-top-drawer');
-                            var $bottomDrawer = $('.js-dashboard-bottom-drawer');
 
-                            if (drawer == 'top') {
-                                $topDrawer.toggleClass('-open');
-                            }
-                            else if (drawer == 'bottom' && typeof action !== 'undefined') {
+                    // Initialize packery
+                    setTimeout(function(){
+                        stories.$container
+                            .packery({
+                                itemSelector: '.story',
+                                columnWidth: 170,
+                                rowHeight: 170
+                            });
 
-                                if (action == 'open') {
-                                    $bottomDrawer.addClass('-open');
-                                    if (typeof extent !== 'undefined' && extent == 'full') {
-                                        $bottomDrawer.addClass('-full');
+                        var $itemEls = stories.$allStories.draggable({
+                            cursor: 'move',
+                            containment: 'body',
+                            handle: '.js-cogs',
+                            scroll: true,
+                            scrollSensitivity: 100,
+                            scrollSpeed: 25,
+                            zIndex: 4
+                        });
+                        stories.$container.packery('bindUIDraggableEvents', $itemEls);
+                    }, 0);
+
+                    var dragging = false;
+                    stories.$allStoryCogs
+                        .on('touchstart mousedown', function(e){
+                            dragging = false;
+                        })
+                        .on('touchmove mousemove', function(e){
+                            dragging = true;
+                        });
+
+                    if (isTouchDevice) {
+                        stories.$allStoryCogs
+                            .on('touchend', function(e){
+
+                                var $el = $(this);
+                                if (! dragging) {
+                                    $el.closest('.story__inner').toggleClass('-flip');
+                                }
+                            });
+                    } else {
+                        stories.$allStoryCogs
+                            .on('mouseup', function(e){
+
+                                var $el = $(this);
+                                if (! dragging) {
+                                    $el.closest('.story__inner').toggleClass('-flip');
+                                }
+                            });
+                    }
+
+                    setTimeout(function(){
+                        stories.$allStories.each(function(){
+
+                            var thisStory = {
+                                $story: $(this),
+                                carousel: {}
+                            };
+                            thisStory.carousel.$list = thisStory.$story.find('.js-story-carousel');
+                            thisStory.carousel.$slides = thisStory.carousel.$list.children('li');
+                            thisStory.$footer = thisStory.$carousel.closest('.story__content').find('.story__footer');
+                            thisStory.$pageCounter = thisStory.$footer.find('.pg-of');
+                            thisStory.$pager = thisStory.$footer.find('.carousel-pager');
+
+                            if (thisStory.carousel.$list.length > 0) {
+
+                                thisStory.$pageCounter.find('.pg-of__y').text(thisStory.carousel.$slides.size());
+                                
+                                thisStory.carousel.$list.caroufredsel({
+                                    prev: {
+                                        button: thisStory.$pager.find('.carousel-pager__btn.-prev')
+                                    },
+                                    pagination: thisStory.$pager.find('.carousel-pager__numbers'),
+                                    next: {
+                                        button: thisStory.$pager.find('.carousel-pager__btn.-next')
+                                    },
+                                    swipe: {
+                                        onTouch: true,
+                                        onMouse: true
+                                    },
+                                    auto: false,
+                                    scroll: {
+                                        onBefore: function(){
+                                            thisStory.carousel.$list.trigger('currentPosition', function(index){
+                                                thisStory.$pageCounter.find('.pg-of__x').text((index+1));
+                                            });
+                                        }
                                     }
-
-                                    // Hack to reapply overflow otherwise vertical scroll doesn't work on drawer
-                                    $bottomDrawer.removeClass('-overflow-y-scroll');
-                                    setTimeout(function(){
-                                        $bottomDrawer.addClass('-overflow-y-scroll');
-                                    }, 500);
-                                }
-                                else if (action == 'close') {
-                                    $bottomDrawer.removeClass('-open -full');
-                                }
+                                });
                             }
-                        }
-                    }
+                        });
+                    }, 1000);
 
-                    function switchWrapper(wrapper) {
+                    //loadCSS(svgCSS);
+                };
 
-                        if (typeof wrapper !== 'undefined') {
+                var setupEvents = function() {
 
-                            if (wrapper == 'dashboard') {
-                                $dashboardWrapper.addClass('-open');
-                                $galleryWrapper.removeClass('-open');
-                            }
-                            else if (wrapper == 'gallery') {
-                                $dashboardWrapper.removeClass('-open');
-                                $galleryWrapper.addClass('-open');
-                            }
-                        }
-                    }
-
-                    // Event handlers
                     $siteNav
                         .on('mousedown', '.js-open-toolbox', function(e){
                             $(this).toggleClass('-selected');
 
                             canvas.carousel.$switcher.removeClass('-blurred');
 
-                            drawerAction('top');
-                            drawerAction('bottom', 'close');
+                            Drawer.openTop();
+                            Drawer.closeBottom();
                         })
                         .on('mousedown', '.js-open-gallery', function(e){
 
-                            switchWrapper('gallery');
+                            Wrapper.switchToGallery();
                         });
 
 
@@ -310,11 +435,11 @@
                             $btnOpenToolbox.removeClass('-selected');
                             canvas.carousel.$switcher.addClass('-blurred');
 
-                            drawerAction('top');
-                            drawerAction('bottom', 'open');
+                            Drawer.closeTop();
+                            Drawer.openBottomHalf();
                         });
 
-                    $dashboardBottomDrawer
+                    drawers.$bottom
                         .on('mousedown', function(e){
                             $body.removeClass('-top-drawer');
                         })
@@ -324,8 +449,8 @@
                             var $el = $(this);
                             var drawerSection = $el.data('btn-type');
 
-                            drawerAction('bottom', 'open', 'full');
-                            $dashboardBottomDrawer
+                            Drawer.openBottomFull();
+                            drawers.$bottom
                                 .removeClass('-bd-show-categories -bd-show-official -bd-show-search')
                                 .addClass('-bd-show-' + drawerSection)
                                 .find('.btn.-selected').removeClass('-selected');
@@ -339,11 +464,11 @@
                             $btnAddStory.removeClass('-selected');
                             canvas.carousel.$switcher.removeClass('-blurred');
 
-                            drawerAction('bottom', 'close');
+                            Drawer.closeBottom();
 
                             // Wait for drawer to slide off page before reverting section visibility
                             setTimeout(function() {
-                                $dashboardBottomDrawer.removeClass('-bd-show-categories -bd-show-official -bd-show-search');
+                                drawers.$bottom.removeClass('-bd-show-categories -bd-show-official -bd-show-search');
                             }, 300);
                         });
 
@@ -361,109 +486,22 @@
                             $body.removeClass('-story-meta');
                         });
 
-                    $galleryWrapper
+                    wrappers.$gallery
                         .on('mousedown', '.js-gallery-back', function(e){
                             e.preventDefault();
 
-                            switchWrapper('dashboard');
+                            Wrapper.switchToDashboard();
                         });
 
-                    // Initialize packery
-                    setTimeout(function(){
-                        $storyContainer
-                            .packery({
-                                itemSelector: '.story',
-                                columnWidth: 170,
-                                rowHeight: 170
-                            });
-
-                        var $itemEls = $stories.draggable({
-                            cursor: 'move',
-                            containment: 'body',
-                            handle: '.js-cogs',
-                            scroll: true,
-                            scrollSensitivity: 100,
-                            scrollSpeed: 25,
-                            zIndex: 4
-                        });
-                        $storyContainer.packery('bindUIDraggableEvents', $itemEls);
-                    }, 0);
-
-                    var dragging = false;
-                    $storyCogs
-                        .on('touchstart mousedown', function(e){
-                            dragging = false;
-                        })
-                        .on('touchmove mousemove', function(e){
-                            dragging = true;
-                        });
-
-                    if (isTouchDevice) {
-                        $storyCogs
-                            .on('touchend', function(e){
-
-                                var $el = $(this);
-                                if (! dragging) {
-                                    $el.closest('.story__inner').toggleClass('-flip');
-                                }
-                            });
-                    } else {
-                        $storyCogs
-                            .on('mouseup', function(e){
-
-                                var $el = $(this);
-                                if (! dragging) {
-                                    $el.closest('.story__inner').toggleClass('-flip');
-                                }
-                            });
-                    }
-
-                    setTimeout(function(){
-                        $stories.each(function(){
-                            var $el = $(this).find('.js-story-carousel'),
-                                $storyFooter = $el.closest('.story__content').find('.story__footer'),
-                                $pageCounter = $storyFooter.find('.pg-of'),
-                                $pager = $storyFooter.find('.carousel-pager');
-
-                            if ($el.length > 0) {
-
-                                $pageCounter.find('.pg-of__y').text($el.children('li').size());
-                                
-                                $el.caroufredsel({
-                                    prev: {
-                                        button: $pager.find('.carousel-pager__btn.-prev')
-                                    },
-                                    pagination: $pager.find('.carousel-pager__numbers'),
-                                    next: {
-                                        button: $pager.find('.carousel-pager__btn.-next')
-                                    },
-                                    swipe: {
-                                        onTouch: true,
-                                        onMouse: true
-                                    },
-                                    auto: false,
-                                    scroll: {
-                                        onBefore: function(){
-                                            $el.trigger('currentPosition', function(index){
-                                                $pageCounter.find('.pg-of__x').text((index+1));
-                                            });
-                                        }
-                                    }
-                                });
-                            }
-                        });
-                    }, 1000);
-                    
                     $window
                         .resize(function(){
                             carousel_switcher.stretch();
                         });
-
-                    //loadCSS(svgCSS);
-                }
+                };
 
                 function setup() {
                     setupDOM();
+                    setupEvents();
                 }
 
                 return {
@@ -472,11 +510,10 @@
                     }
                 };
             })();
-            hebe_dash.init();
-            canvas_switcher.init();
+            HebeDash.init();
+            Canvas.init();
 
-            $document.bind('ready', hebe_dash.init);
-
+            $document.bind('ready', HebeDash.init);
         </script>
     </body>
 </html>
