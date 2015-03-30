@@ -24,18 +24,21 @@
 		background-color: #dfdfe4;
 		.canvas-switcher__list {
 			> li {
-				&.-before {
-					@include transform(scale(0.7) translateX(30%));
-				}
-				&.-after {
-					@include transform(scale(0.7) translateX(-30%));
-				}
 				&.-selected {
-					@include transform(scale(0.8));
-					.canvas__overlay {
-						background-color: transparent;
-						box-shadow: none;
+					.canvas-heading {
+						top: 2%;
+						left: 10%;
 					}
+					.canvas {
+						@include transform(scale(0.8) translateY(-50px));
+						.canvas__overlay {
+							background-color: transparent;
+							box-shadow: none;
+						}
+					}
+				}
+				.canvas-heading {
+					top: 7%;
 				}
 			}
 		}
@@ -64,12 +67,21 @@
 		top: 0;
 		left: 0;
 		> li {
-			//@include transform-origin(0 top);
-			@include transition(all .3s);
 			float: left;
+			position: relative;
 			z-index: 1;
 			&.-selected {
 				z-index: 2;
+			}
+			.canvas-heading {
+				width: 100%;
+				position: absolute;
+				top: -100px;
+				left: 15%;
+				@include transition(all .8s);
+			}
+			.canvas {
+				@include transition(all .3s);
 			}
 		}
 	}

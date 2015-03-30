@@ -136,33 +136,68 @@
 
                 var setupCarousel = function(selectedIndex){
 
+                    canvas.carousel.$overlays.show();
+
                     if (typeof selectedIndex === 'undefined') {
                         selectedIndex = 1;
                     }
 
                     canvas.carousel.$listItems.each(function(index){
 
+                        // Deal with <li>s
                         var $el = $(this);
+                        var $canvasHeading = $el.find('.js-canvas-heading');
+                        var $canvas = $el.find('.js-canvas');
 
-                        var percent = 34;
+                        var percent = 18;
                         var diff = selectedIndex - index;
                         percent = Math.abs(percent * diff);
 
                         if (index < selectedIndex) {
+                            /*$canvasHeading.css({
+                                'transform': 'translateX(' + (percent - (7 * diff)) + '%)'
+                            });*/
                             $el.css({
-                                'transform': 'scale(0.7) translateX(' + (percent - (7 * diff)) + '%)'
+                                'transform': 'translateX(' + (percent + (3 * diff)) + '%)'
+                            });
+                            $canvas.css({
+                                'transform': 'scale(0.7) translateY(-50px)'
                             });
                         }
                         if (index == selectedIndex) {
-                            $el.css({
-                                'transform': 'scale(0.8)'
-                            });
+                            $el.addClass('-selected');
                         }
                         if (index > selectedIndex) {
+                            /*$canvasHeading.css({
+                                'transform': 'translateX(-' + (percent + (7 * diff)) + '%)'
+                            });*/
                             $el.css({
-                                'transform': 'scale(0.7) translateX(-' + (percent + (7 * diff)) + '%)'
+                                'transform': 'translateX(-' + (percent - (3 * diff)) + '%)'
+                            });
+                            $canvas.css({
+                                'transform': 'scale(0.7) translateY(-50px)'
                             });
                         }
+                    });
+
+                    // Deal with <ul>
+                    canvas.carousel.$list
+                        .css({
+                            'transform': 'translateX(-' + ((((selectedIndex + 1) * $window.width()) * 0.7) - (0.1 * $window.width())) + 'px)'
+                        });
+                };
+
+                var resetCarousel = function() {
+
+                    canvas.carousel.$overlays.hide();
+
+                    canvas.carousel.$listItems.each(function(index){
+
+                        var $el = $(this);
+                        var $canvasHeading = $el.find('.js-canvas-heading');
+                        var $canvas = $el.find('.js-canvas');
+
+                        $canvas.removeAttr('style');
                     });
                 };
 
@@ -262,6 +297,10 @@
 
                     setupCarousel: function() {
                         setupCarousel(2);
+                    },
+
+                    resetCarousel: function() {
+                        resetCarousel();
                     }
                 };
             })();
@@ -412,11 +451,14 @@
                             var $el = $(this);
                             $el.toggleClass('-selected');
 
-                            Canvas.setupCarousel();
+                            if ($el.hasClass('-selected')) {
+                                Canvas.setupCarousel();
+                            } else {
+                                Canvas.resetCarousel();
+                            }
                             
                             canvas.carousel.$footer.toggleClass('-switching');
                             canvas.carousel.$switcher.toggleClass('-switching');
-                            canvas.carousel.$overlays.show();
 
                             canvas.carousel.$list
                                 .draggable({
