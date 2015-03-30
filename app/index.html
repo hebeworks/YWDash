@@ -107,12 +107,21 @@
                 };
 
                 var stretch = function() {
+
+                    canvas.dimensions.width = $window.width();
+                    canvas.dimensions.height = $window.height() - header.$header.height();
+
                     canvas.carousel.$switcher
                         .css({
                             height: canvas.dimensions.height + 'px'
                         });
 
                     canvas.carousel.$canvases
+                        .css({
+                            'width': canvas.dimensions.width + 'px',
+                            'height': canvas.dimensions.height + 'px'
+                        })
+                        .parent()
                         .css({
                             'width': canvas.dimensions.width + 'px',
                             'height': canvas.dimensions.height + 'px'
@@ -162,29 +171,6 @@
                                 });
                             });
 
-                        canvas.carousel.$list
-                            .caroufredsel({
-                                circular: false,
-                                infinite: false,
-                                swipe: {
-                                    onTouch: true,
-                                    onMouse: true
-                                },
-                                auto: false,
-                                scroll: {
-                                    onBefore: function(){
-                                        canvas.carousel.$list
-                                            .trigger('currentPosition', function(index){
-                                                canvas.carousel.$pageXofY.find('.pg-of__x').text((index+1));
-                                            });
-                                    }
-                                },
-                                onCreate: function(){
-                                    // canvas.carousel.$switcher.toggleClass('-switching');
-                                    // canvas.carousel.$footer.toggleClass('-switching');
-                                }
-                            });
-
                         setupFooter();
                     }, 0);
                 };
@@ -212,6 +198,7 @@
                                 $switcher:     $('.js-canvas-switcher'),
                                 $list:         $('.js-canvas-switcher-list'),
                                 $footer:       $('.js-canvas-switcher-footer'),
+                                $overlays:     $('.js-canvas-overlay'),
                                 $canvases:     $('.js-canvas')
                             });
 
@@ -224,8 +211,6 @@
                             $.extend(canvas.carousel, {
                                 $pagerNumbers: canvas.carousel.$pager.find('.carousel-pager__numbers')
                             });
-
-                            console.log(canvas);
 
                             // Ensure the canvas fits the screen
                             stretch();
@@ -389,29 +374,27 @@
 
                             var $el = $(this);
                             $el.toggleClass('-selected');
+                            
+                            canvas.carousel.$footer.toggleClass('-switching');
+                            canvas.carousel.$switcher.toggleClass('-switching');
+                            canvas.carousel.$list.children('li:first').addClass('-selected');
+                            canvas.carousel.$overlays.show();
 
                             canvas.carousel.$list
-                                .caroufredsel({
-                                    circular: false,
-                                    infinite: false,
-                                    swipe: {
-                                        onTouch: true,
-                                        onMouse: true
-                                    },
-                                    auto: false,
-                                    scroll: {
-                                        onBefore: function(){
-                                            canvas.carousel.$list
-                                                .trigger('currentPosition', function(index){
-                                                    canvas.carousel.$pageXofY.find('.pg-of__x').text((index+1));
-                                                });
-                                        }
-                                    },
-                                    onCreate: function(){
-                                        canvas.carousel.$switcher.toggleClass('-switching');
-                                        canvas.carousel.$footer.toggleClass('-switching');
-                                    }
+                                .draggable({
+                                    cursor: 'move',
+                                    axis: 'x',
+                                    scroll: true,
+                                    //scrollSensitivity: 1,
+                                    scrollSpeed: 10
                                 });
+
+                            // canvas.carousel.$list
+                            //     .trigger('currentPosition', function(index){
+                            //         canvas.carousel.$pageXofY.find('.pg-of__x').text((index+1));
+                            //     });
+                            
+                            Drawer.closeTop();
                         })
                         .on('mousedown', '.js-add-story', function(e){
                             e.preventDefault();
@@ -510,7 +493,7 @@
 
                     $window
                         .resize(function(){
-                            Carousel.stretch();
+                            Canvas.stretch();
                         });
                 };
 

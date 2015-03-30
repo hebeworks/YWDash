@@ -3,11 +3,10 @@
 	height: 100%;
 	z-index: 1;
 	position: relative;
-	background: {
-		color: #f7f7f7;
-	}
+	background-color: #f7f7f7;
 	opacity: 1;
 	@include transform(translateZ(0));
+	@include transition(all .3s);
 	/*@include filter(blur(0) brightness(100%));
 	@include transition(filter .3s, opacity .3s);
 	transition: -webkit-filter .3s, opacity .3s; */
@@ -22,20 +21,34 @@
 	}
 
 	&.-switching {
+		background-color: #dfdfe4;
 		.canvas-switcher__list {
-			@include transform(scale(0.7) translateY(180px));
+			> li {
+				@include transform(scale(0.7));// translateY(100px));
+				//margin-right: 150px;
+				&:nth-child(1) {
+					&.-selected {
+						//@include transform(scale(0.8) translateY(100px));
+						.canvas__overlay {
+							background-color: transparent;
+							box-shadow: none;
+						}
+					}
+				}
+			}
 		}
 		.canvas {
 			overflow-y: hidden;
 			border: {
-				radius: 5px;
+				radius: 20px;
 			}
 			background: {
 				color: #f1f1f1;
 			}
-			-webkit-box-shadow: 0px 4px 15px 1px rgba(122,122,122,1);
-			-moz-box-shadow: 0px 4px 15px 1px rgba(122,122,122,1);
-			box-shadow: 0px 4px 15px 1px rgba(122,122,122,1);
+			box-shadow: 2px 2px 14px 0px rgba(0,0,0,0.20);
+		}
+		.canvas__inner {
+			overflow-y: hidden;
 		}
 	}
 }
@@ -46,11 +59,16 @@
 		height: 100%;
 		z-index: 1;
 		position: relative;
-		//@include transition(all .3s);
-		@include transform-origin(0 top);
-		background-color: #f7f7f7;
+		top: 0;
+		left: 0;
 		> li {
+			@include transform-origin(0 top);
+			@include transition(all .3s);
 			float: left;
+			z-index: 1;
+			&.-selected {
+				z-index: 2;
+			}
 		}
 	}
 		.canvas {
@@ -58,11 +76,31 @@
 			z-index: 2;
 			float: left;
 			list-style: none;
+			position: relative;
 			padding: {
 				top: 0px;
 				bottom: 40px;
 			}
+			&:hover {
+				box-shadow: 2px 2px 14px 0px #7ED321;
+			}
 		}
+			.canvas__overlay {
+				width: 100%;
+				height: 100%;
+				display: none;
+				position: absolute;
+				top: 0;
+				left: 0;
+				z-index: 4;
+				border: {
+					radius: 20px;
+				}
+				background-color: rgba(255, 255, 255, .8);
+				&:hover {
+					background-color: transparent;
+				}
+			}
 			.canvas__inner {
 				@include cf;
 				@include centered;
