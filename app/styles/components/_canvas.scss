@@ -30,7 +30,6 @@
 						left: 10%;
 					}
 					.canvas {
-						@include transform(scale(0.8) translateY(-50px));
 						.canvas__overlay {
 							background-color: transparent;
 							box-shadow: none;
@@ -39,6 +38,7 @@
 				}
 				.canvas-heading {
 					top: 7%;
+					opacity: 1;
 				}
 			}
 		}
@@ -51,6 +51,9 @@
 				color: #f1f1f1;
 			}
 			box-shadow: 2px 2px 14px 0px rgba(0,0,0,0.20);
+			&:hover {
+				box-shadow: 2px 2px 14px 0px #7ED321;
+			}
 		}
 		.canvas__inner {
 			overflow-y: hidden;
@@ -76,9 +79,10 @@
 			.canvas-heading {
 				width: 100%;
 				position: absolute;
-				top: -100px;
+				top: -50px;
 				left: 15%;
-				@include transition(all .8s);
+				opacity: 0;
+				@include transition(top .8s, opacity 2s);
 			}
 			.canvas {
 				@include transition(all .3s);
@@ -95,9 +99,7 @@
 				top: 0px;
 				bottom: 40px;
 			}
-			&:hover {
-				box-shadow: 2px 2px 14px 0px #7ED321;
-			}
+			background-color: #f7f7f7;
 		}
 			.canvas__overlay {
 				width: 100%;
