@@ -134,6 +134,38 @@
                         .style('height', canvas.dimensions.height + 'px', 'important');
                 };
 
+                var setupCarousel = function(selectedIndex){
+
+                    if (typeof selectedIndex === 'undefined') {
+                        selectedIndex = 1;
+                    }
+
+                    canvas.carousel.$listItems.each(function(index){
+
+                        var $el = $(this);
+
+                        var percent = 34;
+                        var diff = selectedIndex - index;
+                        percent = Math.abs(percent * diff);
+
+                        if (index < selectedIndex) {
+                            $el.css({
+                                'transform': 'scale(0.7) translateX(' + (percent - (7 * diff)) + '%)'
+                            });
+                        }
+                        if (index == selectedIndex) {
+                            $el.css({
+                                'transform': 'scale(0.8)'
+                            });
+                        }
+                        if (index > selectedIndex) {
+                            $el.css({
+                                'transform': 'scale(0.7) translateX(-' + (percent + (7 * diff)) + '%)'
+                            });
+                        }
+                    });
+                };
+
                 var setupFooter = function(){
                     canvas.carousel.$pageXofY.find('.pg-of__y').text(canvas.carousel.slideCount);
 
@@ -204,6 +236,7 @@
 
                             // Now hooks are available, assign child hooks to global canvas carousel object
                             $.extend(canvas.carousel, {
+                                $listItems:    canvas.carousel.$list.children('li'),
                                 $pageXofY:     canvas.carousel.$footer.find('.pg-of'),
                                 $pager:        canvas.carousel.$footer.find('.carousel-pager'),
                                 slideCount:    canvas.carousel.$list.children('li').size()
@@ -225,6 +258,10 @@
 
                     stretch: function() {
                         stretch();
+                    },
+
+                    setupCarousel: function() {
+                        setupCarousel(2);
                     }
                 };
             })();
@@ -374,10 +411,11 @@
 
                             var $el = $(this);
                             $el.toggleClass('-selected');
+
+                            Canvas.setupCarousel();
                             
                             canvas.carousel.$footer.toggleClass('-switching');
                             canvas.carousel.$switcher.toggleClass('-switching');
-                            canvas.carousel.$list.children('li:first').addClass('-selected');
                             canvas.carousel.$overlays.show();
 
                             canvas.carousel.$list

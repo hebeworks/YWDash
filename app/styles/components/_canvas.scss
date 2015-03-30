@@ -24,15 +24,17 @@
 		background-color: #dfdfe4;
 		.canvas-switcher__list {
 			> li {
-				@include transform(scale(0.7));// translateY(100px));
-				//margin-right: 150px;
-				&:nth-child(1) {
-					&.-selected {
-						//@include transform(scale(0.8) translateY(100px));
-						.canvas__overlay {
-							background-color: transparent;
-							box-shadow: none;
-						}
+				&.-before {
+					@include transform(scale(0.7) translateX(30%));
+				}
+				&.-after {
+					@include transform(scale(0.7) translateX(-30%));
+				}
+				&.-selected {
+					@include transform(scale(0.8));
+					.canvas__overlay {
+						background-color: transparent;
+						box-shadow: none;
 					}
 				}
 			}
@@ -62,7 +64,7 @@
 		top: 0;
 		left: 0;
 		> li {
-			@include transform-origin(0 top);
+			//@include transform-origin(0 top);
 			@include transition(all .3s);
 			float: left;
 			z-index: 1;
