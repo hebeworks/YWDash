@@ -24,6 +24,7 @@
         
         <script>
             var isTouchDevice,
+                isDraggingCanvas = false,
                 currentSlideIndex = 0,
                 isisDraggingStoryStory = false,
 
@@ -181,14 +182,19 @@
                     // Deal with <ul>
                     var $currentLi = canvas.carousel.$listItems.eq(currentSlideIndex);
 
-                    var existingUlPosition = canvas.carousel.$list.css('transform').split(/[()]/)[1].split(',')[4];
+                    var existingUlPosition = parseInt(canvas.carousel.$list.css('transform').split(/[()]/)[1].split(',')[4], 10);
                     
-                    var newTranslateX = parseInt(existingUlPosition, 10) - $currentLi.offset().left;
+                    var newTranslateX = existingUlPosition - $currentLi.offset().left;
 
                     canvas.carousel.$list.css({
                         'transition': 'all .3s',
                         'transform': 'translateX(' + newTranslateX + 'px)'
                     });
+                    setTimeout(function(){
+                        canvas.carousel.$list.css({
+                            'transition': 'none'
+                        });
+                    }, 300);
                 };
 
                 var resetCarousel = function() {
@@ -260,44 +266,58 @@
                         });
 
                     canvas.carousel.$listItems
-                        .on('click', '.js-canvas-overlay', function(e){
-                            var $el = $(this);
-                            var $canvas = $el.parent('.js-canvas');
-                            var $li = $el.closest('li');
-                            var $ul = $li.closest('ul');
+                        .on('mousedown', '.js-canvas-overlay', function(e){
 
-                            currentSlideIndex = canvas.carousel.$listItems.index($li);
-
-                            var existingUlPosition = $ul.css('transform').split(/[()]/)[1].split(',')[4];
-                            
-                            var newTranslateX = parseInt(existingUlPosition, 10) - $li.offset().left;
-                            $ul.css({
-                                'transition': 'all .3s',
-                                'transform': 'translateX(' + newTranslateX + 'px)'
+                            // Drag detection
+                            $(window).mousemove(function() {
+                                isDraggingCanvas = true;
+                                $(window).unbind("mousemove");
                             });
-                            canvas.carousel.$canvases
-                                .css({
-                                    'transform': 'scale(0.7) translateY(0)'
-                                });
-                            setTimeout(function(){
-                                $canvas.css({
-                                    'transform': 'scale(0.8) translateY(-50px)'
-                                });
-                            }, 0);
-                            setTimeout(function(){
+                        })
+                        .on('mouseup', '.js-canvas-overlay', function(e){
+
+                            // Drag detection
+                            $(window).unbind("mousemove");
+                            if (! isDraggingCanvas) { //was clicking
+                                var $el = $(this);
+                                var $canvas = $el.parent('.js-canvas');
+                                var $li = $el.closest('li');
+                                var $ul = $li.closest('ul');
+
+                                currentSlideIndex = canvas.carousel.$listItems.index($li);
+
+                                var existingUlPosition = $ul.css('transform').split(/[()]/)[1].split(',')[4];
+                                
+                                var newTranslateX = parseInt(existingUlPosition, 10) - $li.offset().left;
                                 $ul.css({
-                                    'transition': 'none'
+                                    'transition': 'all .3s',
+                                    'transform': 'translateX(' + newTranslateX + 'px)'
                                 });
-                                header.$btnOpenToolbox.removeClass('-selected');
-                                toolbox.$btnChangeCanvas.removeClass('-selected');
-                                canvas.carousel.$overlays.hide();
-                                canvas.carousel.$switcher.removeClass('-switching');
-                                canvas.carousel.$listItems.removeClass('-selected');
-                                $li.addClass('-selected');
-                                $canvas.css({
-                                    'transform': 'scale(1) translateY(0)'
-                                });
-                            }, 300);
+                                canvas.carousel.$canvases
+                                    .css({
+                                        'transform': 'scale(0.7) translateY(0)'
+                                    });
+                                setTimeout(function(){
+                                    $canvas.css({
+                                        'transform': 'scale(0.8) translateY(-50px)'
+                                    });
+                                }, 0);
+                                setTimeout(function(){
+                                    $ul.css({
+                                        'transition': 'none'
+                                    });
+                                    header.$btnOpenToolbox.removeClass('-selected');
+                                    toolbox.$btnChangeCanvas.removeClass('-selected');
+                                    canvas.carousel.$overlays.hide();
+                                    canvas.carousel.$switcher.removeClass('-switching');
+                                    canvas.carousel.$listItems.removeClass('-selected');
+                                    $li.addClass('-selected');
+                                    $canvas.css({
+                                        'transform': 'scale(1) translateY(0)'
+                                    });
+                                }, 300);
+                            }
+                            isDraggingCanvas = false;
                         });
                 };
 
@@ -509,6 +529,26 @@
                             
                             canvas.carousel.$footer.toggleClass('-switching');
                             canvas.carousel.$switcher.toggleClass('-switching');
+
+                            var x1, x2,
+                                //y1, y2,
+                                t1, t2;  // Time
+
+                            var minDistance = 40; // Minimum px distance object must be dragged to enable momentum.
+
+                            var onMouseMove = function(e) {
+                                var mouseEvents = canvas.carousel.$list.data("mouseEvents");
+                                if (e.timeStamp - mouseEvents[mouseEvents.length-1].timeStamp > 40) {
+                                    mouseEvents.push(e);
+                                    if (mouseEvents.length > 2) {
+                                        mouseEvents.shift();
+                                    }
+                                }
+                            }
+
+                            var onMouseUp = function() {
+                                $(document).unbind("mousemove mouseup");
+                            }
 
                             canvas.carousel.$list
                                 .draggable({
