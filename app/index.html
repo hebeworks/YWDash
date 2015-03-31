@@ -276,13 +276,14 @@
                         })
                         .on('mouseup', '.js-canvas-overlay', function(e){
 
-                            // Drag detection
+                            // If not dragging and we want to open up the canvas
                             $(window).unbind("mousemove");
-                            if (! isDraggingCanvas) { //was clicking
+                            if (! isDraggingCanvas) { // Was clicking
                                 var $el = $(this);
                                 var $canvas = $el.parent('.js-canvas');
                                 var $li = $el.closest('li');
                                 var $ul = $li.closest('ul');
+                                var $lis = $ul.children('li');
 
                                 currentSlideIndex = canvas.carousel.$listItems.index($li);
 
@@ -293,6 +294,7 @@
                                     'transition': 'all .3s',
                                     'transform': 'translateX(' + newTranslateX + 'px)'
                                 });
+                                $lis.removeClass('-selected');
                                 canvas.carousel.$canvases
                                     .css({
                                         'transform': 'scale(0.7) translateY(0)'
@@ -303,10 +305,11 @@
                                     });
                                 }, 0);
                                 setTimeout(function(){
+                                    $li.addClass('-selected');
                                     $ul.css({
                                         'transition': 'none'
                                     });
-                                    header.$btnOpenToolbox.removeClass('-selected');
+                                    /*header.$btnOpenToolbox.removeClass('-selected');
                                     toolbox.$btnChangeCanvas.removeClass('-selected');
                                     canvas.carousel.$overlays.hide();
                                     canvas.carousel.$switcher.removeClass('-switching');
@@ -314,7 +317,7 @@
                                     $li.addClass('-selected');
                                     $canvas.css({
                                         'transform': 'scale(1) translateY(0)'
-                                    });
+                                    });*/
                                 }, 300);
                             }
                             isDraggingCanvas = false;
