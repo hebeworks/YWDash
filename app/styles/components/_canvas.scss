@@ -89,7 +89,7 @@
 				top: -50px;
 				left: 15%;
 				opacity: 0;
-				@include transition(top .8s, opacity 2s);
+				@include transition(all .3s);
 			}
 			.canvas {
 				@include transition(all .3s);
