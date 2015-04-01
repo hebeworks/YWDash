@@ -24,7 +24,9 @@
 		background-color: #dfdfe4;
 		.canvas-switcher__list {
 			> li {
+				z-index: 2;
 				&.-selected {
+					z-index: 1;
 					.canvas-heading {
 						top: 2%;
 						left: 10%;
@@ -40,6 +42,14 @@
 					top: 7%;
 					opacity: 1;
 				}
+				&:hover {
+					.canvas {
+						box-shadow: 2px 2px 14px 0px #7ED321;
+					}
+					.canvas__overlay {
+						background-color: transparent;
+					}
+				}
 			}
 		}
 		.canvas {
@@ -51,9 +61,6 @@
 				color: #f1f1f1;
 			}
 			box-shadow: 2px 2px 14px 0px rgba(0,0,0,0.20);
-			&:hover {
-				box-shadow: 2px 2px 14px 0px #7ED321;
-			}
 		}
 		.canvas__inner {
 			overflow-y: hidden;
@@ -82,7 +89,7 @@
 				top: -50px;
 				left: 15%;
 				opacity: 0;
-				@include transition(top .8s, opacity 2s);
+				@include transition(all .3s);
 			}
 			.canvas {
 				@include transition(all .3s);
@@ -113,9 +120,6 @@
 					radius: 20px;
 				}
 				background-color: rgba(255, 255, 255, .8);
-				&:hover {
-					background-color: transparent;
-				}
 			}
 			.canvas__inner {
 				@include cf;
