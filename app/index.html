@@ -317,7 +317,13 @@
                             e.preventDefault();
                             e.stopPropagation();
 
-                            console.log('number clicked');
+                            var $link = $(this);
+                            var index = canvas.carousel.$pagerNumbers.children('a').index($link);
+
+                            canvas.carousel.$pagerNumbers.children('a').removeClass('selected');
+                            $link.addClass('selected');
+
+                            Canvas.slideTo(index);
                         });
                 };
 
@@ -400,6 +406,13 @@
                         .unbind('mousedown mouseup');
                 };
 
+                var growCanvas = function(liIndex) {
+                    var $canvas = canvas.carousel.$listItems.eq(liIndex).find('.js-canvas');
+                    $canvas.css({
+                        'transform': 'scale(0.6) translateY(-50px)'
+                    });
+                };
+
                 return {
                     init: function() {
 
@@ -458,70 +471,73 @@
 
                     slideTo: function(liIndex, callback) {
 
+                        var indexDiff = Math.abs((currentSlideIndex - liIndex));
+                        var distance = indexDiff * 787; // 787 is distance between slides at this scale
+                        var moveTime = indexDiff * 300;
+
                         currentSlideIndex = liIndex;
 
                         var $li = canvas.carousel.$listItems.eq(liIndex);
                         var $canvas = $li.find('.js-canvas');
 
-                        var existingUlPosition = parseInt(canvas.carousel.$list.css('transform').split(/[()]/)[1].split(',')[4], 10);
+                        var currentX = parseInt(canvas.carousel.$list.css('transform').split(/[()]/)[1].split(',')[4], 10);
+                        var newTranslateX = currentX - $li.offset().left;
 
-                        var moveTime;
-                        canvas.carousel.$listItems.each(function(index){
+                        canvas.carousel.$list.css({
+                            'transition': 'all ' + moveTime + 'ms',
+                            'transform': 'translateX(' + newTranslateX + 'px)'
+                        });
+                        canvas.carousel.$listItems.removeClass('-selected');
+                        canvas.carousel.$canvases
+                            .css({
+                                'transform': 'scale(0.45) translateY(0)'
+                            });
 
-                            if (index > 0) {
-                                var $prev = canvas.carousel.$listItems.eq((index-1));
+                        setTimeout(function(){
+                            growCanvas(liIndex);
+                        }, 0);
+                        setTimeout(function(){
+                            $li.addClass('-selected');
+                            canvas.carousel.$list.css({
+                                'transition': 'none'
+                            });
+
+                            if (typeof callback == 'function') {
+                                callback();
+                            }
+                        }, moveTime);
+
+                        /*canvas.carousel.$listItems.each(function(index){
+
+                            if (index < canvas.carousel.$listItems.size()) {
                                 var $curr = $(this);
-                                var prevX = parseInt($prev.css('transform').split(/[()]/)[1].split(',')[4], 10);
+                                var $next = $curr.next('li');
+
                                 var currX = parseInt($curr.css('transform').split(/[()]/)[1].split(',')[4], 10);
+                                var nextX;
 
-                                console.log(existingUlPosition);
-                                console.log(prevX);
-                                console.log(currX);
+                                if (index < (canvas.carousel.$listItems.size()-1)) {
+                                    nextX = parseInt($next.css('transform').split(/[()]/)[1].split(',')[4], 10);
+                                } else {
+                                    nextX = currX - $li.width();
+                                }
 
-                                
-                                if (existingUlPosition > currX || index == (canvas.carousel.$listItems.size() - 1)) {
-                                    var diff = currX - prevX;
-                                    console.log(diff);
-                                    var remainder = (existingUlPosition - prevX) / (currX - prevX);
-                                    console.log(remainder);
-                                    moveTime = (remainder + index - 1) * 300;
+                                if (nextX <= existingUlPosition && existingUlPosition <= currX) {
+                                    var diff =  - currX;
+                                    var remainder = (existingUlPosition - currX) / (nextX - currX);
+                                    moveTime = (remainder + index) * 300;
                                     console.log(moveTime);
-                                    slide();
+                                    slide(liIndex);
                                     return;
                                 }
                             }
-                        });
+                        });*/
+                    }/*,
 
-                        function slide() {
-                            var visibleSlideIndex = existingUlPosition / $li.width();
-                            
-                            var newTranslateX = parseInt(existingUlPosition, 10) - $li.offset().left;
-                            canvas.carousel.$list.css({
-                                'transition': 'all ' + moveTime + 'ms',
-                                'transform': 'translateX(' + newTranslateX + 'px)'
-                            });
-                            canvas.carousel.$listItems.removeClass('-selected');
-                            canvas.carousel.$canvases
-                                .css({
-                                    'transform': 'scale(0.45) translateY(0)'
-                                });
-                            setTimeout(function(){
-                                $canvas.css({
-                                    'transform': 'scale(0.6) translateY(-50px)'
-                                });
-                            }, 0);
-                            setTimeout(function(){
-                                $li.addClass('-selected');
-                                canvas.carousel.$list.css({
-                                    'transition': 'none'
-                                });
+                    growCanvas: function(liIndex) {
 
-                                if (typeof callback == 'function') {
-                                    callback();
-                                }
-                            }, moveTime);
-                        }
-                    }
+                        growCanvas(liIndex);
+                    }*/
                 };
             })();
 
