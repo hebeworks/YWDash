@@ -266,7 +266,7 @@
                         });
 
                     canvas.carousel.$listItems
-                        .on('mousedown', '.js-canvas-overlay', function(e){
+                        .on('mousedown', function(e){
 
                             // Drag detection
                             $(window).mousemove(function() {
@@ -274,27 +274,25 @@
                                 $(window).unbind("mousemove");
                             });
                         })
-                        .on('mouseup', '.js-canvas-overlay', function(e){
+                        .on('mouseup', function(e){
+
+                            var $li = $(this);
+                            var $canvas = $li.find('.js-canvas');
 
                             // If not dragging and we want to open up the canvas
                             $(window).unbind("mousemove");
                             if (! isDraggingCanvas) { // Was clicking
-                                var $el = $(this);
-                                var $canvas = $el.parent('.js-canvas');
-                                var $li = $el.closest('li');
-                                var $ul = $li.closest('ul');
-                                var $lis = $ul.children('li');
 
                                 currentSlideIndex = canvas.carousel.$listItems.index($li);
 
-                                var existingUlPosition = $ul.css('transform').split(/[()]/)[1].split(',')[4];
+                                var existingUlPosition = canvas.carousel.$list.css('transform').split(/[()]/)[1].split(',')[4];
                                 
                                 var newTranslateX = parseInt(existingUlPosition, 10) - $li.offset().left;
-                                $ul.css({
+                                canvas.carousel.$list.css({
                                     'transition': 'all .3s',
                                     'transform': 'translateX(' + newTranslateX + 'px)'
                                 });
-                                $lis.removeClass('-selected');
+                                canvas.carousel.$listItems.removeClass('-selected');
                                 canvas.carousel.$canvases
                                     .css({
                                         'transform': 'scale(0.7) translateY(0)'
@@ -306,7 +304,7 @@
                                 }, 0);
                                 setTimeout(function(){
                                     $li.addClass('-selected');
-                                    $ul.css({
+                                    canvas.carousel.$list.css({
                                         'transition': 'none'
                                     });
                                     /*header.$btnOpenToolbox.removeClass('-selected');
