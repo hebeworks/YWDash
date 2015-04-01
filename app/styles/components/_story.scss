@@ -16,23 +16,37 @@
 	-moz-transform: perspective(1000px);
 	@include transform-style(preserve-3d);
 
-	@for $i from 1 through 3 {
-		&.-w#{$i} {
-			width: 170px * $i;
-			.story__content,
-			.story__footer {
-				width: 145px * $i;
-			}
+	&.-w1 {
+		width: 170px;
+		.story__content,
+		.story__footer {
+			width: 120px;
 		}
-		&.-h#{$i} {
-			height: 170px * $i;
-			.story__content {
-				height: 145px * $i;
-			}
-            .story__chart {
-                height: 145 * $i - 95px;
-            }
+	}
+	&.-w2 {
+		width: 340px;
+		.story__content,
+		.story__footer {
+			width: 290px;
 		}
+	}
+	&.-h1 {
+		height: 170px;
+		.story__content {
+			height: 120px;
+		}
+        .story__chart {
+            height: 50px;
+        }
+	}
+	&.-h2 {
+		height: 340px;
+		.story__content {
+			height: 290px;
+		}
+        .story__chart {
+            height: 195px;
+        }
 	}
 	&.-white {
 		.story__card {
