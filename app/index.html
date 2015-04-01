@@ -226,7 +226,7 @@
                         var $canvasHeading = $el.find('.js-canvas-heading');
                         var $canvas = $el.find('.js-canvas');
 
-                        var percent = 18;
+                        var percent = 40;
                         var diff = currentSlideIndex - index;
                         percent = Math.abs(percent * diff);
 
@@ -235,7 +235,7 @@
                                 'transform': 'translateX(' + (percent + (3 * diff)) + '%)'
                             });
                             $canvas.css({
-                                'transform': 'scale(0.7) translateY(-50px)'
+                                'transform': 'scale(0.45) translateY(-50px)'
                             });
                         }
                         if (index == currentSlideIndex) {
@@ -245,7 +245,7 @@
                                     'transform': 'translateX(0)'
                                 });
                             $canvas.css({
-                                'transform': 'scale(0.8) translateY(-50px)'
+                                'transform': 'scale(0.6) translateY(-50px)'
                             });
                         }
                         if (index > currentSlideIndex) {
@@ -253,7 +253,7 @@
                                 'transform': 'translateX(-' + (percent - (3 * diff)) + '%)'
                             });
                             $canvas.css({
-                                'transform': 'scale(0.7) translateY(-50px)'
+                                'transform': 'scale(0.45) translateY(-50px)'
                             });
                         }
                     });
@@ -282,16 +282,20 @@
 
                     canvas.carousel.$overlays.hide();
 
-                    canvas.carousel.$listItems.each(function(index){
+                    var $selectedLi = canvas.carousel.$list.children('li').eq(currentSlideIndex);
 
-                        var $el = $(this);
-                        var $canvasHeading = $el.find('.js-canvas-heading');
-                        var $canvas = $el.find('.js-canvas');
+                    slideTo($selectedLi, function() {
 
-                        $el.css({
-                            'transform': 'translateX(0)'
-                        }).removeClass('-selected');
-                        $canvas.removeAttr('style');
+                        canvas.carousel.$listItems.each(function(index){
+
+                            var $el = $(this);
+                            var $canvas = $el.find('.js-canvas');
+
+                            $el.css({
+                                'transform': 'translateX(0)'
+                            }).removeClass('-selected');
+                            $canvas.removeAttr('style');
+                        });
                     });
                 };
 
@@ -360,43 +364,21 @@
                                 if (! $li.hasClass('-selected')) {
 
                                     // Move carousel along & highlight slide
-                                    currentSlideIndex = canvas.carousel.$listItems.index($li);
-
-                                    var existingUlPosition = canvas.carousel.$list.css('transform').split(/[()]/)[1].split(',')[4];
-                                    
-                                    var newTranslateX = parseInt(existingUlPosition, 10) - $li.offset().left;
-                                    canvas.carousel.$list.css({
-                                        'transition': 'all .3s',
-                                        'transform': 'translateX(' + newTranslateX + 'px)'
-                                    });
-                                    canvas.carousel.$listItems.removeClass('-selected');
-                                    canvas.carousel.$canvases
-                                        .css({
-                                            'transform': 'scale(0.7) translateY(0)'
-                                        });
-                                    setTimeout(function(){
-                                        $canvas.css({
-                                            'transform': 'scale(0.8) translateY(-50px)'
-                                        });
-                                    }, 0);
-                                    setTimeout(function(){
-                                        $li.addClass('-selected');
-                                        canvas.carousel.$list.css({
-                                            'transition': 'none'
-                                        });
-                                    }, 300);
+                                    Canvas.slideTo($li);
 
                                 } else {
 
-                                    // Open canvas up to full size
-                                    header.$btnOpenToolbox.removeClass('-selected');
-                                    toolbox.$btnChangeCanvas.removeClass('-selected');
-                                    canvas.carousel.$overlays.hide();
-                                    canvas.carousel.$switcher.removeClass('-switching');
-                                    canvas.carousel.$listItems.removeClass('-selected');
-                                    $li.addClass('-selected');
-                                    $canvas.css({
-                                        'transform': 'scale(1) translateY(0)'
+                                    Canvas.slideTo($li, function(){
+                                        // Open canvas up to full size
+                                        header.$btnOpenToolbox.removeClass('-selected');
+                                        toolbox.$btnChangeCanvas.removeClass('-selected');
+                                        canvas.carousel.$overlays.hide();
+                                        canvas.carousel.$switcher.removeClass('-switching');
+                                        canvas.carousel.$listItems.removeClass('-selected');
+                                        $li.addClass('-selected');
+                                        $canvas.css({
+                                            'transform': 'scale(1) translateY(0)'
+                                        });
                                     });
                                 }
                             }
@@ -463,6 +445,42 @@
 
                     unbindEvents: function() {
                         unbindEvents();
+                    },
+
+                    slideTo: function(li, callback) {
+
+                        var $li = li;
+                        var $canvas = $li.find('.js-canvas');
+
+                        currentSlideIndex = canvas.carousel.$listItems.index($li);
+
+                        var existingUlPosition = canvas.carousel.$list.css('transform').split(/[()]/)[1].split(',')[4];
+                        
+                        var newTranslateX = parseInt(existingUlPosition, 10) - $li.offset().left;
+                        canvas.carousel.$list.css({
+                            'transition': 'all .3s',
+                            'transform': 'translateX(' + newTranslateX + 'px)'
+                        });
+                        canvas.carousel.$listItems.removeClass('-selected');
+                        canvas.carousel.$canvases
+                            .css({
+                                'transform': 'scale(0.45) translateY(0)'
+                            });
+                        setTimeout(function(){
+                            $canvas.css({
+                                'transform': 'scale(0.6) translateY(-50px)'
+                            });
+                        }, 00);
+                        setTimeout(function(){
+                            $li.addClass('-selected');
+                            canvas.carousel.$list.css({
+                                'transition': 'none'
+                            });
+
+                            if (typeof callback == 'function') {
+                                callback();
+                            }
+                        }, 300);
                     }
                 };
             })();
@@ -640,7 +658,6 @@
                                     cursor: 'move',
                                     axis: 'x',
                                     scroll: true,
-                                    //scrollSensitivity: 1,
                                     scrollSpeed: 10
                                 });
 

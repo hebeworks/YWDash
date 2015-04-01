@@ -11,8 +11,15 @@
 	@include transition(filter .3s, opacity .3s);
 	transition: -webkit-filter .3s, opacity .3s; */
 
-	> .caroufredsel_wrapper {
-		width: 100% !important;
+	.heading.-switch-canvas {
+		width: 90%;
+		position: absolute;
+		left: 5%;
+		top: 3%;
+		opacity: 0;
+		padding-bottom: 20px;
+		border-bottom: dashed 1px #aaa;
+		@include transition(all .3s);
 	}
 
 	&.-blurred {
@@ -22,14 +29,17 @@
 
 	&.-switching {
 		background-color: #dfdfe4;
+		.heading.-switch-canvas {
+			opacity: 1;
+		}
 		.canvas-switcher__list {
 			> li {
 				z-index: 2;
 				&.-selected {
 					z-index: 1;
 					.canvas-heading {
-						top: 2%;
-						left: 10%;
+						top: 12%;
+						left: 20%;
 					}
 					.canvas {
 						.canvas__overlay {
@@ -39,7 +49,7 @@
 					}
 				}
 				.canvas-heading {
-					top: 7%;
+					top: 22%;
 					opacity: 1;
 				}
 				&:hover {
@@ -87,7 +97,7 @@
 				width: 100%;
 				position: absolute;
 				top: -50px;
-				left: 15%;
+				left: 27.5%;
 				opacity: 0;
 				@include transition(all .3s);
 			}
