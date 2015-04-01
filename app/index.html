@@ -463,35 +463,64 @@
                         var $li = canvas.carousel.$listItems.eq(liIndex);
                         var $canvas = $li.find('.js-canvas');
 
-                        var moveTime = Math.abs(6 - liIndex) * 300;
+                        var existingUlPosition = parseInt(canvas.carousel.$list.css('transform').split(/[()]/)[1].split(',')[4], 10);
 
-                        var existingUlPosition = canvas.carousel.$list.css('transform').split(/[()]/)[1].split(',')[4];
-                        
-                        var newTranslateX = parseInt(existingUlPosition, 10) - $li.offset().left;
-                        canvas.carousel.$list.css({
-                            'transition': 'all ' + moveTime + 'ms',
-                            'transform': 'translateX(' + newTranslateX + 'px)'
-                        });
-                        canvas.carousel.$listItems.removeClass('-selected');
-                        canvas.carousel.$canvases
-                            .css({
-                                'transform': 'scale(0.45) translateY(0)'
-                            });
-                        setTimeout(function(){
-                            $canvas.css({
-                                'transform': 'scale(0.6) translateY(-50px)'
-                            });
-                        }, 0);
-                        setTimeout(function(){
-                            $li.addClass('-selected');
-                            canvas.carousel.$list.css({
-                                'transition': 'none'
-                            });
+                        var moveTime;
+                        canvas.carousel.$listItems.each(function(index){
 
-                            if (typeof callback == 'function') {
-                                callback();
+                            if (index > 0) {
+                                var $prev = canvas.carousel.$listItems.eq((index-1));
+                                var $curr = $(this);
+                                var prevX = parseInt($prev.css('transform').split(/[()]/)[1].split(',')[4], 10);
+                                var currX = parseInt($curr.css('transform').split(/[()]/)[1].split(',')[4], 10);
+
+                                console.log(existingUlPosition);
+                                console.log(prevX);
+                                console.log(currX);
+
+                                
+                                if (existingUlPosition > currX || index == (canvas.carousel.$listItems.size() - 1)) {
+                                    var diff = currX - prevX;
+                                    console.log(diff);
+                                    var remainder = (existingUlPosition - prevX) / (currX - prevX);
+                                    console.log(remainder);
+                                    moveTime = (remainder + index - 1) * 300;
+                                    console.log(moveTime);
+                                    slide();
+                                    return;
+                                }
                             }
-                        }, moveTime);
+                        });
+
+                        function slide() {
+                            var visibleSlideIndex = existingUlPosition / $li.width();
+                            
+                            var newTranslateX = parseInt(existingUlPosition, 10) - $li.offset().left;
+                            canvas.carousel.$list.css({
+                                'transition': 'all ' + moveTime + 'ms',
+                                'transform': 'translateX(' + newTranslateX + 'px)'
+                            });
+                            canvas.carousel.$listItems.removeClass('-selected');
+                            canvas.carousel.$canvases
+                                .css({
+                                    'transform': 'scale(0.45) translateY(0)'
+                                });
+                            setTimeout(function(){
+                                $canvas.css({
+                                    'transform': 'scale(0.6) translateY(-50px)'
+                                });
+                            }, 0);
+                            setTimeout(function(){
+                                $li.addClass('-selected');
+                                canvas.carousel.$list.css({
+                                    'transition': 'none'
+                                });
+
+                                if (typeof callback == 'function') {
+                                    callback();
+                                }
+                            }, moveTime);
+                        }
                     }
                 };
             })();
