@@ -1,0 +1,39 @@
+{{#stories/story-base title=title subTitle=subTitle color="-white" width="-w2" height="-h2" data-ss-colspan="2"}}
+{{#stories/story-slider loaded=loaded}}
+{{#stories/story-slide}}
+<main class="house-prices">
+    <div class="image -wide">
+    </div>
+    <h2 class="heading">Detached</h2>
+    <p class="house-prices__price">&pound;{{month.averageDetached}}</p>
+</main>
+{{/stories/story-slide}}
+{{#stories/story-slide}}
+<main class="house-prices">
+    <div class="image -wide">
+    </div>
+    <h2 class="heading">Flat</h2>
+    <p class="house-prices__price">&pound;{{month.averageFlat}}</p>
+</main>
+{{/stories/story-slide}}
+{{#stories/story-slide}}
+<main class="house-prices">
+    <div class="image -wide">
+    </div>
+    <h2 class="heading">Semi</h2>
+    <p class="house-prices__price">&pound;{{month.averageSemi}}</p>
+</main>
+{{/stories/story-slide}}
+{{#stories/story-slide}}
+<main class="house-prices">
+    <div class="image -wide">
+    </div>
+    <h2 class="heading">Terraced</h2>
+    <p class="house-prices__price">&pound;{{month.averageTerraced}}</p>
+</main>
+{{/stories/story-slide}}
+
+{{/stories/story-slider}}
+
+{{yield}}
+{{/stories/story-base}}

@@ -1,11 +1,22 @@
 {{#stories/story-base title=title subTitle=subTitle color="-white" width="-w2" height="-h2" data-ss-colspan="2"}}
-            Most enquiries per postcode:
+            
+<div>
+    {{
+select-2
+    content=months
+    value=selectedMonth
+    placeholder="Choose a month"
+}}
+</div>
+
+
+Most enquiries per postcode:
             <ol>
                 {{#each item in topPostcodes}}
                     <li>{{item.postcode}}: {{item.total}}</li>
                 {{/each}}
             </ol>
-            MOST ENQUIRED SERVICES
+            MOST CONTACTED SERVICES
             <ol>
                 {{#each item in topEnquiries}}
                     <li>{{item.enquiry}}: {{item.total}}</li>
