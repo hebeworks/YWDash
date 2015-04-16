@@ -7,7 +7,7 @@ export default Ember.Component.extend({
 	selectedMonth: '',
 	didInsertElement: function() {
 		this.set('title', 'House prices in Leeds');
-		this.set('subTitle', 'Enquiries dealt with by Leeds Coity Council');
+		this.set('subTitle', 'Enquiries dealt with by Leeds City Council');
 		this.fetchData();
 	},
 	fetchData: function(date) {
@@ -16,7 +16,6 @@ export default Ember.Component.extend({
         Ember.$.getJSON('http://landregistry.data.gov.uk/data/hpi/region/leeds/month/2015-01.json')
         .then((data) => {
         	var item = data.result.primaryTopic;
-debugger;
             var resource = {
                 annualChange: item.annualChange,
 				averageDetached: item.averagePricesDetachedSASM,

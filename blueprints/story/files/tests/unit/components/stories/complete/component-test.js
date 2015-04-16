@@ -3,7 +3,7 @@ import {
   test
 } from 'ember-qunit';
 
-moduleForComponent('stories/complete/space-station', {
+moduleForComponent('stories/complete/<%= dasherizedModuleName %>', {
   // specify the other units that are required for this test
   // needs: ['component:foo', 'helper:bar']
 });

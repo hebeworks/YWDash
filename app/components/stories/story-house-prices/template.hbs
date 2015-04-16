@@ -2,41 +2,20 @@
     {{#stories/story-slider loaded=loaded}}
 
             {{#stories/story-slide}}
-                <main class="house-prices">
-                    <div class="image -wide">
-                    </div>
-                    <h2 class="heading">Detached</h2>
-                    <p class="house-prices__price">&pound;{{month.averageDetached}}</p>
-                </main>
+                {{stories/story-house-prices/house-price-item houseType="Detached" total=month.averageDetached icon="detached"}}
             {{/stories/story-slide}}
 
             {{#stories/story-slide}}
-                <main class="house-prices">
-                    <div class="image -wide">
-                    </div>
-                    <h2 class="heading">Flat</h2>
-                    <p class="house-prices__price">&pound;{{month.averageFlat}}</p>
-                </main>
+                {{stories/story-house-prices/house-price-item houseType="Flat" total=month.averageFlat icon="detached"}}
             {{/stories/story-slide}}
 
             {{#stories/story-slide}}
-                <main class="house-prices">
-                    <div class="image -wide">
-                    </div>
-                    <h2 class="heading">Semi</h2>
-                    <p class="house-prices__price">&pound;{{month.averageSemi}}</p>
-                </main>
+                {{stories/story-house-prices/house-price-item houseType="Semi" total=month.averageSemi icon="semi"}}
             {{/stories/story-slide}}
 
             {{#stories/story-slide}}
-                <main class="house-prices">
-                    <div class="image -wide">
-                    </div>
-                    <h2 class="heading">Terraced</h2>
-                    <p class="house-prices__price">&pound;{{month.averageTerraced}}</p>
-                </main>
+                {{stories/story-house-prices/house-price-item houseType="Terraced" total=month.averageTerraced icon="terrace"}}
             {{/stories/story-slide}}
-
 
     {{/stories/story-slider}}
 	
