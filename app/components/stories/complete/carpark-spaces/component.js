@@ -13,10 +13,10 @@ export default Ember.Component.extend({
         // request ckan api for dataset
         var obj = this;
         Ember.$.ajax({
-            url: 'http://hebenodeapi.azurewebsites.net/carparks',
-            type: 'GET',
-            crossOrigin: true
-        })
+                url: 'http://hebenodeapi.azurewebsites.net/carparks',
+                type: 'GET',
+                crossOrigin: true
+            })
             .then(function(data) {
                 var carParks = []; 
                 data.results.forEach(function(item) {
