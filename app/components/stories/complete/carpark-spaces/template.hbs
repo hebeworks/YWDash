@@ -1,0 +1,23 @@
+{{#stories/story-base title=title subTitle=subTitle color="-white" width="-w2" height="-h2" data-ss-colspan="2"}}
+<div>
+    {{
+    select-2
+        content=items
+        value=selectedCarPark
+        optionValuePath="id"
+        optionLabelPath="title"
+        placeholder="Choose a carpark"
+}}
+
+    <!--optionDescriptionPath="title"-->
+    <!--optionLabelPath="title"-->
+</div>
+
+<div class="car-park">
+    <h2 class="heading">{{currentCarPark.title}}</h2>
+    <div class="car-park__capacity">{{currentCarPark.totalCapacity}}</div>
+    <div class="car-park__occupied">{{currentCarPark.occupiedSpaces}}</div>
+    <div class="car-park__available">{{currentCarPark.available}}</div>
+</div>
+
+{{/stories/story-base}}

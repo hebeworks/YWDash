@@ -1,0 +1,28 @@
+.instagram-local {
+    
+}
+	.instagram-local__details {
+		border: {
+			top: dotted 1px #7e7d73;
+			bottom: dotted 1px #7e7d73;
+		}
+		padding: {
+			top: 5px;
+			bottom: 5px;
+		}
+
+		margin: {
+			bottom: 5px;
+		}
+	}
+        .instagram-local__photo {
+            float:left;
+            width:50%;
+            height: 132px;
+            overflow:hidden;
+
+            .image {
+                width:100%;
+                margin:0;
+            }
+        }
