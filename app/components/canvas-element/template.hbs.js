@@ -1,6 +1,10 @@
 ﻿var template = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
   var stack1, lambda=this.lambda, escapeExpression=this.escapeExpression;
   return "<h1 class=\"js-canvas-heading canvas-heading\">The Leeds Overview</h1>\n<div class=\"js-canvas canvas\">\n    <a href=\"javascript:;\" class=\"js-canvas-overlay canvas__overlay\"></a>\n    <div class=\"js-stories canvas__inner\">\n\n        "
+    + escapeExpression(lambda(((stack1 = ((stack1 = (depth0 != null ? depth0.stories : depth0)) != null ? stack1.complete : stack1)) != null ? stack1['clock-face'] : stack1), depth0))
+    + "\r\n        "
+    + escapeExpression(lambda(((stack1 = ((stack1 = (depth0 != null ? depth0.stories : depth0)) != null ? stack1.complete : stack1)) != null ? stack1['instagram-local'] : stack1), depth0))
+    + "\r\n        "
     + escapeExpression(lambda(((stack1 = ((stack1 = (depth0 != null ? depth0.stories : depth0)) != null ? stack1.complete : stack1)) != null ? stack1['carpark-spaces'] : stack1), depth0))
     + "\r\n        "
     + escapeExpression(lambda(((stack1 = ((stack1 = (depth0 != null ? depth0.stories : depth0)) != null ? stack1.complete : stack1)) != null ? stack1['space-station'] : stack1), depth0))

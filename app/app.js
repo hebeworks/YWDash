@@ -11,13 +11,6 @@ var App = Ember.Application.extend({
   Resolver: Resolver
 });
 
-App.settings = {
-    locationCentre: {
-        latitude:53.7997,
-        longitude:1.5492
-    }
-};
-
 loadInitializers(App, config.modulePrefix);
 
 export default App;

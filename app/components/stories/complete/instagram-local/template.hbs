@@ -1,17 +1,13 @@
 
 {{#stories/story-base title=title subTitle=subTitle color="-white" width="-w2" height="-h2" data-ss-colspan="2"}}
-    {{#stories/story-slider loaded=loaded}}
+    <main class="instagram-local">
         {{#each item in items}}
-            {{#stories/story-slide}}
-                <main class="instagram-local">
-                    <div class="image -wide">
-                        <a href="javascript:;"><img {{bind-attr src=item.assetUrl}} {{bind-attr alt=item.title}} width="290" height="87" /></a>
-                    </div>
-                    <h2 class="heading"><a target="_blank" {{bind-attr href=item.url}}>{{item.title}}</a></h2>
-                    <time class="event__datetime">{{item.date}}</time><br>
-                    <p>{{item.excerpt}}</p>
-                </main>
-            {{/stories/story-slide}}
+            <div class="instagram-local__photo" {{bind-attr title=item.caption}}>
+                <div class="image">
+                    <a href="javascript:;"><img {{bind-attr src=item.images.thumbnail.url}} /></a>
+                </div>
+                <div class="instagram-local__details"></div>
+            </div>
         {{/each}}
-    {{/stories/story-slider}}
+    </main>
 {{/stories/story-base}}
