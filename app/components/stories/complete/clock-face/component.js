@@ -4,8 +4,8 @@ export default Ember.Component.extend({
     tagName: 'div',
     loaded: false,
     didInsertElement: function() {
-        this.set('title', 'clock-face TITLE');
-        this.set('subTitle', 'clock-face SUB TITLE');
+        this.set('title', 'Time');
+        this.set('subTitle', '');
         this.setupClock();
     },
     setupClock: function() {
@@ -70,20 +70,20 @@ export default Ember.Component.extend({
 
                 var degrees = [
                   {
-                      hand: 'hours',
+                      hand: 'hours-container',
                       degree: (hours * 30) + (minutes / 2)
                   },
                   {
-                      hand: 'minutes',
+                      hand: 'minutes-container',
                       degree: (minutes * 6)
                   },
                   {
-                      hand: 'seconds',
+                      hand: 'seconds-container',
                       degree: (seconds * 6)
                   }
                 ];
                 for (var j = 0; j < degrees.length; j++) {
-                    var elements = document.querySelectorAll('.active .' + times[i].jsclass + ' .' + degrees[j].hand);
+                    var elements = document.querySelectorAll('.' + times[i].jsclass + ' .' + degrees[j].hand);
                     for (var k = 0; k < elements.length; k++) {
                         elements[k].style.webkitTransform = 'rotateZ('+ degrees[j].degree +'deg)';
                         elements[k].style.transform = 'rotateZ('+ degrees[j].degree +'deg)';
@@ -95,7 +95,7 @@ export default Ember.Component.extend({
                 }
             }
             // Add a class to the clock container to show it
-            var elements = document.querySelectorAll('.clock');
+            var elements = document.querySelectorAll('.clock-face');
             for (var l = 0; l < elements.length; l++) {
                 elements[l].className = elements[l].className + ' show';
             }

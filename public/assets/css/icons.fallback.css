@@ -6,6 +6,14 @@
 
 .svg-change-canvas { background-image: url('png/change-canvas.png'); background-repeat: no-repeat; }
 
+.svg-clock-face { background-image: url('png/clock-face.png'); background-repeat: no-repeat; }
+
+.svg-clock-face__hours { background-image: url('png/clock-face__hours.png'); background-repeat: no-repeat; }
+
+.svg-clock-face__minutes { background-image: url('png/clock-face__minutes.png'); background-repeat: no-repeat; }
+
+.svg-clock-face__seconds { background-image: url('png/clock-face__seconds.png'); background-repeat: no-repeat; }
+
 .svg-close-drawer { background-image: url('png/close-drawer.png'); background-repeat: no-repeat; }
 
 .svg-cogs { background-image: url('png/cogs.png'); background-repeat: no-repeat; }
