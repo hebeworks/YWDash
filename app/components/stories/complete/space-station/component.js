@@ -18,8 +18,8 @@ export default Ember.Component.extend({
                 data.response.forEach((item) => {
                     // format API data here
                     var pass = {};
-                    pass.duration = moment.duration(item.duration, 'seconds').asMinutes();
-                    pass.date = moment(item.risetime,'X').fromNow();
+                    pass.duration = parseInt(moment.duration(item.duration, "seconds").asMinutes());
+                    pass.date = moment(item.risetime, "X").calendar();//moment(item.risetime,'X').fromNow();
                     passes.push(pass);
                 });
                 obj.set('items', passes);
