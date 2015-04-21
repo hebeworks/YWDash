@@ -40,6 +40,7 @@ export default Ember.Component.extend({
     },
 
     fetchMonth: function(resourceID){
+        var obj = this;
         var data = {
             sql: 'SELECT * from "'+this.get('selectedMonth.id')+'"'
         }
@@ -60,12 +61,12 @@ export default Ember.Component.extend({
                 items.push(result);
             });
 
-            this.set('topPostcodes',this.getTopByProperty(items,'postcode',3));        
-            this.set('topEnquiries',this.getTopByProperty(items,'enquiry',3));        
-            this.set('topServices',this.getTopByProperty(items,'service',3));        
+            obj.set('topPostcodes',obj.getTopByProperty(items,'postcode',3));        
+            obj.set('topEnquiries',obj.getTopByProperty(items,'enquiry',3));        
+            obj.set('topServices',obj.getTopByProperty(items,'service',3));        
 
             setTimeout(function() {
-                this.set('loaded', true);
+                obj.set('loaded', true);
             });
         });
     }.observes('selectedMonth'),

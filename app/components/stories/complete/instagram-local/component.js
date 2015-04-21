@@ -79,7 +79,7 @@ export default Ember.Component.extend({
                 });
                 obj.set('items', photos);
                 setTimeout(function() {
-                    this.set('loaded', true);
+                    obj.set('loaded', true);
                 });
             });
     },
