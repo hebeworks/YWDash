@@ -3,6 +3,7 @@
   },"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
   var stack1, helperMissing=helpers.helperMissing, buffer = "";
   stack1 = ((((stack1 = (depth0 && depth0.stories)) && stack1['story-base']) || helperMissing).call(depth0, {"name":"stories/story-base","hash":{
+    'viewOnly': (true),
     'data-ss-colspan': ("1"),
     'height': ("-h1"),
     'width': ("-w1"),
