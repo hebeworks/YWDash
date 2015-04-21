@@ -1,25 +1,26 @@
+
+
 {{#stories/story-base title=title subTitle=subTitle color="-white" width="-w2" height="-h2" data-ss-colspan="2"}}
-            
-<div>
-    {{
-select-2
-    content=months
-    value=selectedMonth
-    placeholder="Choose a month"
-}}
-</div>
+    <main class="lcc-enquiries">
+        <div>
+            {{ select-2
+                content=months
+                value=selectedMonth
+                placeholder="Choose a month"
+                cssClass="hebe-select-2" }}
+        </div>
 
-
-Most enquiries per postcode:
-            <ol>
-                {{#each item in topPostcodes}}
-                    <li>{{item.postcode}}: {{item.total}}</li>
-                {{/each}}
-            </ol>
-            MOST CONTACTED SERVICES
-            <ol>
-                {{#each item in topEnquiries}}
-                    <li>{{item.enquiry}}: {{item.total}}</li>
-                {{/each}}
-            </ol>
+        Most enquiries per postcode:
+        <ol>
+            {{#each item in topPostcodes}}
+            <li>{{item.postcode}}: {{item.total}}</li>
+            {{/each}}
+        </ol>
+        MOST CONTACTED SERVICES
+        <ol>
+            {{#each item in topEnquiries}}
+            <li>{{item.enquiry}}: {{item.total}}</li>
+            {{/each}}
+        </ol>
+    </main>
 {{/stories/story-base}}

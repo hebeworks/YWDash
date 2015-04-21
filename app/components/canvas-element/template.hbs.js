@@ -9,7 +9,7 @@
     + "\r\n        "
     + escapeExpression(lambda(((stack1 = ((stack1 = (depth0 != null ? depth0.stories : depth0)) != null ? stack1.complete : stack1)) != null ? stack1['space-station'] : stack1), depth0))
     + "\r\n        "
-    + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.stories : depth0)) != null ? stack1['lcc-enquiries'] : stack1), depth0))
+    + escapeExpression(lambda(((stack1 = ((stack1 = (depth0 != null ? depth0.stories : depth0)) != null ? stack1.complete : stack1)) != null ? stack1['lcc-enquiries'] : stack1), depth0))
     + "\n        "
     + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.stories : depth0)) != null ? stack1['story-house-prices'] : stack1), depth0))
     + "\n\n        "
