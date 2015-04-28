@@ -29,7 +29,7 @@ export default Ember.Component.extend({
             })
             .then(function(data) {
                 var photos = [];
-                var itemsPerPage = 4;
+                var itemsPerPage = 12;
                 var pages = obj.get('numberOfPages');
                 var i = 0;
                 data.data.forEach(function(item) {

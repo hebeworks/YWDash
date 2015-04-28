@@ -1,28 +1,37 @@
 .instagram-local {
+	border: {
+	top: dotted 1px #7e7d73;
+	}
+	display: inline-block;
+	overflow: scroll;
+	height: 220px;
+	padding-top: 7px;
     
 }
 	.instagram-local__details {
-		border: {
-			top: dotted 1px #7e7d73;
-			bottom: dotted 1px #7e7d73;
-		}
 		padding: {
 			top: 5px;
 			bottom: 5px;
 		}
 
 		margin: {
-			bottom: 5px;
+			bottom: 0px;
 		}
 	}
         .instagram-local__photo {
             float:left;
-            width:50%;
-            height: 132px;
-            overflow:hidden;
+            width:48.5%;
+            height: auto;
+            overflow: hidden;
+            &:nth-child(odd) {
+               	margin-right: 3%;
+            }
 
             .image {
-                width:100%;
-                margin:0;
+                margin: 0px;
+                img {
+                	width: 100%;
+                }
             }
         }
+
