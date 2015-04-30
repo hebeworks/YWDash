@@ -1,0 +1,175 @@
+.select2-container {
+	width: 100%;
+	margin: 0 0 10px 0;
+	background-image: none;
+	.select2-choice, {
+		height: 40px;
+		background-image: none;
+		border: 0;
+		&:active {
+			border: 0;
+		}
+		.select2-chosen {
+			height: 100%;
+			font-family: $helvneuemed;
+			font-size: .75rem;
+			margin-top: 8px;
+		}
+		
+		.select2-arrow {
+			border: none;
+			background-image: none;
+			margin: {
+				right: 10px;
+				top: 8px;
+			}
+		}
+	}
+}
+.select2-drop {
+	background-image: none;
+	background-color: #fff;
+	color: #000;
+	font-family: $helvneuemed;
+	font-size: .75rem;
+	border: 0;
+	.select2-search {
+		height: 40px;
+		padding: {
+			top: 4px;
+		}
+		input {
+			height: 100%!important;
+			background-color: #fff;
+			border: none;
+		}
+	}
+}
+
+.select2-drop-above {
+	background-color: #fff;
+	color: #000;
+	&:active {
+		background-image: none;
+	}
+}
+.select2-results {
+	li {
+		height: 40px;
+		padding-top: 8px;
+		border-bottom: 1px dotted #000;
+		&:first-child {
+			border-top: 1px dotted #000;
+		}
+	}
+	.select2-no-results, .select2-searching {
+		//background-color: #71be1d;
+		padding-top: 10px;
+	}
+	.select2-highlighted {
+		background-color: $light-grey;
+		color: #000;
+	}
+}
+.select2-dropdown-open .select2-choice {
+	box-shadow: none;
+	border: none;
+}
+.select2-drop-above {
+	//background-color: #71be1d;
+}
+
+.select2-drop.select2-drop-above.select2-drop-active {
+	border: 0;
+}
+
+.select2-dropdown-open.select2-drop-above .select2-choice {
+	background-image: none;
+	border: 0;
+}
+
+.-white {
+	.select2-container {
+		.select2-choice, {
+			background-color: $light-grey;
+			.select2-chosen {
+				background-color: $light-grey;
+				color: #000;
+			}
+			.select2-arrow {
+				background-color: $light-grey;
+				color: #000;
+			}
+		}
+	}
+}
+
+.-black {
+	.select2-container {
+		.select2-choice, {
+			background-color: lighten(#000,15);
+			.select2-chosen {
+				background-color: lighten(#000,15);
+				color: #fff;
+			}
+			.select2-arrow {
+				background-color: lighten(#000,15);
+				color: #fff;
+			}
+		}
+	}
+}
+
+.-grey {
+//add white specific over-rides in here...	
+}
+
+.-dark-grey {
+	.select2-container {
+		.select2-choice, {
+			background-color: lighten($dark-grey,5);
+			.select2-chosen {
+				background-color: lighten($dark-grey,5);
+				color: #fff;
+			}
+			.select2-arrow {
+				background-color: lighten($dark-grey,5);
+				color: #fff;
+			}
+		}
+	}
+}
+
+.-blue {
+	.select2-container {
+		.select2-choice, {
+			background-color: darken($blue,5);
+			.select2-chosen {
+				background-color: darken($blue,5);
+				color: #fff;
+			}
+			.select2-arrow {
+				background-color: darken($blue,5);
+				color: #fff;
+			}
+		}
+	}	
+}
+
+.-lime {
+	.select2-container {
+		.select2-choice, {
+			background-color: darken($lime,5);
+			.select2-chosen {
+				background-color: darken($lime,5);
+				color: #fff;
+			}
+			.select2-arrow {
+				background-color: darken($lime,5);
+				color: #fff;
+			}
+		}
+	}
+}
+
+
