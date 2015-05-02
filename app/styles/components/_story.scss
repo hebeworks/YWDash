@@ -67,7 +67,7 @@
 		}
 		.story__inner .icon-cogs {
 			fill: #fff;
-			opacity: .3;
+			opacity: .8;
 			&:hover {
 				opacity: 1;
 			}
@@ -91,7 +91,7 @@
 		}
 		.story__inner .icon-cogs {
 			fill: #fff;
-			opacity: .3;
+			opacity: .8;
 			&:hover {
 				opacity: 1;
 			}
@@ -115,7 +115,7 @@
 		}
 		.story__inner .icon-cogs {
 			fill: #fff;
-			opacity: .3;
+			opacity: .8;
 			&:hover {
 				opacity: 1;
 			}
@@ -143,7 +143,7 @@
 		}
 		.story__inner .icon-cogs {
 			fill: #fff;
-			opacity: .3;
+			opacity: .8;
 			&:hover {
 				opacity: 1;
 			}
@@ -226,12 +226,24 @@
 		}
 		.icon-cogs {
 			z-index: 1;
-			opacity: .2;
+			opacity: .8;
 			position: absolute;
 			top: 5px;
 			right: 10px;
 			&:hover {
 				opacity: 1;
+			}
+			
+			svg {
+				stroke-width: 1px;
+				width:35px;
+				height:35px;
+			}
+		}
+		
+		.icon-reverse {
+			svg {
+				fill:white;
 			}
 		}
 	}
@@ -260,6 +272,19 @@
 				background-color: blue;
 				.story__content {
 					
+					h3 {
+						margin: {
+							top:1em;
+							right:0;
+							bottom:0;
+							left:0;
+						}
+						padding:0;
+					}
+					p {
+						padding:0;
+						margin:0;
+					}
 				}
 			}
 		}
