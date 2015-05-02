@@ -3,7 +3,7 @@ import {
   test
 } from 'ember-qunit';
 
-moduleForComponent('stories/complete/rainfall', {
+moduleForComponent('stories/complete/rain-fall', {
   // specify the other units that are required for this test
   // needs: ['component:foo', 'helper:bar']
 });

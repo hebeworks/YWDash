@@ -1,4 +1,4 @@
-.rainfall {
+.rain-fall {
 	.heading {
 		font: {
 			family: $georgia;
@@ -23,7 +23,7 @@
 		}
 	}
 }
-	.rainfall__details {
+	.rain-fall__details {
 		border: {
 			top: dotted 1px #7e7d73;
 			bottom: dotted 1px #7e7d73;
@@ -36,7 +36,7 @@
 			bottom: 5px;
 		}
 	}
-		.rainfall__datetime {
+		.rain-fall__datetime {
 			width: 32%;
 			font: {
 				family: $georgia;
@@ -45,7 +45,7 @@
 			}
 			float: left;
 		}
-		.rainfall__address {
+		.rain-fall__address {
 			padding: {
 				top: 2px;
 			}

@@ -54,6 +54,20 @@
 				color: #fff;
 			}
 		}
+		.story__inner .icon-cogs {
+			fill: #000;
+			opacity: .3;
+			&:hover {
+				opacity: 1;
+			}
+		}
+		.story__inner .icon-reverse svg {
+			fill: #000;
+			opacity: 1;
+			&:hover {
+				opacity: .8;
+			}
+		}
 	}
 	&.-black {
 		.story__card {
@@ -236,8 +250,9 @@
 			
 			svg {
 				stroke-width: 1px;
-				width:35px;
-				height:35px;
+				width:22px;
+				height:22px;
+				margin-top: 7px;
 			}
 		}
 		

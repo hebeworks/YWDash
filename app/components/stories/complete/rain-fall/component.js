@@ -6,13 +6,13 @@ export default Ember.Component.extend({
     selectedMonth: '',
     didInsertElement: function() {
         this.set('title', 'Rainfall');
-        this.set('subTitle', 'Ever wondered how many mms of rain fall on Leeds?');
+        this.set('subTitle', 'Ever wondered how rain falls on Leeds?');
         this.fetchData();
     },
     fetchData: function() {
         // request ckan api for dataset
         var obj = this;
-        Ember.$.getJSON('http://www.leedsdatamill.org/api/3/action/package_show?id=customer-services-contact-enquiries')
+        Ember.$.getJSON('http://www.leedsdatamill.org/api/3/action/package_show?id=rain-gauge-rainfall-data')
             .then(function(data){
                 var resources = []; 
                 data.result.resources.forEach(function(item) {
