@@ -7,8 +7,9 @@ module.exports = function(environment) {
     baseURL: '/',
     locationType: 'auto',
     contentSecurityPolicy: {
+      'img-src': "'self' http://*:35729 http://api.leedsinspired.co.uk *",
       'connect-src': "'self' http://*:35729 http://api.leedsinspired.co.uk",
-      'script-src': "'self' 'unsafe-eval' localhost:31609 0.0.0.0:31609 http://api.leedsinspired.co.uk"
+      'script-src': "'self' 'unsafe-eval' localhost:31609 0.0.0.0:31609 api.leedsinspired.co.uk maps.googleapis.com"
     },
     EmberENV: {
       FEATURES: {

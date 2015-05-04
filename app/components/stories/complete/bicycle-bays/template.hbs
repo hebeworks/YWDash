@@ -1,0 +1,22 @@
+
+{{#stories/story-base title=title subTitle=subTitle color="-lime" width="-w2" height="-h2" data-ss-colspan="2"}}
+    <div>
+        {{
+            select-2
+            content=items
+            value=selectedItem
+            optionValuePath="id"
+            optionLabelPath="street"
+            placeholder="Choose location..."
+        }}
+
+        <!--optionDescriptionPath="title"-->
+        <!--optionLabelPath="title"-->
+    </div>
+    
+    <main class="bicycle-bays">
+        <h2 class="heading">{{item.street}}</h2>
+        {{google-map initLat=item.lat initLng=item.lng}}
+    </main>
+
+{{/stories/story-base}}
