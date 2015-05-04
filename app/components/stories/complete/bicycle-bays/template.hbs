@@ -5,18 +5,26 @@
             select-2
             content=items
             value=selectedItem
-            optionValuePath="id"
             optionLabelPath="street"
-            placeholder="Choose location..."
+            placeholder="Choose a carpark"
         }}
-
-        <!--optionDescriptionPath="title"-->
-        <!--optionLabelPath="title"-->
     </div>
     
     <main class="bicycle-bays">
-        <h2 class="heading">{{item.street}}</h2>
-        {{google-map initLat=item.lat initLng=item.lng}}
+<!--        <h2 class="-delta">{{selectedItem.street}}</h2>-->
+        {{google-map 
+            lat=lat 
+            lng=lng 
+            zoom=zoom
+            markers=markers
+            }}
+<!--          markers=markers
+  gopt_zoomControl=false
+            markerInfoWindowTemplateName='app/components/stories/complete/bicycle-bays/google-map-info-window/'
+            markers=markers
+            markerInfoWindowTemplateName='google-maps/info-window'
+            }}-->
+            
     </main>
 
 {{/stories/story-base}}

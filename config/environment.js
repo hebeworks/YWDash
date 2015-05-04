@@ -7,9 +7,11 @@ module.exports = function(environment) {
     baseURL: '/',
     locationType: 'auto',
     contentSecurityPolicy: {
-      'img-src': "'self' http://*:35729 http://api.leedsinspired.co.uk *",
-      'connect-src': "'self' http://*:35729 http://api.leedsinspired.co.uk",
-      'script-src': "'self' 'unsafe-eval' localhost:31609 0.0.0.0:31609 api.leedsinspired.co.uk maps.googleapis.com"
+      'img-src': "'self' http://*:35729",
+      'connect-src': "'self' http://*:35729",
+      'script-src': "'self' 'unsafe-eval' localhost:31609 0.0.0.0:31609",
+      'font-src' : "'self'",
+      'style-src': "'self'"
     },
     EmberENV: {
       FEATURES: {
@@ -30,6 +32,24 @@ module.exports = function(environment) {
     // ENV.APP.LOG_TRANSITIONS = true;
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
+    ENV.contentSecurityPolicy = {
+      'default-src': "'none'",
+        'script-src': "*",
+        'font-src': "*",
+        'connect-src': "*",
+        'img-src': "*",
+        'style-src': "*",
+        'frame-src':"*"
+    }
+//    ENV.contentSecurityPolicy = {
+//        'default-src': "'none'",
+//        'script-src': "'self' 'unsafe-inline' 'unsafe-eval' w.sharethis.com ajax.googleapis.com f.fontdeck.com use.typekit.net connect.facebook.net maps.gstatic.com *.googleapis.com",
+//        'font-src': "'self' data: use.typekit.net fonts.gstatic.com",
+//        'connect-src': "'self' tct.local api.leedsinspired.co.uk",
+//        'img-src': "'self' www.facebook.com p.typekit.net w.sharethis.com tct.local api.leedsinspired.co.uk *.cdninstagram.com *.googleapis.com maps.gstatic.com *.squarespace.com",
+//        'style-src': "'self' 'unsafe-inline' hello.myfonts.net use.typekit.net *.googleapis.com",
+//        'frame-src': "s-static.ak.facebook.com static.ak.facebook.com www.facebook.com"
+//    }
   }
 
   if (environment === 'test') {

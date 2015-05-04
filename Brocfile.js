@@ -26,6 +26,7 @@ var app = new EmberApp({
 // please specify an object with the list of modules as keys
 // along with the exports of each module as its value.
 
+app.import('vendor/hebeutils.js');
 app.import(app.bowerDirectory + '/packery/dist/packery.pkgd.min.js');
 app.import(app.bowerDirectory + '/jquery-ui/ui/core.js');
 app.import(app.bowerDirectory + '/jquery-ui/ui/widget.js');

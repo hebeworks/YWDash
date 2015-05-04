@@ -41,44 +41,33 @@
     }*/
 }
 
-    .space-station__icon  {
-        float:left;
-		position:absolute;
-        top:140px;
-
-        .icon-space-station {
-			width: 81px;
-			height: 80px;
-            fill: #fff;
-			display: block;
-		    
-            &:hover {
-                fill: #fff;
-	        }
-        }
-    }
+   
 
     .space-station__details {
-        float:left;
-        padding: {
-            top: 50px;
-            left:95px;
-            bottom: 5px;
-        }
-
-        margin: {
-            bottom: 5px;
+        width: 290px;
+        height: 223px;
+        background-size: contain;
+        background-position: center;
+        float: left;
+        padding: 0;
+        margin-bottom: 0; 
+        
+        .-inner {
+            text-align: center;
+            margin: 70px auto;
+            width: 100px;
+            display: block;
         }
     }
 
     .space-station__date {
         font: {
-            size: em(28px);
+            size: em(16px);
         }
     }
 
     .space-station__duration {
         font: {
-            size: em(28px);
+            size: em(16px);
         }
     }

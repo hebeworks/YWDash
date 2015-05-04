@@ -4,8 +4,8 @@ export default Ember.Component.extend({
     tagName: 'div',
     loaded: false,
     didInsertElement: function() {
-        this.set('title', 'Space watch');
-        this.set('subTitle', 'ISS over Leeds');
+        this.set('title', 'International Space Station');
+        this.set('subTitle', 'When to catch a glimpse over Leeds');
         this.fetchData();
     },
     fetchData: function() {

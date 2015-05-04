@@ -3,7 +3,7 @@ import {
   test
 } from 'ember-qunit';
 
-moduleForComponent('google-map', {
+moduleForComponent('stories/complete/footfall-centre', {
   // specify the other units that are required for this test
   // needs: ['component:foo', 'helper:bar']
 });
