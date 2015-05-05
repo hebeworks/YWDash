@@ -1,61 +1,23 @@
 .footfall-centre {
-	.heading {
-		font: {
-			family: $georgia;
-			size: em(18px);
-		}
-		margin: {
-			bottom: 10px;
-		}
-		a {
-			text-decoration: none;
-			&:hover {
-				text-decoration: underline;
-			}
-		}
-	}
-	p {
+	
+}
+	.footfall-centre__table {
+		border:solid 1px $dark-grey;
+		width: 100%;
+
 		font: {
 			size: em(11px);
 		}
-		margin: {
-			bottom: 5px;
-		}
-	}
-}
-	.footfall-centre__details {
-		border: {
-			top: dotted 1px #7e7d73;
-			bottom: dotted 1px #7e7d73;
-		}
-		padding: {
-			top: 5px;
-			bottom: 5px;
-		}
-		margin: {
-			bottom: 5px;
-		}
-	}
-		.footfall-centre__datetime {
-			width: 32%;
-			font: {
-				family: $georgia;
-				size: em(12px);
-				style: italic;
-			}
-			float: left;
-		}
-		.footfall-centre__address {
-			padding: {
-				top: 2px;
-			}
-			font: {
-				size: em(12px);
-			}
-			em {
-				font: {
-					family: $helvneuemed;
-					style: normal;
+		tr {
+			td {
+				color:$dark-grey;
+				width: 70%;
+				padding: 2px 5px;
+
+				&:nth-child(even){
+					width: 30%;
+					color:$lime;
 				}
 			}
 		}
+	}

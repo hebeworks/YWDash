@@ -1,6 +1,7 @@
 {{#stories/story-base title=title subTitle=subTitle color="-white" width="-w2" height="-h2" data-ss-colspan="2"}}
-<main class="lcc-enquiries">
-    <div>
+<main class="footfall-centre">
+   
+<!--    <div>
         {{
             select-2
             content=months
@@ -8,9 +9,29 @@
             placeholder="Choose a month"
             cssClass="hebe-select-2"
         }}
-    </div>
+    </div>-->
 
-   
+    {{#if days}}
+        <div>
+            {{
+                select-2
+                content=days.items
+                value=selectedDay
+                placeholder="Choose a day"
+                optionLabelPath="title"
+                cssClass="hebe-select-2"
+            }}
+        </div>
     
+        {{#if selectedDay.items}}
+            <table class="footfall-centre__table">
+                {{#each location in selectedDay.items}}
+                    <tr><td>{{location.title}}</td><td>{{location.total}}</td></tr>
+                {{/each}}
+            </table>
+        {{/if}}
+    {{else}}
+        {{loading-icon}}    
+    {{/if}}
 </main>
 {{/stories/story-base}}
