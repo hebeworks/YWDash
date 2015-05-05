@@ -1,0 +1,23 @@
+.footfall-centre {
+	
+}
+	.footfall-centre__table {
+		border:solid 1px $dark-grey;
+		width: 100%;
+
+		font: {
+			size: em(11px);
+		}
+		tr {
+			td {
+				color:$dark-grey;
+				width: 70%;
+				padding: 2px 5px;
+
+				&:nth-child(even){
+					width: 30%;
+					color:$lime;
+				}
+			}
+		}
+	}
