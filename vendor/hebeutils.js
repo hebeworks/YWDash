@@ -53,7 +53,7 @@
                         0 :
                         (3 - (str.indexOf('.')))
                     );
-                var rounded = utils.evenRound(this, numberOfDecimalPlaces);
+                var rounded = hebeutils.evenRound(this, numberOfDecimalPlaces);
                 return rounded;
             };
         }

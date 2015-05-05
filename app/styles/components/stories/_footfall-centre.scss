@@ -16,7 +16,8 @@
 
 				&:nth-child(even){
 					width: 30%;
-					color:$lime;
+					font-weight: bold;
+					text-align: center;
 				}
 			}
 		}

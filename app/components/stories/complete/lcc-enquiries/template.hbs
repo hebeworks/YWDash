@@ -10,17 +10,36 @@
         }}
     </div>
 
-    Most enquiries per postcode:
-    <ol>
-        {{#each item in topPostcodes}}
-        <li>{{item.postcode}}: {{item.total}}</li>
-        {{/each}}
-    </ol>
-    MOST CONTACTED SERVICES
-    <ol>
-        {{#each item in topEnquiries}}
-        <li>{{item.enquiry}}: {{item.total}}</li>
-        {{/each}}
-    </ol>
+    <h3 class="-alpha">Total Enquiries: {{totalEnquiries}}</h3>
+      {{#stories/story-slider loaded=loaded}}
+            {{#stories/story-slide}}
+                <table class="lcc-enquiries__table">
+                    <thead>
+                        <td>Most enquiries by postcode</td>
+                        <td>No. enquiries</td>
+                        <td>% total</td>
+                    </thead>
+                    <tbody>
+                        {{#each item in topPostcodes}}
+                            <tr><td>{{item.postcode}}</td><td>{{item.total}}</td><td>{{item.percentage}}%</td></tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            {{/stories/story-slide}}
+            {{#stories/story-slide}}
+                <table class="lcc-enquiries__table">
+                    <thead>
+                        <td>Most Contacted Services</td>
+                        <td>No. enquiries</td>
+                        <td>% total</td>
+                    </thead>
+                    <tbody>
+                        {{#each item in topEnquiries}}
+                            <tr><td>{{item.enquiry}}</td><td>{{item.total}}</td><td>{{item.percentage}}%</td></tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            {{/stories/story-slide}}
+        {{/stories/story-slider}}
 </main>
 {{/stories/story-base}}
