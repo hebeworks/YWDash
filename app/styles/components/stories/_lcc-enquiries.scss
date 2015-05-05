@@ -10,10 +10,14 @@
 }
 
     .lcc-enquiries__table {
-        height:100px;
-        
+        width:100%;
+
         thead {
             td {
+                border: {
+                    bottom:dashed 1px $light-grey;
+                }
+                
                 font: {
                     size:em(11px);
                 }
@@ -25,7 +29,10 @@
                 font: {
                     size:em(12px);
                 }
-                padding:0;
+                padding:2px 0;
+                border: {
+                    bottom:dashed 1px $light-grey;
+                }
                 
                 font-weight:bold;
                 &:first-of-type {
