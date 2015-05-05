@@ -53,8 +53,10 @@ export default Ember.Component.extend({
             data.result.records.forEach(function (item) {
                 var day = moment(item.Weekday).calendar();
                 var date = moment(item.Date).calendar();
+                var friendlyDate = moment(item.Date).format('Do MMMM YYYY');
                 var result = {
                     date: date,
+                    friendlyDate: friendlyDate,
                     total: item.TotalCount,
                     hour: item.Hour,
                     title: item.Sitename,
@@ -74,7 +76,7 @@ export default Ember.Component.extend({
 
     getDays: function (items) {
         var sortedDays = _.sortBy(items, "hour");
-        var days = _.groupBy(sortedDays, "date");
+        var days = _.groupBy(sortedDays, "friendlyDate");
         for (var day in days) {
             var location = _.groupBy(days[day], 'location');
             days[day] = this.convertToArrayWithTotal(location);
