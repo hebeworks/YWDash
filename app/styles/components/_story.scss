@@ -163,6 +163,22 @@
 			}
 		}
 	}
+	
+	&.-light-blue {
+		.story__card {
+			color: #fff;
+			background: {
+				color: #0072BC;
+			}
+		}
+		.story__inner .icon-cogs {
+			fill: #fff;
+			opacity: .8;
+			&:hover {
+				opacity: 1;
+			}
+		}
+	}
 
 	&.ui-draggable-dragging {
 		@include transform(rotate(-1.5deg));

@@ -40,7 +40,8 @@
 		}
 		input {
 			height: 100%!important;
-			background-color: #fff;
+			background-color: darken(white,4);
+
 			border: none;
 		}
 	}
@@ -150,6 +151,23 @@
 			}
 			.select2-arrow {
 				background-color: darken($blue,5);
+				color: #fff;
+			}
+		}
+	}	
+}
+
+
+.-light-blue {
+	.select2-container {
+		.select2-choice, {
+			background-color: darken($light-blue,5);
+			.select2-chosen {
+				background-color: darken($light-blue,5);
+				color: #fff;
+			}
+			.select2-arrow {
+				background-color: darken($light-blue,5);
 				color: #fff;
 			}
 		}
