@@ -26,9 +26,9 @@ export default Ember.Component.extend({
                     .substr(item["carParkIdentity"].indexOf(':') + 1,
                     (item["carParkIdentity"].length - item["carParkIdentity"].indexOf(':')) - 1);
                 carPark.title = item["carParkIdentity"].substr(0, item["carParkIdentity"].indexOf(':'));
-                carPark.carParkOccupancy = item["carParkOccupancy"];
+                carPark.occupiedSpaces = item["occupiedSpaces"];
                 carPark.totalCapacity = item["totalCapacity"];
-                carPark.available = carPark.totalCapacity - carPark.carParkOccupancy;
+                carPark.available = carPark.totalCapacity - carPark.occupiedSpaces;
                 carParks.push(carPark);
             });
             

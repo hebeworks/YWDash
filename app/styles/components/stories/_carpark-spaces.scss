@@ -10,13 +10,16 @@
 		}
 	}
 }
+	.car-park {
+		margin-top:40px;
+	}
 
 	.car-park__wrapper {
 		width: 100%;
 		overflow:auto;
 		padding: {
-			top:5px;
-			bottom:5px;
+			top:8px;
+			bottom:8px;
 		}
 		border: {
 			top:dashed 1px white;
@@ -26,29 +29,29 @@
 	
 	.car-park__section {
 		float:left;
-		width:33%;
 		border: {
 			left:solid 1px white;
 		}
 		
 		padding: {
 			left:8px;
+			right:8px;
 		}
 		
 		&:first-of-type {
-			border {
-				left:none;
-			}
+			border-left:none;
+			padding-left:0px;
 		}
 		
 		.-value {
-			@extend -delta;	
+			@extend .-alpha;	
 		}
 		
 		.-label {
 			font: {
 				size:em(11px);
 			}
+			white-space: nowrap;
 		}
 	}
 

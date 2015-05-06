@@ -361,6 +361,9 @@
 				position: absolute;
 				bottom: 5px;
 				left: 15px;
+				font: {
+					size: em(12px);
+				}
 				border: {
 					top: dotted 1px #7e7d73;
 				}
@@ -368,16 +371,18 @@
 					top: 5px;
 				}
 				text-align: center;
-				.pg-of {
-					color: #000;
-					opacity: .24;
-					font: {
-						size: em(12px);
-					}
+				.pg-of, .author {
 					margin: {
 						top: 4px;
 					}
 					float: left;
+				}
+				.pg-of {
+					opacity: .24;
+					color: #000;					
+				}
+				.author {
+					float: right;
 				}
 				img {
 					float: right;

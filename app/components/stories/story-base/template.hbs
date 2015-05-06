@@ -6,7 +6,13 @@
                 <h2 class="heading -gamma">{{title}}</h2>
                 <h3 class="heading -delta">{{subTitle}}</h3>
             </header>
-        {{yield}}
+        	{{yield}}
+            
+            {{#if author}}
+                <footer class="story__footer">
+                    {{#if author}}<div class="author">Author: {{author}}</div>{{/if}}
+                </footer>
+            {{/if}}
         </div>
     </div>
 
