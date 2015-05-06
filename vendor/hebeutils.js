@@ -20,6 +20,18 @@
             String.prototype.ensureNoStartingString = function (str) {
                 if (this.startsWith(str)) {
                     return this.substr(str.length);
+                } else {
+                    return this;
+                }
+            };
+        }
+        // str.ensureStartingString
+        if (typeof String.prototype.ensureStartingString != 'function') {
+            String.prototype.ensureStartingString = function (str) {
+                if (!this.startsWith(str)) {
+                    return str + this;
+                } else {
+                    return this;
                 }
             };
         }
