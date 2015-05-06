@@ -1,4 +1,56 @@
 .carpark-spaces {
 	
+	.icon-parking {
+		margin: {
+			top:2px;
+		}
+		svg {
+			width:18px;
+			height:18px;
+		}
+	}
 }
+
+	.car-park__wrapper {
+		width: 100%;
+		overflow:auto;
+		padding: {
+			top:5px;
+			bottom:5px;
+		}
+		border: {
+			top:dashed 1px white;
+			bottom:dashed 1px white;
+		}
+	}
+	
+	.car-park__section {
+		float:left;
+		width:33%;
+		border: {
+			left:solid 1px white;
+		}
+		
+		padding: {
+			left:8px;
+		}
+		
+		&:first-of-type {
+			border {
+				left:none;
+			}
+		}
+		
+		.-value {
+			@extend -delta;	
+		}
+		
+		.-label {
+			font: {
+				size:em(11px);
+			}
+		}
+	}
+
+	
 	
