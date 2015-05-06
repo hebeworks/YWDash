@@ -41,9 +41,17 @@
     }*/
 }
 
-   
+//    @include keyframes (flip-the-eff-out) {
+//    	0% {@include transform(rotate(0deg) rotateX(0deg) rotateY(0deg));}
+//        100% {@include transform(rotate(360deg) rotateX(360deg) rotateY(360deg));}
+//    }
+    
+    @include keyframes (rotate-360) {
+    	0% {@include transform(rotate(0deg));}
+        100% {@include transform(rotate(360deg));}
+    }
 
-    .space-station__details {
+    .space-station__bg {
         width: 290px;
         height: 200px;
         background-size: contain;
@@ -51,23 +59,30 @@
         float: left;
         padding: 0;
         margin-bottom: 0; 
+        position: absolute;
         
-        .-inner {
-            text-align: center;
-            margin: 70px auto;
-            width: 100px;
-            display: block;
-        }
+//    	@include transition(transform 1s);
+//        @include transform(rotate(360deg));
+        @include transform-origin(144px 109px);
+        @include animation(rotate-360 8s infinite linear);
+//        @include transition-timing-function(linear);
+    }
+    
+    .space-station__inner {
+        width: 100px;
+        height: 200px;
+        text-align: center;
+        margin: 70px auto; 
     }
 
-    .space-station__date {
-        font: {
-            size: em(16px);
+        .space-station__date {
+            font: {
+                size: em(16px);
+            }
         }
-    }
-
-    .space-station__duration {
-        font: {
-            size: em(16px);
+    
+        .space-station__duration {
+            font: {
+                size: em(16px);
+            }
         }
-    }
