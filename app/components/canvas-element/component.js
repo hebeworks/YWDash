@@ -2,5 +2,11 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
 	tagName: 'li',
-	testStory:'stories/complete/clock-face'
+	getStories: function(){
+		var obj = this;
+		this.store.find('story')
+			.then(function (stories) {
+                obj.set('stories', stories);
+            });
+	}.on('init')
 });
