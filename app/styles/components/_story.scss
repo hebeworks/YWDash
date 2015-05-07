@@ -178,6 +178,22 @@
 			}
 		}
 	}
+	
+	&.-light-blue {
+		.story__card {
+			color: #fff;
+			background: {
+				color: #0072BC;
+			}
+		}
+		.story__inner .icon-cogs {
+			fill: #fff;
+			opacity: .8;
+			&:hover {
+				opacity: 1;
+			}
+		}
+	}
 
 	&.ui-draggable-dragging {
 		@include transform(rotate(-1.5deg));
@@ -348,11 +364,21 @@
 						display: block;
 					}
 				}
+				
+				.btn {
+			        height: 40px;
+					font {
+		            	size: em(12px);
+					}
+				}
 			}
 			.story__footer {
 				position: absolute;
 				bottom: 5px;
 				left: 15px;
+				font: {
+					size: em(12px);
+				}
 				border: {
 					top: dotted 1px #7e7d73;
 				}
@@ -360,16 +386,18 @@
 					top: 5px;
 				}
 				text-align: center;
-				.pg-of {
-					color: $black;
-					opacity: .24;
-					font: {
-						size: em(12px);
-					}
+				.pg-of, .author {
 					margin: {
 						top: 4px;
 					}
 					float: left;
+				}
+				.pg-of {
+					opacity: .24;
+					color: #000;					
+				}
+				.author {
+					float: right;
 				}
 				img {
 					float: right;

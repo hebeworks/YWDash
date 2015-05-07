@@ -1,21 +1,16 @@
 {{#stories/story-base title=title subTitle=subTitle color="-black" width="-w2" height="-h2" data-ss-colspan="2"}}
-
-<main class="space-station">
-    <h2 class="heading"><a target="_blank" href="http://spotthestation.nasa.gov/sightings/view.cfm?country=United_Kingdom&region=England&city=Leeds#.VSenec6aZrj">International Space Station</a></h2>
-
-    <div class="space-station__icon">
-        <span class="icon-space-station svg-space-station" data-grunticon-embed></span>
-    </div>
-
-    {{#stories/story-slider loaded=loaded}}
-        {{#each item in items}}
-            {{#stories/story-slide}}
-                <p class="space-station__details">
-                    <time class="space-station__date">{{item.date}}</time><br>
-                    <time class="space-station__duration">Visible for {{item.duration}} mins</time><br>
-                </p>
-            {{/stories/story-slide}}
-        {{/each}}
-    {{/stories/story-slider}}
-</main>
+    <main class="space-station">
+        {{#stories/story-slider loaded=loaded}}
+            {{#each item in items}}
+                {{#stories/story-slide}}
+                    <div class="space-station__bg svg-space-station"></div>
+                    <div class="space-station__inner">
+                        <time class="space-station__date">{{item.date}}</time><br>
+                        <time class="space-station__duration">Visible for {{item.duration}} mins</time>
+                    </div>
+                {{/stories/story-slide}}
+            {{/each}}
+        {{/stories/story-slider}}
+    </main>
+<!--    http://spotthestation.nasa.gov/sightings/view.cfm?country=United_Kingdom&region=England&city=Leeds#.VSenec6aZrj-->
 {{/stories/story-base}}

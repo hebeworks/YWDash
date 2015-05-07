@@ -1,0 +1,42 @@
+/* Colours */
+$ivory: #fcfae6;
+$lime: #7ed321;
+$light-blue: #90bef6;
+$blue: #468ee5;
+<<<<<<< HEAD
+$dark-blue: #21446e;
+$red: #d0021b;
+$light-grey: #e7e7e7;
+=======
+$light-blue:#0072BC;
+
+>>>>>>> 3db308e92fb6b9496dacff5351dc9e7200f3ccc7
+$grey: #999999;
+$dark-grey: #4a4a4a;
+$white: #fff;
+$black: #000;
+$off-white: #f1f1f1;
+
+$sansserif: 'Helvetica', 'Arial', 'sans-serif';
+
+$helvneue: 'HelveticaNeueLT-Roman', $sansserif;
+$helvneuemed: 'HelveticaNeueLT-Medium', $helvneue;
+$helvneuelight: 'HelveticaNeueLT-Light', $helvneue;
+
+$georgia: 'Georgia', 'serif';
+
+
+$zetta-size: 100;
+$exa-size: 90;
+$peta-size: 80;
+$tera-size: 70;
+$giga-size: 60;
+$mega-size: 50;
+$kilo-size: 40;
+$hecto-size: 35;
+$h1-size: 26;
+$h2-size: 20;
+$h3-size: 15;
+$h4-size: 13;
+$h5-size: 12;
+$h6-size: 11;

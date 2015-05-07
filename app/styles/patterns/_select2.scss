@@ -44,7 +44,8 @@ a.select2-choice.select2-default {
 		}
 		input {
 			height: 100%!important;
-			background-color: $white;
+			background-color: darken(white,4);
+
 			border: none;
 		}
 	}
@@ -172,6 +173,23 @@ a.select2-choice.select2-default {
 			.select2-arrow {
 				background-color: $white;
 				color: $dark-blue;
+			}
+		}
+	}	
+}
+
+
+.-light-blue {
+	.select2-container {
+		.select2-choice, {
+			background-color: darken($light-blue,5);
+			.select2-chosen {
+				background-color: darken($light-blue,5);
+				color: #fff;
+			}
+			.select2-arrow {
+				background-color: darken($light-blue,5);
+				color: #fff;
 			}
 		}
 	}	

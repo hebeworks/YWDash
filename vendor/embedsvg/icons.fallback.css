@@ -6,13 +6,13 @@
 
 .svg-change-canvas { background-image: url('png/change-canvas.png'); background-repeat: no-repeat; }
 
+.svg-clock-face-hours { background-image: url('png/clock-face-hours.png'); background-repeat: no-repeat; }
+
+.svg-clock-face-minutes { background-image: url('png/clock-face-minutes.png'); background-repeat: no-repeat; }
+
+.svg-clock-face-seconds { background-image: url('png/clock-face-seconds.png'); background-repeat: no-repeat; }
+
 .svg-clock-face { background-image: url('png/clock-face.png'); background-repeat: no-repeat; }
-
-.svg-clock-face__hours { background-image: url('png/clock-face__hours.png'); background-repeat: no-repeat; }
-
-.svg-clock-face__minutes { background-image: url('png/clock-face__minutes.png'); background-repeat: no-repeat; }
-
-.svg-clock-face__seconds { background-image: url('png/clock-face__seconds.png'); background-repeat: no-repeat; }
 
 .svg-close-drawer { background-image: url('png/close-drawer.png'); background-repeat: no-repeat; }
 
@@ -37,6 +37,8 @@
 .svg-logo { background-image: url('png/logo.png'); background-repeat: no-repeat; }
 
 .svg-my-collection { background-image: url('png/my-collection.png'); background-repeat: no-repeat; }
+
+.svg-parking-icon { background-image: url('png/parking-icon.png'); background-repeat: no-repeat; }
 
 .svg-plus { background-image: url('png/plus.png'); background-repeat: no-repeat; }
 

@@ -6,12 +6,17 @@
                 <h2 class="heading -gamma">{{title}}</h2>
                 <h3 class="heading -delta">{{subTitle}}</h3>
             </header>
-        {{yield}}
+        	{{yield}}
+            
+            {{#if author}}
+                <footer class="story__footer">
+                    {{#if author}}<div class="author">Author: {{author}}</div>{{/if}}
+                </footer>
+            {{/if}}
         </div>
     </div>
+
     <div class="story__card -back">
-        
-        
         <a href="javascript:;" class="js-cogs icon icon-cogs icon-reverse svg-reverse" data-grunticon-embed>Settings</a>
         <div class="story__content">
             <header>
@@ -20,17 +25,17 @@
             </header>
             
             <div class="btn-list">
-                <button class="btn -blue -half">View Data Source</button>
-                <a href="mailto:dashboard@hebeworks.com" class="btn -blue -center -middle -half">Feedback</a>
+                {{ui/button-link href=dataSourceUrl title="View Data Source" classNames="btn -blue -half"}}
+                {{ui/button-link href=feedbackEmail type="mail" title="Feedback" classNames="btn -blue -half"}}
             </div>
             
             <div class="">
                 <p><strong>Description</strong></p>
-                <p>Cras in convallis diam. Donec et velit in lectus tempus tincidunt. Nulla dui nunc, volutpat ut </p>
+                <p>{{description}}</p>
             </div><br>
             <div class="">
                 <p><strong>License / Attribution</strong></p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer cursus auctor nibh, sed fermentum nisl.</p>
+                <p>{{license}}</p>
             </div>
         </div>
     </div>
