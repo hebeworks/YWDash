@@ -386,7 +386,16 @@
 					top: 5px;
 				}
 				text-align: center;
+<<<<<<< HEAD
+				.pg-of {
+					color: $black;
+					opacity: .24;
+					font: {
+						size: em(12px);
+					}
+=======
 				.pg-of, .author {
+>>>>>>> 3db308e92fb6b9496dacff5351dc9e7200f3ccc7
 					margin: {
 						top: 4px;
 					}

@@ -5,14 +5,14 @@ export default Ember.Component.extend({
     loaded: false,
     selectedMonth: '',
     didInsertElement: function() {
-        this.set('title', 'Rainfall');
-        this.set('subTitle', 'Ever wondered how rain falls on Leeds?');
+        this.set('title', 'LCC Contact Centre Enquiries');
+        this.set('subTitle', 'Enquiries dealt with by Leeds City Council');
         this.fetchData();
     },
     fetchData: function() {
         // request ckan api for dataset
         var obj = this;
-        Ember.$.getJSON('http://www.leedsdatamill.org/api/3/action/package_show?id=rain-gauge-rainfall-data')
+        Ember.$.getJSON('http://www.leedsdatamill.org/api/3/action/package_show?id=customer-services-contact-enquiries')
             .then(function(data){
                 var resources = []; 
                 data.result.resources.forEach(function(item) {
@@ -46,6 +46,7 @@ export default Ember.Component.extend({
         }
 
         Ember.$.getJSON('http://www.leedsdatamill.org/api/action/datastore_search_sql?',data).then(function(data) {
+            
             var items = []; 
             data.result.records.forEach(function(item) {
                 // format API data here

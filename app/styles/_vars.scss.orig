@@ -3,9 +3,14 @@ $ivory: #fcfae6;
 $lime: #7ed321;
 $light-blue: #90bef6;
 $blue: #468ee5;
+<<<<<<< HEAD
 $dark-blue: #21446e;
 $red: #d0021b;
 $light-grey: #e7e7e7;
+=======
+$light-blue:#0072BC;
+
+>>>>>>> 3db308e92fb6b9496dacff5351dc9e7200f3ccc7
 $grey: #999999;
 $dark-grey: #4a4a4a;
 $white: #fff;
