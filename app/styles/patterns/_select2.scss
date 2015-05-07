@@ -3,7 +3,7 @@
 	margin: 0 0 10px 0;
 	background-image: none;
 	.select2-choice, {
-		height: 40px;
+		height: 35px;
 		background-image: none;
 		border: 0;
 		&:active {
@@ -13,7 +13,8 @@
 			height: 100%;
 			font-family: $helvneuemed;
 			font-size: .75rem;
-			margin-top: 8px;
+			margin-top: 6px;
+			margin-left: 4px;
 		}
 		
 		.select2-arrow {
@@ -21,15 +22,18 @@
 			background-image: none;
 			margin: {
 				right: 10px;
-				top: 8px;
+				top: 6px;
 			}
 		}
 	}
 }
+a.select2-choice.select2-default {
+	box-shadow: none;
+}
 .select2-drop {
 	background-image: none;
-	background-color: #fff;
-	color: #000;
+	background-color: $white;
+	color: $black;
 	font-family: $helvneuemed;
 	font-size: .75rem;
 	border: 0;
@@ -40,15 +44,15 @@
 		}
 		input {
 			height: 100%!important;
-			background-color: #fff;
+			background-color: $white;
 			border: none;
 		}
 	}
 }
 
 .select2-drop-above {
-	background-color: #fff;
-	color: #000;
+	background-color: $white;
+	color: $black;
 	&:active {
 		background-image: none;
 	}
@@ -57,9 +61,9 @@
 	li {
 		height: 40px;
 		padding-top: 8px;
-		border-bottom: 1px dotted #000;
+		border-bottom: 1px dotted $black;
 		&:first-child {
-			border-top: 1px dotted #000;
+			border-top: 1px dotted $black;
 		}
 	}
 	.select2-no-results, .select2-searching {
@@ -68,7 +72,7 @@
 	}
 	.select2-highlighted {
 		background-color: $light-grey;
-		color: #000;
+		color: $black;
 	}
 }
 .select2-dropdown-open .select2-choice {
@@ -94,11 +98,11 @@
 			background-color: $light-grey;
 			.select2-chosen {
 				background-color: $light-grey;
-				color: #000;
+				color: $black;
 			}
 			.select2-arrow {
 				background-color: $light-grey;
-				color: #000;
+				color: $black;
 			}
 		}
 	}
@@ -107,14 +111,14 @@
 .-black {
 	.select2-container {
 		.select2-choice, {
-			background-color: lighten(#000,15);
+			background-color: lighten($black,15);
 			.select2-chosen {
-				background-color: lighten(#000,15);
-				color: #fff;
+				background-color: lighten($black,15);
+				color: $white;
 			}
 			.select2-arrow {
-				background-color: lighten(#000,15);
-				color: #fff;
+				background-color: lighten($black,15);
+				color: $white;
 			}
 		}
 	}
@@ -130,11 +134,11 @@
 			background-color: lighten($dark-grey,5);
 			.select2-chosen {
 				background-color: lighten($dark-grey,5);
-				color: #fff;
+				color: $white;
 			}
 			.select2-arrow {
 				background-color: lighten($dark-grey,5);
-				color: #fff;
+				color: $white;
 			}
 		}
 	}
@@ -146,11 +150,28 @@
 			background-color: darken($blue,5);
 			.select2-chosen {
 				background-color: darken($blue,5);
-				color: #fff;
+				color: $white;
 			}
 			.select2-arrow {
 				background-color: darken($blue,5);
-				color: #fff;
+				color: $white;
+			}
+		}
+	}	
+}
+
+.-dark-blue {
+	.select2-container {
+		.select2-choice, {
+			background-color: $white;
+			color: $dark-blue;
+			.select2-chosen {
+				background-color: $white;
+				color: $dark-blue;
+			}
+			.select2-arrow {
+				background-color: $white;
+				color: $dark-blue;
 			}
 		}
 	}	
@@ -162,11 +183,11 @@
 			background-color: darken($lime,5);
 			.select2-chosen {
 				background-color: darken($lime,5);
-				color: #fff;
+				color: $white;
 			}
 			.select2-arrow {
 				background-color: darken($lime,5);
-				color: #fff;
+				color: $white;
 			}
 		}
 	}

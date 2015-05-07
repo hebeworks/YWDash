@@ -46,6 +46,7 @@ export default Ember.Component.extend({
         }
 
         Ember.$.getJSON('http://www.leedsdatamill.org/api/action/datastore_search_sql?',data).then(function(data) {
+            
             var items = []; 
             data.result.records.forEach(function(item) {
                 // format API data here

@@ -8,7 +8,7 @@
 	}
 	display: block;
 	border: {
-		radius: 10px;
+		radius: 5px;
 	}
 	z-index: 3;
 	@include perspective(1000);
@@ -51,18 +51,18 @@
 	&.-white {
 		.story__card {
 			background: {
-				color: #fff;
+				color: $white;
 			}
 		}
 		.story__inner .icon-cogs {
-			fill: #000;
+			fill: $black;
 			opacity: .3;
 			&:hover {
 				opacity: 1;
 			}
 		}
 		.story__inner .icon-reverse svg {
-			fill: #000;
+			fill: $black;
 			opacity: 1;
 			&:hover {
 				opacity: .8;
@@ -71,16 +71,16 @@
 	}
 	&.-black {
 		.story__card {
-			color: #fff;
+			color: $white;
 			background: {
-				color: #000;
+				color: $black;
 			}
             a {
-                color:#fff;
+                color:$white;
             }
 		}
 		.story__inner .icon-cogs {
-			fill: #fff;
+			fill: $white;
 			opacity: .8;
 			&:hover {
 				opacity: 1;
@@ -88,23 +88,23 @@
 		}
         .story__footer {
 		    .pg-of {
-			    color: #fff;
+			    color: $white;
                 opacity:0.7;
             }
         }
 	}
 	&.-dark-grey {
 		.story__card {
-			color: #fff;
+			color: $white;
 			background: {
-				color: #4a4a4a;
+				color: $dark-grey;
 			}
             a {
-                color:#fff;
+                color:$white;
             }
 		}
 		.story__inner .icon-cogs {
-			fill: #fff;
+			fill: $white;
 			opacity: .8;
 			&:hover {
 				opacity: 1;
@@ -112,23 +112,23 @@
 		}
         .story__footer {
 		    .pg-of {
-			    color: #fff;
+			    color: $white;
                 opacity:0.7;
             }
         }
 	}
 	&.-lime {
 		.story__card {
-			color: #fff;
+			color: $white;
 			background: {
-				color: #7ed321;
+				color: $lime;
 			}
             a {
-                color:#fff;
+                color:$white;
             }
 		}
 		.story__inner .icon-cogs {
-			fill: #fff;
+			fill: $white;
 			opacity: .8;
 			&:hover {
 				opacity: 1;
@@ -136,7 +136,7 @@
 		}
         .story__footer {
 		    .pg-of {
-			    color: #fff;
+			    color: $white;
                 opacity:0.7;
             }
         }
@@ -144,19 +144,34 @@
 	&.-ivory {
 		.story__card {
 			background: {
-				color: #fcfae6;
+				color: $ivory;
 			}
 		}
 	}
 	&.-blue {
 		.story__card {
-			color: #fff;
+			color: $white;
 			background: {
-				color: #053257;
+				color: $blue;
 			}
 		}
 		.story__inner .icon-cogs {
-			fill: #fff;
+			fill: $white;
+			opacity: .8;
+			&:hover {
+				opacity: 1;
+			}
+		}
+	}
+	&.-dark-blue {
+		.story__card {
+			color: $white;
+			background: {
+				color: $dark-blue;
+			}
+		}
+		.story__inner .icon-cogs {
+			fill: $white;
 			opacity: .8;
 			&:hover {
 				opacity: 1;
@@ -270,7 +285,7 @@
 			top: 0;
 			left: 0;
 			border: {
-				radius: 10px;
+				radius: 5px;
 			}
 			overflow: hidden;
 			@include backface-visibility(hidden);
@@ -346,7 +361,7 @@
 				}
 				text-align: center;
 				.pg-of {
-					color: #000;
+					color: $black;
 					opacity: .24;
 					font: {
 						size: em(12px);
