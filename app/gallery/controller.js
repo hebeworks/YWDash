@@ -9,9 +9,9 @@ export default Ember.Controller.extend({
 
         var items = [
             { title: 'Back' },
-            { title: 'Browse' },
-            { title: 'My Collection' },
-            { title: 'Search' }
+//            { title: 'Browse' },
+//            { title: 'My Collection' },
+//            { title: 'Search' }
         ];
 
         for (var i = 0; i < items.length; i++) {
