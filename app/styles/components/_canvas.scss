@@ -109,7 +109,7 @@
 		.canvas {
 			height: 100%;
 			z-index: 2;
-			float: left;
+//			float: left;
 			list-style: none;
 			position: relative;
 			padding: {
@@ -117,6 +117,10 @@
 				bottom: 40px;
 			}
 			background-color: #f7f7f7;
+			margin: {
+				left:auto;
+				right:auto;
+			}
 		}
 			.canvas__overlay {
 				width: 100%;
