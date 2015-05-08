@@ -1,6 +1,7 @@
-import DS from 'ember-data';
+import appSerializer from '../application/serializer';
 
-export default DS.RESTSerializer.extend({
+
+export default appSerializer.extend({
 	attrs: {
         stories: { embedded: 'always' }
     }
