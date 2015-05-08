@@ -35,7 +35,7 @@ export default Ember.Component.extend({
                 });
                 // check for changes to the api data every fifteen minutes
                 setTimeout(function() {
-                    object.fetchData, 900000;
+                    obj.fetchData, 900000;
                 });
                 setTimeout(function() {
                     obj.set('loaded', true);
