@@ -15,7 +15,13 @@
 	-ms-transform: perspective(1000px);
 	-moz-transform: perspective(1000px);
 	@include transform-style(preserve-3d);
-
+	
+	@include breakpoint(max-width 360px) {
+		padding: {
+			left:0;
+		}
+	}
+	
 	&.-w1 {
 		width: 170px;
 		.story__content,

@@ -1,5 +1,5 @@
 <div class="story__inner">
-    <div class="story__card -front">
+    <div class="story__card -front {{if viewOnly 'js-drag-handle'}}">
         {{#unless viewOnly}}<a href="javascript:;" class="js-cogs icon icon-cogs svg-cogs" data-grunticon-embed>Settings</a>{{/unless}}
         <div class="story__content">
             <header>

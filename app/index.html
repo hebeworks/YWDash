@@ -196,7 +196,10 @@
                         });
 
                     var colCount = Math.floor(canvas.dimensions.width / 170);
-                    var innerWidth = colCount * 170;
+                    var innerWidth = ((colCount * 170) < 340 ? 340 : (colCount * 170));
+                    // need to give canvas__inner an extra class to remove padding
+                    // also need to remove margin left auto
+//                    also need to give .story no margin left 
 
                     canvas.carousel.$canvases
                         .css({
@@ -614,7 +617,7 @@
                             var $itemEls = stories.$allStories.draggable({
                                 cursor: 'move',
                                 containment: 'body',
-                                handle: '.js-cogs',
+                                handle: '.js-cogs, .js-drag-handle',
                                 scroll: true,
                                 scrollSensitivity: 100,
                                 scrollSpeed: 25,

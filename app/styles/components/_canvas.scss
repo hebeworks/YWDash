@@ -148,6 +148,17 @@
 						width: 170px * $i;
 					}
 				} */
+				
+			    @include breakpoint(max-width 360px) {
+					margin: {
+						left:0;
+						right:0;
+					}
+					padding: {
+						left:0;
+						right:0;
+					}
+				}
 			}
 
 .canvas-switcher-footer {
