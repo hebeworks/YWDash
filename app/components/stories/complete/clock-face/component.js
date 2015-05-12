@@ -169,11 +169,11 @@ export default Ember.Component.extend({
             // More tricky, this needs to move the minute hand when the second hand hits zero
             var containers = document.querySelectorAll('.minutes-container');
             var secondAngle = containers[containers.length - 1].getAttribute('data-second-angle');
-            console.log(secondAngle);
+//            console.log(secondAngle);
             if (secondAngle > 0) {
                 // Set a timeout until the end of the current minute, to move the hand
                 var delay = (((360 - secondAngle) / 6) + 0.1) * 1000;
-                console.log(delay);
+//                console.log(delay);
                 setTimeout(function() {
                     moveMinuteHands(containers);
                 }, delay);
