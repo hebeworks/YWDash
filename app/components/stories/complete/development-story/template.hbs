@@ -1,0 +1,29 @@
+
+{{#stories/story-base title=title subTitle=subTitle color="-white" width="-w4" height="-h4" data-ss-colspan="4"}}
+    {{#stories/story-slider loaded=loaded}}
+        {{#each item in datasets}}
+            {{#stories/story-slide}}
+                <main class="development-story">
+                    <h2 class="heading">{{item.name}}</h2>
+                        <p>{{#each field in item.fields}}{{field}} ||{{/each}}</p>
+                        <table>
+                            <thead>
+                                {{#each field in item.fields}}
+                                    <td><span class="-text__overflow">{{field}}</span></td>
+                                {{/each}}
+                            </thead>
+                            <tbody>
+                                {{#each row in item.items}}
+                                    <tr>
+                                        {{#each prop in row}}
+                                            <td>{{prop}}</td>
+                                        {{/each}}
+                                    </tr>
+                                {{/each}}
+                            </tbody>
+                        </table>
+                </main>
+            {{/stories/story-slide}}
+        {{/each}}
+    {{/stories/story-slider}}
+{{/stories/story-base}}
