@@ -3,19 +3,50 @@ import Ember from 'ember';
 export default Ember.Component.extend({
     tagName: 'div',
     loaded: false,
+    selectedStation: null,
     didInsertElement: function() {
-        this.set('title', 'River Level');
+        this.set('title', 'Live River Level');
         this.set('subTitle', 'Water flowing under Crown Point Bridge');
+        //this.fetchStations();
         this.fetchData();
-        this.setHeights();
     },
-    // invoke a function called 'fetchData'
+
+    // fetchStations: function() {
+    //     var obj = this;
+    //     Ember.$.getJSON('http://environment.data.gov.uk/flood-monitoring/id/stations?town=Leeds')
+    //         .then(function (data){
+    //             var results = [];
+    //             data.items.forEach(function (item){
+    //                 var items = {};
+    //                 items.id = item["@id"];
+    //                 items.name = item["label"];
+    //                 results.push(items);
+    //             });
+    //             results = _.sortBy(results, "name");
+    //             obj.set('stations', results);
+                
+    //             var firstObj = obj.get('stations')[0];
+    //             obj.set('selectedStation', firstObj);
+
+    //             setTimeout(function () {
+    //                 obj.set('loaded', true);
+    //             });
+
+    //             console.log("the selected stations is " + selectedStation);
+    //     });
+    // },
+    
     fetchData: function() { 
-        // declare a variable called 'obj' that has a value of 'this'; setting the scope of the variable to the 'fetchData' function
         var obj = this;
-        // request data from the environment agency api for the Crown Point Bridge rivel level monitoring station  
-        // see here for more info: http://environment.data.gov.uk/flood-monitoring/doc/reference)
+        // var stationUrl = 'http://environment.data.gov.uk/flood-monitoring/id/stations/L1707';
+        // var selectedStation = obj.get('selectedStation');
+        // if(selectedStation != null) {
+        //     stationUrl = obj.get('selectedStation').id;
+        // }
+        // console.log('fetchData selectedStation: ' + stationUrl);
+
         Ember.$.getJSON('http://environment.data.gov.uk/flood-monitoring/id/stations/L1707')
+        //Ember.$.getJSON(stationUrl)
             // format the api response data here
             .then(function(station){
                 var item = station.items; 
@@ -41,27 +72,43 @@ export default Ember.Component.extend({
                     obj.set('loaded', true);
                 });
             });
-    },
-    stripHTML: function(html) {
+    }.observes('selectedStation'),
+
+    setHeights: function() {
+        var obj = this;
+        var heightLowest = ((this.get("minOnRecord.value") / this.get("maxOnRecord.value")) * 100);
+        console.log("height lowest = " + heightLowest);
+        var heightTypicalHigh = (((this.get("typicalRangeHigh") / this.get("maxOnRecord.value")) * 100) - heightLowest);
+        console.log("height typical high = " + heightTypicalHigh);
+        var heightHighestRecent = (((this.get("highestRecent.value") / this.get("maxOnRecord.value")) * 100) - (heightLowest + heightTypicalHigh));
+        console.log("height highest = " + heightHighestRecent);
+        var heightMax = (100 - (heightLowest + heightTypicalHigh + heightHighestRecent));
+        console.log("height max = " + heightMax);
+        obj.setProperties({
+            heightLowest: heightLowest,
+            heightTypicalHigh: heightTypicalHigh,
+            heightHighestRecent: heightHighestRecent,
+            heightMax: heightMax,
+        });
+        var heightLowestString = heightLowest.toString() + '%';
+        this.$( ".river-levels-columnChart-container-inner--lowestLevel" ).height( heightLowestString );
+        var heightTypicalHighString = heightTypicalHigh.toString() + '%';
+        this.$( ".river-levels-columnChart-container-inner--typicalHighLevel" ).height( heightTypicalHighString );
+        var heightHighestRecentString = heightHighestRecent.toString() + '%';
+        this.$( ".river-levels-columnChart-container-inner--highestLevelRecent" ).height( heightHighestRecentString );
+        var heightMaxString = heightMax.toString() + '%';
+        this.$( ".river-levels-columnChart-container-inner--maxLevel" ).height( heightMaxString );
+
+    }.observes("minOnRecord.value", "typicalRangeHigh","maxOnRecord.value","highestRecent"),
+
+        stripHTML: function(html) {
         var div = document.createElement("div");
         div.innerHTML = html;
         return div.textContent || div.innerText || "";
-    },
-    setHeights: function() {
-        //var heightCurrentLevel = ((typicalRangeHigh / maxOnRecord) * 100) + " % ";
-       var heightCurrentLevel = this.get("latestReading");
-       console.log(heightCurrentLevel);
-    }.observes("latestReading")
+    }
+
 });
 
-// height = 172px (.river-levels-columnChart-container-inner)
-// range = maxOnRecord + 5%
-// scale = height / 105 (1.6381 == 1%)
-// 
-// set positions in .river-levels-columnChart-container-inner
-
-// height = 172
-// heightCurrentLevel = ((typicalRangeHigh / maxOnRecord)*100) + " % "
 
 
 

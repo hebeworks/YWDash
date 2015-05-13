@@ -41,11 +41,12 @@
 	.river-levels-gaugeChart {
 		float: left;
 		width: 45%;
+		margin-top: 20px;
 	}
 	.river-levels-columnChart {
 		display: inline-block;
 		width: 55%;
-		margin-top: 6px;
+		margin-top: 26px;
 	}
 		.river-levels-columnChart-container {
 			margin-left: 10%;
@@ -56,55 +57,93 @@
 
 				.river-levels-columnChart-container-inner--maxLevel {
 					background-color: $light-blue;
-					height: 50%;
+					height: 25%;
 					width: 30%;
 					margin: auto;
 				}
-				.river-levels-columnChart-container-inner--floodRisk-label {
+				.river-levels-columnChart-container-inner--highestLevelRecent {
+					background-color: $light-blue;
+					height: 25%;
+					width: 30%;
+					margin: auto;
+				}
+				.river-levels-columnChart-container-inner--label {
 					font-size: .7em;
 					color: $white;
 					text-align: left;
 					float: left;
 					height: 3px;
 					overflow: visible;
+					position: relative;
+					top: -6px;
+					left: -30px; 
+					width: 50%;
+					text-align: right
 				}
-				.river-levels-columnChart-container-inner--floodRisk-line {
+				.river-levels-columnChart-container-inner--label-light {
+					font-size: .7em;
+					color: $light-blue;
+					text-align: left;
+					float: left;
+					height: 3px;
+					overflow: visible;
+					position: relative;
+					top: -6px;
+					left: -30px; 
+					width: 50%;
+					text-align: right
+				}
+				.river-levels-columnChart-container-inner--line {
 					margin: auto;
-					width: 35%;
+					width: 36%;
+					border-bottom: 1px $white solid;
+					margin-left: 36px;
+				}
+				.river-levels-columnChart-container-inner--line-floodRisk {
+					margin: auto;
+					width: 36%;
 					border-bottom: 1px $red solid;
 					margin: {
 						top: 1px;
 						bottom: 1px;
 					}
+					margin-left: 36px;
 				}
-				.river-levels-columnChart-container-inner--floodRisk-value {
+				.river-levels-columnChart-container-inner--value {
 					font-size: .7em;
-					text-align: right;
 					float: right;
 					height: 3px;
 					overflow: visible;
+					position: relative;
+					top: -9px;
+					left:25px;
+					width: 50%;
+					text-align: left;
 				}	
-				.river-levels-columnChart-container-inner--currentLevel {
+				.river-levels-columnChart-container-inner--value-light {
+					font-size: .7em;
+					text-align: left;
+					color: $light-blue;
+					float: right;
+					height: 3px;
+					overflow: visible;
+					position: relative;
+					top: -9px;
+					left:25px;
+					width: 50%;
+					text-align: left;
+				}	
+				.river-levels-columnChart-container-inner--typicalHighLevel {
 					background-color: $blue;
-					height: 50%;
+					height: 25%;
 					width: 30%;
 					margin: auto;
 				}
-				//second attempt
-				.river-levels-columnChart--label__floodRisk {
-					width: 70%;
+				.river-levels-columnChart-container-inner--lowestLevel {
+					background-color: $blue;
+					height: 25%;
+					width: 30%;
 					margin: auto;
-					.river-levels-columnChart--label__floodRisk-title {
-
-					}
-					.river-levels-columnChart--label__floodRisk-marker {
-						border-bottom: 1px $red solid;
-						background-color: $red;
-						color: rgba(255, 255, 255, 0);
-					}
-					.river-levels-columnChart--label__floodRisk-value {
-
-					}
 				}
 			}
 			.river-levels-columnChart-container--header {
