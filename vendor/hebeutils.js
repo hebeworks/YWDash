@@ -11,7 +11,7 @@
             String.prototype.trimString = function (str) {
                 var tmp = this;
                 tmp = this.ensureNoStartingString(str);
-                tmp = this.ensureNoEndingStrign(str);
+                tmp = this.ensureNoEndingString(str);
                 return tmp;
             };
         }
