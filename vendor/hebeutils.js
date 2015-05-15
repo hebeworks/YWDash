@@ -5,6 +5,13 @@
     }
 
     function setupExtensionFunctions() {
+        
+        // str.notNullOrEmpty
+        if (typeof String.prototype.notNullOrEmpty != 'function') {
+            String.prototype.notNullOrEmpty = function () {
+                return (this != null && this.length > 0);
+            };
+        }
         //console.log('Setting up extension functions');
         // str.trimString(string)
         if (typeof String.prototype.trimString != 'function') {

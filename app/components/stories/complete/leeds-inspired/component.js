@@ -51,7 +51,10 @@ export default Ember.Component.extend({
     fetchData: function () {
         // request ckan api for dataset
         var obj = this;
-        var url = "http://api.leedsinspired.co.uk/1.0/events.json?key=ssHoTt9L696e8F84IOH2o4n52n89nxX78pq1dLs4uOkc7&start_date=01-05-2015&end_date=10-05-2015";
+        var fromDate = moment().add(-7,'days').format('DD-MM-YYYY');
+        var toDate = moment().add(7,'days').format('DD-MM-YYYY');
+        var url = "http://api.leedsinspired.co.uk/1.0/events.json?key=ssHoTt9L696e8F84IOH2o4n52n89nxX78pq1dLs4uOkc7&start_date="+fromDate+"&end_date="+toDate;
+        console.log(url);
         url = btoa(url);
 
         Ember.$.ajax({
@@ -61,22 +64,33 @@ export default Ember.Component.extend({
         })
             .then(function (data) {
             var events = [];
-            var limit = 5;
-            var i = 0;
-            _.first(data.objects,5).forEach(function (item) {
+            var items = [];
+            
+            var events = data.objects;
+            events = _.filter(events, function(event) {
+                return event.event_title.notNullOrEmpty()
+                        && event.event_date.notNullOrEmpty()
+                        && (event.image_thumbnail.notNullOrEmpty() || event.thumbnail.notNullOrEmpty());
+            });
+            
+            //_.first(data.objects,5)
+            var events = _.sample(events,5);
+            
+            events.forEach(function (item) {
+                var thumbnail = (item.image_thumbnail.notNullOrEmpty() ? item.image_thumbnail : item.thumbnail);
                 var event = {
                     id: item.event_id,
                     title: item.event_title,
-                    thumbnail: item.image_thumbnail,
+                    thumbnail: thumbnail,
                     date: item.event_date,
                     place: item.place_title,
                     description: item.description
                 };
 
-                events.push(event);
+                items.push(event);
             });
 
-            obj.set('items', events);
+            obj.set('items', items);
 
             setTimeout(function () {
                 obj.set('loaded', true);
