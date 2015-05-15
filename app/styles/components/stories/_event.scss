@@ -1,4 +1,7 @@
 .event {
+	height:225px;
+	overflow-y: hidden;
+	
 	.heading {
 		font: {
 			family: $georgia;
@@ -14,7 +17,7 @@
 			}
 		}
 	}
-	p {
+	p {		
 		font: {
 			size: em(11px);
 		}

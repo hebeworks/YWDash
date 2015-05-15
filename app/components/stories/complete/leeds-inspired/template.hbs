@@ -1,7 +1,23 @@
-{{#stories/story-base title=title color="-ivory" width="-w2" height="-h2" data-ss-colspan="2"}}
+{{#stories/story-base title="Leeds Inspired" subTitle="Music & art events around Leeds." color="-ivory" width="-w2" height="-h2" data-ss-colspan="2"}}
     {{#stories/story-slider loaded=loaded}}
-        {{#stories/story-slide}}Slide One{{/stories/story-slide}}
-        {{#stories/story-slide}}Slide Two{{/stories/story-slide}}
-        {{#stories/story-slide}}Slide Three{{/stories/story-slide}}
+        {{#each item in items}}
+            {{#stories/story-slide}}
+            <main class="event">
+                <div class="image -wide">
+                    <a href="javascript:;"><img src="{{item.thumbnail}}" alt="{{item.title}}" width="290" height="87" /></a>
+                </div>
+                <h2 class="heading"><a href="javascript:;">{{item.title}}</a></h2>
+                <div class="event__details">
+                    <time class="event__datetime">{{item.date}}</time>
+                    <div class="event__address">
+                        <em>{{item.place}}</em><br />
+<!--                        33 Queen's Road, Leeds, LS6 1NY-->
+                    </div>
+                </div>
+                <p>{{item.description}}</p>
+            </main>
+            {{/stories/story-slide}}
+        {{/each}}
     {{/stories/story-slider}}
+    {{yield}}    
 {{/stories/story-base}}
