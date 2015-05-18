@@ -190,6 +190,8 @@
                     canvas.dimensions.width = $window.width();
                     canvas.dimensions.height = $window.height() - header.$header.height();
 
+                    console.log(canvas.carousel.$switcher);
+
                     canvas.carousel.$switcher
                         .css({
                             height: canvas.dimensions.height + 'px'
@@ -449,7 +451,9 @@
                             });
 
                             // Ensure the canvas fits the screen
-                            stretch();
+                            setTimeout(function(){
+                                stretch();
+                            }, 0);
 
                             // Initialise caroufredsel
                             initCarousel();
@@ -605,6 +609,13 @@
 
                 return {
                     init: function() {
+
+                        if (Modernizr.cssanimations) {
+                            $('.story__inner').addClass('-support-3d');
+                        } else {
+                            $('.story__inner').addClass('-fallback-3d');
+                        }
+
                         // Initialize packery
                         setTimeout(function(){
                             stories.$container

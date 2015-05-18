@@ -114,6 +114,12 @@
                 opacity:0.7;
             }
         }
+    	.dotted-area {
+			border-color: $white;
+		}
+		.circle-indicator {
+			background-color: $black;
+		}
 	}
 	&.-dark-grey {
 		.story__card {
@@ -165,12 +171,25 @@
             	opacity: 1;
             }
         }
+    .dotted-area {
+		  border-color: $white;
+		}
 	}
 	&.-ivory {
 		.story__card {
 			background: {
 				color: $ivory;
 			}
+		}
+	}
+	&.-yellow {
+		.story__card {
+			background: {
+				color: $yellow;
+			}
+		}
+		.dotted-area {
+		  border-color: $black;
 		}
 	}
 	&.-blue {
@@ -277,19 +296,33 @@
 		border: {
 			radius: 5px;
 		}
-		&.-flip {
-			@include transform(rotateY(180deg));
-			.story__card {
-				&.-front {
-					z-index: 2;
-					.story__content {
-						
+		&.-support-3d {
+			&.-flip {
+				@include transform(rotateY(180deg));
+				.story__card {
+					@include backface-visibility(hidden);
+					&.-front {
+						z-index: 2;
+						@include transform(rotateY(0deg));
+					}
+					&.-back {
+						z-index: 1;
+						@include transform(rotateY(180deg));
 					}
 				}
-				&.-back {
-					z-index: 1;
-					.story__content {
-						
+			}
+		}
+		&.-fallback-3d {
+			&.-flip {
+				.story__card {
+					@include transition(all .3s);
+					&.-front {
+						z-index: 1;
+						opacity: 0;
+					}
+					&.-back {
+						z-index: 2;
+						opacity: 1;
 					}
 				}
 			}
@@ -329,17 +362,11 @@
 				radius: 5px;
 			}
 			overflow: hidden;
-			@include backface-visibility(hidden);
 			&.-front {
 				z-index: 2;
-				@include transform(rotateY(0deg));
-				.story__content {
-					
-				}
 			}
 			&.-back {
 				z-index: 1;
-				@include transform(rotateY(180deg));
 				background-color: blue;
 				.story__content {
 					

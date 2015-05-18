@@ -93,6 +93,22 @@ module.exports = function(grunt) {
                     cssprefix: '.svg-'
                 }
             }
+        },
+
+        /**
+         * Detect which parts of Modernizr are required & build a custom Modernizr file
+         */
+        modernizr: {
+
+            dist: {
+                "devFile" : "bower_components/modernizr/modernizr.js",
+                "outputFile" : "vendor/modernizr-custom.min.js",
+                "uglify" : true,
+                "files" : {
+                    "src": ['app/index.html']
+                },
+            }
+
         }
     });
 

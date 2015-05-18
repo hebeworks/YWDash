@@ -1,0 +1,120 @@
+.circle-indicator {
+	width: 157px;
+	height: 157px;
+	padding: 10px;
+	float: left;
+	margin-right: 20px;
+	position: relative;
+	.svg-circle-indicator {
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+}
+	.circle-indicator__inner {
+		width: 137px;
+		height: 137px;
+		border: solid 3px #fff;
+		border-radius: 100%;
+		z-index: 2;
+		position: relative;
+		display: table;
+		> div {
+			display: table-cell;
+			vertical-align: middle;
+			text-align: center;
+		}
+		.svg-calendar {
+			width: 17px;
+			height: 20px;
+			display: block;
+			margin: {
+				right: auto;
+				bottom: 7px;
+				left: auto;
+			}
+			text-indent: -99999px;
+			> svg {
+				width: 17px;
+				height: 20px;
+				fill: #fff;
+				display: block;
+			}
+		}
+		h2,
+		h3,
+		h4 {
+			display: block;
+			font-weight: bold;
+		}
+		h2 {
+			text-decoration: underline;
+			margin-bottom: 5px;
+		}
+		h3 {
+			color: #fff;
+			margin-bottom: 3px;
+		}
+		h4 {
+			color: #7ed320;
+			margin-bottom: 0;
+		}
+	}
+
+.svg-circle-indicator {
+	width: 157px;
+	height: 157px;
+	z-index: 1;
+	> svg {
+		width: 157px;
+		height: 157px;
+		fill: #7ed321;
+	}
+}
+
+.circle-indicator-stats {
+	width: 113px;
+	float: left;
+}
+	.circle-indicator-stat {
+		width: 100%;
+		float: left;
+		.svg-up-down-arrow {
+			width: 12px;
+			height: 4px;
+			text-indent: -99999px;
+			display: inline-block;
+			position: relative;
+			top: -3px;
+			> svg {
+				width: 12px;
+				height: 4px;
+				display: block;
+			}
+			&.-up {
+				> svg {
+					fill: $lime;
+				}
+			}
+			&.-down {
+				@include transform(rotate(180deg));
+				> svg {
+					fill: $red;
+				}
+			}
+		}
+	}
+		.circle-indicator-stat__stat {
+			font: {
+				size: 15px;
+				weight: bold;
+			}
+			display: inline-block;
+			margin-right: 3px;
+			&.-positive {
+				color: $lime;
+			}
+			&.-negative {
+				color: $red;
+			}
+		}
