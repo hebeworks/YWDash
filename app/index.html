@@ -190,8 +190,6 @@
                     canvas.dimensions.width = $window.width();
                     canvas.dimensions.height = $window.height() - header.$header.height();
 
-                    console.log(canvas.carousel.$switcher);
-
                     canvas.carousel.$switcher
                         .css({
                             height: canvas.dimensions.height + 'px'
@@ -451,9 +449,7 @@
                             });
 
                             // Ensure the canvas fits the screen
-                            setTimeout(function(){
-                                stretch();
-                            }, 0);
+                            stretch();
 
                             // Initialise caroufredsel
                             initCarousel();
@@ -839,7 +835,10 @@
 
                 function setup() {
                     setupDOM();
-                    setupEvents();
+
+                    $(document).bind('pageloaded', function(){
+                        setupEvents();
+                    });
                 }
 
                 return {
