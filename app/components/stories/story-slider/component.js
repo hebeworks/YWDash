@@ -12,7 +12,8 @@ export default Ember.Component.extend({
     renderCarousel: function () {
 
         var $el = Ember.$(this.get('element')).find('.js-story-carousel'),
-            $storyFooter = $el.closest('.story__content').find('.story__footer'),
+            $storyPaginationControls = Ember.$(this.get('element')).find('.js-story-pagination-controls'),
+            $storyFooter = $storyPaginationControls.appendTo($el.closest('.story__content').find('.story__footer')),
             $pageCounter = $storyFooter.find('.pg-of'),
             $pager = $storyFooter.find('.carousel-pager');
 
