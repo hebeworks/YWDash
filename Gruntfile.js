@@ -72,7 +72,7 @@ module.exports = function(grunt) {
             nonembedsvg: {
                 files: [{
                     expand: true,
-                    cwd: 'public/assets/img/svg',
+                    cwd: 'public/assets/img/svg/datauri',
                     src: '*.svg',
                     dest: 'public/assets/img/svg'
                 }],

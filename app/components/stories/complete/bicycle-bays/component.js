@@ -3,6 +3,7 @@ import DatamillBase from './../../datamill-base/component';
 
 export default DatamillBase.extend({
     tagName: 'div',
+    
     setup: function () {
         this.setProperties({
             lat: 53.801277,
@@ -51,7 +52,12 @@ export default DatamillBase.extend({
         var item = this.get('selectedItem');
         if (item != null) {
             var markers = Ember.A([
-                { title: item.street, lat: item.lat, lng: item.lng, body: item.street }
+                {
+                    title: item.street,
+                    lat: item.lat,
+                    lng: item.lng,
+                    body: item.street
+                }
             ]);
             this.set('lat', item.lat);
             this.set('lng', item.lng);

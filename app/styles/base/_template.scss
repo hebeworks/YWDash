@@ -34,6 +34,13 @@ body {
 	}
 }
 
+strong {
+	font: {
+		style: normal;
+		family: $helvneuemed;
+	}
+}
+
 a {
 	color: #000;
 }
@@ -151,14 +158,4 @@ a {
 
 .-holding-page__content {
 	display:none;
-}
-
-// Select2
-.select2-container {
-	.select2-choice {
-		filter: none;
-		.select2-arrow {
-			filter: none;
-		}
-	}
 }

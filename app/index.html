@@ -827,10 +827,12 @@
                     Story.setupEvents();
                     Wrapper.setupEvents();
 
-                    $window
-                        .resize(function(){
-                            Canvas.stretch();
-                        });
+                    $window.bind('load', function(){
+                        $window
+                            .resize(function(){
+                                Canvas.stretch();
+                            });
+                    });
                 };
 
                 function setup() {
