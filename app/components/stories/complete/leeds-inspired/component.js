@@ -54,7 +54,6 @@ export default Ember.Component.extend({
         var fromDate = moment().add(-7,'days').format('DD-MM-YYYY');
         var toDate = moment().add(7,'days').format('DD-MM-YYYY');
         var url = "http://api.leedsinspired.co.uk/1.0/events.json?key=ssHoTt9L696e8F84IOH2o4n52n89nxX78pq1dLs4uOkc7&start_date="+fromDate+"&end_date="+toDate;
-        console.log(url);
         url = btoa(url);
 
         Ember.$.ajax({
