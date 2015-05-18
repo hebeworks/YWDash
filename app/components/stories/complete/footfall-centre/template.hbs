@@ -1,7 +1,11 @@
-{{#stories/story-base title=title subTitle=subTitle color="-white" width="-w2" height="-h2" data-ss-colspan="2"}}
+{{#stories/story-base title=title subTitle=subTitle color="-black" width="-w2" height="-h2" data-ss-colspan="2"}}
 <main class="footfall-centre">
-   
-<!--    <div>
+    
+    <div class="dotted-area">
+        <p>Footfall this week was up notably from last week, thanks to the school holidays and the lovely weather we’ve been enjoying.</p>
+    </div>
+
+    <!--<div>
         {{
             select-2
             content=months
@@ -9,7 +13,7 @@
             placeholder="Choose a month"
             cssClass="hebe-select-2"
         }}
-    </div>-->
+    </div>
 
     {{#if days}}
         <div>
@@ -32,6 +36,6 @@
         {{/if}}
     {{else}}
         {{loading-icon}}    
-    {{/if}}
+    {{/if}}-->
 </main>
 {{/stories/story-base}}

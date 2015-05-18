@@ -187,6 +187,8 @@
 
                 var stretch = function() {
 
+                    console.log('$window.height(): ' + $window.height() + ' - header.$header.height(): ' + header.$header.height());
+
                     canvas.dimensions.width = $window.width();
                     canvas.dimensions.height = $window.height() - header.$header.height();
 
