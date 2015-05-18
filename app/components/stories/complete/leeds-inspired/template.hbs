@@ -15,15 +15,14 @@
         {{#each item in items}}
             {{#stories/story-slide}}
             <main class="event">
-                <div class="image -wide">
-                    <a href="javascript:;"><img src="{{item.thumbnail}}" alt="{{item.title}}" width="290" height="87" /></a>
+                <div class="image">
+                    <a href="javascript:;" style="background-image: url({{item.thumbnail}});" title="{{item.title}}">Image</a>
                 </div>
                 <h2 class="heading"><a href="javascript:;">{{item.title}}</a></h2>
                 <div class="event__details">
                     <time class="event__datetime">{{item.date}}</time>
                     <div class="event__address">
-                        <em>{{item.place}}</em><br />
-<!--                        33 Queen's Road, Leeds, LS6 1NY-->
+                        <em>{{item.place}}</em>
                     </div>
                 </div>
                 <p>{{item.description}}</p>
