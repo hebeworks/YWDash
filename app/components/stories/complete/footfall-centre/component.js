@@ -1,6 +1,7 @@
 import Ember from 'ember';
+import DatamillBase from './../../datamill-base/component';
 
-export default Ember.Component.extend({
+export default DatamillBase.extend({
     tagName: 'div',
     loaded: false,
     selectedMonth: '',
@@ -15,7 +16,9 @@ export default Ember.Component.extend({
     fetchData: function () {
         // request ckan api for dataset
         var obj = this;
-        Ember.$.getJSON('http://www.leedsdatamill.org/api/3/action/package_show?id=leeds-city-centre-footfall-data')
+        var datamillUrl = this.get('datamillUrl');
+
+        Ember.$.getJSON(datamillUrl + '/api/3/action/package_show?id=leeds-city-centre-footfall-data')
             .then(function (data) {
             var resources = [];
             data.result.resources.forEach(function (item) {
@@ -47,8 +50,9 @@ export default Ember.Component.extend({
         var data = {
             sql: 'SELECT * from "' + this.get('selectedMonth.id') + '"'
         }
+        var datamillUrl = this.get('datamillUrl');
 
-        Ember.$.getJSON('http://www.leedsdatamill.org/api/action/datastore_search_sql?', data).then(function (data) {
+        Ember.$.getJSON(datamillUrl + '/api/action/datastore_search_sql?', data).then(function (data) {
             var items = [];
             data.result.records.forEach(function (item) {
                 var day = moment(item.Weekday).calendar();
