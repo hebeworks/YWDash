@@ -176,12 +176,13 @@
 				opacity: 1;
 			}
 		}
-        .story__footer {
-		    .pg-of {
-			    color: $white;
-                opacity:0.7;
-            }
-        }
+    .story__footer {
+	    .pg-of {
+		    color: $white;
+	      opacity:0.7;
+	    }
+	    border-top: dotted 1px $light-grey;
+    }
 	}
 	&.-lime {
 		.story__card {
@@ -200,14 +201,14 @@
 				opacity: 1;
 			}
 		}
-        .story__footer {
-		    .pg-of {
-			    color: $white;
-                opacity:0.7;
-            }
-            .author {
-            	opacity: 1;
-            }
+    .story__footer {
+	    .pg-of {
+		    color: $white;
+	            opacity:0.7;
+	        }
+	        .author {
+	        	opacity: 1;
+	        }
         }
     .dotted-area {
 		  border-color: $white;
