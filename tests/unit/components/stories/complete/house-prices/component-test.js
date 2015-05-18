@@ -3,7 +3,7 @@ import {
   test
 } from 'ember-qunit';
 
-moduleForComponent('stories/story-house-prices', {
+moduleForComponent('stories/complete/house-prices', {
   // specify the other units that are required for this test
   // needs: ['component:foo', 'helper:bar']
 });

@@ -76,6 +76,9 @@
 
         .house-prices_sub-price {
             line-height: 0.6em;
+            font: {
+                size: em(11px);
+            }
         }
 
     .house-prices_summary {
