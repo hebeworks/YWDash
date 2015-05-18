@@ -5,7 +5,7 @@ export default Ember.Component.extend({
     loaded: false,
     didInsertElement: function() {
         this.set('title', 'Parking Fines');
-        this.set('subTitle', 'Issued last month');
+        this.set('subTitle', 'Q3 2014/15');
         this.fetchData();
     },
     fetchData: function() {
