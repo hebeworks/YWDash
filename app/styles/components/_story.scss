@@ -97,9 +97,9 @@
 			background: {
 				color: $black;
 			}
-            a {
-                color:$white;
-            }
+	    a {
+	      color:$white;
+	    	}
 		}
 		.story__inner .icon-cogs {
 			fill: $white;
@@ -108,26 +108,55 @@
 				opacity: 1;
 			}
 		}
-				.story__footer {
-					.pg-of {
-						color: $white;
-						opacity:0.7;
-					}
-					// .carousel-pager {
-					// 	&__numbers {
-					// 		&.selected {
-					// 			&:before {
-					// 				background-color: $white;
-					// 			}
-					// 		}
-					// 	}
-					// }
+		.story__footer {
+				.pg-of {
+					color: $white;
+					opacity:0.7;
 				}
-    .dotted-area {
-		  border-color: $white;
-		}
-		.circle-indicator {
-			background-color: $black;
+				.carousel-pager {
+					&__numbers {
+						a {
+							&.selected {
+								&:before {
+									background-color: $white;
+								}
+							}
+							&:hover {
+								&:before {
+									background-color: $white;
+								}
+							}
+						}
+					}
+					&__btn {
+						&.-prev {
+							&:before {
+								@include triangle(10px, #bfbdae, left);
+							}
+							&:hover {
+								&:before {
+									@include triangle(10px, #fff, left);
+								}
+							}
+						}
+						&.-next {
+							&:before {
+								@include triangle(10px, #bfbdae, right);
+							}
+						&:hover {
+							&:before {
+								@include triangle(10px, #fff, right);
+							}
+						}
+					}
+				}
+			}
+	    .dotted-area {
+			  border-color: $white;
+			}
+			.circle-indicator {
+				background-color: $black;
+			}
 		}
 	}
 	&.-dark-grey {
