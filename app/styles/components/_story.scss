@@ -98,6 +98,9 @@
                 opacity:0.7;
             }
         }
+    .dotted-area {
+		  border-color: $white;
+		}
 	}
 	&.-dark-grey {
 		.story__card {
@@ -149,12 +152,25 @@
             	opacity: 1;
             }
         }
+    .dotted-area {
+		  border-color: $white;
+		}
 	}
 	&.-ivory {
 		.story__card {
 			background: {
 				color: $ivory;
 			}
+		}
+	}
+	&.-yellow {
+		.story__card {
+			background: {
+				color: $yellow;
+			}
+		}
+		.dotted-area {
+		  border-color: $black;
 		}
 	}
 	&.-blue {

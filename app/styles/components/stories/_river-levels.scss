@@ -38,36 +38,35 @@
 		padding-top: 7px;
 		margin-top: 0px;
 	}
-	.river-levels-gaugeChart {
+	&-gaugeChart {
 		float: left;
 		width: 45%;
 		margin-top: 20px;
 	}
-	.river-levels-columnChart {
+	&-columnChart {
 		display: inline-block;
 		width: 55%;
 		margin-top: 26px;
-	}
-		.river-levels-columnChart-container {
+		&-container {
 			margin-left: 10%;
 			padding-left: 20px;
 		}
-			.river-levels-columnChart-container-inner {
+			&-container-inner {
 				height: 132px;
 
-				.river-levels-columnChart-container-inner--maxLevel {
+				&--maxLevel {
 					background-color: $light-blue;
 					height: 25%;
 					width: 30%;
 					margin: auto;
 				}
-				.river-levels-columnChart-container-inner--highestLevelRecent {
+				&--highestLevelRecent {
 					background-color: $light-blue;
 					height: 25%;
 					width: 30%;
 					margin: auto;
 				}
-				.river-levels-columnChart-container-inner--label {
+				&--label {
 					font-size: .7em;
 					color: $white;
 					text-align: left;
@@ -80,7 +79,7 @@
 					width: 50%;
 					text-align: right
 				}
-				.river-levels-columnChart-container-inner--label-light {
+				&--label-light {
 					font-size: .7em;
 					color: $light-blue;
 					text-align: left;
@@ -93,13 +92,13 @@
 					width: 50%;
 					text-align: right
 				}
-				.river-levels-columnChart-container-inner--line {
+				&--line {
 					margin: auto;
 					width: 36%;
 					border-bottom: 1px $white solid;
 					margin-left: 36px;
 				}
-				.river-levels-columnChart-container-inner--line-floodRisk {
+				&--line-floodRisk {
 					margin: auto;
 					width: 36%;
 					border-bottom: 1px $red solid;
@@ -109,7 +108,7 @@
 					}
 					margin-left: 36px;
 				}
-				.river-levels-columnChart-container-inner--value {
+				&--value {
 					font-size: .7em;
 					float: right;
 					height: 3px;
@@ -120,7 +119,7 @@
 					width: 50%;
 					text-align: left;
 				}	
-				.river-levels-columnChart-container-inner--value-light {
+				&--value-light {
 					font-size: .7em;
 					text-align: left;
 					color: $light-blue;
@@ -133,20 +132,20 @@
 					width: 50%;
 					text-align: left;
 				}	
-				.river-levels-columnChart-container-inner--typicalHighLevel {
+				&--typicalHighLevel {
 					background-color: $blue;
 					height: 25%;
 					width: 30%;
 					margin: auto;
 				}
-				.river-levels-columnChart-container-inner--lowestLevel {
+				&--lowestLevel {
 					background-color: $blue;
 					height: 25%;
 					width: 30%;
 					margin: auto;
 				}
 			}
-			.river-levels-columnChart-container--header {
+			&-container--header {
 				background-color: $light-blue;
 				height: 20px;
 				width: 30%;
@@ -155,7 +154,7 @@
 				text-align: center;
 				color: $white;
 			}
-			.river-levels-columnChart-container--footer {
+			&-container--footer {
 				background-color: $white;
 				height: 20px;
 				width: 30%;
@@ -166,4 +165,5 @@
 				font-size: .6em;
 				padding-top: 4px;
 			}
+	}
 }
