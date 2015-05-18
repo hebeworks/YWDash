@@ -44,5 +44,6 @@ app.import(app.bowerDirectory + '/c3/c3.css');
 app.import(app.bowerDirectory + '/underscore/underscore-min.js');
 app.import('vendor/embedsvg/grunticon.loader.js');
 app.import('vendor/embedsvg/grunticon.inline.js');
+app.import('vendor/modernizr-custom.min.js');
 
 module.exports = app.toTree();

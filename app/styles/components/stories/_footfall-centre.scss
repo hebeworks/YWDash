@@ -1,5 +1,24 @@
 .footfall-centre {
-	
+	.dotted-area {
+		margin-bottom: 11px;
+		p {
+			font-size: em(10px);
+			margin-bottom: 0;
+		}
+	}
+	.circle-indicator-stat {
+		margin-bottom: 0;
+		&.-pad-top {
+			padding-top: 4px;
+		}
+		&.-pad-bottom {
+			padding-bottom: 4px;
+		}
+		p {
+			font-size: em(10px);
+			line-height: 1.35;
+		}
+	}
 }
 	.footfall-centre__table {
 		border-top:solid 1px $dark-grey;

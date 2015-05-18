@@ -1,6 +1,7 @@
 import Ember from 'ember';
+import DatamillBase from './../../datamill-base/component';
 
-export default Ember.Component.extend({
+export default DatamillBase.extend({
     tagName: 'div',
     loaded: false,
 
@@ -10,28 +11,28 @@ export default Ember.Component.extend({
 
         var obj = this;
         var datasets = [
-//            {
-//                // LEEDS MARKETS
-//                id: '685d4101-8185-4dee-a653-016619f8da91',
-//                name: 'markets'
-//            },
-//            {
-//                // ROAD TRAFFIC ACCIDENTS 2014
-//                id: 'fa7bb4b9-e4e5-41fd-a1c8-49103b35a60f',
-//                name: 'RTA 2014'
-//            }
-//            ,
-//            {
-//                // PRIVATE SECTOR EMPTY PROPERTIES
-//                id: 'b606afe8-06ab-4bda-9fde-8528e0699215',
-//                name: 'EMPTY PROPERTIES'
-//            }
-//            {
-//                // MARKETS
-//                //http://www.leedsdatamill.org/api/action/datastore_search_sql?sql=SELECT * from "685d4101-8185-4dee-a653-016619f8da91"  limit 5 WHERE date "2009-03-02T00:00:00"
-//                id: '685d4101-8185-4dee-a653-016619f8da91',
-//                name: 'Leeds Markets'
-//            }
+            //            {
+            //                // LEEDS MARKETS
+            //                id: '685d4101-8185-4dee-a653-016619f8da91',
+            //                name: 'markets'
+            //            },
+            //            {
+            //                // ROAD TRAFFIC ACCIDENTS 2014
+            //                id: 'fa7bb4b9-e4e5-41fd-a1c8-49103b35a60f',
+            //                name: 'RTA 2014'
+            //            }
+            //            ,
+            //            {
+            //                // PRIVATE SECTOR EMPTY PROPERTIES
+            //                id: 'b606afe8-06ab-4bda-9fde-8528e0699215',
+            //                name: 'EMPTY PROPERTIES'
+            //            }
+            //            {
+            //                // MARKETS
+            //                //http://www.leedsdatamill.org/api/action/datastore_search_sql?sql=SELECT * from "685d4101-8185-4dee-a653-016619f8da91"  limit 5 WHERE date "2009-03-02T00:00:00"
+            //                id: '685d4101-8185-4dee-a653-016619f8da91',
+            //                name: 'Leeds Markets'
+            //            }
             {
                 // FOI
                 id: '46959102-1e33-4006-9480-02064153741d',
@@ -52,8 +53,9 @@ export default Ember.Component.extend({
         //        var data = {
         //            sql: 'SELECT * from "' + resourceID + '"'
         //        }
-
-        Ember.$.getJSON('http://www.leedsdatamill.org/api/action/datastore_search_sql?sql=SELECT * from "' + resourceID + '" LIMIT 10').then(function (data) {
+        
+        var datamillUrl = this.get('datamillUrl');
+        Ember.$.getJSON(datamillUrl + '/api/action/datastore_search_sql?sql=SELECT * from "' + resourceID + '" LIMIT 10').then(function (data) {
             var items = [];
             var fields = [];
             data.result.records.forEach(function (item) {

@@ -1,6 +1,7 @@
 import Ember from 'ember';
+import DatamillBase from './../../datamill-base/component';
 
-export default Ember.Component.extend({
+export default DatamillBase.extend({
     tagName: 'div',
     loaded: false,
     selectedMonth: '',
@@ -12,7 +13,9 @@ export default Ember.Component.extend({
     fetchData: function () {
         // request ckan api for dataset
         var obj = this;
-        Ember.$.getJSON('http://www.leedsdatamill.org/api/3/action/package_show?id=customer-services-contact-enquiries')
+        var datamillUrl = this.get('datamillUrl');
+
+        Ember.$.getJSON(datamillUrl + '/api/3/action/package_show?id=customer-services-contact-enquiries')
             .then(function (data) {
             var resources = [];
             data.result.resources.forEach(function (item) {
@@ -44,8 +47,9 @@ export default Ember.Component.extend({
         var data = {
             sql: 'SELECT * from "' + this.get('selectedMonth.id') + '"'
         }
+        var datamillUrl = this.get('datamillUrl');
 
-        Ember.$.getJSON('http://www.leedsdatamill.org/api/action/datastore_search_sql?', data).then(function (data) {
+        Ember.$.getJSON(datamillUrl + '/api/action/datastore_search_sql?', data).then(function (data) {
             var items = [];
             data.result.records.forEach(function (item) {
                 // format API data here
@@ -80,7 +84,7 @@ export default Ember.Component.extend({
         itemTotals = _.map(itemTotals, function (element) {
             var sum = obj.getTotal(element, 'total');
             var percentage = ((sum / totalEnquiries) * 100).toPrecisionDigits(1);
-           // console.log('totalEnquiries: ' + totalEnquiries + ',total: ' + sum + ', %: ' + percentage);
+            // console.log('totalEnquiries: ' + totalEnquiries + ',total: ' + sum + ', %: ' + percentage);
             var result = {
                 total: sum,
                 percentage: percentage

@@ -1,6 +1,7 @@
 import Ember from 'ember';
+import DatamillBase from './../../datamill-base/component';
 
-export default Ember.Component.extend({
+export default DatamillBase.extend({
     tagName: 'div',
     setup: function () {
         this.setProperties({
@@ -20,7 +21,8 @@ export default Ember.Component.extend({
 
     fetchData: function () {
         var obj = this;
-        Ember.$.getJSON('http://www.leedsdatamill.org/api/action/datastore_search?resource_id=c2bb0c3e-52fd-4183-8727-6b9f40b829f0').then((data) => {
+        var datamillUrl = this.get('datamillUrl');
+        Ember.$.getJSON(datamillUrl + '/api/action/datastore_search?resource_id=c2bb0c3e-52fd-4183-8727-6b9f40b829f0').then((data) => {
             var items = [];
             data.result.records.forEach((tmpItem) => {
                 var id = hebeutils.guid();
@@ -57,8 +59,8 @@ export default Ember.Component.extend({
             this.set('zoom', 16);
         }
     }.observes('selectedItem'),
-    
-    
+
+
     mapStyles: [
         {
             "featureType": "administrative",
@@ -178,6 +180,6 @@ export default Ember.Component.extend({
             ]
         }
     ]
-    
-    
+
+
 });

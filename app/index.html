@@ -605,6 +605,13 @@
 
                 return {
                     init: function() {
+
+                        if (Modernizr.cssanimations) {
+                            $('.story__inner').addClass('-support-3d');
+                        } else {
+                            $('.story__inner').addClass('-fallback-3d');
+                        }
+
                         // Initialize packery
                         setTimeout(function(){
                             stories.$container
@@ -828,7 +835,10 @@
 
                 function setup() {
                     setupDOM();
-                    setupEvents();
+
+                    $(document).bind('pageloaded', function(){
+                        setupEvents();
+                    });
                 }
 
                 return {
