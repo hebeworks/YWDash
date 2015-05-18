@@ -44,6 +44,8 @@
 
 .svg-my-collection { background-image: url('png/my-collection.png'); background-repeat: no-repeat; }
 
+.svg-parking-fines-icon { background-image: url('png/parking-fines-icon.png'); background-repeat: no-repeat; }
+
 .svg-parking-icon { background-image: url('png/parking-icon.png'); background-repeat: no-repeat; }
 
 .svg-plus { background-image: url('png/plus.png'); background-repeat: no-repeat; }
@@ -59,4 +61,6 @@
 .svg-space-station { background-image: url('png/space-station.png'); background-repeat: no-repeat; }
 
 .svg-toolbox { background-image: url('png/toolbox.png'); background-repeat: no-repeat; }
+
+.svg-up-down-arrow { background-image: url('png/up-down-arrow.png'); background-repeat: no-repeat; }
 

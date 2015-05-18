@@ -1,7 +1,9 @@
 .circle-indicator {
-	width: 146px;
-	height: 146px;
-	padding: 9px;
+	width: 157px;
+	height: 157px;
+	padding: 10px;
+	float: left;
+	margin-right: 20px;
 	position: relative;
 	.svg-circle-indicator {
 		position: absolute;
@@ -10,8 +12,8 @@
 	}
 }
 	.circle-indicator__inner {
-		width: 128px;
-		height: 128px;
+		width: 137px;
+		height: 137px;
 		border: solid 3px #fff;
 		border-radius: 100%;
 		z-index: 2;
@@ -60,12 +62,59 @@
 	}
 
 .svg-circle-indicator {
-	width: 146px;
-	height: 146px;
+	width: 157px;
+	height: 157px;
 	z-index: 1;
 	> svg {
-		width: 146px;
-		height: 146px;
+		width: 157px;
+		height: 157px;
 		fill: #7ed321;
 	}
 }
+
+.circle-indicator-stats {
+	width: 113px;
+	float: left;
+}
+	.circle-indicator-stat {
+		width: 100%;
+		float: left;
+		.svg-up-down-arrow {
+			width: 12px;
+			height: 4px;
+			text-indent: -99999px;
+			display: inline-block;
+			position: relative;
+			top: -3px;
+			> svg {
+				width: 12px;
+				height: 4px;
+				display: block;
+			}
+			&.-up {
+				> svg {
+					fill: $lime;
+				}
+			}
+			&.-down {
+				@include transform(rotate(180deg));
+				> svg {
+					fill: $red;
+				}
+			}
+		}
+	}
+		.circle-indicator-stat__stat {
+			font: {
+				size: 15px;
+				weight: bold;
+			}
+			display: inline-block;
+			margin-right: 3px;
+			&.-positive {
+				color: $lime;
+			}
+			&.-negative {
+				color: $red;
+			}
+		}
