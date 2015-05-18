@@ -2,6 +2,25 @@
 	height:225px;
 	overflow-y: hidden;
 	
+	.image {
+		width: 135px;
+		height: 135px;
+		display: block;
+		text-indent: -99999px;
+		float: right;
+		padding: {
+			bottom: 10px;
+			left: 10px;
+		}
+		margin-bottom: 0;
+		background-repeat: no-repeat;
+		background-size: cover;
+		a {
+			width: 125px;
+			height: 125px;
+			display: block;
+		}
+	}	
 	.heading {
 		font: {
 			family: $georgia;
