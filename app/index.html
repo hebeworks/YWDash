@@ -187,8 +187,6 @@
 
                 var stretch = function() {
 
-                    console.log('$window.height(): ' + $window.height() + ' - header.$header.height(): ' + header.$header.height());
-
                     canvas.dimensions.width = $window.width();
                     canvas.dimensions.height = $window.height() - header.$header.height();
 
@@ -607,6 +605,13 @@
 
                 return {
                     init: function() {
+
+                        if (Modernizr.cssanimations) {
+                            $('.story__inner').addClass('-support-3d');
+                        } else {
+                            $('.story__inner').addClass('-fallback-3d');
+                        }
+
                         // Initialize packery
                         setTimeout(function(){
                             stories.$container
