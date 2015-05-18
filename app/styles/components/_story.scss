@@ -70,6 +70,7 @@
             height: 535px;
         }
 	}
+	
 	&.-white {
 		.story__card {
 			background: {
@@ -88,6 +89,25 @@
 			opacity: 1;
 			&:hover {
 				opacity: .8;
+			}
+		}
+		.dotted-area {
+			border-color: $black;
+		}
+		.select2-container {
+			.select2-choice, {
+				background-color: $light-grey;
+				.select2-chosen {
+					background-color: $light-grey;
+					color: $black;
+				}
+				.select2-arrow {
+					background-color: $light-grey;
+					color: $black;
+					b {
+						@include svg--dropdown-triangle-dark;
+					}
+				}
 			}
 		}
 	}
@@ -109,40 +129,40 @@
 			}
 		}
 		.story__footer {
-				.pg-of {
-					color: $white;
-					opacity:0.7;
-				}
-				.carousel-pager {
-					&__numbers {
-						a {
-							&.selected {
-								&:before {
-									background-color: $white;
-								}
+			.pg-of {
+				color: $white;
+				opacity:0.7;
+			}
+			.carousel-pager {
+				&__numbers {
+					a {
+						&.selected {
+							&:before {
+								background-color: $white;
 							}
-							&:hover {
-								&:before {
-									background-color: $white;
-								}
+						}
+						&:hover {
+							&:before {
+								background-color: $white;
 							}
 						}
 					}
-					&__btn {
-						&.-prev {
+				}
+				&__btn {
+					&.-prev {
+						&:before {
+							@include triangle(10px, #bfbdae, left);
+						}
+						&:hover {
 							&:before {
-								@include triangle(10px, #bfbdae, left);
-							}
-							&:hover {
-								&:before {
-									@include triangle(10px, #fff, left);
-								}
+								@include triangle(10px, #fff, left);
 							}
 						}
-						&.-next {
-							&:before {
-								@include triangle(10px, #bfbdae, right);
-							}
+					}
+					&.-next {
+						&:before {
+							@include triangle(10px, #bfbdae, right);
+						}
 						&:hover {
 							&:before {
 								@include triangle(10px, #fff, right);
@@ -150,12 +170,19 @@
 						}
 					}
 				}
-			}
-	    .dotted-area {
-			  border-color: $white;
-			}
-			.circle-indicator {
-				background-color: $black;
+				.carousel-pager__numbers {
+					a.selected {
+						&:before {
+							background-color: #fff;
+						}
+					}
+				}
+		    	.dotted-area {
+					border-color: $white;
+				}
+				.circle-indicator {
+					background-color: $black;
+				}
 			}
 		}
 	}
@@ -176,13 +203,25 @@
 				opacity: 1;
 			}
 		}
-    .story__footer {
-	    .pg-of {
-		    color: $white;
-	      opacity:0.7;
-	    }
-	    border-top: dotted 1px $light-grey;
-    }
+        .story__footer {
+		    .pg-of {
+			    color: $white;
+                opacity:0.7;
+            }
+        }
+        .select2-container {
+        	.select2-choice {
+        		background-color: lighten($dark-grey,5);
+        		.select2-chosen {
+        			background-color: lighten($dark-grey,5);
+        			color: $white;
+        		}
+        		.select2-arrow {
+        			background-color: lighten($dark-grey,5);
+        			color: $white;
+        		}
+        	}
+        }
 	}
 	&.-lime {
 		.story__card {
@@ -210,8 +249,21 @@
 	        	opacity: 1;
 	        }
         }
-    .dotted-area {
-		  border-color: $white;
+    	.dotted-area {
+			border-color: $white;
+		}
+		.select2-container {
+			.select2-choice, {
+				background-color: darken($lime,5);
+				.select2-chosen {
+					background-color: darken($lime,5);
+					color: $white;
+				}
+				.select2-arrow {
+					background-color: darken($lime,5);
+					color: $white;
+				}
+			}
 		}
 	}
 	&.-ivory {
@@ -225,6 +277,11 @@
 				color: $ivory;
 			}
 		}
+		.icon-reverse {
+			svg {
+				fill: #000;
+			}
+		}
 	}
 	&.-yellow {
 		.story__card {
@@ -233,7 +290,7 @@
 			}
 		}
 		.dotted-area {
-		  border-color: $black;
+			border-color: $black;
 		}
 	}
 	&.-blue {
@@ -248,6 +305,19 @@
 			opacity: .3;
 			&:hover {
 				opacity: 1;
+			}
+		}
+		.select2-container {
+			.select2-choice, {
+				background-color: darken($blue,5);
+				.select2-chosen {
+					background-color: darken($blue,5);
+					color: $white;
+				}
+				.select2-arrow {
+					background-color: darken($blue,5);
+					color: $white;
+				}
 			}
 		}
 	}
@@ -265,6 +335,20 @@
 				opacity: 1;
 			}
 		}
+		.select2-container {
+			.select2-choice, {
+				background-color: $white;
+				color: $dark-blue;
+				.select2-chosen {
+					background-color: $white;
+					color: $dark-blue;
+				}
+				.select2-arrow {
+					background-color: $white;
+					color: $dark-blue;
+				}
+			}
+		}
 	}
 	
 	&.-light-blue {
@@ -279,6 +363,19 @@
 			opacity: .3;
 			&:hover {
 				opacity: 1;
+			}
+		}
+		.select2-container {
+			.select2-choice, {
+				background-color: darken($light-blue,5);
+				.select2-chosen {
+					background-color: darken($light-blue,5);
+					color: #fff;
+				}
+				.select2-arrow {
+					background-color: darken($light-blue,5);
+					color: #fff;
+				}
 			}
 		}
 	}
@@ -391,7 +488,7 @@
 		
 		.icon-reverse {
 			svg {
-				fill:white;
+				fill: #fff;
 			}
 		}
 	}
@@ -426,6 +523,12 @@
 					p {
 						padding:0;
 						margin:0;
+					}
+				}
+				.btn {
+					font: {
+						size: 12px;
+						family: $helvneuemed;
 					}
 				}
 			}

@@ -15,26 +15,35 @@
     </div>
 
     {{#if selectedCarPark}}
-    <div class="car-park">
-        <h2 class="heading">
-            <span class="icon-parking svg-parking-icon" data-grunticon-embed></span>
-            {{currentCarPark.title}}
-        </h2>
-        <div class="car-park__wrapper">
-            <div class="car-park__section">
-                <div class="-value">{{currentCarPark.available}}</div>
-                <div class="-label">Spaces available</div>
-            </div>
-            <div class="car-park__section">
-                <div class="-value">{{currentCarPark.occupiedSpaces}}</div>
-                <div class="-label">Occupied spaces</div>
-            </div>
-            <div class="car-park__section">
-                <div class="-value">{{currentCarPark.totalCapacity}}</div>
-                <div class="-label">Park Capacity</div>
+        <div class="car-park">
+            <i class="svg-parking-icon" data-grunticon-embed>Parking Icon</i>
+            <h2 class="heading">
+                {{currentCarPark.title}}
+            </h2>
+            <div class="car-park__wrapper">
+                <div class="car-park__section">
+                    <div class="-value">{{currentCarPark.available}}</div>
+                    <div class="-label">Spaces available</div>
+                </div>
+                <div class="car-park__section">
+                    <div class="-value">{{currentCarPark.occupiedSpaces}}</div>
+                    <div class="-label">Occupied spaces</div>
+                </div>
+                <div class="car-park__section">
+                    <div class="-value">{{currentCarPark.totalCapacity}}</div>
+                    <div class="-label">Park Capacity</div>
+                </div>
             </div>
         </div>
-    </div>
+        {{google-map 
+            lat=lat 
+            lng=lng 
+            zoom=zoom
+            markers=markers
+            gopt_styles=mapStyles
+            gopt_zoomControl=false
+            gopt_mapTypeControl=false
+            }}
     {{else}}
         {{loading-icon}}
     {{/if}}

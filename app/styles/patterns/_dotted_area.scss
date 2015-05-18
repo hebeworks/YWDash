@@ -1,29 +1,29 @@
-.dotted-area {  
-  &.-all {
-    border: dotted 1px $light-grey;
-  }
-  &.-top {
-    border-top: dotted 1px $light-grey;
-  }
-  &.-right {
-    border-right: dotted 1px $light-grey;
-  }
-  &.-bottom {
-    border-bottom: dotted 1px $light-grey;
-  }
-  &.-left {
-    border-left: dotted 1px $light-grey;
-  }
-  &.-pad-top {
-    padding-top: 10px;
-  }
-  &.-pad-right {
-    padding-right: 10px;
-  }
-  &.-pad-bottom {
-    padding-bottom: 10px;
-  }
-  &.-pad-left {
-    padding-left: 10px;
-  }
+.dotted-area {
+    &.-all {
+        border: dotted 1px $light-grey;
+    }
+    &.-top {
+        border-top: dotted 1px $light-grey;
+    }
+    &.-right {
+        border-right: dotted 1px $light-grey;
+    }
+    &.-bottom {
+        border-bottom: dotted 1px $light-grey;
+    }
+    &.-left {
+        border-left: dotted 1px $light-grey;
+    }
+    &.-pad-top {
+        padding-top: 10px;
+    }
+    &.-pad-right {
+        padding-right: 10px;
+    }
+    &.-pad-bottom {
+        padding-bottom: 10px;
+    }
+    &.-pad-left {
+        padding-left: 10px;
+    }
 }

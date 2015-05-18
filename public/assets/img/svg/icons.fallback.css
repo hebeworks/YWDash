@@ -1,0 +1,8 @@
+@mixin svg--dropdown-triangle-dark { background-image: url('png/dropdown-triangle-dark.png'); background-repeat: no-repeat; }
+
+@mixin svg--dropdown-triangle { background-image: url('png/dropdown-triangle.png'); background-repeat: no-repeat; }
+
+@mixin svg--headset { background-image: url('png/headset.png'); background-repeat: no-repeat; }
+
+@mixin svg--msn-messenger { background-image: url('png/msn-messenger.png'); background-repeat: no-repeat; }
+

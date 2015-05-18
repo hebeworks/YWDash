@@ -2,7 +2,7 @@
 	width: 100%;
 	margin: 0 0 10px 0;
 	background-image: none;
-	.select2-choice, {
+	.select2-choice {
 		height: 35px;
 		background-image: none;
 		border: 0;
@@ -18,11 +18,20 @@
 		}
 		
 		.select2-arrow {
+			filter: none;
 			border: none;
 			background-image: none;
 			margin: {
-				right: 10px;
-				top: 6px;
+				right: 8px;
+				top: 13px;
+			}
+			b {
+				width: 10px;
+				height: 8px;
+				background: {
+					size: cover;
+				}
+				@include svg--dropdown-triangle;
 			}
 		}
 	}
@@ -79,6 +88,9 @@ a.select2-choice.select2-default {
 .select2-dropdown-open .select2-choice {
 	box-shadow: none;
 	border: none;
+	.select2-arrow b {
+		background-position: 0 1px;
+	}
 }
 .select2-drop-above {
 	//background-color: #71be1d;
@@ -93,122 +105,12 @@ a.select2-choice.select2-default {
 	border: 0;
 }
 
-.-white {
-	.select2-container {
-		.select2-choice, {
-			background-color: $light-grey;
-			.select2-chosen {
-				background-color: $light-grey;
-				color: $black;
-			}
-			.select2-arrow {
-				background-color: $light-grey;
-				color: $black;
-			}
+
+.select2-container {
+	.select2-choice {
+		filter: none;
+		.select2-arrow {
+			filter: none;
 		}
 	}
 }
-
-.-black {
-	.select2-container {
-		.select2-choice, {
-			background-color: lighten($black,15);
-			.select2-chosen {
-				background-color: lighten($black,15);
-				color: $white;
-			}
-			.select2-arrow {
-				background-color: lighten($black,15);
-				color: $white;
-			}
-		}
-	}
-}
-
-.-grey {
-//add white specific over-rides in here...	
-}
-
-.-dark-grey {
-	.select2-container {
-		.select2-choice, {
-			background-color: lighten($dark-grey,5);
-			.select2-chosen {
-				background-color: lighten($dark-grey,5);
-				color: $white;
-			}
-			.select2-arrow {
-				background-color: lighten($dark-grey,5);
-				color: $white;
-			}
-		}
-	}
-}
-
-.-blue {
-	.select2-container {
-		.select2-choice, {
-			background-color: darken($blue,5);
-			.select2-chosen {
-				background-color: darken($blue,5);
-				color: $white;
-			}
-			.select2-arrow {
-				background-color: darken($blue,5);
-				color: $white;
-			}
-		}
-	}	
-}
-
-.-dark-blue {
-	.select2-container {
-		.select2-choice, {
-			background-color: $white;
-			color: $dark-blue;
-			.select2-chosen {
-				background-color: $white;
-				color: $dark-blue;
-			}
-			.select2-arrow {
-				background-color: $white;
-				color: $dark-blue;
-			}
-		}
-	}	
-}
-
-
-.-light-blue {
-	.select2-container {
-		.select2-choice, {
-			background-color: darken($light-blue,5);
-			.select2-chosen {
-				background-color: darken($light-blue,5);
-				color: #fff;
-			}
-			.select2-arrow {
-				background-color: darken($light-blue,5);
-				color: #fff;
-			}
-		}
-	}	
-}
-
-.-lime {
-	.select2-container {
-		.select2-choice, {
-			background-color: darken($lime,5);
-			.select2-chosen {
-				background-color: darken($lime,5);
-				color: $white;
-			}
-			.select2-arrow {
-				background-color: darken($lime,5);
-				color: $white;
-			}
-		}
-	}
-}
-
-

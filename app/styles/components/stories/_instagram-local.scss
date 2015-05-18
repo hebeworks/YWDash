@@ -3,7 +3,8 @@
 	top: dotted 1px $light-grey;
 	}
 	display: inline-block;
-	overflow: scroll;
+	overflow: hidden;
+	overflow-y: scroll;
 	height: 220px;
 	padding-top: 7px;
     
