@@ -33,8 +33,7 @@
 
 .carousel-pager {
 	display: inline-block;
-}
-	.carousel-pager__btn {
+	&__btn {
 		float: left;
 		height: 11px;
 		outline: none;
@@ -74,6 +73,7 @@
 			}
 		}
 	}
+}
 	.carousel-pager__numbers {
 		float: left;
 		font: {
