@@ -16,6 +16,19 @@
             }
 		}
 	}
+	&.-w4.-h4 {
+		.story__carousel {
+			
+			> li {
+				width: 630px;
+				float: left;
+			}
+
+            .story__chart {
+                height: 390px;
+            }
+		}
+	}
 }
 
 .carousel-pager {

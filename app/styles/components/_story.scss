@@ -36,6 +36,13 @@
 			width: 290px;
 		}
 	}
+	&.-w4 {
+		width: 680px;
+		.story__content,
+		.story__footer {
+			width: 630px;
+		}
+	}
 	&.-h1 {
 		height: 160px;
 		.story__content {
@@ -52,6 +59,15 @@
 		}
         .story__chart {
             height: 195px;
+        }
+	}
+	&.-h4 {
+		height: 680px;
+		.story__content {
+			height: 630px;
+		}
+        .story__chart {
+            height: 535px;
         }
 	}
 	&.-white {

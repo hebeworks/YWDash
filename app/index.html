@@ -643,27 +643,27 @@
 
                                     thisStory.$pageCounter.find('.pg-of__y').text(thisStory.carousel.$slides.size());
                                     
-                                    thisStory.carousel.$list.caroufredsel({
-                                        prev: {
-                                            button: thisStory.$pager.find('.carousel-pager__btn.-prev')
-                                        },
-                                        pagination: thisStory.$pager.find('.carousel-pager__numbers'),
-                                        next: {
-                                            button: thisStory.$pager.find('.carousel-pager__btn.-next')
-                                        },
-                                        swipe: {
-                                            onTouch: true,
-                                            onMouse: true
-                                        },
-                                        auto: false,
-                                        scroll: {
-                                            onBefore: function(){
-                                                thisStory.carousel.$list.trigger('currentPosition', function(index){
-                                                    thisStory.$pageCounter.find('.pg-of__x').text((index+1));
-                                                });
-                                            }
-                                        }
-                                    });
+//                                    thisStory.carousel.$list.caroufredsel({
+//                                        prev: {
+//                                            button: thisStory.$pager.find('.carousel-pager__btn.-prev')
+//                                        },
+//                                        pagination: thisStory.$pager.find('.carousel-pager__numbers'),
+//                                        next: {
+//                                            button: thisStory.$pager.find('.carousel-pager__btn.-next')
+//                                        },
+//                                        swipe: {
+//                                            onTouch: true,
+//                                            onMouse: true
+//                                        },
+//                                        auto: false,
+//                                        scroll: {
+//                                            onBefore: function(){
+//                                                thisStory.carousel.$list.trigger('currentPosition', function(index){
+//                                                    thisStory.$pageCounter.find('.pg-of__x').text((index+1));
+//                                                });
+//                                            }
+//                                        }
+//                                    });
                                 }
                             });
                         }, 1000);

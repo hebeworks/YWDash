@@ -4,20 +4,20 @@ export default Ember.Component.extend({
     tagName: 'div',
     className: 'story__carousel-wrapper',
     loaded: false,
-    loadedChanged: function() {
+    loadedChanged: function () {
         if (this.loaded) {
-            //this.renderCarousel();
+            this.renderCarousel();
         }
     }.observes('loaded'),
-    renderCarousel: function() {
+    renderCarousel: function () {
 
-        /*var $el = Ember.$(this.get('element')).find('.js-story-carousel'),
+        var $el = Ember.$(this.get('element')).find('.js-story-carousel'),
             $storyFooter = $el.closest('.story__content').find('.story__footer'),
             $pageCounter = $storyFooter.find('.pg-of'),
             $pager = $storyFooter.find('.carousel-pager');
 
         $pageCounter.find('.pg-of__y').text($el.children('li').size());
-        
+
         $el
             .caroufredsel({
                 prev: {
@@ -33,12 +33,12 @@ export default Ember.Component.extend({
                 },
                 auto: false,
                 scroll: {
-                    onBefore: function(){
-                        $el.trigger('currentPosition', function(index){
-                            $pageCounter.find('.pg-of__x').text((index+1));
+                    onBefore: function () {
+                        $el.trigger('currentPosition', function (index) {
+                            $pageCounter.find('.pg-of__x').text((index + 1));
                         });
                     }
                 }
-            });*/
+            });
     }
 });

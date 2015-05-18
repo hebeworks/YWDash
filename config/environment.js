@@ -38,7 +38,7 @@ module.exports = function(environment) {
         'font-src': "*",
         'connect-src': "*",
         'img-src': "*",
-        'style-src': "*",
+        'style-src': "'unsafe-inline', * ",
         'frame-src':"*"
     }
 //    ENV.contentSecurityPolicy = {
