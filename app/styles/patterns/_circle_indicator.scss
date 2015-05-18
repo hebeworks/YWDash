@@ -1,0 +1,71 @@
+.circle-indicator {
+	width: 146px;
+	height: 146px;
+	padding: 9px;
+	position: relative;
+	.svg-circle-indicator {
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+}
+	.circle-indicator__inner {
+		width: 128px;
+		height: 128px;
+		border: solid 3px #fff;
+		border-radius: 100%;
+		z-index: 2;
+		position: relative;
+		display: table;
+		> div {
+			display: table-cell;
+			vertical-align: middle;
+			text-align: center;
+		}
+		.svg-calendar {
+			width: 17px;
+			height: 20px;
+			display: block;
+			margin: {
+				right: auto;
+				bottom: 7px;
+				left: auto;
+			}
+			text-indent: -99999px;
+			> svg {
+				width: 17px;
+				height: 20px;
+				fill: #fff;
+				display: block;
+			}
+		}
+		h2,
+		h3,
+		h4 {
+			display: block;
+			font-weight: bold;
+		}
+		h2 {
+			text-decoration: underline;
+			margin-bottom: 5px;
+		}
+		h3 {
+			color: #fff;
+			margin-bottom: 3px;
+		}
+		h4 {
+			color: #7ed320;
+			margin-bottom: 0;
+		}
+	}
+
+.svg-circle-indicator {
+	width: 146px;
+	height: 146px;
+	z-index: 1;
+	> svg {
+		width: 146px;
+		height: 146px;
+		fill: #7ed321;
+	}
+}
