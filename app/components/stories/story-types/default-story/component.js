@@ -71,6 +71,12 @@ export default Ember.Component.extend({
 					successCallback(data);
 				}
 			});
+			
+//			   Ember.$.ajax({
+//            url: 'http://hebenodeapi.azurewebsites.net/carparks',
+//            type: 'GET',
+//            crossOrigin: true
+//        })
 		}
 	},
 });

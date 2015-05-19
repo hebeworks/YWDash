@@ -1,6 +1,7 @@
-import Ember from 'ember';
+import DatamillStory from './../../story-types/datamill-story/component';
 
-export default Ember.Component.extend({
+export default DatamillStory.extend({
+
     tagName: 'div',
     loaded: false,
     selectedCarPark: null,
@@ -22,35 +23,29 @@ export default Ember.Component.extend({
     },
 
     fetchData: function () {
-        // request ckan api for dataset
         var obj = this;
-        Ember.$.ajax({
-            url: 'http://hebenodeapi.azurewebsites.net/carparks',
-            type: 'GET',
-            crossOrigin: true
-        })
+        this.getData('http://hebenodeapi.azurewebsites.net/carparks')
             .then(function (data) {
             var carParks = [];
             data.results.forEach(function (item) {
-                // format API data here
                 var carPark = {};
                 carPark.id = item["carParkIdentity"]
                     .substr(item["carParkIdentity"].indexOf(':') + 1,
                     (item["carParkIdentity"].length - item["carParkIdentity"].indexOf(':')) - 1);
                 carPark.title = item["carParkIdentity"].substr(0, item["carParkIdentity"].indexOf(':'));
                 carPark.lat = item["groupOfLocations"][0].latitude[0];
-                carPark.long = item["groupOfLocations"][0].longitude[0];
+                carPark.lng = item["groupOfLocations"][0].longitude[0];
                 carPark.occupiedSpaces = item["occupiedSpaces"];
                 carPark.totalCapacity = item["totalCapacity"];
                 carPark.available = carPark.totalCapacity - carPark.occupiedSpaces;
                 carParks.push(carPark);
             });
-            
-            carParks = _.sortBy(carParks,'title');
+
+            carParks = _.sortBy(carParks, 'title');
 
             obj.set('items', carParks);
-            obj.set('selectedCarPark',carParks[0].id);
-            
+            obj.set('selectedCarPark', carParks[0].id);
+
             setTimeout(function () {
                 obj.set('loaded', true);
             });
@@ -63,24 +58,23 @@ export default Ember.Component.extend({
         }
     }.property('selectedCarPark'),
 
-    stripHTML: function (html) {
-        var div = document.createElement("div");
-        div.innerHTML = html;
-        return div.textContent || div.innerText || "";
-    },
-
     setupMarkers: function () {
-        var item = this.get('selectedItem');
-        if (item != null) {
+        var selectedCarPark = this.get('items').findBy('id',this.get('selectedCarPark'));
+        if (selectedCarPark != null) {
             var markers = Ember.A([
-                { title: item.street, lat: item.lat, lng: item.lng, body: item.street }
-            ]);
-            this.set('lat', item.lat);
-            this.set('lng', item.lng);
+                { 
+                    title: selectedCarPark.street, 
+                    lat: selectedCarPark.lat, 
+                    lng: selectedCarPark.lng, 
+                    body: selectedCarPark.street }
+                ]);
+            this.set('lat', selectedCarPark.lat);
+            this.set('lng', selectedCarPark.lng);
             this.set('markers', markers);
             this.set('zoom', 16);
         }
     }.observes('selectedCarPark'),
+
 
     mapStyles: [
         {

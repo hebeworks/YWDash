@@ -39,7 +39,6 @@ export default DatamillStory.extend({
         var obj = this;
         this.getData(this.get('datamillUrl') + '/api/action/datastore_search_sql?sql=SELECT * from "' + this.get('selectedMonth.id') + '"')
             .then(function (data) {
-                debugger;
                 var items = [];
                 data.result.records.forEach(function (item) {
                     // format API data here
