@@ -4,6 +4,7 @@ import Ember from 'ember';
 export default Ember.Component.extend({
 	tagName: 'div',
 	loaded: false,
+	allMonthsLoaded: false,
 	selectedMonth: '',
 	months: [],
 	loadedMonths: 0,
@@ -117,7 +118,7 @@ export default Ember.Component.extend({
 	monthLoaded: function () {
 		console.log('loadedMonths: ' + this.get('loadedMonths'));
 		if (this.get('loadedMonths') === this.get('monthsToLoad')) {
-			alert('all months loaded')
+			this.set('allMonthsLoaded',true);
 		}
 		
 		if (this.get('months') != null) {
