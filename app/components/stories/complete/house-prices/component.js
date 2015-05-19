@@ -99,25 +99,35 @@ export default Ember.Component.extend({
 	//		});
 	//	}.observes('selectedMonth'),
 
+
+
 	getPast12Months: function () {
 		var obj = this;
-		this.set('monthsToLoad',13);
+		this.set('monthsToLoad', 13);
 		for (var i = 1; i <= this.get('monthsToLoad'); i++) {
-			this.getMonthData(moment().add(-(i), 'month').format('YYYY-MM'))
+			var monthsToSubtract = i + 1; // seem to only have data starting 2 months back so start from there
+			this.getMonthData(moment().add(-(monthsToSubtract), 'month').format('YYYY-MM'))
 				.then(function (month) {
-				obj.get('months').push(month);
-				obj.set('loadedMonths', obj.get('loadedMonths') + 1);
-			});
+					obj.get('months').push(month);
+					obj.set('loadedMonths', obj.get('loadedMonths') + 1);
+				});
 		}
 	},
 
 	monthLoaded: function () {
-		console.log('loadedMonths: '+this.get('loadedMonths'));
-		if(this.get('loadedMonths') === this.get('monthsToLoad')) {
+		console.log('loadedMonths: ' + this.get('loadedMonths'));
+		if (this.get('loadedMonths') === this.get('monthsToLoad')) {
 			alert('all months loaded')
 		}
-		this.set('currentMonth',this.get('months')[0]);
-		this.set('previousMonth',this.get('months')[1]);
+		
+		if (this.get('months') != null) {
+			if (this.get('months').length > 0) {
+				this.set('currentMonth', this.get('months')[0]);
+			}
+			if (this.get('months').length > 1) {
+				this.set('previousMonth', this.get('months')[1]);
+			}
+		}
 	}.observes('loadedMonths'),
 
 
