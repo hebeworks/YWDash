@@ -177,7 +177,7 @@
 						}
 					}
 				}
-		    	.dotted-area {
+		    .dotted-area {
 					border-color: $white;
 				}
 				.circle-indicator {
@@ -289,8 +289,11 @@
 				color: $yellow;
 			}
 		}
-		.dotted-area {
+		.story__footer {
 			border-color: $black;
+			.dotted-area {
+				border-color: $black;
+			}
 		}
 	}
 	&.-blue {
