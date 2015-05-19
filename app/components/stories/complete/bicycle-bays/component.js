@@ -15,8 +15,8 @@ export default DatamillBase.extend({
     }.on('init'),
 
     didInsertElement: function () {
-        this.set('title', 'Bicyle Bays');
-        this.set('subTitle', 'In the city centre');
+        this.set('title', 'Bicycle Bays');
+        this.set('subTitle', 'In Leeds City Centre');
         this.fetchData();
     },
 

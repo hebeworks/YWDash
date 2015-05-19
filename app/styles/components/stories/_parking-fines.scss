@@ -19,20 +19,20 @@
 			size: em(11px);
 		}
 		margin: {
-			bottom: 5px;
+			bottom: 0px;
 		}
 	}
 	&__inner {
 		height: 50px;
 		background-size: contain;
-		background-position: right;
+		background-position: 99%;
 	}
 	&__total {
 		width: 50%;
-		margin: {
-			top: 0px;
-			bottom: 12px;
-		}
+	}
+	&__footer {
+		position: absolute;
+		bottom: 10px;
 	}	
 } 
 
