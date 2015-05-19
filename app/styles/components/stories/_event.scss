@@ -2,6 +2,25 @@
 	height:225px;
 	overflow-y: hidden;
 	
+	.image {
+		width: 135px;
+		height: 135px;
+		display: block;
+		text-indent: -99999px;
+		float: right;
+		padding: {
+			bottom: 10px;
+			left: 10px;
+		}
+		margin-bottom: 0;
+		a {
+			width: 125px;
+			height: 125px;
+			display: block;
+			background-repeat: no-repeat;
+			background-size: cover;
+		}
+	}	
 	.heading {
 		font: {
 			family: $georgia;
@@ -40,13 +59,15 @@
 		}
 	}
 		.event__datetime {
-			width: 32%;
+			width: 100%;
 			font: {
 				family: $georgia;
 				size: em(12px);
 				style: italic;
 			}
-			float: left;
+			line-height: 1.35;
+			display: block;
+			margin-bottom: 2px;
 		}
 		.event__address {
 			padding: {

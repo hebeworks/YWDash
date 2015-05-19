@@ -1,11 +1,11 @@
 .parking-fines {
 	.heading {
 		font: {
-			family: $georgia;
-			size: em(18px);
+			size: em(16px);
+			family: $helvneue;
 		}
 		margin: {
-			bottom: 10px;
+			bottom: 0px;
 		}
 		a {
 			text-decoration: none;
@@ -22,13 +22,17 @@
 			bottom: 5px;
 		}
 	}
-	&-inner {
+	&__inner {
 		height: 50px;
 		background-size: contain;
 		background-position: right;
-		.value {
-			width: 70%;
-		}
 	}
+	&__total {
+		width: 50%;
+		margin: {
+			top: 0px;
+			bottom: 12px;
+		}
+	}	
 } 
 

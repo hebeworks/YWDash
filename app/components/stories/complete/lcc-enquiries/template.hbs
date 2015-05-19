@@ -15,8 +15,19 @@
             author="Roomman"
         }}
     </div>
-
-    <h3 class="-alpha">Total Enquiries: {{totalEnquiries}}</h3>
+    <div class="lcc-enquiries__totals">
+        <div class="dotted-area -all -pad">
+            <h2 class="heading -gamma">Face to Face</h2>
+            <i class="svg-msn-messenger">Call receiver icon</i>
+            <span class="lcc-enquiries__total"><em>237</em> Enquiries</span>
+        </div><!--
+        --><div class="dotted-area -all -pad">
+            <h2 class="heading -gamma">Telephone</h2>
+            <i class="svg-headset">Headset icon</i>
+            <span class="lcc-enquiries__total"><em>315</em> Enquiries</span>
+        </div>
+    </div>
+    <!--<h3 class="-alpha">Total Enquiries: {{totalEnquiries}}</h3>-->
       {{#stories/story-slider loaded=loaded}}
             {{#stories/story-slide}}
                 <table class="lcc-enquiries__table">

@@ -1,4 +1,17 @@
-{{#stories/story-base title=title subTitle=subTitle color="-black" width="-w2" height="-h2" data-ss-colspan="2"}}
+{{#stories/story-base 
+    title=title 
+    subTitle=subTitle 
+    color="-black" 
+    width="-w2" 
+    height="-h2" 
+    data-ss-colspan="2"
+
+    dataSourceUrl="http://api.open-notify.org"
+    feedbackEmail="joel@hebeworks.com"
+    description="This Story uses data from Nasa via the ISS's Open Notify API."
+    license="No Licence information avaliable"
+    author="Joel Mercer"
+    }}
     <main class="space-station">
         {{#stories/story-slider loaded=loaded}}
             {{#each item in items}}
