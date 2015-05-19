@@ -1,7 +1,6 @@
-import Ember from 'ember';
-import DatamillBase from './../../datamill-base/component';
+import DatamillStory from './../../story-types/datamill-story/component';
 
-export default DatamillBase.extend({
+export default DatamillStory.extend({
     tagName: 'div',
     
     setup: function () {
@@ -15,15 +14,13 @@ export default DatamillBase.extend({
     }.on('init'),
 
     didInsertElement: function () {
-        this.set('title', 'Bicycle Bays');
-        this.set('subTitle', 'In Leeds City Centre');
-        this.fetchData();
-    },
-
-    fetchData: function () {
+        this.set('title', 'Bicyle Bays');
+        this.set('subTitle', 'In the city centre');
+//        this.fetchData();
         var obj = this;
-        var datamillUrl = this.get('datamillUrl');
-        Ember.$.getJSON(datamillUrl + '/api/action/datastore_search?resource_id=c2bb0c3e-52fd-4183-8727-6b9f40b829f0').then((data) => {
+
+        this.getData(this.get('datamillUrl') + '/api/action/datastore_search?resource_id=c2bb0c3e-52fd-4183-8727-6b9f40b829f0')
+            .then(function (data) {
             var items = [];
             data.result.records.forEach((tmpItem) => {
                 var id = hebeutils.guid();
