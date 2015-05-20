@@ -619,7 +619,7 @@
                         if (Modernizr.cssanimations) {
                             $('.story__inner').addClass('-support-3d');
                         } else {
-
+                            $('.clock-face').closest('.js-story').parent().remove();
                             $('.story__inner').addClass('-fallback-3d');
                         }
 
