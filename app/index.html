@@ -423,8 +423,15 @@
                 return {
                     init: function() {
 
-                        setTimeout(function(){
+                        function attemptInit() {
 
+                            if (typeof header.$header === 'undefined') {
+                                setTimeout(function(){
+                                    attemptInit();
+                                }, 100);
+                                return;
+                            }
+                            
                             canvas.dimensions.width = $window.width();
                             canvas.dimensions.height = $window.height() - header.$header.height();
 
@@ -453,6 +460,9 @@
 
                             // Initialise caroufredsel
                             initCarousel();
+                        }
+                        setTimeout(function(){
+                            attemptInit();
                         }, 0);
                     },
 
@@ -609,6 +619,7 @@
                         if (Modernizr.cssanimations) {
                             $('.story__inner').addClass('-support-3d');
                         } else {
+
                             $('.story__inner').addClass('-fallback-3d');
                         }
 
