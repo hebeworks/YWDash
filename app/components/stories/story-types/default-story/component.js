@@ -4,7 +4,7 @@ import Config from './../../../../config/environment';
 export default Ember.Component.extend({
 	config: Config.APP,
 
-	getData: function (url) {
+	getData: function (url, cache) {
 		var obj = this;
 		return new Ember.RSVP.Promise(function (resolve, reject) {
 			try
@@ -13,7 +13,7 @@ export default Ember.Component.extend({
 				if(obj.isCORS(url)) {
 					obj.crossDomainAjax(url, function (data) {
 						resolve(data);
-					});				
+					}, cache);				
 				} else {
 					return Ember.$.getJSON(url)
 						.then(function(data){
@@ -33,7 +33,7 @@ export default Ember.Component.extend({
 	},
 	
 
-	crossDomainAjax: function (url, successCallback) {
+	crossDomainAjax: function (url, successCallback, cache) {
 		// IE8 & 9 only Cross domain JSON GET request
 		if ('XDomainRequest' in window && window.XDomainRequest !== null) {
 			var xdr = new XDomainRequest(); // Use Microsoft XDR
@@ -63,7 +63,7 @@ export default Ember.Component.extend({
 		else {
 			$.ajax({
 				url: url,
-				cache: false,
+				cache: (cache === true ? true : false),
 				dataType: 'json',
 				type: 'GET',
 				async: false, // must be set to false
