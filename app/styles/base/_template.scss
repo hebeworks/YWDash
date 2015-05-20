@@ -136,7 +136,7 @@ a {
 %site-body {
 	@include cf;
 	width: 100%;
-	height: calc(100% - 100px);
+	height: 100%;//calc(100% - 100px);
 	top:100px; // IE10
 //IE10	margin: {
 //		top: 100px;
@@ -144,7 +144,7 @@ a {
 	background: {
 		color: #f1f1f1; // temporary
 	}
-	position: relative;
+	position: absolute;
 	z-index: 1;
 }
 
@@ -152,10 +152,5 @@ a {
 .gallery-body {
 	@extend %site-body;
 	padding: 30px 40px;
-	overflow: scroll;
-}
-
-
-.-holding-page__content {
-	display:none;
+	// overflow: scroll;
 }

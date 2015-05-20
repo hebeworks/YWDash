@@ -423,8 +423,20 @@
                 return {
                     init: function() {
 
-                        setTimeout(function(){
+                        var attempts = 0;
+                        function attemptInit() {
+                            attempts++;
 
+                            if (attempts > 9) {
+                                return;
+                            }
+                            if (typeof header.$header === 'undefined') {
+                                setTimeout(function(){
+                                    attemptInit();
+                                }, 150);
+                                return;
+                            }
+                            
                             canvas.dimensions.width = $window.width();
                             canvas.dimensions.height = $window.height() - header.$header.height();
 
@@ -453,6 +465,9 @@
 
                             // Initialise caroufredsel
                             initCarousel();
+                        }
+                        setTimeout(function(){
+                            attemptInit();
                         }, 0);
                     },
 
@@ -609,6 +624,7 @@
                         if (Modernizr.cssanimations) {
                             $('.story__inner').addClass('-support-3d');
                         } else {
+                            $('.clock-face').closest('.js-story').parent().remove();
                             $('.story__inner').addClass('-fallback-3d');
                         }
 
@@ -649,6 +665,8 @@
                                 if (thisStory.carousel.$list.length > 0) {
 
                                     thisStory.$pageCounter.find('.pg-of__y').text(thisStory.carousel.$slides.size());
+
+                                    $('.carousel-pager__btn').css('display', 'inline-block');
                                     
 //                                    thisStory.carousel.$list.caroufredsel({
 //                                        prev: {
