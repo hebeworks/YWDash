@@ -14,7 +14,7 @@ export default DatamillStory.extend({
     }.on('init'),
 
     didInsertElement: function () {
-        this.set('title', 'Bicyle Bays');
+        this.set('title', 'Bicycle Bays');
         this.set('subTitle', 'In the city centre');
 //        this.fetchData();
         var obj = this;
