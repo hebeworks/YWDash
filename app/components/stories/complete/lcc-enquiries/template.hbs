@@ -1,4 +1,17 @@
-{{#stories/story-base title=title subTitle=subTitle color="-white" width="-w2" height="-h2" data-ss-colspan="2"}}
+{{#stories/story-base 
+    title=title 
+    subTitle=subTitle 
+    color="-white" 
+    width="-w2" 
+    height="-h2" 
+    data-ss-colspan="2"
+
+    dataSourceUrl="http://leedsdatamill.org/dataset/customer-services-contact-enquiries"
+    feedbackEmail="nathan@hebeworks.com"
+    description="This Story uses Customer Service Contact Enquiries data from Leeds Data Mill"
+    license="UK Open Government Licence (OGL v2)"
+    author="Nathan Smith"
+}}
 <main class="lcc-enquiries">
     <div>
         {{
@@ -7,24 +20,18 @@
             value=selectedMonth
             placeholder="Choose a month"
             cssClass="hebe-select-2"
-
-            dataSourceUrl="http://www.leedsdatamill.org"
-            feedbackEmail="info@leedsdatamill.org"
-            description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla at convallis nulla."
-            license="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla at convallis nulla."
-            author="Roomman"
         }}
     </div>
     <div class="lcc-enquiries__totals">
         <div class="dotted-area -all -pad">
             <h2 class="heading -gamma">Face to Face</h2>
             <i class="svg-msn-messenger">Call receiver icon</i>
-            <span class="lcc-enquiries__total"><em>237</em> Enquiries</span>
+            <span class="lcc-enquiries__total"><em>{{face}}</em> Enquiries</span>
         </div><!--
         --><div class="dotted-area -all -pad">
             <h2 class="heading -gamma">Telephone</h2>
             <i class="svg-headset">Headset icon</i>
-            <span class="lcc-enquiries__total"><em>315</em> Enquiries</span>
+            <span class="lcc-enquiries__total"><em>{{phone}}</em> Enquiries</span>
         </div>
     </div>
     <!--<h3 class="-alpha">Total Enquiries: {{totalEnquiries}}</h3>-->

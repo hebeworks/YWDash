@@ -1,25 +1,18 @@
 import Ember from 'ember';
-import DatamillBase from './../../datamill-base/component';
+import DatamillStory from './../../story-types/datamill-story/component';
 
-export default DatamillBase.extend({
+export default DatamillStory.extend({
     tagName: 'div',
     loaded: false,
     selectedMonth: '',
     didInsertElement: function () {
         this.set('title', 'LCC Contact Centre Enquiries');
         this.set('subTitle', 'Enquiries dealt with by Leeds City Council');
-        this.fetchData();
-    },
-    fetchData: function () {
-        // request ckan api for dataset
         var obj = this;
-        var datamillUrl = this.get('datamillUrl');
-
-        Ember.$.getJSON(datamillUrl + '/api/3/action/package_show?id=customer-services-contact-enquiries')
+        this.getData(this.get('datamillUrl') + '/api/3/action/package_show?id=customer-services-contact-enquiries')
             .then(function (data) {
             var resources = [];
             data.result.resources.forEach(function (item) {
-                // format API data here
                 var resource = {};
                 resource.text = item["name"];
                 resource.id = item["id"];
@@ -42,40 +35,55 @@ export default DatamillBase.extend({
         });
     },
 
-    fetchMonth: function (resourceID) {
+    fetchMonth: function (monthID) {
         var obj = this;
-        var data = {
-            sql: 'SELECT * from "' + this.get('selectedMonth.id') + '"'
-        }
-        var datamillUrl = this.get('datamillUrl');
+        this.getData('http://hebenodeapi.azurewebsites.net/lccenquiries?id=' + this.get('selectedMonth.id'))
+            .then(function (month) {
+                
+                obj.set('totalEnquiries', month.allItemTotals);
+                obj.set('topPostcodes', month.topPostcodes);
+                obj.set('topEnquiries', month.topEnquiries);
+                obj.set('topServices', month.topServices);
+    
+                obj.set('face', month.face[0].total);
+                obj.set('phone', month.phone[0].total);
 
-        Ember.$.getJSON(datamillUrl + '/api/action/datastore_search_sql?', data).then(function (data) {
-            var items = [];
-            data.result.records.forEach(function (item) {
-                // format API data here
-                var result = {};
-                result.location = item["Created at location"];
-                result.service = item["Service"];
-                result.postcode = item["Postcode trunc"];
-                result.enquiry = item["Enquiry Type"];
-                result.total = (item["Total"] != null ?
-                    item["Total"] :
-                    (item["Total contact"] != null ?
-                        item["Total contact"] : 0));
-                items.push(result);
+                setTimeout(function () {
+                    obj.set('loaded', true);
+                });
             });
+        }.observes('selectedMonth'),
 
-            var allItemTotals = obj.getTotal(items, 'total');
-            obj.set('totalEnquiries', allItemTotals);
-            obj.set('topPostcodes', obj.getTopByProperty(items, 'postcode', 3));
-            obj.set('topEnquiries', obj.getTopByProperty(items, 'enquiry', 3));
-            obj.set('topServices', obj.getTopByProperty(items, 'service', 3));
-
-            setTimeout(function () {
-                obj.set('loaded', true);
-            });
-        });
-    }.observes('selectedMonth'),
+    //    fetchMonth: function (resourceID) {
+    //        var obj = this;
+    //        this.getData(this.get('datamillUrl') + '/api/action/datastore_search_sql?sql=SELECT * from "' + this.get('selectedMonth.id') + '"')
+    //            .then(function (data) {
+    //                var items = [];
+    //                data.result.records.forEach(function (item) {
+    //                    // format API data here
+    //                    var result = {};
+    //                    result.location = item["Created at location"];
+    //                    result.service = item["Service"];
+    //                    result.postcode = item["Postcode trunc"];
+    //                    result.enquiry = item["Enquiry Type"];
+    //                    result.total = (item["Total"] != null ?
+    //                        item["Total"] :
+    //                        (item["Total contact"] != null ?
+    //                            item["Total contact"] : 0));
+    //                    items.push(result);
+    //                });
+    //    
+    //                var allItemTotals = obj.getTotal(items, 'total');
+    //                obj.set('totalEnquiries', allItemTotals);
+    //                obj.set('topPostcodes', obj.getTopByProperty(items, 'postcode', 3));
+    //                obj.set('topEnquiries', obj.getTopByProperty(items, 'enquiry', 3));
+    //                obj.set('topServices', obj.getTopByProperty(items, 'service', 3));
+    //    
+    //                setTimeout(function () {
+    //                    obj.set('loaded', true);
+    //                });
+    //            });
+    //    }.observes('selectedMonth'),
 
     getTopByProperty: function (items, property, count) {
         var obj = this;
@@ -106,11 +114,5 @@ export default DatamillBase.extend({
             }
         }, 0);
         return sum;
-    },
-
-    stripHTML: function (html) {
-        var div = document.createElement("div");
-        div.innerHTML = html;
-        return div.textContent || div.innerText || "";
     }
 });

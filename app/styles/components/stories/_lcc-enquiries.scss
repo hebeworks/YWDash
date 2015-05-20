@@ -2,6 +2,9 @@
     .caroufredsel_wrapper, .story__carousel {
         min-height:100px;
     }
+    .story__footer {
+        border: 0px;
+    }
 }
     .lcc-enquiries__totals {
         @include cf;
@@ -47,7 +50,7 @@
         }
     }
         .lcc-enquiries__total {
-            width: 46px;
+            width: 70px;
             height: 35px;
             font: {
                 size: 10px;
@@ -89,7 +92,7 @@
                 font: {
                     size:em(12px);
                 }
-                padding:2px 0;
+                padding:1px 0;
                 border: {
                     bottom:dashed 1px $light-grey;
                 }
@@ -97,7 +100,14 @@
                 font-weight:bold;
                 &:first-of-type {
                     font-weight: normal;
-                }        
+                }     
+            }
+            tr {
+                &:last-of-type {
+                    td {
+                        border-bottom: 0px;
+                    }
+                }
             }
         }
     }

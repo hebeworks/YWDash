@@ -177,7 +177,7 @@
 						}
 					}
 				}
-		    	.dotted-area {
+		    .dotted-area {
 					border-color: $white;
 				}
 				.circle-indicator {
@@ -240,14 +240,14 @@
 				opacity: 1;
 			}
 		}
-        .story__footer {
-		    .pg-of {
-			    color: $white;
-                opacity:0.7;
-            }
-            .author {
-            	opacity: 1;
-            }
+    .story__footer {
+	    .pg-of {
+		    color: $white;
+	            opacity:0.7;
+	        }
+	        .author {
+	        	opacity: 1;
+	        }
         }
     	.dotted-area {
 			border-color: $white;
@@ -289,8 +289,11 @@
 				color: $yellow;
 			}
 		}
-		.dotted-area {
+		.story__footer {
 			border-color: $black;
+			.dotted-area {
+				border-color: $black;
+			}
 		}
 	}
 	&.-blue {
