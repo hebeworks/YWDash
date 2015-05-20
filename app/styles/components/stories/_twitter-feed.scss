@@ -40,32 +40,58 @@
 	height: 102px;
 	float: left;
 	position: relative;
-	margin-bottom: 10px;
+	margin-bottom: 8px;
 }
 	.twitter-cover-photo__logo {
 		width: 84px;
 		height: 84px;
-		padding: 7px;
+		padding: 17px;
 		background-color: #fff;
 		border-radius: 100%;
 		@include middle(xy);
 		position: absolute;
 	}
+.twitter-follow {
+	width: 40px;
+	height: 40px;
+	position: absolute;
+	bottom: -19px;
+	left: 15px;
+	border-radius: 100%;
+	display: block;
+	text-indent: -99999px;
+	@include svg--twitter-follow;
+	background: {
+		color: #58aff0;
+		position: 50% 50%;
+		size: 20px;
+		height: 20px;
+	}
+	&:hover {
+		background-color: lighten(#58aff0, 5%);
+	}
+}
 .twitter-profile-details {
 	width: 290px;
 	height: 100px;
+	padding: {
+		right: 7%;
+		left: 7%;
+	}
 	float: left;
 	text-align: center;
 	h2 {
 		color: #505050;
-		margin-bottom: 5px;
+		font-family: $helvneuemed;
+		margin-bottom: 2px;
 	}
 	h3 {
 		color: #9b9b9b;
-		margin-bottom: 5px;
+		margin-bottom: 2px;
 	}
 	p {
 		color: #9b9b9b;
+		line-height: 1.2;
 		margin-bottom: 0;
 		~ p {
 			margin-top: 10px;
