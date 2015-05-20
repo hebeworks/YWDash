@@ -41,7 +41,6 @@ export default DefaultStory.extend({
             .then(function (data) {
             var items = [];
             data.results.forEach((tmpItem) => {
-                debugger;
                 if (tmpItem.foi_requests.toString().notNullOrEmpty() // ignore empty data
                     && tmpItem.eir_requests.toString().notNullOrEmpty()) {
                     var id = hebeutils.guid();
