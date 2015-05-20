@@ -17,7 +17,7 @@ export default DatamillStory.extend({
     }.on('init'),
 
     didInsertElement: function () {
-        this.set('title', 'Leeds Carparks');
+        this.set('title', 'Leeds Car Parks');
         this.set('subTitle', 'Registered spaces available in Leeds');
         this.fetchData();
     },
