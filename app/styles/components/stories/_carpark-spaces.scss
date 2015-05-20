@@ -42,7 +42,8 @@
 	}
 		.car-park__wrapper {
 			width: 100%;
-			overflow:auto;
+			overflow: auto;
+			float: left;
 			padding: {
 				top:8px;
 				bottom:8px;
@@ -89,6 +90,7 @@
 		.carpark-spaces {
 			.map-canvas {
 				height: 82px;
+				float: left;
 			}
 		}
 	}
