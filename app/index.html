@@ -423,12 +423,17 @@
                 return {
                     init: function() {
 
+                        var attempts = 0;
                         function attemptInit() {
+                            attempts++;
 
+                            if (attempts > 9) {
+                                return;
+                            }
                             if (typeof header.$header === 'undefined') {
                                 setTimeout(function(){
                                     attemptInit();
-                                }, 100);
+                                }, 150);
                                 return;
                             }
                             
@@ -660,6 +665,8 @@
                                 if (thisStory.carousel.$list.length > 0) {
 
                                     thisStory.$pageCounter.find('.pg-of__y').text(thisStory.carousel.$slides.size());
+
+                                    $('.carousel-pager__btn').css('display', 'inline-block');
                                     
 //                                    thisStory.carousel.$list.caroufredsel({
 //                                        prev: {
