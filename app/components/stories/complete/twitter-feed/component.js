@@ -10,5 +10,6 @@ export default DatamillStory.extend({
         this.set('subTitle', 'What are we tweeting about?');
         var obj = this;
         
+        this.set('loaded', true);
     }
 });

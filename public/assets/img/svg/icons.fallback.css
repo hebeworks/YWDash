@@ -6,3 +6,5 @@
 
 @mixin svg--msn-messenger { background-image: url('png/msn-messenger.png'); background-repeat: no-repeat; }
 
+@mixin svg--twitter-follow { background-image: url('png/twitter-follow.png'); background-repeat: no-repeat; }
+
