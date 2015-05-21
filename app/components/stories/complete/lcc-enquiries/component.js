@@ -1,3 +1,4 @@
+/* global Ember, hebeutils, _, moment */
 import DatamillStory from './../../story-types/datamill-story/component';
 
 export default DatamillStory.extend({
@@ -34,7 +35,7 @@ export default DatamillStory.extend({
         });
     },
 
-    fetchMonth: function (monthID) {
+    fetchMonth: function () {
         var obj = this;
         this.getData('http://hebenodeapi.azurewebsites.net/lccenquiries?id=' + this.get('selectedMonth.id'))
             .then(function (month) {

@@ -1,3 +1,4 @@
+/* global Ember, hebeutils, _, moment */
 import Ember from 'ember';
 
 export default Ember.Component.extend({
@@ -62,18 +63,14 @@ export default Ember.Component.extend({
             crossOrigin: true
         })
             .then(function (data) {
-            var events = [];
-            var items = [];
-            
+            var items = [];            
             var events = data.objects;
             events = _.filter(events, function(event) {
-                return event.event_title.notNullOrEmpty()
-                        && event.event_date.notNullOrEmpty()
-                        && (event.image_thumbnail.notNullOrEmpty() || event.thumbnail.notNullOrEmpty());
+                return event.event_title.notNullOrEmpty() && event.event_date.notNullOrEmpty() && (event.image_thumbnail.notNullOrEmpty() || event.thumbnail.notNullOrEmpty());
             });
             
             //_.first(data.objects,5)
-            var events = _.sample(events,5);
+            events = _.sample(events,5);
             
             events.forEach(function (item) {
                 var thumbnail = (item.image_thumbnail.notNullOrEmpty() ? item.image_thumbnail : item.thumbnail);

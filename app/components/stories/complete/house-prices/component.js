@@ -1,3 +1,4 @@
+/* global hebeutils, _, moment */
 import DefaultStory from './../../story-types/default-story/component';
 
 export default DefaultStory.extend({
@@ -77,10 +78,10 @@ export default DefaultStory.extend({
 			
 			// append data to chart arrays
 			var chartData = this.get('tmpChartData');
-			chartData.detached.push({ date: date, value: resource.averageDetached })
-			chartData.flat.push({ date: date, value: resource.averageFlat })
-			chartData.semi.push({ date: date, value: resource.averageSemi })
-			chartData.terraced.push({ date: date, value: resource.averageTerraced })
+			chartData.detached.push({ date: date, value: resource.averageDetached });
+			chartData.flat.push({ date: date, value: resource.averageFlat });
+			chartData.semi.push({ date: date, value: resource.averageSemi });
+			chartData.terraced.push({ date: date, value: resource.averageTerraced });
 
 
 			return resource;

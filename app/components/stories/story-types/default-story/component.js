@@ -4,7 +4,7 @@ import Config from './../../../../config/environment';
 export default Ember.Component.extend({
 	config: Config.APP,
 
-	getData: function (url) {
+	getData: function (url, cache) {
 		var obj = this;
 		return new Ember.RSVP.Promise(function (resolve, reject) {
 			try
@@ -13,7 +13,7 @@ export default Ember.Component.extend({
 				if(obj.isCORS(url)) {
 					obj.crossDomainAjax(url, function (data) {
 						resolve(data);
-					});				
+					}, cache);				
 				} else {
 					return Ember.$.getJSON(url)
 						.then(function(data){
@@ -33,9 +33,12 @@ export default Ember.Component.extend({
 	},
 	
 
-	crossDomainAjax: function (url, successCallback) {
+	crossDomainAjax: function (url, successCallback, cache) {
 		// IE8 & 9 only Cross domain JSON GET request
-		if ('XDomainRequest' in window && window.XDomainRequest !== null) {
+		if ('XDomainRequest' in window && window.XDomainRequest !== null
+				&& navigator.userAgent.indexOf('MSIE') != -1 
+				&& parseInt(navigator.userAgent.match(/MSIE ([\d.]+)/)[1], 10) < 10) {
+			alert('XDomainRequest');
 			var xdr = new XDomainRequest(); // Use Microsoft XDR
 			xdr.open('get', url);
 			xdr.onload = function () {
@@ -61,9 +64,10 @@ export default Ember.Component.extend({
 
 		// Do normal jQuery AJAX for everything else          
 		else {
+			var useCache = (cache != null && cache === true ? true : false);
 			$.ajax({
 				url: url,
-				cache: false,
+				cache: useCache,
 				dataType: 'json',
 				type: 'GET',
 				async: false, // must be set to false

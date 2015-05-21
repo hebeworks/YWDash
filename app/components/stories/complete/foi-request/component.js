@@ -1,3 +1,4 @@
+/* global hebeutils, _, moment */
 import DefaultStory from './../../story-types/default-story/component';
 
 export default DefaultStory.extend({
@@ -41,8 +42,8 @@ export default DefaultStory.extend({
             .then(function (data) {
             var items = [];
             data.results.forEach((tmpItem) => {
-                if (tmpItem.foi_requests.toString().notNullOrEmpty() // ignore empty data
-                    && tmpItem.eir_requests.toString().notNullOrEmpty()) {
+                // ignore empty data 
+                if (tmpItem.foi_requests.toString().notNullOrEmpty() && tmpItem.eir_requests.toString().notNullOrEmpty()) {
                     var id = hebeutils.guid();
                     var date = moment('01-' + tmpItem.month).format('YYYY-MM-DD');
                     var item = {

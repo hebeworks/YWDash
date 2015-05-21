@@ -1,6 +1,7 @@
-import Ember from 'ember';
+/* global Ember, hebeutils, _, moment */
+import DefaultStory from './../../story-types/default-story/component';
 
-export default Ember.Component.extend({
+export default DefaultStory.extend({
     tagName: 'div',
     loaded: false,
     didInsertElement: function() {

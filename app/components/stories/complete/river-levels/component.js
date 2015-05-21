@@ -26,9 +26,7 @@ export default DefaultStory.extend({
                     typicalRangeLow: typicalRangeLow,
                 });
                 // check for changes to the api data every fifteen minutes
-                setTimeout(function () {
-                    obj.fetchData, 900000;
-                });
+                setTimeout(obj.fetchData, 900000);
                 setTimeout(function () {
                     obj.set('loaded', true);
                 });
