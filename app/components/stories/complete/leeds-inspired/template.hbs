@@ -15,20 +15,22 @@
         {{#each item in items}}
             {{#stories/story-slide}}
             <main class="leeds-inspired-event">
-                <div class="image">
-                    <a href="javascript:;" style="background-image: url({{item.thumbnail}});" title="{{item.title}}">Image</a>
-                </div>
                 <h2 class="leeds-inspired-event__heading"><a href="javascript:;">{{item.title}}</a></h2>
-                {{!-- <div class="leeds-inspired-event__description">{{item.description}}</div> --}}
+                                
                 <div class="leeds-inspired-event__details">
                     <div class="dotted-area -top -pad-top -pad-bottom">
                         <time class="leeds-inspired-event__datetime">{{item.date}}</time>
-                    </div>
-                    <div class="dotted-area -top -pad-top -pad-bottom">
-                        <div class="leeds-inspired-event__address">
-                        <em>{{item.place}}</em></div>
+                        <em class="leeds-inspired-event__address">{{item.place}}</em>
                     </div>
                 </div>
+                
+                <div>
+                    <img class="image" src="{{item.thumbnail}}" alt="{{item.title}}" />
+                    <div class="leeds-inspired-event__description">
+                        {{item.description}}
+                    </div>
+                </div>
+
             </main>
             {{/stories/story-slide}}
         {{/each}}
