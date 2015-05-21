@@ -1,7 +1,6 @@
-import Ember from 'ember';
+import DefaultStory from './../../story-types/default-story/component';
 
-
-export default Ember.Component.extend({
+export default DefaultStory.extend({
 	tagName: 'div',
 	loaded: false,
 	allMonthsLoaded: false,
@@ -14,6 +13,14 @@ export default Ember.Component.extend({
 		this.getPast12Months();
 	},
 
+	chartData: null,
+	tmpChartData: {
+		detached: [],
+		flat: [],
+		semi: [],
+		terraced: []
+	},
+
 	getPast12Months: function () {
 		var obj = this;
 		this.set('monthsToLoad', 13);
@@ -21,18 +28,22 @@ export default Ember.Component.extend({
 			var monthsToSubtract = i + 1; // seem to only have data starting 2 months back so start from there
 			this.getMonthData(moment().add(-(monthsToSubtract), 'month').format('YYYY-MM'))
 				.then(function (month) {
-					obj.get('months').push(month);
-					obj.set('loadedMonths', obj.get('loadedMonths') + 1);
-				});
+				obj.get('months').push(month);
+				obj.set('loadedMonths', obj.get('loadedMonths') + 1);
+			});
 		}
 	},
+
+	finaliseChartData: function () {
+		this.set('chartData', this.get('tmpChartData'));
+	}.observes('allMonthsLoaded'),
 
 	monthLoaded: function () {
 		console.log('loadedMonths: ' + this.get('loadedMonths'));
 		if (this.get('loadedMonths') === this.get('monthsToLoad')) {
-			this.set('allMonthsLoaded',true);
+			this.set('allMonthsLoaded', true);
 		}
-		
+
 		if (this.get('months') != null) {
 			if (this.get('months').length > 0) {
 				this.set('currentMonth', this.get('months')[0]);
@@ -63,6 +74,15 @@ export default Ember.Component.extend({
 				indicesSASM: item.indicesSASM,
 				monthlyChange: item.monthlyChange
 			};
+			
+			// append data to chart arrays
+			var chartData = this.get('tmpChartData');
+			chartData.detached.push({ date: date, value: resource.averageDetached })
+			chartData.flat.push({ date: date, value: resource.averageFlat })
+			chartData.semi.push({ date: date, value: resource.averageSemi })
+			chartData.terraced.push({ date: date, value: resource.averageTerraced })
+
+
 			return resource;
 		});
 	},
