@@ -2,7 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
     classNames: ['story__chart-wrapper'],
-    didInsertElement: function() {
+    didInsertElement: function () {
 
         var customParams = this.get('graphParams');
 
@@ -16,7 +16,7 @@ export default Ember.Component.extend({
                     ratio: 0.7 // this makes bar width 50% of length between ticks
                 }
                 // or
-                //width: 100 // this makes bar width 100px
+                // width: 100 // this makes bar width 100px
             },
             grid: {
                 x: {
@@ -32,14 +32,17 @@ export default Ember.Component.extend({
 
         var chart = c3.generate(params);
 
-        // Generate our custom legend
-
-        d3.select('#' + this.elementId).insert('div', '.story__chart').attr('class', 'legend').selectAll('span')
-            .data(['data1', 'data2'])
-            .enter().append('span')
-            .attr('data-id', function (id) { return id; })
-            .html(function (id) { return id; })
-            .each(function (id) {
+        if (this.get('showLegend') === true) {
+            // Generate our custom legend
+            d3.select('#' + this.elementId)
+                .insert('div', '.story__chart')
+                .attr('class', 'legend')
+                .selectAll('span')
+                .data(['data1', 'data2'])
+                .enter().append('span')
+                .attr('data-id', function (id) { return id; })
+                .html(function (id) { return id; })
+                .each(function (id) {
                 d3.select(this).style('background-color', chart.color(id));
             })
             .on('mouseover', function (id) {
@@ -51,5 +54,6 @@ export default Ember.Component.extend({
             .on('click', function (id) {
                 chart.toggle(id);
             });
+        }
     }
 });

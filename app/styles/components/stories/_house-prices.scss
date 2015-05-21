@@ -80,7 +80,11 @@
                 size: em(11px);
             }
         }
-
+    
+    .-w2.-h2 .story__carousel .house-prices__chart .story__chart {
+        height:100px;
+    }
+    
     .house-prices_summary {
         font: {
             size: em(11px);

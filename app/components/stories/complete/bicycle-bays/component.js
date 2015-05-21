@@ -1,3 +1,4 @@
+/* global Ember, hebeutils */
 import DatamillStory from './../../story-types/datamill-story/component';
 
 export default DatamillStory.extend({
