@@ -23,9 +23,8 @@ export default Ember.Component.extend({
                     columns: [
                         xAxis,
                         values,
-                        // ['leeds', 190, 193, 192, 195, 196, 199, 198, 200],
-                        ['national', 210, 210, 210, 210, 210, 210, 210, 210],
-                        // ['x', '2013-01-01', '2013-02-01', '2013-03-01', '2013-04-01', '2013-05-01', '2013-06-01']
+                        //                        ['national', 250000, 250000, 250000, 250000, 250000, 250000, 250000, 250000, 250000, 250000, 250000, 250000, 250000],
+                        
                     ],
                     x: 'x',
                     type: 'line',
@@ -36,20 +35,23 @@ export default Ember.Component.extend({
                 },
                 axis: {
                     x: {
+                        show: false,
                         type: 'timeseries',
                         tick: {
-                            format: '%Y-%m'
+                            format: '%m-%Y'
                         }
                     },
                     y: {
                         tick: {
-                            count: 5
+                            count: 5,
+                            format: function (d) {
+                                return '£' + Math.round(d / 1000) + 'k';
+                            }
                         }
                     }
                 }
             });
 
-        debugger;
     }.observes('chartData'),
 
     graphParams: null,

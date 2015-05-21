@@ -11,7 +11,9 @@
 
 <!--    <p class="house-prices_summary">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer odio purus, pellentesque non fermentum at. </p>-->
     <div class="house-prices__chart">
-        {{stories/story-chart graphParams=graphParams}}
+        {{#if graphParams}}
+            {{stories/story-chart graphParams=graphParams}}
+        {{/if}}
     </div>
     
 <!--    <table class="house-prices__breakdown">

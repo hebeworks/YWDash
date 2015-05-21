@@ -36,11 +36,12 @@ export default DefaultStory.extend({
 	},
 
 	finaliseChartData: function () {
+		var obj = this;
 		this.set('chartData', this.get('tmpChartData'));
+		setTimeout(function () { obj.set('loaded', true); });
 	}.observes('allMonthsLoaded'),
 
 	monthLoaded: function () {
-		console.log('loadedMonths: ' + this.get('loadedMonths'));
 		if (this.get('loadedMonths') === this.get('monthsToLoad')) {
 			this.set('allMonthsLoaded', true);
 		}
@@ -57,7 +58,6 @@ export default DefaultStory.extend({
 
 
 	getMonthData: function (date) {
-		//		return Ember.$.getJSON('http://landregistry.data.gov.uk/data/hpi/region/leeds/month/' + date + '.json')
 		return this.getData('http://landregistry.data.gov.uk/data/hpi/region/leeds/month/' + date + '.json')
 			.then((data) => {
 			var item = data.result.primaryTopic;
@@ -78,11 +78,11 @@ export default DefaultStory.extend({
 			
 			// append data to chart arrays
 			var chartData = this.get('tmpChartData');
-			chartData.detached.push({ date: date, value: resource.averageDetached });
-			chartData.flat.push({ date: date, value: resource.averageFlat });
-			chartData.semi.push({ date: date, value: resource.averageSemi });
-			chartData.terraced.push({ date: date, value: resource.averageTerraced });
-
+			var axisDate = date + '-01';
+			chartData.detached.push({ date: axisDate, value: resource.averageDetached });
+			chartData.flat.push({ date: axisDate, value: resource.averageFlat });
+			chartData.semi.push({ date: axisDate, value: resource.averageSemi });
+			chartData.terraced.push({ date: axisDate, value: resource.averageTerraced });
 
 			return resource;
 		});
