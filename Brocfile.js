@@ -6,8 +6,7 @@ var app = new EmberApp({
     outputPaths: {
         app: {
             css: {
-                'app': '/assets/hebe-dash.css',
-                'svg': '/assets/svg.css'
+                'app': '/assets/hebe-dash.css'
             }
         }
     }

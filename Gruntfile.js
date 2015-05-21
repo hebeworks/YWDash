@@ -77,7 +77,7 @@ module.exports = function(grunt) {
                     dest: 'public/assets/img/svg'
                 }],
                 options: {
-                    datasvgcss: '../../../../app/styles/components/_svg_icons.scss',
+                    datasvgcss: '../../../../app/styles/patterns/_svg-datauri.scss',
                     cssprefix: '@mixin svg--'
                 }
             },

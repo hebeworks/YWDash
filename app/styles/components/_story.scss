@@ -106,6 +106,7 @@
 					color: $black;
 					b {
 						@include svg--dropdown-triangle-dark;
+						background-size: contain;
 					}
 				}
 			}
