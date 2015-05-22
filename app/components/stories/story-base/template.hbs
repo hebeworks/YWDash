@@ -33,10 +33,12 @@
                 <p><strong>Description</strong></p>
                 <p>{{description}}</p>
             </div><br>
-            <div class="">
-                <p><strong>Licence / Attribution</strong></p>
-                <p>{{{license}}}</p>
-            </div>
+            {{#if license}}
+                <div class="">
+                    <p><strong>Licence / Attribution</strong></p>
+                    <p>{{{license}}}</p>
+                </div>
+            {{/if}}
         </div>
     </div>
 </div>

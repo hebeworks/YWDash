@@ -10,6 +10,12 @@
 	h2 {
 		margin-bottom: 5px;
 		color: #58aff0;
+		> a {
+			color: #58aff0;		
+		}
+		a {
+			text-decoration:none;
+		}
 	}
 	p {
 		font-size: em(12px);

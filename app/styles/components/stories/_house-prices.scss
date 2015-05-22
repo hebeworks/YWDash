@@ -27,15 +27,24 @@
     .image {
         display: block;
         width:44%;
-        height:100%;
         background: {
-            size:cover;
+            size:contain;
+            position:center;
         }
+        margin:0;
+        position:absolute;
+        left:0px;
+        top:0px;
+        bottom:0px;
     }
 }
 
     .house-prices__top {
         @include cf;    
+        position:relative;
+        margin: {
+            bottom:15px;
+        }
     }
     
     .house-prices__info {
