@@ -23,7 +23,7 @@ export default Ember.Component.extend({
                     columns: [
                         xAxis,
                         values,
-                        //                        ['national', 250000, 250000, 250000, 250000, 250000, 250000, 250000, 250000, 250000, 250000, 250000, 250000, 250000],
+// ['national', 250000, 250000, 250000, 250000, 250000, 250000, 250000, 250000, 250000, 250000, 250000, 250000, 250000],
                         
                     ],
                     x: 'x',
@@ -38,8 +38,9 @@ export default Ember.Component.extend({
                         show: false,
                         type: 'timeseries',
                         tick: {
-                            format: '%m-%Y'
-                        }
+                            format: '%b-%y'
+                        },
+                        count: 4
                     },
                     y: {
                         tick: {

@@ -58,6 +58,7 @@ export default DefaultStory.extend({
 
 
 	getMonthData: function (date) {
+		//http://landregistry.data.gov.uk/data/hpi/region/england-and-wales/year/2014-02.json
 		return this.getData('http://landregistry.data.gov.uk/data/hpi/region/leeds/month/' + date + '.json')
 			.then((data) => {
 			var item = data.result.primaryTopic;
