@@ -77,6 +77,14 @@
 				bottom: 0px;
 				left: 40px;
 				z-index: 1;
+				
+				@include breakpoint(max-width 400px) {
+					background: {
+						size: contain;
+					}
+					height:auto;
+					
+				}
 			}
 		}
 	}

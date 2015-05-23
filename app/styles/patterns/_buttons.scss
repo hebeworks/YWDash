@@ -49,6 +49,11 @@
             height: 30px;
             display: block;
         }
+        
+        @include breakpoint(max-width 700px) {
+            top:0px;
+            right:0px;
+        }
     }
 
     &.-back {

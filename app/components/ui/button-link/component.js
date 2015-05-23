@@ -4,7 +4,6 @@ export default Ember.Component.extend({
 	tagName: 'button',
 
 	click: function () {
-		alert('click');
 		if (this.get('href') != null) {
 			switch (this.get('type')) {
 				default:
