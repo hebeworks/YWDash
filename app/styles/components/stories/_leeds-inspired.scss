@@ -59,11 +59,10 @@
 		font: {
 			size: em(11px);
 		}
-		max-height: 20%;
-    overflow:hidden;
-    text-overflow:ellipsis;
-    -ms-text-overflow:ellipsis;
-    display:block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -ms-text-overflow: ellipsis;
+    display: block;
     display: -webkit-box;
     -webkit-line-clamp: 7;
     -webkit-box-orient: vertical;
