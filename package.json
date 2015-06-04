@@ -53,6 +53,7 @@
     "rimraf": "2.2.8"
   },
   "dependencies": {
-    "grunt-modernizr": "^0.6.0"
+    "grunt-modernizr": "^0.6.0",
+    "node-sass": "^3.1.2"
   }
 }
