@@ -28,10 +28,12 @@ export default DatamillStory.extend({
                 }
                 tweets.push(tweet);
             });
-
             obj.set('tweets', tweets);
 
             setTimeout(function () { obj.set('loaded', true); })
+        },
+        function (error) {
+            debugger;
         });
 
     }
