@@ -31,7 +31,6 @@ app.import(app.bowerDirectory + '/jquery-ui/ui/core.js');
 app.import(app.bowerDirectory + '/jquery-ui/ui/widget.js');
 app.import(app.bowerDirectory + '/jquery-ui/ui/mouse.js');
 app.import(app.bowerDirectory + '/jquery-ui/ui/draggable.js');
-app.import(app.bowerDirectory + '/jQuery.XDomainRequest/jquery.xdomainrequest.min.js');
 app.import('vendor/css-style-declaration.js');
 app.import(app.bowerDirectory + '/jqueryui-touch-punch/jquery.ui.touch-punch.min.js');
 app.import(app.bowerDirectory + '/jquery-touchswipe/jquery.touchSwipe.min.js');
@@ -45,5 +44,6 @@ app.import(app.bowerDirectory + '/underscore/underscore-min.js');
 app.import('vendor/embedsvg/grunticon.loader.js');
 app.import('vendor/embedsvg/grunticon.inline.js');
 app.import('vendor/modernizr-custom.min.js');
+app.import(app.bowerDirectory + '/jQuery.XDomainRequest/jquery.xdomainrequest.min.js');
 
 module.exports = app.toTree();

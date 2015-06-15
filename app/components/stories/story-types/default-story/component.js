@@ -1,3 +1,48 @@
+import Ember from 'ember';
+import Config from './../../../../config/environment';
+
+export default Ember.Component.extend({
+	config: Config.APP,
+
+	getData: function (url, cache) {
+		var obj = this;
+		return new Ember.RSVP.Promise(function (resolve, reject, complete) {
+			try
+			{
+				var useCache = (cache != null && cache === true ? true : false);
+				 $.support.cors = true;
+				$.ajax({
+					url: url,
+					cache: useCache,
+					dataType: 'json',
+					crossOrigin: true,
+					type: 'GET',
+					// async: false //false, // must be set to false ?????? NS
+				})
+					.done(resolve)
+					.fail(reject)
+					.always(complete);
+					//Ember.$.ajax({
+					//	url: url
+					//})
+					//.done(resolve)
+					//.fail(reject)
+					//.always(complete);
+
+			}
+			catch (err) {
+				reject(err);
+			}
+			finally {
+				if (complete != null) {
+					complete();
+				}
+			}
+		});
+	}
+});
+
+
 //import Ember from 'ember';
 //import Config from './../../../../config/environment';
 //
@@ -95,59 +140,59 @@
 
 
 
-import Ember from 'ember';
-import Config from './../../../../config/environment';
-
-export default Ember.Component.extend({
-	config: Config.APP,
-
-	getData: function (url, cache) {
-		var obj = this;
-		return new Ember.RSVP.Promise(function (resolve, reject, complete) {
-			try
-			{
-				// Todo: Check if url is a cross domain request 
-				if (obj.isCORS(url)) {
-					// ignore the IE stuff and just make normal request
-				}
-				
-				// IE7 and lower can't do cross domain
-				if (navigator.userAgent.indexOf('MSIE') != -1 &&
-					parseInt(navigator.userAgent.match(/MSIE ([\d.]+)/)[1], 10) < 8) {
-					reject(new Error("IE7 and lower can't do cross domain"));
-				}    
-
-				// Do normal jQuery AJAX for everything else          
-				else {
-					console.log('getData Normal AJAX call: ' + url);
-					var useCache = (cache != null && cache === true ? true : false);
-					$.support.cors = true;
-					$.ajax({
-						url: url,
-						//cache: useCache,
-						dataType: 'json',
-						crossOrigin: true,
-						type: 'GET',
-						async: false //false, // must be set to false ?????? NS
-					})
-						.done(resolve)
-						.fail(reject)
-						.always(complete);
-				}
-			}
-			catch (err) {
-				reject(err);
-			}
-			finally {
-				if (complete != null) {
-					complete();
-				}
-			}
-		});
-	},
-
-	isCORS: function (url) {
-		return true;
-		//Todo: check for CORS request	
-	}
-});
+//import Ember from 'ember';
+//import Config from './../../../../config/environment';
+//
+//export default Ember.Component.extend({
+//	config: Config.APP,
+//
+//	getData: function (url, cache) {
+//		var obj = this;
+//		return new Ember.RSVP.Promise(function (resolve, reject, complete) {
+//			try
+//			{
+//				// Todo: Check if url is a cross domain request 
+//				if (obj.isCORS(url)) {
+//					// ignore the IE stuff and just make normal request
+//				}
+//				
+//				// IE7 and lower can't do cross domain
+//				if (navigator.userAgent.indexOf('MSIE') != -1 &&
+//					parseInt(navigator.userAgent.match(/MSIE ([\d.]+)/)[1], 10) < 8) {
+//					reject(new Error("IE7 and lower can't do cross domain"));
+//				}    
+//
+//				// Do normal jQuery AJAX for everything else          
+//				else {
+//					console.log('getData Normal AJAX call: ' + url);
+//					var useCache = (cache != null && cache === true ? true : false);
+//					$.support.cors = true;
+//					$.ajax({
+//						url: url,
+//						//cache: useCache,
+//						dataType: 'json',
+//						crossOrigin: true,
+//						type: 'GET',
+//						async: false //false, // must be set to false ?????? NS
+//					})
+//						.done(resolve)
+//						.fail(reject)
+//						.always(complete);
+//				}
+//			}
+//			catch (err) {
+//				reject(err);
+//			}
+//			finally {
+//				if (complete != null) {
+//					complete();
+//				}
+//			}
+//		});
+//	},
+//
+//	isCORS: function (url) {
+//		return true;
+//		//Todo: check for CORS request	
+//	}
+//});
