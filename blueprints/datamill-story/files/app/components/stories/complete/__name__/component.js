@@ -1,16 +1,17 @@
 /* global Ember, hebeutils, _ */
-import DatamillStory from './../../story-types/datamill-story/component';
+import DatamillStory from '../../../story-types/datamill-story/component';
 
 export default DatamillStory.extend({
     tagName: 'div',
     loaded: false,
+    itemLimit: 4,
     didInsertElement: function() {
         this.set('title', '<%= dasherizedModuleName %> TITLE');
         this.set('subTitle', '<%= dasherizedModuleName %> SUB TITLE');
         var obj = this;
         // datamillUrl is a property containing the url for Leeds Data Mill
             // inherited from story-types/datamill-story
-        var url = this.get('datamillUrl') + '/api/action/datastore_search?resource_id=c2bb0c3e-52fd-4183-8727-6b9f40b829f0';
+        var url = this.get('datamillUrl') + '/api/action/datastore_search?resource_id=c2bb0c3e-52fd-4183-8727-6b9f40b829f0&limit=' + this.get('itemLimit');
         // getData is a function inherited from 
             // story-types/default-story (which story-types/datamill-story extends)
             // it provides an easy way to make AJAX requests

@@ -39,22 +39,27 @@
                     wrappers.$gallery
                         .on('mousedown', '.js-gallery-back', function(e){
                             e.preventDefault();
-
                             Wrapper.switchToDashboard();
                         });
                     };
 
                 return {
                     switchToDashboard: function() {
-
                         wrappers.$dashboard.addClass('-open');
                         wrappers.$gallery.removeClass('-open');
+                        wrappers.$statNotices.removeClass('-open');
                     },
 
                     switchToGallery: function() {
-
                         wrappers.$dashboard.removeClass('-open');
                         wrappers.$gallery.addClass('-open');
+                        wrappers.$statNotices.removeClass('-open');
+                    },
+                    
+                    switchToStatNotices: function() {
+                        wrappers.$dashboard.removeClass('-open');
+                        wrappers.$gallery.removeClass('-open');
+                        wrappers.$statNotices.addClass('-open');
                     },
 
                     setupEvents: function() {
@@ -76,7 +81,6 @@
                             Drawer.closeBottom();
                         })
                         .on('mousedown', '.js-open-gallery', function(e){
-
                             Wrapper.switchToGallery();
                         });
                     };
@@ -803,6 +807,7 @@
                     // 'Screens'
                     wrappers.$dashboard = $('.js-dashboard-wrapper');
                     wrappers.$gallery = $('.js-gallery-wrapper');
+                    wrappers.$statNotices = $('.js-stat-notices-wrapper');
 
                     // Drawers
                     drawers.$top = $('.js-top-drawer');

@@ -154,3 +154,10 @@ a {
 	padding: 30px 40px;
 	// overflow: scroll;
 }
+
+
+.stat-notices-body {
+	@extend %site-body;
+	padding: 30px 40px;
+	// overflow: scroll;
+}

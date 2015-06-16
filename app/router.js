@@ -13,9 +13,10 @@ var Router = Ember.Router.extend({
 });
 
 Router.map(function () {
-    this.resource('canvas', { path: '/canvas' }, function () {
-        this.resource('/:canvas_id');
-    });
+  this.resource('canvas', { path: '/canvas' }, function () {
+      this.resource('/:canvas_id');
+  });
+  this.route('StatNotices');
 });
 
 export default Router;
