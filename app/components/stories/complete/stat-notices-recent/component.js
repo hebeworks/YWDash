@@ -1,13 +1,13 @@
 /* global Ember, hebeutils, _ */
-import DatamillStory from '../../../story-types/datamill-story/component';
+import DatamillStory from '../../story-types/datamill-story/component';
 
 export default DatamillStory.extend({
     tagName: 'div',
     loaded: false,
     itemLimit: 4,
     didInsertElement: function() {
-        this.set('title', 'stat-notices/stat-notices-recent TITLE');
-        this.set('subTitle', 'stat-notices/stat-notices-recent SUB TITLE');
+        this.set('title', 'stat-notices-recent TITLE');
+        this.set('subTitle', 'stat-notices-recent SUB TITLE');
         var obj = this;
         // datamillUrl is a property containing the url for Leeds Data Mill
             // inherited from story-types/datamill-story
@@ -22,7 +22,7 @@ export default DatamillStory.extend({
             .then(
                 function(data){
                     // success
-                    console.log('stat-notices/stat-notices-recent > getData > success');
+                    console.log('stat-notices-recent > getData > success');
                     // data is the response Object/Array from the AJAX request
                     var items = [];
                     data.result.records.forEach((tmpItem) => {
@@ -46,11 +46,16 @@ export default DatamillStory.extend({
                 },
                 function(error) {
                     // failure
-                    console.log('stat-notices/stat-notices-recent > getData > error: ' + error);
+                    console.log('stat-notices-recent > getData > error: ' + error);
                 },
                 function(){
                     // complete
                 }
             )
+    },
+    actions: {
+        switchToStatNotices: function(params){
+            Wrapper.switchToStatNotices();
+        }
     }
 });

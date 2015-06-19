@@ -5,4 +5,5 @@ export default Ember.Route.extend({
         this.render('gallery.header',{ outlet: 'header' });
         this.render({ outlet: 'body' });
     }
+
 });

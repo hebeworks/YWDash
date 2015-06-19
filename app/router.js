@@ -16,7 +16,7 @@ Router.map(function () {
   this.resource('canvas', { path: '/canvas' }, function () {
       this.resource('/:canvas_id');
   });
-  this.route('StatNotices');
+  this.route('statnotices');
 });
 
 export default Router;

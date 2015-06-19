@@ -3,7 +3,7 @@ import {
   test
 } from 'ember-qunit';
 
-moduleForComponent('stories/complete/stat-notices/stat-notices-recent', {
+moduleForComponent('stories/complete/stat-notices-recent', {
   // specify the other units that are required for this test
   // needs: ['component:foo', 'helper:bar']
 });
