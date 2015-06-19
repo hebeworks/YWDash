@@ -27,14 +27,15 @@
         background-color: $blue;
         color: #fff;
     }
+    
+    &.-red {
+        background-color: $red;
+        color: #fff;
+    }
 
     &.-selected {
         background-color: $lime;
         color: #d9f2bd;
-    }
-
-    &.-center {
-        text-align: center;
     }
 
     &.-close {
@@ -77,9 +78,9 @@
         top: dotted 1px #868080;
         bottom: dotted 1px #868080;
     }
-
-    &.-centered {
-        text-align: center;
+    
+    &.-borderless {
+        border: 0;
     }
     
     .btn {

@@ -41,7 +41,12 @@
                             e.preventDefault();
                             Wrapper.switchToDashboard();
                         });
-                    };
+                    wrappers.$statNotices
+                        .on('mousedown', '.js-stat-notices-back', function(e){
+                            e.preventDefault();
+                            Wrapper.switchToDashboard();
+                        });
+                };
 
                 return {
                     switchToDashboard: function() {

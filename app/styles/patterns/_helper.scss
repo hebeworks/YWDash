@@ -9,3 +9,22 @@
 .cf {
     @include cf;
 }
+
+.text--center {
+    text-align: center;
+}
+
+.text--left {
+    text-align: left;
+}
+
+.text--right {
+    text-align: right;
+}
+
+
+.v-align--middle {
+	@include middle(y);
+	display: block;
+	position: relative;
+}

@@ -34,8 +34,8 @@
 @import "patterns/select2";
 @import "patterns/circle_indicator";
 @import "patterns/google_maps";
-@import "patterns/holding_page";
 @import "patterns/dotted_area";
+@import "patterns/lists";
 
 
 /* -- Components -- */
@@ -43,6 +43,8 @@
 @import "components/canvas";
 @import "components/story";
 @import "components/story-meta";
+@import "components/holding_page";
+@import "components/stat-notices";
 
 // Stories 
 @import "components/stories/leeds-inspired";

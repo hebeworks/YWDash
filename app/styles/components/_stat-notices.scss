@@ -1,0 +1,63 @@
+.-stat-notices { 
+	// modifier on top level full page app's .wrapper
+}
+
+	.stat-notices-body  {
+	
+		.btn-list {
+			// border top & bottom?
+		}		
+	}
+		.stat-notices__inner {
+			
+		}
+		
+			.list__section.-notices {
+				
+				.list-item
+				{
+					@extend .cf;
+					&__summary, .btn-list {
+						float:left;
+						width:50%;
+						
+						&.btn-list {
+							.btn {
+								float:left;
+								width: 25%;
+								padding: {
+									left:0.5em;
+									right:0.5em;
+								}
+								@include breakpoint(max-width 1100px) {
+									width: 24%;
+								}
+								
+								&:first-of-type {
+									width:44%;
+									@include breakpoint(max-width 1100px) {
+										width: 45%;
+									}
+								}			
+								
+								&.svg-stat-notices-icon-planning {
+									background-position: 1em center;
+									padding-left:50px;
+								}
+							}
+						}
+												
+						@include breakpoint(max-width 999px) {
+							width: 100%;
+							float:none;
+						}
+					}
+					&__summary {
+						margin: {
+							top:15px;
+						}
+						height:50px;
+					}
+				}
+			}
+	

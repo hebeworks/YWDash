@@ -1,0 +1,44 @@
+<div class="js-gallery-button btn-list">
+    <button class="btn -grey" data-btn-type="featured">All</button>
+    <button class="btn -grey" data-btn-type="categories">Planning</button>
+    <button class="btn -grey" data-btn-type="categories">Licensing</button>
+    <button class="btn -grey" data-btn-type="categories">Other</button>
+</div>
+
+<div class="stat-notices__inner">
+    <section class="list__section -notices">
+        <div class="cf"></div>
+        <ul class="list">
+			{{#each item in items}}
+            <li class="list__row">
+                <div class="list-item">
+                    <p class="list-item__summary" title="{{item.proposalDetails}}">
+                        <span class="v-align--middle">
+                            {{item.proposal}}
+                        </span>
+                    </p>
+                    <div class="btn-list -borderless">
+                        <div class="btn -white">
+                            <span class="v-align--middle">
+                                <span class="-delta">Publication date:</span>
+                                <span class="-alpha float--right">{{item._publicationDate}}</span>
+                            </span>
+                        </div>
+                        <div class="btn -red svg-stat-notices-icon-planning">
+                            <span class="v-align--middle text--center">
+                                Planning
+                            </span>
+                        </div>
+                        <div class="btn -blue text--center">
+                            <span class="v-align--middle">
+                                View Notice
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </li>
+			{{/each}}
+        </ul>
+    </section>
+	{{yield}}
+</div>
