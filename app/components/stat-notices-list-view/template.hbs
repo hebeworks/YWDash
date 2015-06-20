@@ -1,8 +1,8 @@
 <div class="js-gallery-button btn-list">
-    <button class="btn -grey" data-btn-type="featured">All</button>
-    <button class="btn -grey" data-btn-type="categories">Planning</button>
-    <button class="btn -grey" data-btn-type="categories">Licensing</button>
-    <button class="btn -grey" data-btn-type="categories">Other</button>
+    <button class="btn -grey" data-btn-type="featured" {{action "filterByType" ""}}>All</button>
+    <button class="btn -grey" data-btn-type="categories" {{action "filterByType" "Planning"}}>Planning</button>
+    <button class="btn -grey" data-btn-type="categories" {{action "filterByType" "Licensing"}}>Licensing</button>
+    <button class="btn -grey" data-btn-type="categories" {{action "filterByType" "Other"}}>Other</button>
 </div>
 
 <div class="stat-notices__inner">
