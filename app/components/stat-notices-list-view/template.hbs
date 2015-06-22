@@ -29,11 +29,13 @@
                                 Planning
                             </span>
                         </div>
-                        <div class="btn -blue text--center">
-                            <span class="v-align--middle">
-                                View Notice
-                            </span>
-                        </div>
+<!--                        <div class="btn -blue text--center">-->
+                            {{#link-to 'statnotices.view' item classNames="btn -blue text--center"}}
+                                <span class="v-align--middle">
+                                    View Notice
+                                </span>
+                            {{/link-to}}
+<!--                        </div>-->
                     </div>
                 </div>
             </li>

@@ -31,5 +31,15 @@ export default DS.Model.extend({
     signOffName: DS.attr(),  // Mr Ho Ho",
     signOffDetails: DS.attr(),  // Licence applicant's appointed representative",
     publicAccessURL: DS.attr(),  // http://publicaccess.leeds.gov.uk/online-applications/licencingDetails.do?activeTab=summary&keyVal=NO1A7JJB0NH00",
-    postcode: DS.attr()  // ",
+    postcode: DS.attr(),  // ",
+    
+    fullAddress: function() {
+      return 
+        (this.get('proposalAddress1').notNullOrEmpty() ? this.get('proposalAddress1').notNullOrEmpty() + "<br />" : '')
+          + (this.get('proposalAddress2').notNullOrEmpty() ? this.get('proposalAddress2').notNullOrEmpty() + "<br />" : '')
+          + (this.get('proposalTown').notNullOrEmpty() ? this.get('proposalTown').notNullOrEmpty() + "<br />" : '')
+          + (this.get('proposalCounty').notNullOrEmpty() ? this.get('proposalCounty').notNullOrEmpty() + "<br />" : '')
+          + (this.get('proposalPostcode').notNullOrEmpty() ? this.get('proposalPostcode').notNullOrEmpty() + "<br />" : '')
+        ;
+    }.property('proposalAddress1', 'proposalAddress2', 'proposalTown', 'proposalCounty', 'proposalPostcode')
 });

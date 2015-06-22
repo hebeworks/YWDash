@@ -1,1 +1,13 @@
-{{outlet}}
+<div class="stat-notice">
+	<h2>{{model.proposal}}</h2>
+	<p class="stat-notice__description">{{model.proposalDetails}}</p>
+	<div class="stat-notice__map">
+		<h1>MAP</h1>
+	</div>
+	<div class="stat-notice__details">
+		<div class="stat-notice__address"></div>
+		<div class="stat-notice__sign-off"></div>
+		<div class="stat-notice__contribute"></div>
+	</div>
+	{{outlet}}
+</div>
