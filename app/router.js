@@ -17,7 +17,7 @@ Router.map(function () {
       this.resource('/:canvas_id');
   });
   this.route('statnotices', function() {
-    this.resource('view', function() {});
+    this.route('view');
   });
 });
 

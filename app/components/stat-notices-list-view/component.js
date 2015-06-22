@@ -1,12 +1,12 @@
 import DefaultStory from '../stories/story-types/default-story/component'
 export default DefaultStory.extend({
 	didInsertElement: function () {
-		this.getItems();
+		//this.getItems();
 	},
 
 	getItems: function () {
 		var obj = this;
-		var url = 'http://statnotices.azurewebsites.net/api/applications/';
+		var url = 'http://statnotices.azurewebsites.net/api/statnotices/';
 		
 		// add filtering
 		if (this.get('filterType') != null && this.get('filtertype') != "") {

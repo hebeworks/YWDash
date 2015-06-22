@@ -1,10 +1,12 @@
 <div class="js-dashboard-wrapper wrapper -dashboard -open">
     {{outlet}}
 
+    {{outlet "fullscreen-header"}}
     {{outlet "header"}}
     {{outlet "body"}}
     {{outlet "footer"}}
 </div>
 
 {{render "gallery"}}
-{{render "statnotices"}}
+{{! render "statnotices"}}
+{{outlet "fullscreen"}}
