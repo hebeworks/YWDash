@@ -1,4 +1,10 @@
-.-stat-notices { 
+.stat-notices-body  {
+	@extend %site-body;
+	padding: 30px 40px;
+	// overflow: scroll;
+}
+ 
+ .-stat-notices { 
 	// modifier on top level full page app's .wrapper
 }
 

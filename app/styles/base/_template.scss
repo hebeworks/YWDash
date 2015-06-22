@@ -63,7 +63,7 @@ a {
 			@include transform(translateX(0));
 		}
 	}
-	&.-gallery, &.-stat-notices {
+	&.-gallery {
 		@include transform(translateX(100%));
 
 		&.-open {
@@ -149,13 +149,8 @@ a {
 }
 
 
-.gallery-body, .stat-notices-body  {
+.gallery-body {
 	@extend %site-body;
 	padding: 30px 40px;
 	// overflow: scroll;
 }
-/* 
-	for further stat notices-related styles see
-	styles/components/stat-notices.scss
- */
-

@@ -34,14 +34,23 @@ export default DefaultStory.extend({
 	}.observes('filterType'),
 
 	filterTypeValue: null,
-    filterType: function (key, value) {
-        if (arguments.length > 1) {
+    filterType: Ember.computed("filterType", {
+		get: function() {
+			console.log('getting filterTypeValue: ' + this.get('filterTypeValue'));
+			return this.get('filterTypeValue');
+	    },
+	    set: function(key, value) {
+			console.log('setting filterTypeValue: ' + value);
 			if (this.get('filterTypeValue') != value) {
 				this.set('filterTypeValue', value);
 			}
-        }
-		return this.get('filterTypeValue');
-    }.property('filterType'),
+			return value;
+	    }
+	}),
+
+
+
+
 
 	actions: {
 		filterByType: function (params) {
