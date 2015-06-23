@@ -3,18 +3,15 @@
 		<h2 class="-alpha">{{model.proposal}}</h2>
 		<p class="stat-notice__description solid-area -dark -top -bottom -pad-top -pad-bottom">{{model.proposalDetails}}</p>
 		<div class="stat-notice__map">
-			<h1>MAP</h1>
-			<div>
 		        {{google-map 
-		            lat=lat 
-		            lng=lng 
-		            zoom=zoom
-		            markers=markers
-		            gopt_styles=mapStyles
-		            gopt_zoomControl=false
-		            gopt_mapTypeControl=false
+		            lat=model.lat 
+		            lng=model.lng 
+		            zoom=15
+					markers=model.markers
+		            gopt_styles=mapStyle
+		            gopt_zoomControl=true
+		            gopt_mapTypeControl=true
 	            }}
-			</div>
 		</div>
 		<div class="stat-notice__section -full">
 			<div class="stat-notice__section -half">

@@ -66,11 +66,16 @@
 			}
 			
 			&__description {
-				
+				margin: {
+					bottom:10px;
+				}
 			}
 			
 			&__map {
-				
+				.map-canvas {
+					width:100%;
+					height:250px;
+				}
 			}
 			
 			&__address, &__contribute {
