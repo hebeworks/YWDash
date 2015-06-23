@@ -34,12 +34,13 @@ export default DS.Model.extend({
     postcode: DS.attr(),  // ",
     
     fullAddress: function() {
-      return 
-        (this.get('proposalAddress1').notNullOrEmpty() ? this.get('proposalAddress1').notNullOrEmpty() + "<br />" : '')
-          + (this.get('proposalAddress2').notNullOrEmpty() ? this.get('proposalAddress2').notNullOrEmpty() + "<br />" : '')
-          + (this.get('proposalTown').notNullOrEmpty() ? this.get('proposalTown').notNullOrEmpty() + "<br />" : '')
-          + (this.get('proposalCounty').notNullOrEmpty() ? this.get('proposalCounty').notNullOrEmpty() + "<br />" : '')
-          + (this.get('proposalPostcode').notNullOrEmpty() ? this.get('proposalPostcode').notNullOrEmpty() + "<br />" : '')
+      var address = 
+        (this.get('proposalAddress1').notNullOrEmpty() ? this.get('proposalAddress1') + "<br />" : '')
+          + (this.get('proposalAddress2').notNullOrEmpty() ? this.get('proposalAddress2') + "<br />" : '')
+          + (this.get('proposalTown').notNullOrEmpty() ? this.get('proposalTown') + "<br />" : '')
+          + (this.get('proposalCounty').notNullOrEmpty() ? this.get('proposalCounty') + "<br />" : '')
+          + (this.get('proposalPostcode').notNullOrEmpty() ? this.get('proposalPostcode') + "<br />" : '')
         ;
+        return address;
     }.property('proposalAddress1', 'proposalAddress2', 'proposalTown', 'proposalCounty', 'proposalPostcode')
 });

@@ -1,13 +1,39 @@
 <div class="stat-notice">
-	<h2>{{model.proposal}}</h2>
-	<p class="stat-notice__description">{{model.proposalDetails}}</p>
-	<div class="stat-notice__map">
-		<h1>MAP</h1>
+	<div class="stat-notice__section -two-thirds">
+		<h2 class="-alpha">{{model.proposal}}</h2>
+		<p class="stat-notice__description solid-area -dark -top -bottom -pad-top -pad-bottom">{{model.proposalDetails}}</p>
+		<div class="stat-notice__map">
+			<h1>MAP</h1>
+			<div>
+		        {{google-map 
+		            lat=lat 
+		            lng=lng 
+		            zoom=zoom
+		            markers=markers
+		            gopt_styles=mapStyles
+		            gopt_zoomControl=false
+		            gopt_mapTypeControl=false
+	            }}
+			</div>
+		</div>
+		<div class="stat-notice__section -full">
+			<div class="stat-notice__section -half">
+				<div class="stat-notice__address solid-area -all -rounded -dark">
+					<div class="icon solid-area -right svg-stat-notice-icon-location-pin"></div>
+					<p class="-pad-all">{{{model.fullAddress}}}</p>
+				</div>
+				<div class="stat-notice__contribute">
+					<div class="icon solid-area -right svg-stat-notice-icon-document"></div>
+					<p>Is this information correct?</p>
+				</div>
+			</div>
+			<div class="stat-notice__section -half">
+				<div class="stat-notice__sign-off"></div>
+			</div>
+		</div>
+		{{outlet}}
 	</div>
-	<div class="stat-notice__details">
-		<div class="stat-notice__address"></div>
-		<div class="stat-notice__sign-off"></div>
-		<div class="stat-notice__contribute"></div>
+	<div class="stat-notice__section -one-third">
+		RIGHT COL
 	</div>
-	{{outlet}}
 </div>

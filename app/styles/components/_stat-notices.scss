@@ -18,6 +18,70 @@
 			
 		}
 		
+		
+		.stat-notice {
+			
+			&__section {
+				float:left;
+				
+				&:first-of-type {
+					margin: {
+						right:10px;
+					}
+				}
+					
+				&.-full {
+					width:100%;
+					margin:0;
+				}
+				
+				&.-half {
+					width:calc(50% - 10px);
+				}
+				
+				&.-two-thirds {
+					width:calc(66% - 10px);
+				}
+				
+				&.-one-third {
+					width:calc(33% - 10px);
+				}
+			}
+			
+			&__description {
+				
+			}
+			
+			&__map {
+				
+			}
+			
+			&__address {
+				position:relative;
+				padding: {
+					left:60px;
+				}
+				
+				.icon {
+					position: absolute;
+					left:0px;
+					top:0px;
+					bottom:0px;
+					width:50px;
+					height:100%;
+				}				
+			}
+			
+			&__sign-off {
+				
+			}
+			
+			&__contribute {
+				
+			}
+		}
+		
+		
 			.list__section.-notices {
 				
 				.list-item
