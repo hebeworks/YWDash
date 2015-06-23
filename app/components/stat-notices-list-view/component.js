@@ -3,27 +3,40 @@ export default DefaultStory.extend({
 
 	getItems: function () {
 		var obj = this;
-		var url = 'http://statnotices.azurewebsites.net/api/statnotices/';
-
-		// add filtering
-		if (this.get('filterType') != null && this.get('filtertype') != "") {
-			url += '?type=' + this.get('filterType');
-		}
-		this.getData(url)
-			.then(
-				function (data) {
-					data.forEach(function (item) {
-						// todo: make notices an ember data scheme
-						// hook in to the rest api automatically
-						// the transformed properties below can be appended to the models
-//						item._publicationDate = moment(data[0].publicationdate).calendar();
-					});
-					obj.set('items', data);
-				},
-				function (error) {
-					console.log('ERROR:' + error);
-				}
-			)
+		
+		
+		this.store.find('statnotice', {
+			type:this.get('filterType')
+		})
+			.then(function(data){
+				obj.set('items', data);
+			});
+		
+		
+//		var url = 'http://statnotices.azurewebsites.net/api/statnotices/';
+//
+//		// add filtering
+//		if (this.get('filterType') != null && this.get('filtertype') != "") {
+//			url += '?type=' + this.get('filterType');
+//		}
+//		this.getData(url)
+//			.then(
+//				function (data) {
+//					data.forEach(function (item) {
+//						// todo: make notices an ember data scheme
+//						// hook in to the rest api automatically
+//						// the transformed properties below can be appended to the models
+////						item._publicationDate = moment(data[0].publicationdate).calendar();
+//					});
+//					obj.set('items', data);
+//				},
+//				function (error) {
+//					console.log('ERROR:' + error);
+//				}
+//			)
+			
+			
+			
 	}.observes('filterType'),
 
 	filterTypeValue: null,
