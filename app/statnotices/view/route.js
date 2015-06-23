@@ -7,9 +7,5 @@ export default Ember.Route.extend({
 		} else {
 			return null;
 		}
-	},
-	
-	mapStyle: function(){
-		return this.get('config').googleMapStyles.default;
 	}
 });

@@ -1,0 +1,44 @@
+<div class="stat-notice">
+	<div class="stat-notice__section -two-thirds">
+		<h2 class="-alpha">{{model.proposal}}</h2>
+		<p class="stat-notice__description solid-area -dark -top -bottom -pad-top -pad-bottom">{{model.proposalDetails}}</p>
+		<div class="stat-notice__map solid-area -all -dark">
+		        {{google-map 
+		            lat=model.lat 
+		            lng=model.lng 
+		            zoom=15
+					markers=model.markers
+		            gopt_styles=mapStyle
+		            gopt_zoomControl=true
+		            gopt_mapTypeControl=true
+	            }}
+		</div>
+		<div class="stat-notice__section -full">
+			<div class="stat-notice__section -half">
+				<div class="stat-notice__address solid-area -all -rounded -dark">
+					<div class="icon solid-area -right svg-stat-notice-icon-location-pin"></div>
+					<p class="-pad-all">{{{model.fullAddress}}}</p>
+				</div>
+				<div class="stat-notice__contribute solid-area -all -rounded -dark">
+					<div class="icon solid-area -right svg-stat-notice-icon-document"></div>
+					<p class="-pad-all">Is this information correct?</p>
+				</div>
+			</div>
+			<div class="stat-notice__section -half">
+				<div class="stat-notice__sign-off -pad-top">
+					<h3 class="-beta solid-area -bottom -dark -pad-bottom">Sign-off</h3>
+					<h4 class="-delta">{{model.signOffName}}</h4>
+					<p>{{model.signOffDetails}}</p>
+				</div>
+				<div class="btn-list -borderless">
+					<button class="btn -half svg-stat-notices-icon-phone" data-grunticon-embed>Phone</button>
+					<button class="btn -half svg-stat-notices-icon-email" data-grunticon-embed>Email</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="stat-notice__section -one-third">
+		RIGHT COL
+	</div>
+	{{yield}}
+</div>
