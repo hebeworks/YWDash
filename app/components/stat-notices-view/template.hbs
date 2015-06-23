@@ -1,17 +1,19 @@
 <div class="stat-notice">
 	<div class="stat-notice__section -two-thirds">
-		<h2 class="-alpha">{{model.proposal}}</h2>
-		<p class="stat-notice__description solid-area -dark -top -bottom -pad-top -pad-bottom">{{model.proposalDetails}}</p>
-		<div class="stat-notice__map solid-area -all -dark">
+		<div class="stat-notice__proposal dotted-area -top -bottom -pad-top -pad-bottom -dark">
+			<h2 class="-alpha">{{model.proposal}}</h2>
+		</div>
+		<p class="stat-notice__description dotted-area -dark -bottom -pad-top -pad-bottom">{{model.proposalDetails}}</p>
+		<div class="stat-notice__map">
 		        {{google-map 
 		            lat=model.lat 
 		            lng=model.lng 
 		            zoom=15
 					markers=model.markers
-		            gopt_styles=mapStyle
 		            gopt_zoomControl=true
 		            gopt_mapTypeControl=true
 	            }}
+	            {{!-- gopt_styles=mapStyle --}}
 		</div>
 		<div class="stat-notice__section -full">
 			<div class="stat-notice__section -half">
