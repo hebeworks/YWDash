@@ -41,8 +41,14 @@ export default DefaultStory.extend({
     },
 
     getHourDegs: function (hours) {
-        var degs = (360 / 12) * moment().hour();
-        if(degs >= 360) {
+        var hourDegs = (360 / 12);
+        var degs = hourDegs * moment().hour();
+        
+        // account for minutes in the hour
+        var minuteDegs = (hourDegs / 60) * moment().minutes();
+        degs += minuteDegs;
+
+        if (degs >= 360) {
             degs = degs - 360;
         }
         return degs;
