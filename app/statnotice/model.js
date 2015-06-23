@@ -5,7 +5,7 @@ export default DS.Model.extend({
   reference: DS.attr(),  // PREM/03615/001",
   proposal: DS.attr(),  // Notice of an application for the grant of a premises licence",
   type: DS.attr(),  // Licensing",
-  publicationdate: DS.attr('date'),  // 08/05/2015",
+  publicationdate: DS.attr(),  // 08/05/2015",
   legislationTitle: DS.attr(),  // Licensing Act 2003",
   legislationSection: DS.attr(),  // 17",
   legislationSubSec1: DS.attr(),  // 3",
@@ -23,7 +23,7 @@ export default DS.Model.extend({
   contactAddress: DS.attr(),  // 31 Aire Quay, Hunslet, Leeds, LS10 1GA, ",
   contactEmail: DS.attr(),  // ",
   contactTelephone: DS.attr(),  // ",
-  objectionDeadlineDate: DS.attr('date'),  // 6/7/2015 00:00:00",
+  objectionDeadlineDate: DS.attr(),  // 6/7/2015 00:00:00",
   objectionDeadlineTime: DS.attr(),  // 23:59",
   objectionContactPosition: DS.attr(),  // ",
   objectionAddress: DS.attr(),  // Entertainment Licensing, Leeds City Council, Civic Hall, Leeds, LS1 1UR",
@@ -56,7 +56,13 @@ export default DS.Model.extend({
         body: this.get('fullAddress')
       }
     ]);
-  }.property('lat', 'lng')
+  }.property('lat', 'lng'),
+
+//  publicationDate: function () {
+//    debugger;
+//    return moment(this.get('publicationdate')).calendar();
+//  }.property('publicationdate')
+
 
 
 });

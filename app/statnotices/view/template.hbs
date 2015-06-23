@@ -1,3 +1,10 @@
+    <header class="js-site-header site-header">
+        <div class="site-header__inner">
+            {{gallery-header-nav navItems=galleryNavItems action="gotoRoute"}}
+        </div>
+    </header>
 
-	{{stat-notices-view model=model}}
-	{{outlet}}
+    <main class="stat-notices-body">
+		{{stat-notices-view model=model}}
+		{{outlet}}
+    </main>

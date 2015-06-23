@@ -3,7 +3,7 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
 	galleryNavItems: function () {
         var items = [
-            { title: 'Back', action: 'gotoRoute', route: 'statnotices' },
+            { title: 'Back', action: 'gotoRoute', route: 'index' },
         ];
 
         for (var i = 0; i < items.length; i++) {

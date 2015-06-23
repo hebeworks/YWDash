@@ -1,20 +1,14 @@
 import DefaultStory from '../stories/story-types/default-story/component'
 export default DefaultStory.extend({
-	didInsertElement: function () {
-		//this.getItems();
-	},
 
 	getItems: function () {
 		var obj = this;
 		var url = 'http://statnotices.azurewebsites.net/api/statnotices/';
-		
+
 		// add filtering
 		if (this.get('filterType') != null && this.get('filtertype') != "") {
 			url += '?type=' + this.get('filterType');
 		}
-		
-		console.log(url);
-
 		this.getData(url)
 			.then(
 				function (data) {
@@ -22,8 +16,7 @@ export default DefaultStory.extend({
 						// todo: make notices an ember data scheme
 						// hook in to the rest api automatically
 						// the transformed properties below can be appended to the models
-						item._publicationDate = moment(data[0].publicationdate).calendar();
-	
+//						item._publicationDate = moment(data[0].publicationdate).calendar();
 					});
 					obj.set('items', data);
 				},
@@ -47,10 +40,6 @@ export default DefaultStory.extend({
 			return value;
 	    }
 	}),
-
-
-
-
 
 	actions: {
 		filterByType: function (params) {
