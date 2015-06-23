@@ -24,6 +24,10 @@
 			&__section {
 				float:left;
 				
+				margin: {
+					top:10px;
+				}
+				
 				&:first-of-type {
 					margin: {
 						right:10px;
@@ -46,6 +50,19 @@
 				&.-one-third {
 					width:calc(33% - 10px);
 				}
+				
+				.icon {
+					position: absolute;
+					left:0px;
+					top:0px;
+					bottom:0px;
+					width:50px;
+					height:100%;
+					background: {
+						size:20px auto;
+						position:center 10px;
+					}
+				}	
 			}
 			
 			&__description {
@@ -56,28 +73,52 @@
 				
 			}
 			
-			&__address {
+			&__address, &__contribute {
 				position:relative;
 				padding: {
-					left:60px;
+					left:50px;
+				}			
+				p {
+					margin: {
+						bottom:0;
+					}
 				}
-				
-				.icon {
-					position: absolute;
-					left:0px;
-					top:0px;
-					bottom:0px;
-					width:50px;
-					height:100%;
-				}				
-			}
-			
-			&__sign-off {
-				
 			}
 			
 			&__contribute {
-				
+				position:relative;
+				padding: {
+					left:50px;
+				}
+				margin: {
+					top:10px;
+				}	
+			}
+			
+			&__sign-off {
+				h3, h4 {
+					margin: {
+						bottom:10px;
+					}
+				}
+			}
+			
+			.btn-list {
+				.btn {
+					height:40px;
+					
+					background: {
+						color: transparent;
+					}
+					
+					@extend .solid-area.-all;
+					@extend .solid-area.-dark;
+					@extend .solid-area.-rounded;
+					
+					svg {
+						height:12px;
+					}
+				}
 			}
 		}
 		
