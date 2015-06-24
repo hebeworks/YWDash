@@ -62,6 +62,12 @@
 						size:20px auto;
 						position:center 10px;
 					}
+					&.svg-stat-notice-icon-document {
+						background: {
+							size:20px auto;
+							position:center 8px;
+						}
+					}
 				}	
 			}
 
@@ -86,7 +92,7 @@
 				}
 				border:1px solid $light-grey;
 				border: {
-					radius: 5px;
+					radius: $radius;
 				}
 			}
 			
@@ -139,6 +145,11 @@
 					&.svg-stat-notices-icon-phone {
 						svg {
 							height:12px;
+						}
+					}
+					&.svg-stat-notices-icon-email {
+						svg {
+							height: 17px;
 						}
 					}
 				}
