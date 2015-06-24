@@ -34,7 +34,9 @@
 				</div>
 				<div class="btn-list -borderless">
 					<button class="btn -half svg-stat-notices-icon-phone" data-grunticon-embed>Phone</button>
-					<button class="btn -half svg-stat-notices-icon-email" data-grunticon-embed>Email</button>
+					{{#if model.objectionEmail}}
+						<a href="mailto:{{model.objectionEmail}}" class="btn -half svg-stat-notices-icon-email" data-grunticon-embed>Email</a>
+					{{/if}}
 				</div>
 			</div>
 		</div>

@@ -9,6 +9,9 @@
     <section class="list__section -notices">
         <div class="cf"></div>
         <ul class="list">
+            {{#unless items}}
+            <p>Sorry there aren't any notices to show you at the moment. Please try another filter above or come back soon.</p>
+            {{/unless}}
 			{{#each item in items}}
             <li class="list__row">
                 <div class="list-item">
@@ -21,7 +24,7 @@
                         <div class="btn -white">
                             <span class="v-align--middle">
                                 <span class="-delta">Publication date:</span>
-                                <span class="-alpha float--right">{{item.publicationdate}}</span>
+                                <span class="-alpha float--right">{{format-date "ll" item.publicationdate}}</span>
                             </span>
                         </div>
                         <div class="btn -red svg-stat-notices-icon-planning">

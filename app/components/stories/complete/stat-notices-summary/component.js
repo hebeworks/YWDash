@@ -6,7 +6,7 @@ export default DefaultStory.extend({
     loaded: false,
     didInsertElement: function () {
         this.set('title', 'Statutory notices');
-        this.set('subTitle', 'Newly added near you');
+        this.set('subTitle', 'Added this month');
         var obj = this;
                 obj.set('newlyAddedCount', 4);
 
