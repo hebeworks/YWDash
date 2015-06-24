@@ -1,6 +1,7 @@
 .stat-notices-summary {
 	text-align: center;
-
+	cursor:pointer;
+	
 	&__value {
 		@extend .-alpha;
 		background: {
