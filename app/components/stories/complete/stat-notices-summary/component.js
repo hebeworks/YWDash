@@ -10,7 +10,7 @@ export default DefaultStory.extend({
         var obj = this;
 //                obj.set('newlyAddedCount', 4);
 
-        this.getData('http://statnotices.azurewebsites.net/api/statnotices?count=true')
+        this.getData('http://statnotices.azurewebsites.net/api/statnotices?count=true&lastmonth=true')
             .then(function (count) {
                 // Todo: how to define new?
                     // start date - so search for items newer then startDate

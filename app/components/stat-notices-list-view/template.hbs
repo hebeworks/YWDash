@@ -2,7 +2,7 @@
     <button class="btn -grey" data-btn-type="featured" {{action "filterByType" ""}}>All</button>
     <button class="btn -grey" data-btn-type="categories" {{action "filterByType" "Planning"}}>Planning</button>
     <button class="btn -grey" data-btn-type="categories" {{action "filterByType" "Licensing"}}>Licensing</button>
-    <button class="btn -grey" data-btn-type="categories" {{action "filterByType" "Other"}}>Other</button>
+<!--    <button class="btn -grey" data-btn-type="categories" {{action "filterByType" "Other"}}>Other</button>-->
 </div>
 
 <div class="stat-notices__inner">
@@ -18,10 +18,12 @@
                     <p class="list-item__summary" title="{{item.proposalDetails}}">
                         <span class="v-align--middle">
                             {{item.proposal}}
+                            <br/>
+                            {{item.fullAddressSingleLine}}
                         </span>
                     </p>
                     <div class="btn-list -borderless">
-                        <div class="btn -white">
+                        <div class="btn -white -inactive">
                             <span class="v-align--middle">
                                 <span class="-delta">Publication date:</span>
                                 <span class="-alpha float--right">{{format-date "ll" item.publicationdate}}</span>
@@ -29,7 +31,7 @@
                         </div>
                         <div class="btn -red svg-stat-notices-icon-planning">
                             <span class="v-align--middle text--center">
-                                Planning
+                                {{item.type}}
                             </span>
                         </div>
 <!--                        <div class="btn -blue text--center">-->

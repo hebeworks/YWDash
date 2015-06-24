@@ -8,17 +8,26 @@
 		<div class="stat-notice__proposal dotted-area -top -bottom -pad-top -pad-bottom -dark">
 			<h2 class="-alpha">{{model.proposal}}</h2>
 		</div>
-		<p class="stat-notice__description dotted-area -dark -bottom -pad-top -pad-bottom">{{model.proposalDetails}}</p>
+		<p class="stat-notice__description dotted-area -dark -bottom -pad-top -pad-bottom">
+			{{#if model.proposalDetails}}
+				{{model.proposalDetails}}
+			{{else}}
+				There are no further details for this notice.
+			{{/if}}
+		</p>
 		<div class="stat-notice__map">
 		        {{google-map 
 		            lat=model.lat 
 		            lng=model.lng 
 		            zoom=15
 					markers=model.markers
-		            gopt_zoomControl=true
-		            gopt_mapTypeControl=true
+		            gopt_zoomControl=false
+		            gopt_mapTypeControl=false
+					gopt_draggable=false
 	            }}
-	            {{!-- gopt_styles=mapStyle --}}
+	            {{!-- 
+				todo: map marker stays centered regardless of zooming & panning
+					gopt_styles=mapStyle --}}
 		</div>
 		<div class="stat-notice__section -full">
 			<div class="stat-notice__section -half">
@@ -47,7 +56,12 @@
 		</div>
 	</div>
 	<div class="stat-notice__section -one-third">
-		<div class=""></div>
+		<div class=""><a href="{{model.publicAccessURL}}" target="_blank">Public Access</a></div>
+		<div class=""><a href="{{legislationURI}}" target="_blank">Legislation</a>
+			<p>
+				{{citation}}
+			</p>
+		</div>
 	</div>
 	{{yield}}
 </div>
