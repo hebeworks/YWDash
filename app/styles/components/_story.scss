@@ -121,6 +121,15 @@
 			}
 		}
 	}
+	&.-red {
+		.story__card {
+			color: $white;
+			background: {
+				color: $red;
+			}		
+		}
+	}
+	
 	&.-black {
 		.story__card {
 			color: $white;
