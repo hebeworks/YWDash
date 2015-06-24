@@ -33,7 +33,7 @@ export default {
       },
       didRenderElement: function () {
         // Override this in your View's
-        console.log('Component didRenderElement SVG EMBED');
+//        console.log('Component didRenderElement SVG EMBED');
         grunticon.embedSVG();
       }
     });

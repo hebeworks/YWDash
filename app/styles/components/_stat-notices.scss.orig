@@ -1,12 +1,15 @@
 .stat-notices-body  {
 	@extend %site-body;
+<<<<<<< HEAD
 	padding: 30px 65px;
+=======
 	padding: {
 		top:30px;
 		right:40px;
 		bottom:100px;
 		left:40px;
 	}
+>>>>>>> 7d5fed11e085ed4bd31fde41fd8e5e7215a975dc
 	overflow-y: scroll;
 }
  

@@ -46,6 +46,10 @@ export default DS.Model.extend({
       ;
     return address;
   }.property('proposalAddress1', 'proposalAddress2', 'proposalTown', 'proposalCounty', 'proposalPostcode'),
+  
+  fullAddressSingleLine: function() {
+    return this.get('fullAddress').replace(new RegExp('<br />', 'g'),', ').ensureNoEndingString(', ');
+  }.property('fullAddress'),
 
   markers: function () {
     return Ember.A([
