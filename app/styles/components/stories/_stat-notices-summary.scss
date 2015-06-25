@@ -1,24 +1,25 @@
 .stat-notices-summary {
 	text-align: center;
 	cursor:pointer;
+	padding-top: 5px;
 	
-	&__value {
+	&__circle {
 		@extend .-alpha;
 		background: {
 			color:$white;
 		}
-		color:$black;
+		color:$red;
 		margin: {
-			top:5px;
+			top:0;
 			right:0;
 			bottom: 0;
 			left:0;
 		}
-		line-height: 3.5em;
 		border-radius: 100%;
 		width: 70px;
 		height: 70px;
-		border-radius: 100%;
 		display:inline-block;
+	}
+	&__value {
 	}
 }

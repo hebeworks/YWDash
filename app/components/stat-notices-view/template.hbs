@@ -1,9 +1,16 @@
 <div class="stat-notice">
 	<div class="stat-notice__section -two-thirds">
-    <div class="btn -red svg-stat-notices-icon-planning">
-	    <span class="v-align--middle text--center">
-	        Planning
-	    </span>
+		<div class="btn-list -borderless -pad-top-no">
+	    <div class="btn -dark -inactive svg-stat-notices-icon-planning float--left">
+		    <span class="v-align--middle text--center">
+		        Planning
+		    </span>
+			</div>
+      <div class="btn -white -inactive float--right">
+          <span class="v-align--middle">
+              <span class="-delta">Publication date: {{format-date "DD/MM/YYYY" model.publicationdate}}</span>
+          </span>
+      </div>
 		</div>
 		<div class="stat-notice__proposal dotted-area -top -bottom -pad-top -pad-bottom -dark">
 			<h2 class="-alpha">{{model.proposal}}</h2>
@@ -35,32 +42,42 @@
 					<div class="icon solid-area -right -dark svg-stat-notice-icon-location-pin"></div>
 					<p class="-pad-all">{{{model.fullAddress}}}</p>
 				</div>
-				<div class="stat-notice__contribute solid-area -all -rounded -dark">
-					<div class="icon solid-area -right -dark svg-stat-notice-icon-document"></div>
-					<p class="-pad-all">Is this information correct?</p>
+				<div class="btn-list -borderless">
+					{{!-- <button class="btn -half svg-stat-notices-icon-phone" data-grunticon-embed>Phone</button> --}}
+					{{!-- {{#if model.objectionEmail}}
+						<a href="mailto:{{model.objectionEmail}}" class="btn -full svg-stat-notices-icon-email" data-grunticon-embed>Email</a>
+					{{/if}} --}}
 				</div>
 			</div>
 			<div class="stat-notice__section -half">
-				<div class="stat-notice__sign-off -pad-top">
-					<h3 class="-beta solid-area -bottom -dark -pad-bottom">Sign-off</h3>
-					<h4 class="-delta">{{model.signOffName}}</h4>
+				<div class="stat-notice__sign-off -pad-top dotted-area -top -bottom -dark">
+					<h3 class="-beta dotted-area -bottom -dark -pad-bottom">Sign-off</h3>
+					<h4 class="-delta">Contact name: {{model.signOffName}}</h4>
 					<p>{{model.signOffDetails}}</p>
-				</div>
-				<div class="btn-list -borderless">
-					<button class="btn -half svg-stat-notices-icon-phone" data-grunticon-embed>Phone</button>
-					{{#if model.objectionEmail}}
-						<a href="mailto:{{model.objectionEmail}}" class="btn -half svg-stat-notices-icon-email" data-grunticon-embed>Email</a>
-					{{/if}}
 				</div>
 			</div>
 		</div>
 	</div>
 	<div class="stat-notice__section -one-third">
-		<div class=""><a href="{{model.publicAccessURL}}" target="_blank">Public Access</a></div>
-		<div class=""><a href="{{legislationURI}}" target="_blank">Legislation</a>
-			<p>
-				{{citation}}
-			</p>
+		<div class="stat-notice__represent -pad-all">
+			<h2 class="-alpha -pad-top -pad-bottom">Make your voice heard</h2>
+			<h3 class="dotted-area -top -bottom -light -pad-top -pad-bottom">Use the link below to access Public Access, a Leeds City Council service that provides a simple way for you to make an official response to this application. The deadline for representations is {{{model.objectionDeadlineTime}}} on {{{format-date "DD/MM/YYYY" model.objectionDeadlineDate}}}.</h3>
+			<div class="btn-list -borderless">
+				<div class="-pad-top"><a href="{{model.publicAccessURL}}" class="btn" target="_blank">Visit Public Access</a></div>
+			</div>
+		</div>
+	</div>
+	<div class="stat-notice__section -one-third">
+		<div class="stat-notice__legislation -pad-all">
+			<h2 class="-alpha -pad-top -pad-bottom">The legal bit</h2>
+			<h3 class="dotted-area -top -bottom -light -pad-top -pad-bottom">The advertisement of Public Notices like this one is required by law. Use the link below to view the {{{model.legislationTitle}}}, which governs all {{{model.type}}} applications.</h3>
+			<div class="btn-list -borderless">
+				<div class="-pad-top"><a href="{{model.legislationURI}}" class="btn" target="_blank">View the legislation</a>
+					{{!-- <p>
+						{{citation}}
+					</p> --}}
+				</div>
+			</div>
 		</div>
 	</div>
 	{{yield}}

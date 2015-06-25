@@ -1,6 +1,5 @@
 .stat-notices-body  {
 	@extend %site-body;
-	padding: 30px 65px;
 	padding: {
 		top:30px;
 		right:40px;
@@ -18,6 +17,7 @@
 	
 		.btn-list {
 			// border top & bottom?
+			margin-bottom: 0px;
 		}		
 	}
 		.stat-notices__inner {
@@ -131,18 +131,84 @@
 					}
 				}
 			}
+
+			&__legislation {
+				width: 100%;
+				height: 50%;
+				background-color: $blue;
+				border: {
+					radius: $radius;
+				}
+				color: $white;
+				h2 {
+					margin: {
+						bottom:0;
+					}
+				}
+				h3 {
+					margin: {
+						bottom: 0;
+					}
+				}
+				.btn-list	{
+					padding: {
+						top: 0px;
+						bottom: 0px;
+					}
+				}
+				.btn {
+					margin: auto;
+					background-color: $dark-blue;
+					color: $white;
+					&:hover {
+						background-color: lighten($dark-blue, 5%)
+					}
+				}
+			}
+			&__represent {
+				width: 100%;
+				height: 50%;
+				margin: {
+					top: 5px;
+				}
+				background-color: $red;
+				border: {
+					radius: $radius;
+				}
+				color: $white;
+				h2 {
+					margin: {
+						bottom:0;
+					}
+				}
+				h3 {
+					margin: {
+						bottom: 0;
+					}
+				}
+				.btn-list	{
+					padding: {
+						top: 0px;
+						bottom: 0px;
+					}
+				}
+				.btn {
+					margin: auto;
+					background-color: $dark-red;
+					color: $white;
+					&:hover {
+						background-color: lighten($dark-red, 5%);;
+					}
+				}
+			}
 			
 			.btn-list {
 				.btn {
 					height:40px;
-					
-					background: {
-						color: transparent;
+					padding: {
+						left: 20px;
+						right: 20px;
 					}
-					
-					@extend .solid-area.-all;
-					@extend .solid-area.-dark;
-					@extend .solid-area.-rounded;
 					
 					svg {
 						height:20px;
@@ -152,11 +218,31 @@
 						svg {
 							height:12px;
 						}
+						background: {
+						color: transparent;
+						}
+						@extend .solid-area.-all;
+						@extend .solid-area.-dark;
+						@extend .solid-area.-rounded;
 					}
 					&.svg-stat-notices-icon-email {
 						svg {
 							height: 17px;
 						}
+						background: {
+						color: transparent;
+						}
+						@extend .solid-area.-all;
+						@extend .solid-area.-dark;
+						@extend .solid-area.-rounded;
+					}
+					&.svg-stat-notices-icon-planning {
+						background-position: 1em center;
+						background-size: 15% 60%;
+						padding: {
+							left: 2rem;
+						}
+						width: 20%;
 					}
 				}
 				
@@ -186,9 +272,9 @@
 								padding: {
 									left:0.5em;
 									right:0.5em;
-									top:0;
+									top:0.3em;
 								}
-								
+
 								@include breakpoint(max-width 1100px) {
 									width: 24%;
 								}
@@ -202,7 +288,10 @@
 								
 								&.svg-stat-notices-icon-planning {
 									background-position: 1em center;
-									padding-left:50px;
+									background-size: 15% 60%;
+									padding: {
+										left: 2rem;
+									}
 								}
 							}
 						}
@@ -217,6 +306,9 @@
 							top:15px;
 						}
 						height:50px;
+						padding: {
+							right: 20px;
+						}
 					}
 				}
 			}

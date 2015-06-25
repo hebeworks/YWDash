@@ -4,33 +4,51 @@
     border-radius: 5px;
     cursor: pointer;
     text-decoration:none;
+    height: 40px;
     
+    &.-inactive {
+        cursor: default;
+    }
+
     &.-grey {
         background-color: $light-grey;
     
         &:hover:not(.-inactive) {
-            color: #fff;
+            color: $white;
             background-color: $lime;
+        }
+        &:active {
+            background-color: $dark-grey;
         }
     }
 
+    &.-dark {
+        background-color: $dark-grey;
+        color: $white;
+    }
+
     &.-white {
-        background-color: #fff;
+        background-color: $white;
     
         &:hover:not(.-inactive) {
-            color: #fff;
+            color: $white;
             background-color: $lime;
         }
     }
 
     &.-blue {
         background-color: $blue;
-        color: #fff;
+        color: $white;
     }
     
     &.-red {
         background-color: $red;
-        color: #fff;
+        color: $white;
+    }
+
+    &.-dark-red {
+        background-color: $dark-red;
+        color: $white;
     }
 
     &.-selected {
@@ -84,8 +102,8 @@
     }
     
     .btn {
-        width: 140px;
-        height: 50px;
+        min-width: 100px;
+        height: 40px;
         font: {
             size: em(14px);
         }
@@ -93,7 +111,7 @@
             width: 180px;
         }
         &.-create {
-            width: 160px;
+            width: 110px;
             float: right;
             background-color: $blue;
             cursor: pointer;
@@ -129,6 +147,12 @@
                     left: 2%;
                 }
             }
+        }
+        &.-full {
+            width: 100%;
+        }
+        &.-one-third {
+            width:calc(33% - 10px);
         }
     }
 }

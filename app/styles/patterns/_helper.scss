@@ -40,10 +40,12 @@
 .-pad-left {
     padding-left: 10px;
 }
-
 .-pad-all {
     @extend .-pad-top;
     @extend .-pad-right;
     @extend .-pad-bottom;
     @extend .-pad-left;
+}
+.-pad-top-no {
+    padding-top: 0px;
 }

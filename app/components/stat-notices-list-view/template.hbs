@@ -10,26 +10,24 @@
         <div class="cf"></div>
         <ul class="list">
             {{#unless items}}
-            <p>Sorry there aren't any notices to show you at the moment. Please try another filter above or come back soon.</p>
+            <h2 class="-pad-top">Sorry there aren't any notices to show you at the moment. Please try another filter above or come back soon.</h2>
             {{/unless}}
 			{{#each item in items}}
-            <li class="list__row">
+            <li class="list__row dotted-area -bottom -dark -pad-top">
                 <div class="list-item">
-                    <p class="list-item__summary" title="{{item.proposalDetails}}">
+                    <h2 class="list-item__summary" title="">
                         <span class="v-align--middle">
-                            {{item.proposal}}
-                            <br/>
-                            {{item.fullAddressSingleLine}}
+                            {{item.proposal}} at {{item.fullAddressSingleLine}}.
                         </span>
-                    </p>
+                    </h2>
                     <div class="btn-list -borderless">
                         <div class="btn -white -inactive">
-                            <span class="v-align--middle">
+                            <span class="v-align--middle -pad-left -pad-right">
                                 <span class="-delta">Publication date:</span>
-                                <span class="-alpha float--right">{{format-date "ll" item.publicationdate}}</span>
+                                <h2 class="float--right">{{format-date "DD/MM/YYYY" item.publicationdate}}</h2>
                             </span>
                         </div>
-                        <div class="btn -red svg-stat-notices-icon-planning">
+                        <div class="btn -dark -inactive svg-stat-notices-icon-planning">
                             <span class="v-align--middle text--center">
                                 {{item.type}}
                             </span>
