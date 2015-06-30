@@ -6,7 +6,7 @@
 		        Planning
 		    </span>
 			</div>
-      <div class="btn -white -inactive float--right">
+      <div class="btn -white -inactive float--right publication-date">
           <span class="v-align--middle">
               <span class="-delta">Publication date: {{format-date "DD/MM/YYYY" model.publicationdate}}</span>
           </span>
@@ -42,12 +42,12 @@
 					<div class="icon solid-area -right -dark svg-stat-notice-icon-location-pin"></div>
 					<p class="-pad-all">{{{model.fullAddress}}}</p>
 				</div>
-				<div class="btn-list -borderless">
-					{{!-- <button class="btn -half svg-stat-notices-icon-phone" data-grunticon-embed>Phone</button> --}}
-					{{!-- {{#if model.objectionEmail}}
+{{!-- 				<div class="btn-list -borderless">
+					<button class="btn -half svg-stat-notices-icon-phone" data-grunticon-embed>Phone</button>
+					{{#if model.objectionEmail}}
 						<a href="mailto:{{model.objectionEmail}}" class="btn -full svg-stat-notices-icon-email" data-grunticon-embed>Email</a>
-					{{/if}} --}}
-				</div>
+					{{/if}}
+				</div> --}}
 			</div>
 			<div class="stat-notice__section -half">
 				<div class="stat-notice__sign-off -pad-top dotted-area -top -bottom -dark">

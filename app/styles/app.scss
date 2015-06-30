@@ -1,8 +1,11 @@
 /* -- Bourbon -- */
 @import "../../bower_components/bourbon/dist/bourbon";
 
-/* -- Breakpount SASS - https://github.com/at-import/breakpoint -- */
+/* -- Breakpoint SASS - https://github.com/at-import/breakpoint -- */
 @import '../../bower_components/breakpoint-sass/stylesheets/breakpoint';
+
+/* -- media-include - http://include-media.com -- */
+@import '../../bower_components/include-media/dist/_include-media.scss';
 
 /* -- Hybrid -- */
 @import "hybrid/hybrid";
