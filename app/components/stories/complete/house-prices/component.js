@@ -10,7 +10,7 @@ export default DefaultStory.extend({
 	loadedMonths: 0,
 	didInsertElement: function () {
 		this.set('title', 'House prices in Leeds');
-		this.set('subTitle', 'Enquiries dealt with by Leeds City Council');
+		this.set('subTitle', 'Average house price by month');
 		this.getPast12Months();
 	},
 
