@@ -1,4 +1,4 @@
-.nav {}
+ .nav {}
 .nav__list {
 
 	/* A nav element in the header or top drawer */
@@ -65,7 +65,7 @@
 			&.-back {
 				position: absolute;
 //				top: 2px;
-				left: 45px;
+				left: 20px;
 			}
 			&.-gallery {
 				position: absolute;
@@ -85,7 +85,7 @@
 	width: 100%;
 	display: block;
 	font: {
-		size: em(15px);
+		size: em(12px);
 		family: $helvneuelight;
 	}
 }

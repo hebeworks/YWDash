@@ -1,8 +1,11 @@
 /* -- Bourbon -- */
 @import "../../bower_components/bourbon/dist/bourbon";
 
-/* -- Breakpount SASS - https://github.com/at-import/breakpoint -- */
+/* -- Breakpoint SASS - https://github.com/at-import/breakpoint -- */
 @import '../../bower_components/breakpoint-sass/stylesheets/breakpoint';
+
+/* -- media-include - http://include-media.com -- */
+@import '../../bower_components/include-media/dist/_include-media.scss';
 
 /* -- Hybrid -- */
 @import "hybrid/hybrid";
@@ -34,8 +37,8 @@
 @import "patterns/select2";
 @import "patterns/circle_indicator";
 @import "patterns/google_maps";
-@import "patterns/holding_page";
-@import "patterns/dotted_area";
+@import "patterns/bordered_area";
+@import "patterns/lists";
 
 
 /* -- Components -- */
@@ -43,6 +46,8 @@
 @import "components/canvas";
 @import "components/story";
 @import "components/story-meta";
+@import "components/holding_page";
+@import "components/stat-notices";
 
 // Stories 
 @import "components/stories/leeds-inspired";
@@ -61,6 +66,11 @@
 @import "components/stories/development-story";
 @import "components/stories/twitter-feed";
 @import "components/stories/foi-request";
+
+/* START auto-generated stories */
+@import "components/stories/stat-notices-recent";
+@import "components/stories/stat-notices-summary";
+/* END auto-generated stories */
 
 
 //

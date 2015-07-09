@@ -6,6 +6,7 @@ $light-blue: #90bef6;
 $blue: #468ee5;
 $dark-blue: #21446e;
 $red: #d0021b;
+$dark-red: darken( $red, 10% );
 $light-grey: #e7e7e7;
 $grey: #999999;
 $dark-grey: #4a4a4a;
@@ -14,14 +15,19 @@ $black: #000;
 $off-white: #f1f1f1;
 $orange: #FF4500;
 
+/* Fonts */
 $sansserif: 'Helvetica', 'Arial', 'sans-serif';
-
 $helvneue: 'HelveticaNeueLT-Roman', $sansserif;
 $helvneuemed: 'HelveticaNeueLT-Medium', $helvneue;
 $helvneuelight: 'HelveticaNeueLT-Light', $helvneue;
-
 $georgia: 'Georgia', 'serif';
 
+/* Styles */
+$radius: 5px;
+
+$breakpoints: (phoneSmall: 365px, phoneLarge: 510px, tablet: 768px, desktop: 1024px);
+
+/* Sizes */
 $zetta-size: 100;
 $exa-size: 90;
 $peta-size: 80;

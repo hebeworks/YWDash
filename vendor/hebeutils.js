@@ -6,6 +6,12 @@
 
     function setupExtensionFunctions() {
         
+        // obj.notNullOrEmpty
+//        if (typeof Object.prototype.notNullOrEmpty != 'function') {
+//            Object.prototype.notNullOrEmpty = function () {
+//                return (this != null && this.length > 0);
+//            };
+//        }
         // str.notNullOrEmpty
         if (typeof String.prototype.notNullOrEmpty != 'function') {
             String.prototype.notNullOrEmpty = function () {
