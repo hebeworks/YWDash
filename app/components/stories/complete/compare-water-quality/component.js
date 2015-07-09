@@ -5,15 +5,15 @@ export default DatamillStory.extend({
     tagName: 'div',
     loaded: false,
     didInsertElement: function() {
-        this.set('title', 'compare-water-quality TITLE');
-        this.set('subTitle', 'compare-water-quality SUB TITLE');
-        this.getDataByPostcode('result1',this.get('postcode1'));
+        this.set('title', 'Compare Water Quality');
+        this.set('subTitle', 'Choose two postcodes');
+        this.getDataByPostcode('result1','LS1 5NS');
     },
     
     result1: null,
     result2: null,
     
-    _postcode1: 'LS1 5NS',
+    _postcode1: null,
     postcode1: Ember.computed("_postcode1", {
         get: function() {
             return this.get("_postcode1");
@@ -61,18 +61,19 @@ export default DatamillStory.extend({
                         'Iron'
                     ];
                     
-                    var props = [];
                     var values = data.PC_LOOKUP.RESULTS[0].LIST[0].ITEM[0];
+                    var props = {};
                     for(var prop in values) {
                         var key = prop;
                         if(propsToInclude.indexOf(prop) > -1) {
-                            var value = values[prop];
-                            props.push({
-                               name: key,
-                               value: value[0]
-                            });
+                            var value = values[prop][0];
+                            if(!isNaN(value)) {
+                                value = parseFloat(value).toPrecisionDigits(4);
+                            }
+                            props[key] = value;
                         }
                     };
+                    props["hardnessDescription"] = values["HARDNESS"][0].DESCRIPTION;
                     
                     var result = {
                         location: {

@@ -8,7 +8,7 @@
             </header>
         	{{yield}}
             
-            {{#unless viewOnly}}<footer class="story__footer">
+            {{#unless hideFooter}}<footer class="story__footer">
                 {{#if author}}
                         {{#if author}}<div class="author">Author: {{author}}</div>{{/if}}
                 {{/if}}

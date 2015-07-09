@@ -5,12 +5,16 @@
 	color="-dark-blue" 
     width="-w2" 
     height="-h2" 
+    hideFooter=true
     data-ss-colspan="2"}}
     <main class="river-level-stations">
-        <ul>
+        <table>
             {{#each station in stations}}
-                <li>{{station.label}}: {{station.currentMeasure.value}}</li>
+                <tr>
+                    <td>{{station.label}}</td>
+                    <td>{{station.currentMeasure.value}}m</td>
+                </tr>
             {{/each}}
-        </ul>
+        </table>
     </main>
 {{/stories/story-base}}

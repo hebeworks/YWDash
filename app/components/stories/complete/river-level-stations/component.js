@@ -5,8 +5,8 @@ export default DatamillStory.extend({
     tagName: 'div',
     loaded: false,
     didInsertElement: function() {
-        this.set('title', 'river-level-stations TITLE');
-        this.set('subTitle', 'river-level-stations SUB TITLE');
+        this.set('title', 'Leeds River Levels');
+        this.set('subTitle', "The most recent levels for Leeds' rivers");
         var obj = this;
         var url = 'http://environment.data.gov.uk/flood-monitoring/id/stations?town=Leeds';
         this.getData(url)
