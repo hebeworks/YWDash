@@ -1,0 +1,16 @@
+
+{{#stories/story-base 
+    title=title 
+    subTitle=subTitle 
+	color="-dark-blue" 
+    width="-w2" 
+    height="-h2" 
+    data-ss-colspan="2"}}
+    <main class="river-level-stations">
+        <ul>
+            {{#each station in stations}}
+                <li>{{station.label}}: {{station.currentMeasure.value}}</li>
+            {{/each}}
+        </ul>
+    </main>
+{{/stories/story-base}}

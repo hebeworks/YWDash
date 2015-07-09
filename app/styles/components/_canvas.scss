@@ -3,7 +3,7 @@
 	height: 100%;
 	z-index: 1;
 	position: relative;
-	background-color: #f7f7f7;
+	background-color: #0f2b4c;// #f7f7f7;
 	opacity: 1;
 	@include transform(translateZ(0));
 	@include transition(all .3s);
@@ -67,9 +67,9 @@
 			border: {
 				radius: 20px;
 			}
-			background: {
-				color: #f1f1f1;
-			}
+			// background: {
+			// 	color: #f1f1f1;
+			// }
 			box-shadow: 2px 2px 14px 0px rgba(0,0,0,0.20);
 		}
 		.canvas__inner {
@@ -116,7 +116,7 @@
 				top: 0px;
 				bottom: 40px;
 			}
-			background-color: #f7f7f7;
+			// background-color: #f7f7f7;
 			margin: {
 				left:auto;
 				right:auto;

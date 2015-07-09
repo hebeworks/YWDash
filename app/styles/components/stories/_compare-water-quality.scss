@@ -1,0 +1,11 @@
+.compare-water-quality {
+
+}
+	.compare-water-quality__result {
+		width:45%;
+		float:left;
+		overflow: hidden;
+		&:first-of-type {
+			margin-right:10px;
+		}
+	}

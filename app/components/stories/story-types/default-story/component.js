@@ -10,7 +10,7 @@ export default Ember.Component.extend({
 			try
 			{
 				var useCache = (cache != null && cache === true ? true : false);
-				 $.support.cors = true;
+				$.support.cors = true;
 				$.ajax({
 					url: url,
 					cache: useCache,
