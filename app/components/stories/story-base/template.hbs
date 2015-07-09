@@ -2,10 +2,12 @@
     <div class="story__card -front {{if viewOnly 'js-drag-handle'}}">
         {{#unless viewOnly}}<a href="javascript:;" class="js-cogs icon icon-cogs svg-cogs" data-grunticon-embed>Settings</a>{{/unless}}
         <div class="story__content">
-            <header>
-                <h2 class="heading -gamma">{{title}}</h2>
-                <h3 class="heading -delta">{{subTitle}}</h3>
-            </header>
+            {{#unless hideTitles}}
+                <header>
+                    <h2 class="heading -gamma">{{title}}</h2>
+                    <h3 class="heading -delta">{{subTitle}}</h3>
+                </header>
+            {{/unless}}
         	{{yield}}
             
             {{#unless hideFooter}}<footer class="story__footer">
