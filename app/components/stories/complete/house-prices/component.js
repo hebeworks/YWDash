@@ -10,7 +10,7 @@ export default DefaultStory.extend({
 	loadedMonths: 0,
 	didInsertElement: function () {
 		this.set('title', 'House prices in Leeds');
-		this.set('subTitle', 'Average house price by month');
+		this.set('subTitle', 'Average house price in Leeds by month');
 		this.getPast12Months();
 	},
 
