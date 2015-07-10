@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="90px" height="147px" viewBox="0 0 90 147" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.3.2 (12043) - http://www.bohemiancoding.com/sketch -->
+    <title>Imported Layers Copy</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Yorskhire-water" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="1.0-Canvas-view-Copy-5" sketch:type="MSArtboardGroup" transform="translate(-905.000000, -330.000000)">
+            <g id="Imported-Layers-Copy" sketch:type="MSLayerGroup" transform="translate(905.000000, 330.000000)">
+                <g id="Imported-Layers" sketch:type="MSShapeGroup">
+                    <path d="M45,0 C45,29.0086242 0,64.5364331 0,100.064242 C0,125.986178 20.146875,147 45,147 C69.8525,147 90,125.986178 90,100.064242 C90,67.4701911 45,29.0086242 45,0" id="Fill-1" fill="#9EDCF9"></path>
+                    <path d="M45,147 C69.8525,147 90,125.986178 90,100.064242 C90,67.4701911 45,29.0086242 45,0" id="Fill-2" fill="#88D2F4"></path>
+                    <path d="M83.0172414,101.352632 C83.0172414,122.717638 65.8223402,140.036842 44.612069,140.036842 C23.4011733,140.036842 6.20689655,122.717638 6.20689655,101.352632" id="Fill-3" fill="#50BBEC"></path>
+                    <path d="M83.0172414,101.739474 C83.0172414,104.944408 65.8223402,107.542105 44.612069,107.542105 C23.4011733,107.542105 6.20689655,104.944408 6.20689655,101.739474 C6.20689655,98.5345391 23.4011733,95.9368421 44.612069,95.9368421 C65.8223402,95.9368421 83.0172414,98.5345391 83.0172414,101.739474" id="Fill-4" fill="#32AAE1"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,6 +1,17 @@
 .saving-water-key-facts {
+	height:100%;
+	background: {
+		size:35%;
+		position: right 5px;
+	}
 }
 	.saving-water-key-facts__quote {
-		@extend .-alpha;
-		
+		@extend .-delta;
+		color:#9EDCF9;
+		padding: {
+			right:40px;
+		}
+		strong {
+			color:#4A90E2;
+		}
 	}

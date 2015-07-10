@@ -1,0 +1,25 @@
+
+{{#stories/story-base 
+    title=title 
+    subTitle=subTitle 
+    color="-dark-blue" 
+    width="-w4" 
+    height="-h2" 
+    data-ss-colspan="2"}}
+    <main class="water-metering-chart">
+
+{{!--
+        {{#if graphParams}}
+            {{stories/story-chart graphParams=graphParams}}
+        {{/if}}
+
+
+    {{stories/story-bar-chart data=data xLabel="Test X Axis" yLabel="Test Y Axis"}}
+--}}
+
+
+    {{stories/story-chart graphParams=graphParams}}
+
+
+    </main>
+{{/stories/story-base}}

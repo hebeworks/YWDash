@@ -6,12 +6,17 @@
     width=width 
     height=height 
     viewOnly=true
-    hideTitles=true
+    hideTitles=false
     data-ss-colspan="2"}}
-    <main class="saving-water-key-facts">
+    <main class="svg-water-saving-tip-icon saving-water-key-facts">
         <article class="saving-water-key-facts__quote">
-            {{randomItem}}
+            {{!-- randomItem --}}
+            {{yield}}
         </article>
+        
+        
+        
+        
         {{!--
         {{#stories/story-slider loaded=loaded}}
             {{#each item in items}}
