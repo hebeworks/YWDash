@@ -1,0 +1,31 @@
+{{#stories/story-base 
+    title=title 
+    subTitle=subTitle 
+    color="-blue" 
+    width="-w2" 
+    height="-h2" 
+    data-ss-colspan="2"
+    
+    dataSourceUrl="http://datapoint.metoffice.gov.uk"
+    feedbackEmail="simon@hebeworks.com"
+    description="This Story uses Met Office data via the Data Point service"
+    license="This information is licensed under the terms of the Open Government Licence"
+    author="Simon Zimmerman"
+}}
+    <main class="five-day-forecast">
+        {{#stories/story-slider loaded=loaded}}          
+            {{#each day in days}}
+                {{#stories/story-slide}}
+                    <div class="five-day-forecast__item {{day.day.windDirectionSVG}}">
+                        <p>This is a Datamill story.</p>
+                        <p>Slide left and right to move between content pages.</p>
+                        <p>Today: {{weatherDescription}}</p>
+                        <p>humidity: {{day.day.humidity}}</p>
+                        <p>wind direction day = {{day.day.windDirection}}</p>
+                        <p>wind direction night = {{day.night.windDirection}}</p>
+                    </div>
+                {{/stories/story-slide}}
+            {{/each}}
+        {{/stories/story-slider}}
+    </main>
+{{/stories/story-base}}
