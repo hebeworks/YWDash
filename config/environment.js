@@ -1,18 +1,11 @@
 /* jshint node: true */
 
-module.exports = function(environment) {
+module.exports = function (environment) {
   var ENV = {
     modulePrefix: 'hebe-dash',
     environment: environment,
     baseURL: '/',
     locationType: 'auto',
-    contentSecurityPolicy: {
-      'img-src': "'self' http://*:35729",
-      'connect-src': "'self' http://*:35729",
-      'script-src': "'self' 'unsafe-eval' localhost:31609 0.0.0.0:31609",
-      'font-src' : "'self'",
-      'style-src': "'self'"
-    },
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
@@ -23,8 +16,129 @@ module.exports = function(environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
-      dataMillUrl: 'http://api.leedsdatamill.org/'
-      
+      dataMillUrl: 'http://api.leedsdatamill.org/',
+      googleMapStyles: {
+        default: [
+          {
+            "featureType": "administrative",
+            "elementType": "labels.text.fill",
+            "stylers": [
+              {
+                "color": "#0c0b0b"
+              }
+            ]
+          },
+          {
+            "featureType": "landscape",
+            "elementType": "all",
+            "stylers": [
+              {
+                "color": "#f2f2f2"
+              }
+            ]
+          },
+          {
+            "featureType": "poi",
+            "elementType": "all",
+            "stylers": [
+              {
+                "visibility": "off"
+              }
+            ]
+          },
+          {
+            "featureType": "road",
+            "elementType": "all",
+            "stylers": [
+              {
+                "saturation": -100
+              },
+              {
+                "lightness": 45
+              }
+            ]
+          },
+          {
+            "featureType": "road",
+            "elementType": "labels.text.fill",
+            "stylers": [
+              {
+                "color": "#090909"
+              }
+            ]
+          },
+          {
+            "featureType": "road.highway",
+            "elementType": "all",
+            "stylers": [
+              {
+                "visibility": "simplified"
+              }
+            ]
+          },
+          {
+            "featureType": "road.arterial",
+            "elementType": "labels.icon",
+            "stylers": [
+              {
+                "visibility": "off"
+              }
+            ]
+          },
+          {
+            "featureType": "transit",
+            "elementType": "all",
+            "stylers": [
+              {
+                "visibility": "off"
+              }
+            ]
+          },
+          {
+            "featureType": "water",
+            "elementType": "all",
+            "stylers": [
+              {
+                "color": "#d4e4eb"
+              },
+              {
+                "visibility": "on"
+              }
+            ]
+          },
+          {
+            "featureType": "water",
+            "elementType": "geometry.fill",
+            "stylers": [
+              {
+                "visibility": "on"
+              },
+              {
+                "color": "#fef7f7"
+              }
+            ]
+          },
+          {
+            "featureType": "water",
+            "elementType": "labels.text.fill",
+            "stylers": [
+              {
+                "color": "#9b7f7f"
+              }
+            ]
+          },
+          {
+            "featureType": "water",
+            "elementType": "labels.text.stroke",
+            "stylers": [
+              {
+                "color": "#fef7f7"
+              }
+            ]
+          }
+        ]
+      }
+
     }
   };
 
@@ -34,24 +148,6 @@ module.exports = function(environment) {
     // ENV.APP.LOG_TRANSITIONS = true;
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
-    ENV.contentSecurityPolicy = {
-      'default-src': "'none'",
-        'script-src': "*",
-        'font-src': "*",
-        'connect-src': "*",
-        'img-src': "*",
-        'style-src': "'unsafe-inline', * ",
-        'frame-src':"*"
-    }
-//    ENV.contentSecurityPolicy = {
-//        'default-src': "'none'",
-//        'script-src': "'self' 'unsafe-inline' 'unsafe-eval' w.sharethis.com ajax.googleapis.com f.fontdeck.com use.typekit.net connect.facebook.net maps.gstatic.com *.googleapis.com",
-//        'font-src': "'self' data: use.typekit.net fonts.gstatic.com",
-//        'connect-src': "'self' tct.local api.leedsinspired.co.uk",
-//        'img-src': "'self' www.facebook.com p.typekit.net w.sharethis.com tct.local api.leedsinspired.co.uk *.cdninstagram.com *.googleapis.com maps.gstatic.com *.squarespace.com",
-//        'style-src': "'self' 'unsafe-inline' hello.myfonts.net use.typekit.net *.googleapis.com",
-//        'frame-src': "s-static.ak.facebook.com static.ak.facebook.com www.facebook.com"
-//    }
   }
 
   if (environment === 'test') {

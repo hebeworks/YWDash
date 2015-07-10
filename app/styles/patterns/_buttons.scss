@@ -4,37 +4,56 @@
     border-radius: 5px;
     cursor: pointer;
     text-decoration:none;
+    height: 40px;
     
+    &.-inactive {
+        cursor: default;
+    }
+
     &.-grey {
         background-color: $light-grey;
     
-        &:hover {
-            color: #fff;
+        &:hover:not(.-inactive) {
+            color: $white;
             background-color: $lime;
+        }
+        &:active {
+            background-color: $dark-grey;
         }
     }
 
+    &.-dark {
+        background-color: $dark-grey;
+        color: $white;
+    }
+
     &.-white {
-        background-color: #fff;
+        background-color: $white;
     
-        &:hover {
-            color: #fff;
+        &:hover:not(.-inactive) {
+            color: $white;
             background-color: $lime;
         }
     }
 
     &.-blue {
         background-color: $blue;
-        color: #fff;
+        color: $white;
+    }
+    
+    &.-red {
+        background-color: $red;
+        color: $white;
+    }
+
+    &.-dark-red {
+        background-color: $dark-red;
+        color: $white;
     }
 
     &.-selected {
         background-color: $lime;
         color: #d9f2bd;
-    }
-
-    &.-center {
-        text-align: center;
     }
 
     &.-close {
@@ -77,14 +96,14 @@
         top: dotted 1px #868080;
         bottom: dotted 1px #868080;
     }
-
-    &.-centered {
-        text-align: center;
+    
+    &.-borderless {
+        border: 0;
     }
     
     .btn {
-        width: 140px;
-        height: 50px;
+        min-width: 100px;
+        height: 40px;
         font: {
             size: em(14px);
         }
@@ -92,7 +111,7 @@
             width: 180px;
         }
         &.-create {
-            width: 160px;
+            width: 110px;
             float: right;
             background-color: $blue;
             cursor: pointer;
@@ -128,6 +147,12 @@
                     left: 2%;
                 }
             }
+        }
+        &.-full {
+            width: 100%;
+        }
+        &.-one-third {
+            width:calc(33% - 10px);
         }
     }
 }

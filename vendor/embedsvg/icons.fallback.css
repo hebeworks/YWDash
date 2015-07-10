@@ -64,6 +64,16 @@
 
 .svg-space-station { background-image: url('png/space-station.png'); background-repeat: no-repeat; }
 
+.svg-stat-notice-icon-document { background-image: url('png/stat-notice-icon-document.png'); background-repeat: no-repeat; }
+
+.svg-stat-notice-icon-location-pin { background-image: url('png/stat-notice-icon-location-pin.png'); background-repeat: no-repeat; }
+
+.svg-stat-notices-icon-email { background-image: url('png/stat-notices-icon-email.png'); background-repeat: no-repeat; }
+
+.svg-stat-notices-icon-phone { background-image: url('png/stat-notices-icon-phone.png'); background-repeat: no-repeat; }
+
+.svg-stat-notices-icon-planning { background-image: url('png/stat-notices-icon-planning.png'); background-repeat: no-repeat; }
+
 .svg-toolbox { background-image: url('png/toolbox.png'); background-repeat: no-repeat; }
 
 .svg-up-down-arrow { background-image: url('png/up-down-arrow.png'); background-repeat: no-repeat; }

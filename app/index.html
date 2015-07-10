@@ -39,22 +39,32 @@
                     wrappers.$gallery
                         .on('mousedown', '.js-gallery-back', function(e){
                             e.preventDefault();
-
                             Wrapper.switchToDashboard();
                         });
-                    };
+                    wrappers.$statNotices
+                        .on('mousedown', '.js-stat-notices-back', function(e){
+                            e.preventDefault();
+                            Wrapper.switchToDashboard();
+                        });
+                };
 
                 return {
                     switchToDashboard: function() {
-
                         wrappers.$dashboard.addClass('-open');
                         wrappers.$gallery.removeClass('-open');
+                        wrappers.$statNotices.removeClass('-open');
                     },
 
                     switchToGallery: function() {
-
                         wrappers.$dashboard.removeClass('-open');
                         wrappers.$gallery.addClass('-open');
+                        wrappers.$statNotices.removeClass('-open');
+                    },
+                    
+                    switchToStatNotices: function() {
+                        wrappers.$dashboard.removeClass('-open');
+                        wrappers.$gallery.removeClass('-open');
+                        wrappers.$statNotices.addClass('-open');
                     },
 
                     setupEvents: function() {
@@ -76,7 +86,6 @@
                             Drawer.closeBottom();
                         })
                         .on('mousedown', '.js-open-gallery', function(e){
-
                             Wrapper.switchToGallery();
                         });
                     };
@@ -415,7 +424,6 @@
 
                 return {
                     init: function() {
-
                         var attempts = 0;
                         function attemptInit() {
                             attempts++;
@@ -803,6 +811,7 @@
                     // 'Screens'
                     wrappers.$dashboard = $('.js-dashboard-wrapper');
                     wrappers.$gallery = $('.js-gallery-wrapper');
+                    wrappers.$statNotices = $('.js-stat-notices-wrapper');
 
                     // Drawers
                     drawers.$top = $('.js-top-drawer');
@@ -857,9 +866,9 @@
                     }
                 };
             })();
-            Canvas.init();
-
-            $document.bind('ready', HebeDash.init);
+//            Canvas.init();
+//
+//            $document.bind('ready', HebeDash.init);
         </script>
         <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

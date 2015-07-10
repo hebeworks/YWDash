@@ -9,3 +9,43 @@
 .cf {
     @include cf;
 }
+
+.text--center {
+    text-align: center;
+}
+
+.text--left {
+    text-align: left;
+}
+
+.text--right {
+    text-align: right;
+}
+
+.v-align--middle {
+	@include middle(y);
+	display: block;
+	position: relative;
+}
+    
+.-pad-top {
+    padding-top: 10px;
+}
+.-pad-right {
+    padding-right: 10px;
+}
+.-pad-bottom {
+    padding-bottom: 10px;
+}
+.-pad-left {
+    padding-left: 10px;
+}
+.-pad-all {
+    @extend .-pad-top;
+    @extend .-pad-right;
+    @extend .-pad-bottom;
+    @extend .-pad-left;
+}
+.-pad-top-no {
+    padding-top: 0px;
+}

@@ -16,4 +16,10 @@ export default Ember.Component.extend({
 //
 //		});
 //	}.on('init')
+	actions: {
+        gotoRoute: function (route) {
+	        this.set('action','gotoRoute');
+            this.sendAction('action', route);
+        }
+	}
 });
