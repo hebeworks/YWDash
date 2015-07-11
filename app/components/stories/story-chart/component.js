@@ -2,8 +2,9 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
     classNames: ['story__chart-wrapper'],
-    didInsertElement: function () {
-
+    graphParams: null,
+    
+    drawChart: function() {
         var customParams = this.get('graphParams');
 
         var defaultParams = {
@@ -55,5 +56,9 @@ export default Ember.Component.extend({
                 chart.toggle(id);
             });
         }
+    }.observes('graphParams'),
+    
+    didInsertElement: function () {
+        this.set('graphParams', null);
     }
 });
