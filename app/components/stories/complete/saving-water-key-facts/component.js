@@ -4,7 +4,7 @@ import DatamillStory from './../../story-types/datamill-story/component';
 export default DatamillStory.extend({
     tagName: 'div',
     loaded: false,
-    
+    url: 'https://www.yorkshirewater.com/savewater',
     // onInit: function() {
     //     var width = this.randomNumber();
     //     var height = (width == 1 ? 2 : 1);
@@ -43,4 +43,8 @@ export default DatamillStory.extend({
     // randomNumber: function() {
     //     return Math.floor(Math.random() * 2) + 1;
     // }
+    
+    click: function() {
+        window.open(this.get('url'));
+    }
 });

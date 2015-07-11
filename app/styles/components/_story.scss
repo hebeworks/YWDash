@@ -343,6 +343,16 @@
 			}
 		}
 	}
+	
+	&.-transparent {
+		.story__card {
+			color: $white;
+			background: {
+				color: transparent;
+			}
+		}		
+	}
+	
 	&.-dark-blue {
 		.story__card {
 			color: $white;
