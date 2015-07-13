@@ -19,12 +19,18 @@ You will need the following things properly installed on your computer.
 * change into the new directory
 * `npm install`
 * `bower install`
-* `ember install:npm broccoli-sass`
-* `gem install scss-lint`
-* `npm i ember-cli-scsslint`
-* `npm install ember-cli-bourbon --save-dev`
-* `ember g ember-cli-bourbon`
-* 'when given the option, resolve to 3.2.1'
+
+## Windows Installation Process
+Tested on generic Windows 7 installation
+* install git `http://www.git-scm.com/download/win` make sure to check the "Use GIT from the Windows Command Prompt' option
+* install node & npm `https://nodejs.org/download/`
+* install bower globally `npm install -g bower`
+* install ember-cli globally `npm install -g ember-cli`
+* open a command prompt and `cd` to the folder you want to install this app
+* `git clone <repository-url>` this repository
+* `cd` into the new directory
+* `npm install`
+* `bower install`
 
 ## Running / Development
 
