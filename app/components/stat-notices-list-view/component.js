@@ -1,6 +1,16 @@
 import DefaultStory from '../stories/story-types/default-story/component'
 export default DefaultStory.extend({
 
+	onInit:function() {
+		this.get('places');
+		this.get('selectedPlace');
+		this.get('test');
+	}.on('init'),
+
+	onSelectedPlaceChange: function() {
+		alert(this.get('selectedPlace'));
+	}.observes('selectedPlace'),
+
 	getItems: function () {
 		var obj = this;
 		
@@ -71,10 +81,33 @@ export default DefaultStory.extend({
 		);	
 	},
 
+
+
 	actions: {
 		filterByType: function (params) {
 			console.log('Stat notices: setting filterType');
 			this.set('filterType', params);
-		}
+		},
+		findPlaces: function(query, deferred) {
+			var obj = this;
+			if(query != null && query.term != null && query.term.length > 3) {
+				var url = 'http://statnotices.azurewebsites.net/api/places?searchTerm='+query.term;
+				// console.log(url);
+				this.getData(url)
+			        .then(
+						function(data) {
+							// var items = [];
+							data.forEach(function(item){
+								item.id = item._id;
+							// 	var tmp = Ember.Object.create(item);
+							// 	items.push(tmp);
+							});
+							
+							obj.set('places',data);
+							deferred.resolve(obj.get('places'));//{data: data, more: false});
+						}
+						,deferred.reject);
+			}
+	    }
 	}
 });

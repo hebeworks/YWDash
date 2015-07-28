@@ -3,6 +3,31 @@
     <button class="btn -grey" data-btn-type="categories" {{action "filterByType" "Planning"}}>Planning</button>
     <button class="btn -grey" data-btn-type="categories" {{action "filterByType" "Licensing"}}>Licensing</button>
 <!--    <button class="btn -grey" data-btn-type="categories" {{action "filterByType" "Other"}}>Other</button>-->
+
+{{!-- Add select 2 field to search for locations --}}
+    
+    <div>
+        {{
+            select-2
+            
+            content=places
+            optionLabelPath="NAME1"
+            value=test
+            
+            placeholder="Search for a place"
+            typeaheadSearchingText="Searching places"
+            typeaheadNoMatchesText="No places found for '%@'"
+            typeaheadErrorText="Loading failed: %@"
+            minimumInputLength=3
+            query="findPlaces"
+            
+        }}
+
+        <!--optionValuePath="_id"-->
+        <!--optionDescriptionPath="title"-->
+        <!--optionLabelPath="title"-->
+    </div>
+
 </div>
 
 <div class="stat-notices__inner">
