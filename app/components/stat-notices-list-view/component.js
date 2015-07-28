@@ -4,10 +4,11 @@ export default DefaultStory.extend({
 	getItems: function () {
 		var obj = this;
 		
+		this.sendGoogleTrackingEvent('','StatNoticeSearch','Filter',this.get('filterType'));
 		
 		this.store.find('statnotice', {
-			type:this.get('filterType')
-		})
+				type:this.get('filterType')
+			})
 			.then(function(data){
 				obj.set('items', data);
 			});
@@ -53,6 +54,22 @@ export default DefaultStory.extend({
 			return value;
 	    }
 	}),
+	
+	sendGoogleTrackingEvent: function(account,category,action,label,value) {
+		console.log('sendGoogleTrackingEvent: ' + account + ' - ' + category  + ' - ' + action + ' - ' + label + ' - ' + value);
+	// https://developers.google.com/analytics/devguides/collection/gajs/eventTrackerGuide	
+		account = 
+		'UA-63204812-2'; // statnotices
+		// 'UA-63204812-1' // dashboard
+		_gaq.push(
+		  ['_setAccount', account],
+		  ['_setDomainName', 'statnotices.leedsdatamill.org'],
+		  // ['_setCustomVar', 1, 'Section', 'Life & Style', 3],
+		  // _trackEvent(category, action, opt_label, opt_value, opt_noninteraction)
+		  ['_trackEvent',category,action,label,value]
+		  // ['_trackPageview']
+		);	
+	},
 
 	actions: {
 		filterByType: function (params) {
