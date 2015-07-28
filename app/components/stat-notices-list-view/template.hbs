@@ -4,7 +4,10 @@
     <button class="btn -grey" data-btn-type="categories" {{action "filterByType" "Licensing"}}>Licensing</button>
 <!--    <button class="btn -grey" data-btn-type="categories" {{action "filterByType" "Other"}}>Other</button>-->
 
-{{!-- Add select 2 field to search for locations --}}
+
+    {{#if filterPlace}}
+        <button class="btn -grey" data-btn-type="location" {{action "clearPlace"}}>X {{filterPlace.NAME1}}</button>
+    {{/if}}
     
     <div>
         {{
@@ -12,7 +15,7 @@
             
             content=places
             optionLabelPath="NAME1"
-            value=test
+            value=filterPlace
             
             placeholder="Search for a place"
             typeaheadSearchingText="Searching places"

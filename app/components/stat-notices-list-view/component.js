@@ -1,24 +1,60 @@
 import DefaultStory from '../stories/story-types/default-story/component'
 export default DefaultStory.extend({
 
+	currentFilter: {},
+	
+	filterPlace:null,
+	places:null,
+	
 	onInit:function() {
 		this.get('places');
-		this.get('selectedPlace');
-		this.get('test');
+		this.get('filterPlace');
 	}.on('init'),
 
 	onSelectedPlaceChange: function() {
-		alert(this.get('selectedPlace'));
-	}.observes('selectedPlace'),
+		// this.getItems();
+		// 	location": {
+	    //   "coordinates": [
+	    //     53.60857506915007,
+	    //     -1.0128832985975176
+	    //   ]
+	    // }
+		if(this.get('filterPlace') != null) {
+			var location = this.get('filterPlace.location.coordinates');
+			var lat = location[0];
+			var lng = location[1];
+			
+			location = { 
+				lat: lat,
+				lng: lng
+			};
+			
+			console.log('location: ' + location);
+			
+			this.set('location',location);
+		} else {
+			this.set('location',null);
+		}
+	}.observes('filterPlace'),
 
 	getItems: function () {
 		var obj = this;
 		
 		this.sendGoogleTrackingEvent('','StatNoticeSearch','Filter',this.get('filterType'));
 		
-		this.store.find('statnotice', {
-				type:this.get('filterType')
-			})
+		var query = {};
+		if(this.get('filterType') != null && this.get('filterType.length') > 0) {
+			query.type = this.get('filterType')
+		}
+		
+		if(this.get('location') != null) {
+			query.lat = this.get('location.lat');
+			query.lng = this.get('location.lng');
+		}
+		
+		console.log('filter query = ' + query); 
+		
+		this.store.find('statnotice', query)
 			.then(function(data){
 				obj.set('items', data);
 			});
@@ -48,7 +84,7 @@ export default DefaultStory.extend({
 			
 			
 			
-	}.observes('filterType'),
+	}.observes('filterType', 'location'),
 
 	filterTypeValue: null,
     filterType: Ember.computed("filterType", {
@@ -108,6 +144,9 @@ export default DefaultStory.extend({
 						}
 						,deferred.reject);
 			}
-	    }
+	    },
+		clearPlace: function() {
+			this.set('filterPlace', null);
+		}
 	}
 });
