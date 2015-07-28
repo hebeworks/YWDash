@@ -22,6 +22,7 @@ You will need the following things properly installed on your computer.
 
 ## Windows Installation Process
 Tested on generic Windows 7 installation
+Whenever possible run your command prompt as Administrator to help with potential speed and installation issues
 * install git `http://www.git-scm.com/download/win` make sure to check the "Use GIT from the Windows Command Prompt' option
 * install node & npm `https://nodejs.org/download/`
 * install bower globally `npm install -g bower`
@@ -31,6 +32,15 @@ Tested on generic Windows 7 installation
 * `cd` into the new directory
 * `npm install`
 * `bower install`
+
+## Windows performance
+Windows rebuilds can be significantly slower than other platforms
+We have added ember-cli-windows-addon to help improve things
+see [ember-cli-windows-addon](http://www.ember-cli.com/#windows) for more info
+* When developing using Windows, after installation run `ember windows`
+This should configure your project to run much faster
+* Also, whenever possible run your command prompt as Administrator to help with potential speed and installation issues
+
 
 ## Running / Development
 
