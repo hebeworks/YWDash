@@ -1,39 +1,52 @@
-<div class="js-gallery-button btn-list">
-    <button class="btn -grey" data-btn-type="featured" {{action "filterByType" ""}}>All</button>
-    <button class="btn -grey" data-btn-type="categories" {{action "filterByType" "Planning"}}>Planning</button>
-    <button class="btn -grey" data-btn-type="categories" {{action "filterByType" "Licensing"}}>Licensing</button>
-<!--    <button class="btn -grey" data-btn-type="categories" {{action "filterByType" "Other"}}>Other</button>-->
+<div class="stat-notices__inner">
 
-
-    {{#if filterPlace}}
-        <button class="btn -grey" data-btn-type="location" {{action "clearPlace"}}>X {{filterPlace.NAME1}}</button>
-    {{/if}}
+    <div class="js-gallery-button btn-list">
+        <button class="btn -grey" data-btn-type="featured" {{action "filterByType" ""}}>All</button>
+        <button class="btn -grey" data-btn-type="categories" {{action "filterByType" "Planning"}}>Planning</button>
+        <button class="btn -grey" data-btn-type="categories" {{action "filterByType" "Licensing"}}>Licensing</button>
+    <!--    <button class="btn -grey" data-btn-type="categories" {{action "filterByType" "Other"}}>Other</button>-->
+        
+        <div class="stat-notices__filter-place-search">
+            {{
+                select-2
+                
+                content=places
+                optionLabelPath="NAME1"
+                value=filterPlace
+                
+                placeholder="Search for a place"
+                typeaheadSearchingText="Searching places"
+                typeaheadNoMatchesText="No places found for '%@'"
+                typeaheadErrorText="Loading failed: %@"
+                minimumInputLength=3
+                query="findPlaces"
+                
+            }}
     
-    <div>
-        {{
-            select-2
-            
-            content=places
-            optionLabelPath="NAME1"
-            value=filterPlace
-            
-            placeholder="Search for a place"
-            typeaheadSearchingText="Searching places"
-            typeaheadNoMatchesText="No places found for '%@'"
-            typeaheadErrorText="Loading failed: %@"
-            minimumInputLength=3
-            query="findPlaces"
-            
-        }}
-
-        <!--optionValuePath="_id"-->
-        <!--optionDescriptionPath="title"-->
-        <!--optionLabelPath="title"-->
+            <!--optionValuePath="_id"-->
+            <!--optionDescriptionPath="title"-->
+            <!--optionLabelPath="title"-->
+        </div>
+        {{#if filterPlace}}
+            <button class="btn -grey" data-btn-type="location" {{action "clearPlace"}}>X {{filterPlace.NAME1}}</button>
+        {{/if}}
+        
+        <button class="btn" {{action "notifyMe"}}>Notify Me</button>
+    
     </div>
 
-</div>
+    {{#if notifyMeVisible}}
+        <div class="stat-notices__notify-me-popup">
+            <h3 class="-gamma">Your current search...</h3>
+            <p>Notice Type: {{filterType}}</p>
+            {{#if filterPlace}}<p>Location: {{filterPlace.NAME1}}</p>{{/if}}
+            <p>Please enter your email address: {{input value=userEmail placeHolder="Your email" }}</p>
+            {{#if userEmail}}
+                <button class="btn" {{action "notifyMeSubmit"}}>Register</button>
+            {{/if}}
+        </div>
+    {{/if}}
 
-<div class="stat-notices__inner">
     <section class="list__section -notices">
         <div class="cf"></div>
         <ul class="list">

@@ -147,6 +147,21 @@ export default DefaultStory.extend({
 	    },
 		clearPlace: function() {
 			this.set('filterPlace', null);
+		},
+		notifyMe: function() {
+			this.set('notifyMeVisible', true);
+		},
+		notifyMeSubmit: function() {
+			var currentFilter = {
+				email: this.get('userEmail'),
+				type: this.get('filterType'),
+				lat: this.get('location.lat'),
+				lng: this.get('location.lng')
+			};
+			
+			// Todo: submit registration to API
+			
+			console.log(currentFilter);
 		}
 	}
 });

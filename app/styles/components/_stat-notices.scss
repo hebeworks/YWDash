@@ -56,6 +56,22 @@
 			
 		}
 		
+		.stat-notices__filter-place-search {
+			display: inline-block;
+			min-width: 250px;
+			margin-left:15px;
+			
+			.select2-container {
+				margin: {
+					bottom:0px;
+				}
+				
+				a.select2-default {
+				// a.select2-choice.select2-default {
+					height:40px;
+				}
+			}
+		}
 		
 		.stat-notice {
 			
