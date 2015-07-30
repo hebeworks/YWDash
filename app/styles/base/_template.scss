@@ -136,16 +136,36 @@ a {
 %site-body {
 	@include cf;
 	width: 100%;
-	height: 100%;//calc(100% - 100px);
-	top:100px; // IE10
-//IE10	margin: {
-//		top: 100px;
-//	}
+	height: 100%; 	//calc(100% - 100px);
+	top:100px; 		// IE10
+					//IE10	margin: {
+					//		top: 100px;
+					//	}
 	background: {
 		color: #f1f1f1; // temporary
 	}
 	position: absolute;
 	z-index: 1;
+	
+	.content {
+		&.-centered {
+			margin: {
+				left:auto;
+				right:auto;
+			}
+			
+			width:40%;
+		}
+	}
+	
+	&.-background__city {
+		background: {
+			image: url(/assets/img/gallery-body-bg-holding.jpg);
+			repeat: no-repeat;
+			position: center bottom;
+			size: cover;
+		}
+	}
 }
 
 

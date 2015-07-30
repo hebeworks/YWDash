@@ -7,6 +7,19 @@
 		left:40px;
 	}
 	overflow-y: scroll;
+	
+	&.-intro {
+		text-align: center;
+		color: $dark-grey;
+		
+		img {
+			width: 100%;
+			margin: {
+				top:1em;
+				bottom:2em;
+			}
+		}
+	}
 }
  
 	.-stat-notices { 
