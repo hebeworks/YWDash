@@ -1,9 +1,9 @@
 <div class="stat-notices__inner">
 
-    <div class="js-gallery-button btn-list">
-        <button class="btn -grey" data-btn-type="featured" {{action "filterByType" ""}}>All</button>
-        <button class="btn -grey" data-btn-type="categories" {{action "filterByType" "Planning"}}>Planning</button>
-        <button class="btn -grey" data-btn-type="categories" {{action "filterByType" "Licensing"}}>Licensing</button>
+    <div class="btn-list">
+        <button class="btn -grey {{filterType}}" data-btn-type="featured" {{action "filterByType" "All"}}>All</button>
+        <button class="btn -grey {{filterType}}" data-btn-type="planning" {{action "filterByType" "Planning"}}>Planning</button>
+        <button class="btn -grey {{filterType}}" data-btn-type="licensing" {{action "filterByType" "Licensing"}}>Licensing</button>
     <!--    <button class="btn -grey" data-btn-type="categories" {{action "filterByType" "Other"}}>Other</button>-->
         
         <div class="stat-notices__filter-place-search">
@@ -20,32 +20,27 @@
                 typeaheadErrorText="Loading failed: %@"
                 minimumInputLength=3
                 query="findPlaces"
-                
             }}
-    
-            <!--optionValuePath="_id"-->
-            <!--optionDescriptionPath="title"-->
-            <!--optionLabelPath="title"-->
         </div>
+        
         {{#if filterPlace}}
             <button class="btn -grey" data-btn-type="location" {{action "clearPlace"}}>X {{filterPlace.NAME1}}</button>
         {{/if}}
         
-        <button class="btn" {{action "notifyMe"}}>Notify Me</button>
-    
+        <button class="btn -blue" {{action "notifyMe"}}>Notify Me</button>
     </div>
 
-    {{#if notifyMeVisible}}
-        <div class="stat-notices__notify-me-popup">
-            <h3 class="-gamma">Your current search...</h3>
-            <p>Notice Type: {{filterType}}</p>
-            {{#if filterPlace}}<p>Location: {{filterPlace.NAME1}}</p>{{/if}}
-            <p>Please enter your email address: {{input value=userEmail placeHolder="Your email" }}</p>
-            {{#if userEmail}}
-                <button class="btn" {{action "notifyMeSubmit"}}>Register</button>
-            {{/if}}
-        </div>
-    {{/if}}
+
+    {{#ui/fullscreen-popup visible=notifyMeVisible classes="stat-notices__notify-me-popup"}}
+        <h3 class="-gamma">Your current search...</h3>
+        <p>Notice Type: {{filterType}}</p>
+        {{#if filterPlace}}<p>Location: {{filterPlace.NAME1}}</p>{{/if}}
+        <p>Please enter your email address: {{input value=userEmail placeHolder="Your email" }}</p>
+        {{#if userEmail}}
+            <button class="btn" {{action "notifyMeSubmit"}}>Register</button>
+        {{/if}}
+    {{/ui/fullscreen-popup}}
+
 
     <section class="list__section -notices">
         <div class="cf"></div>

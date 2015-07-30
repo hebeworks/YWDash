@@ -43,8 +43,8 @@ export default DefaultStory.extend({
 		this.sendGoogleTrackingEvent('','StatNoticeSearch','Filter',this.get('filterType'));
 		
 		var query = {};
-		if(this.get('filterType') != null && this.get('filterType.length') > 0) {
-			query.type = this.get('filterType')
+		if(this.get('filterType') != null && this.get('filterType') != "All" && this.get('filterType.length') > 0) {
+			query.type = this.get('filterType');
 		}
 		
 		if(this.get('location') != null) {
@@ -86,7 +86,7 @@ export default DefaultStory.extend({
 			
 	}.observes('filterType', 'location'),
 
-	filterTypeValue: null,
+	filterTypeValue: "All",
     filterType: Ember.computed("filterType", {
 		get: function() {
 			console.log('getting filterTypeValue: ' + this.get('filterTypeValue'));
@@ -156,10 +156,16 @@ export default DefaultStory.extend({
 				email: this.get('userEmail'),
 				type: this.get('filterType'),
 				lat: this.get('location.lat'),
-				lng: this.get('location.lng')
+				lng: this.get('location.lng'),
+				place: this.get('filterPlace.NAME1')
 			};
 			
 			// Todo: submit registration to API
+			debugger;
+			$.post("http://localhost:8080/api/notifications", currentFilter, function(result){
+			// $.post("http://statnotices.azurewebsites.net/api/notifications", currentFilter, function(result){
+		        debugger;
+		    });
 			
 			console.log(currentFilter);
 		}

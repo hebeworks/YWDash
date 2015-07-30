@@ -1,0 +1,7 @@
+{{#if visible}}
+	<div {{action "close"}} class="fullscreen-popup__background"></div>
+	<div class="fullscreen-popup {{classes}}">
+		<button class="btn -close" {{action "close"}}>x</button>
+		{{yield}}
+	</div>
+{{/if}}

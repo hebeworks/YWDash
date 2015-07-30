@@ -50,16 +50,41 @@
 			margin: {
 				bottom: 0px;
 			}
+			
+			.btn {
+				&[data-btn-type="featured"] {
+					&.All {
+						@extend .-red;
+					}
+				}
+				&[data-btn-type="planning"] {
+					&.Planning {
+						@extend .-red;
+					}
+				}
+				&[data-btn-type="licensing"] {
+					&.Licensing {
+						@extend .-red;
+					}
+				}
+			}
 		}
 	}
 		.stat-notices__inner {
 			
 		}
 		
+		.stat-notices__notify-me-popup {
+			// fullscreen-popup
+		}
+		
 		.stat-notices__filter-place-search {
 			display: inline-block;
 			min-width: 250px;
-			margin-left:15px;
+			margin: {
+				left:15px;
+				right:15px;
+			}
 			
 			.select2-container {
 				margin: {
@@ -69,6 +94,12 @@
 				a.select2-default {
 				// a.select2-choice.select2-default {
 					height:40px;
+				}
+				
+				.select2-choice .select2-arrow {
+					background: {
+						color:transparent;
+					}
 				}
 			}
 		}
