@@ -5,7 +5,7 @@ export default DS.Model.extend({
   reference: DS.attr(),  // PREM/03615/001",
   proposal: DS.attr(),  // Notice of an application for the grant of a premises licence",
   type: DS.attr(),  // Licensing",
-  publicationdate: DS.attr('date'),  // 08/05/2015",
+  publicationDate: DS.attr('date'),  // 08/05/2015",
   legislationTitle: DS.attr(),  // Licensing Act 2003",
   legislationSection: DS.attr(),  // 17",
   legislationSubSec1: DS.attr(),  // 3",
@@ -64,8 +64,8 @@ export default DS.Model.extend({
 
 //  publicationDate: function () {
 //    debugger;
-//    return moment(this.get('publicationdate')).calendar();
-//  }.property('publicationdate')
+//    return moment(this.get('publicationDate')).calendar();
+//  }.property('publicationDate')
 
 
 

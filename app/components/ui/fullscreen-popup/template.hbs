@@ -1,7 +1,7 @@
 {{#if visible}}
 	<div {{action "close"}} class="fullscreen-popup__background"></div>
 	<div class="fullscreen-popup {{classes}}">
-		<button class="btn -close" {{action "close"}}>x</button>
+		<button class="svg-icon-close-circular btn -close" {{action "close"}} data-grunticon-embed></button>
 		{{yield}}
 	</div>
 {{/if}}

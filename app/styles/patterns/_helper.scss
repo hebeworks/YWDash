@@ -30,15 +30,31 @@
     
 .-pad-top {
     padding-top: 10px;
+    
+    &.-pad-double {
+        padding-top: 20px;
+    }
 }
 .-pad-right {
     padding-right: 10px;
+
+    &.-pad-double {
+        padding-right: 20px;
+    }
 }
 .-pad-bottom {
     padding-bottom: 10px;
+
+    &.-pad-double {
+        padding-bottom: 20px;
+    }
 }
 .-pad-left {
     padding-left: 10px;
+
+    &.-pad-double {
+        padding-left: 20px;
+    }
 }
 .-pad-all {
     @extend .-pad-top;

@@ -1,6 +1,8 @@
 import DefaultStory from '../stories/story-types/default-story/component'
-export default DefaultStory.extend({
+import Config from './../../config/environment';
 
+export default DefaultStory.extend({
+	statnoticeURL: Config.APP.statnoticeURL,
 	currentFilter: {},
 	
 	filterPlace:null,
@@ -21,8 +23,8 @@ export default DefaultStory.extend({
 	    // }
 		if(this.get('filterPlace') != null) {
 			var location = this.get('filterPlace.location.coordinates');
-			var lat = location[0];
-			var lng = location[1];
+			var lat = location[1];
+			var lng = location[0];
 			
 			location = { 
 				lat: lat,
@@ -102,7 +104,7 @@ export default DefaultStory.extend({
 		findPlaces: function(query, deferred) {
 			var obj = this;
 			if(query != null && query.term != null && query.term.length > 3) {
-				var url = 'http://statnotices.azurewebsites.net/api/places?searchTerm='+query.term;
+				var url = obj.get('statnoticeURL') + '/api/places?searchTerm='+query.term;
 				// console.log(url);
 				this.getData(url)
 			        .then(
@@ -127,6 +129,7 @@ export default DefaultStory.extend({
 			this.set('notifyMeVisible', true);
 		},
 		notifyMeSubmit: function() {
+			var obj = this;
 			var currentFilter = {
 				email: this.get('userEmail'),
 				type: this.get('filterType'),
@@ -136,10 +139,14 @@ export default DefaultStory.extend({
 			};
 			
 			// Todo: submit registration to API
-			debugger;
-			$.post("http://localhost:8080/api/notifications", currentFilter, function(result){
+			$.post(obj.get('statnoticeURL') + "/api/notifications", currentFilter, function(result){
 			// $.post("http://statnotices.azurewebsites.net/api/notifications", currentFilter, function(result){
-		        debugger;
+				console.log('Notification response' + result);
+				if(result.saved) {
+					obj.set('notifyMeVisible',false);
+				} else {
+					alert('Sorry there was a problem saving your notification, please try again or contact simon@hebeworks.com if the problem persists.');
+				}
 		    });
 			
 			console.log(currentFilter);

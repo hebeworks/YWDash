@@ -23,21 +23,38 @@
         </div>
         
         {{#if filterPlace}}
-            <button class="btn -grey" data-btn-type="location" {{action "clearPlace"}}>X {{filterPlace.NAME1}}</button>
+            <button class="btn -selected -toggable -on" data-btn-type="location" {{action "clearPlace"}}>{{filterPlace.NAME1}}</button>
         {{/if}}
         
-        <button class="btn -blue" {{action "notifyMe"}}>Notify Me</button>
+        <button class="btn -red -right" {{action "notifyMe"}}>Notify Me</button>
     </div>
 
 
     {{#ui/fullscreen-popup visible=notifyMeVisible classes="stat-notices__notify-me-popup"}}
-        <h3 class="-gamma">Your current search...</h3>
-        <p>Notice Type: {{filterType}}</p>
-        {{#if filterPlace}}<p>Location: {{filterPlace.NAME1}}</p>{{/if}}
-        <p>Please enter your email address: {{input value=userEmail placeHolder="Your email" }}</p>
-        {{#if userEmail}}
-            <button class="btn" {{action "notifyMeSubmit"}}>Register</button>
+        <h2 class="-alpha">Notify me</h2>
+        <div class="dotted-area -dark -top -bottom -pad-double -pad-top -pad-bottom">
+            You can recieve email notifications about new and exsisting Staturtory notices in your area. Please check that the information you wish to recieve is correct and enter your email address.
+        </div>
+        <div class="dotted-area -dark -bottom -pad-double -pad-top -pad-bottom">
+            <span class="label">Notice Type:</span> 
+            <button class="btn -selected -inactive {{statnotice-type-icon filterType}}">{{filterType}}</button>
+        </div>
+        {{#if filterPlace}}
+            <div class="dotted-area -dark -bottom -pad-double -pad-top -pad-bottom">
+               <span class="label">Location:</span>
+               <button class="btn -selected -inactive">{{filterPlace.NAME1}}</button>
+            </div>
         {{/if}}
+        <div class="dotted-area -dark -bottom -pad-double -pad-top -pad-bottom">
+            <span class="label">Please enter your email address:</span>
+            {{input value=userEmail placeHolder="Your email" }}
+        </div>
+        
+        <div class="btn-list -borderless -pad-double -pad-top -pad-bottom">
+            {{#if userEmail}}
+                <button class="btn -full -red -full" {{action "notifyMeSubmit"}}>Register</button>
+            {{/if}}
+        </div>
     {{/ui/fullscreen-popup}}
 
 
@@ -48,7 +65,7 @@
             <h2 class="-pad-top">Sorry there aren't any notices to show you at the moment. Please try another filter above or come back soon.</h2>
             {{/unless}}
 			{{#each item in items}}
-            <li class="list__row dotted-area -bottom -dark -pad-top">
+            <li class="list__row dotted-area -dark -bottom -dark -pad-top">
                 <div class="list-item">
                     <h2 class="list-item__summary" title="">
                         <span class="v-align--middle">
@@ -59,10 +76,10 @@
                         <div class="btn -white -inactive">
                             <span class="v-align--middle -pad-left -pad-right">
                                 <span class="-delta">Publication date:</span>
-                                <h2 class="float--right">{{format-date "DD/MM/YYYY" item.publicationdate}}</h2>
+                                <h2 class="float--right">{{format-date "DD/MM/YYYY" item.publicationDate}}</h2>
                             </span>
                         </div>
-                        <div class="btn -dark -inactive svg-stat-notices-icon-planning">
+                        <div class="btn -dark -inactive {{statnotice-type-icon item.type}}">
                             <span class="v-align--middle text--center">
                                 {{item.type}}
                             </span>

@@ -17,6 +17,8 @@ module.exports = function (environment) {
       // Here you can pass flags/options to your application instance
       // when it is created
       dataMillUrl: 'http://api.leedsdatamill.org/',
+      statnoticeURL: 'http://statnotices-preview.azurewebsites.net', // PREVIEW 
+	    // statnoticeURL: 'http://statnotices.azurewebsites.net', // LIVE 
       googleMapStyles: {
         default: [
           {
@@ -149,6 +151,9 @@ module.exports = function (environment) {
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
     ENV.contentSecurityPolicyHeader = 'Disabled-Content-Security-Policy'
+    ENV.APP.statnoticeURL = 'http://localhost:8080'; // DEV
+      // ENV.APP.statnoticeURL =  'http://statnotices-preview.azurewebsites.net'; // PREVIEW 
+
   }
 
   if (environment === 'test') {
