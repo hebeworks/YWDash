@@ -1,5 +1,5 @@
 /* -- Bourbon -- */
-@import "../../bower_components/bourbon/dist/bourbon";
+@import "../../bower_components/bourbon/app/assets/stylesheets/bourbon";
 
 /* -- Breakpoint SASS - https://github.com/at-import/breakpoint -- */
 @import '../../bower_components/breakpoint-sass/stylesheets/breakpoint';
@@ -39,6 +39,7 @@
 @import "patterns/google_maps";
 @import "patterns/bordered_area";
 @import "patterns/lists";
+@import "patterns/forms";
 
 
 /* -- Components -- */
@@ -48,6 +49,7 @@
 @import "components/story-meta";
 @import "components/holding_page";
 @import "components/stat-notices";
+@import "components/ui";
 
 // Stories 
 @import "components/stories/leeds-inspired";

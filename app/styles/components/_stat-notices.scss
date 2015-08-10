@@ -7,6 +7,20 @@
 		left:40px;
 	}
 	overflow-y: scroll;
+	
+	&.-intro {
+		top:0px;
+		text-align: center;
+		color: $dark-grey;
+		
+		img {
+			width: 100%;
+			margin: {
+				top:1em;
+				bottom:2em;
+			}
+		}
+	}
 }
  
 	.-stat-notices { 
@@ -50,12 +64,89 @@
 			margin: {
 				bottom: 0px;
 			}
+			
+			.btn {
+				&[data-btn-type="featured"] {
+					&.All {
+						@extend .-selected;
+					}
+				}
+				&[data-btn-type="planning"] {
+					&.Planning {
+						@extend .-selected;
+					}
+				}
+				&[data-btn-type="licensing"] {
+					&.Licensing {
+						@extend .-selected;
+					}
+				}
+			}
 		}
 	}
 		.stat-notices__inner {
 			
 		}
 		
+		.stat-notices__notify-me-popup {
+			// fullscreen-popup
+			.label {
+				display: inline-block;
+				min-width: 10em;
+				margin-right:10px;
+			}
+			
+			input {
+				width:30em;
+			} 
+			
+			
+			.btn {
+				&.svg-stat-notices-icon-planning, &.svg-stat-notices-icon-licensing {
+					padding: {
+						left:3em;
+					}
+					background: {
+						position: 0.4em center;
+						size: 30% 70%;
+					}
+				}
+			}
+		}
+		
+		.stat-notices__filter-place-search {
+			display: inline-block;
+			min-width: 250px;
+			margin: {
+				left:15px;
+				right:15px;
+			}
+			
+			.select2-container {
+				margin: {
+					bottom:0px;
+				}
+				
+				a.select2-default {
+				// a.select2-choice.select2-default {
+					height:40px;
+				}
+				
+				.select2-choice 
+				{
+					.select2-arrow {
+						background: {
+							color:transparent;
+						}
+					}
+					
+					.select2-chosen {
+						font-size: 1rem;
+						margin-top: 8px;
+					}
+				}
+			}
+		}
 		
 		.stat-notice {
 			
@@ -283,7 +374,7 @@
 							height: 17px;
 						}
 						background: {
-						color: transparent;
+							color: transparent;
 						}
 						@extend .solid-area.-all;
 						@extend .solid-area.-dark;
@@ -332,9 +423,14 @@
 						width:50%;
 						
 						&.btn-list {
+							margin: {
+								top:0;
+							}
+							
 							.btn {
 								float:left;
 								width: 25%;
+								height:50px;
 								padding: {
 									left:0.5em;
 									right:0.5em;
@@ -342,9 +438,6 @@
 								}
 								margin: {
 									top: 0.4em;
-								}
-								h2 {
-									padding-top: 0.2rem
 								}
 
 								@include breakpoint(max-width 1100px) {
@@ -367,7 +460,7 @@
 									}
 								}			
 								
-								&.svg-stat-notices-icon-planning {
+								&.svg-stat-notices-icon-planning, &.svg-stat-notices-icon-licensing {
 									background-position: 1em center;
 									background-size: 15% 60%;
 									padding: {

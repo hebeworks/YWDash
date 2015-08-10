@@ -32,6 +32,8 @@
 
 .svg-gallery { background-image: url('png/gallery.png'); background-repeat: no-repeat; }
 
+.svg-hebe-logo { background-image: url('png/hebe-logo.png'); background-repeat: no-repeat; }
+
 .svg-help { background-image: url('png/help.png'); background-repeat: no-repeat; }
 
 .svg-house-price-icon-detached { background-image: url('png/house-price-icon-detached.png'); background-repeat: no-repeat; }
@@ -41,6 +43,8 @@
 .svg-house-price-icon-semi { background-image: url('png/house-price-icon-semi.png'); background-repeat: no-repeat; }
 
 .svg-house-price-icon-terrace { background-image: url('png/house-price-icon-terrace.png'); background-repeat: no-repeat; }
+
+.svg-icon-close-circular { background-image: url('png/icon-close-circular.png'); background-repeat: no-repeat; }
 
 .svg-logo-thin { background-image: url('png/logo-thin.png'); background-repeat: no-repeat; }
 
@@ -69,6 +73,8 @@
 .svg-stat-notice-icon-location-pin { background-image: url('png/stat-notice-icon-location-pin.png'); background-repeat: no-repeat; }
 
 .svg-stat-notices-icon-email { background-image: url('png/stat-notices-icon-email.png'); background-repeat: no-repeat; }
+
+.svg-stat-notices-icon-licensing { background-image: url('png/stat-notices-icon-licensing.png'); background-repeat: no-repeat; }
 
 .svg-stat-notices-icon-phone { background-image: url('png/stat-notices-icon-phone.png'); background-repeat: no-repeat; }
 
