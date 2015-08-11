@@ -1,7 +1,7 @@
 <div class="stat-notice">
 	<div class="stat-notice__section -two-thirds">
 		<div class="btn-list -borderless -pad-top-no">
-	    <div class="btn -dark -inactive svg-stat-notices-icon-planning float--left">
+	    <div class="btn -white -inactive svg-stat-notices-icon-planning-black float--left">
 		    <span class="v-align--middle text--center">
 		        Planning
 		    </span>
@@ -56,13 +56,15 @@
 					<p>{{model.signOffDetails}}</p>
 				</div>
 			</div>
+			<div class="cf">&nbsp;</div>
 		</div>
+		<div class="cf">&nbsp;</div>
 	</div>
 	<div class="stat-notice__section -one-third">
 		<div class="stat-notice__represent -pad-all">
 			<h2 class="-alpha -pad-top -pad-bottom">Make your voice heard</h2>
 			<h3 class="dotted-area -top -bottom -light -pad-top -pad-bottom">Use the link below to access Public Access, a Leeds City Council service that provides a simple way for you to make an official response to this application. The deadline for representations is {{{model.objectionDeadlineTime}}} on {{{format-date "DD/MM/YYYY" model.objectionDeadlineDate}}}.</h3>
-			<div class="btn-list -borderless">
+			<div class="btn-list -borderless">stat
 				<div class="-pad-top"><a href="{{model.publicAccessURL}}" class="btn" target="_blank">Visit Public Access</a></div>
 			</div>
 		</div>
@@ -81,4 +83,6 @@
 		</div>
 	</div>
 	{{yield}}
+	<div class="cf">&nbsp;</div>
+	
 </div>
