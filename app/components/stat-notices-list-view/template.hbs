@@ -33,7 +33,9 @@
     {{#ui/fullscreen-popup visible=notifyMeVisible classes="stat-notices__notify-me-popup"}}
         <h2 class="-alpha">Notify me</h2>
         <div class="dotted-area -dark -top -bottom -pad-double -pad-top -pad-bottom">
-            You can recieve email notifications about new and exsisting Staturtory notices in your area. Please check that the information you wish to recieve is correct and enter your email address.
+            <p>If you enter your email address and click submit you will be emailed each time new notices are added that match the search type{{#if filterPlace}} and place{{/if}} below.</p> 
+        	{{#if filterPlace}}<p>To prevent unwanted notifications, we will only send them to you if they're within 3 miles of your chosen place.</p>{{/if}}
+            <p>We appreciate your interest in this new service developed by Leeds City Council and Hebe Works, and developed with support from DCLG.</p>
         </div>
         <div class="dotted-area -dark -bottom -pad-double -pad-top -pad-bottom">
             <span class="label">Notice Type:</span> 
@@ -76,7 +78,7 @@
                         <div class="btn -white -inactive">
                             <span class="v-align--middle -pad-left -pad-right">
                                 <span class="-delta">Publication date:</span>
-                                <h2 class="float--right">{{format-date "DD/MM/YYYY" item.publicationDate}}</h2>
+                                <span class="-beta"> {{format-date "DD/MM/YYYY" item.publicationDate}}</span>
                             </span>
                         </div>
                         <div class="btn -dark -inactive {{statnotice-type-icon item.type}}">
