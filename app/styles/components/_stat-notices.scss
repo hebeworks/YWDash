@@ -155,12 +155,12 @@
 				float:left;
 				
 				margin: {
-					top:10px;
+					top:18px;
 				}
 				
 				&:first-of-type {
 					margin: {
-						right:10px;
+						right:18px;
 					}
 				}
 					
@@ -170,35 +170,35 @@
 				}
 				
 				&.-half {
-					width:calc(50% - 10px);
+					width:calc(50% - 18px);
 					@include media("<=phoneLarge") {
 						width: 100%;
 					}
 				}
 				
 				&.-two-thirds {
-					width:calc(66% - 10px);
+					width:calc(66% - 18px);
 					@include media("<tablet") {
 						width: 100%;
 					}
 				}
 				
 				&.-one-third {
-					width:calc(33% - 10px);
+					width:calc(33%);
 					@include media(">tablet") {
 						float: right;
 					}
 					@include media(">phoneLarge", "<tablet") {
-						width: calc(50% - 10px);
+						width: calc(50% - 18px);
 						margin: {
-							right: 10px;
-							bottom: 10px;
+							right: 18px;
+							bottom: 18px;
 						}
 					}
 					@include media("<=phoneLarge") {
 						width: 100%;
 						margin: {
-							bottom: 10px;
+							bottom: 18px;
 						}
 					}
 				}
@@ -381,7 +381,7 @@
 						@extend .solid-area.-dark;
 						@extend .solid-area.-rounded;
 					}
-					&.svg-stat-notices-icon-planning-black {
+					&.svg-stat-notices-icon-planning-black, &.svg-stat-notices-icon-licensing-black {
 						background-position: 1em center;
 						background-size: 15% 60%;
 						padding: {
