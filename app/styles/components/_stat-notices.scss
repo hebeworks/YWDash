@@ -3,12 +3,13 @@
 	padding: {
 		top:30px;
 		right:40px;
-		bottom:100px;
+		bottom:10px;
 		left:40px;
 	}
 	overflow-y: scroll;
 	
 	&.-intro {
+		@extend .-full;
 		top:0px;
 		text-align: center;
 		color: $dark-grey;
@@ -483,6 +484,11 @@
 						height:50px;
 						padding: {
 							right: 20px;
+						}
+						
+						.v-align--middle {
+							overflow:hidden;
+							max-height: 4.4em;
 						}
 					}
 				}

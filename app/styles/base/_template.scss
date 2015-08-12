@@ -134,22 +134,15 @@ a {
 
 .site-body,
 %site-body {
-	width: 100%;
-	// position: absolute;
-	/*
-	height: 100%; 	//calc(100% - 100px);
-	top:100px; 		// IE10
-					//IE10	margin: {
-					//		top: 100px;
-					//	}
-	@include cf;
-	*/
-	
-	
 	position: relative;
+	width: 100%;
 	@include calc(height, "100% - 100px");
 	top:100px;
-
+	
+	&.-full {
+		top:0px;
+		height:100%;
+	}
 	
 	background: {
 		color: #f1f1f1; // temporary
