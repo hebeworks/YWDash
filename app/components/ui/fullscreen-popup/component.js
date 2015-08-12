@@ -53,7 +53,7 @@ export default Ember.Component.extend({
 					marginTop: '-12em'
 				});
 			}
-		}, 2000);
+		}, 200);
 	},
 	
 	actions: {
