@@ -1,6 +1,6 @@
 {{#if visible}}
 	<div {{action "close"}} class="fullscreen-popup__background"></div>
-	<div class="fullscreen-popup {{classes}}">
+	<div class="fullscreen-popup {{classes}} {{if isResponsive '--responsive' ''}}">
 		<button class="svg-icon-close-circular btn -close" {{action "close"}} data-grunticon-embed></button>
 		{{yield}}
 	</div>

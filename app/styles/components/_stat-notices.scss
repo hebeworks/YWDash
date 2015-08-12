@@ -82,6 +82,14 @@
 						@extend .-selected;
 					}
 				}
+				
+				@include breakpoint(max-width 510px) {
+					width: 100%;
+					margin: {
+						left: 0;
+						right:0;
+					}
+				}
 			}
 		}
 	}
@@ -121,6 +129,11 @@
 			margin: {
 				left:15px;
 				right:15px;
+			}
+			
+			@include breakpoint(max-width 510px) {
+				width: 100%;
+				margin-left: 0;
 			}
 			
 			.select2-container {

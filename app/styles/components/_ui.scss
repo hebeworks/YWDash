@@ -33,6 +33,16 @@
 			stroke:$black;
 		}
 	}
+	
+	&.--responsive {
+		width:90%;
+		max-height:90%;
+		overflow:auto;
+		margin: {
+			left:-45%;
+			top:-45%;
+		}
+	}
 }
 
 .fullscreen-popup__background {
