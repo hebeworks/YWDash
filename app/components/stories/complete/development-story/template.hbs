@@ -12,7 +12,7 @@
             {{#stories/story-slide}}
                 <main class="development-story">
                     <h2 class="heading">{{item.name}}</h2>
-                        <p>{{#each field in item.fields}}{{field}} ||{{/each}}</p>
+                        <p class="story__para">{{#each field in item.fields}}{{field}} ||{{/each}}</p>
                         <table>
                             <thead>
                                 {{#each field in item.fields}}

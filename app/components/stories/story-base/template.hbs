@@ -31,14 +31,16 @@
                 {{ui/button-link href=feedbackEmail type="mail" title="Contact Author" classNames="btn -blue -half"}}
             </div>
             
-            <div class="">
-                <p><strong>Description</strong></p>
-                <p>{{description}}</p>
-            </div><br>
+            {{#if description}}
+                <div class="">
+                    <h2 class="beta bold half-margin-bottom">Description</h2>
+                    <p class="story__para">{{description}}</p>
+                </div><br />
+            {{/if}}
             {{#if license}}
                 <div class="">
-                    <p><strong>Licence / Attribution</strong></p>
-                    <p>{{{license}}}</p>
+                    <h2 class="beta bold half-margin-bottom">Licence / Attribution</h2>
+                    <p class="story__para">{{{license}}}</p>
                 </div>
             {{/if}}
         </div>

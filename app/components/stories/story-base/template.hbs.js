@@ -6,7 +6,7 @@
   if (stack1 != null) { buffer += stack1; }
   return buffer + "\r\n        <div class=\"story__content\">\r\n            <header>\r\n                <h2 class=\"heading -gamma\">"
     + escapeExpression(((helper = (helper = helpers.title || (depth0 != null ? depth0.title : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"title","hash":{},"data":data}) : helper)))
-    + "</h2>\r\n                <h3 class=\"heading -delta\">"
+    + "</h2>\r\n                <h3 class=\"heading beta\">"
     + escapeExpression(((helper = (helper = helpers.subTitle || (depth0 != null ? depth0.subTitle : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"subTitle","hash":{},"data":data}) : helper)))
     + "</h3>\r\n            </header>\r\n        "
     + escapeExpression(((helper = (helper = helpers['yield'] || (depth0 != null ? depth0['yield'] : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"yield","hash":{},"data":data}) : helper)))

@@ -4,7 +4,7 @@
         {{#stories/story-slider loaded=loaded}}
             {{#stories/story-slide}}
                 <div class="stat-notices-recent__welcome">
-                    <h3 class="-delta">StatNoticesRecent</h3>
+                    <h3 class="beta">StatNoticesRecent</h3>
                     {{#link-to 'statnotices'}}<div>Open Stat Notices Route</div>{{/link-to}}
                     <div class="js-open-statnotices" {{action "switchToStatNotices"}}>Open Stat Notices</div>
                 </div>                   
@@ -12,8 +12,8 @@
             {{#each item in items}}
                 {{#stories/story-slide}}
                     <div class="stat-notices-recent__item">
-                        <p>This page's context item was loaded from Leeds Data Mill</p>
-                        <p>Some sample object properties...</p>
+                        <p class="story__para">This page's context item was loaded from Leeds Data Mill</p>
+                        <p class="story__para">Some sample object properties...</p>
                         <ul>
                             <li>street: {{item.street}}</li>
                             <li>lat: {{item.lat}}</li>

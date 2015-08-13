@@ -17,9 +17,9 @@
         {{#stories/story-slide}}
             <div class="tweets">
                 {{#each tweet in tweets}}
-                    <div class="dotted-area -pad-top -pad-bottom -top tweet">
+                    <div class="dotted-area pad-top pad-bottom -top tweet">
                         <h2 class="beta"><a href="{{tweet.user_url}}" target="_blank">{{tweet.user_name}}</a> <a href="https://twitter.com/leedsdatamill" target="_blank"><span class="tweet__handle">@{{tweet.user_name}}</span></a></h2>
-                        <p>{{tweet.text}} {{!--<a href="{{tweet.user_url}}" target="_blank">{{tweet.user_url}}</a>--}}</p>
+                        <p class="story__para">{{tweet.text}} {{!--<a href="{{tweet.user_url}}" target="_blank">{{tweet.user_url}}</a>--}}</p>
                         <time class="tweet__time">{{tweet.friendly_date}}</time>
                     </div>
                 {{/each}}
@@ -36,7 +36,7 @@
             <div class="twitter-profile-details">
                 <h2 class="-beta">Leeds Data Mill</h2>
                 <h3 class="beta">@LeedsDataMill</h3>
-                <p>We are the Open Data Platform for Leeds. Follow us for updates on events, research and stories about the city.</p>
+                <p class="story__para">We are the Open Data Platform for Leeds. Follow us for updates on events, research and stories about the city.</p>
             </div>
         {{/stories/story-slide}}
       {{/stories/story-slider}}
