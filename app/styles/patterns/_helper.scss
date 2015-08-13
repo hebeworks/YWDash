@@ -35,6 +35,9 @@
         padding-top: 20px;
     }
 }
+.-half-pad-top {
+    padding-top: 5px;
+}
 .-pad-right {
     padding-right: 10px;
 
@@ -48,6 +51,9 @@
     &.-pad-double {
         padding-bottom: 20px;
     }
+}
+.-half-pad-bottom {
+    padding-bottom: 5px;
 }
 .-pad-left {
     padding-left: 10px;
