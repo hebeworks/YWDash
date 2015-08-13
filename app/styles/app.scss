@@ -20,6 +20,9 @@
 /* -- Base -- */
 @import "base/template";
 
+/* -- Stories, whilst components, contains generic styles so included earlier -- */
+@import "components/story";
+
 /* -- Patterns -- */
 @import "patterns/custom_fonts";
 @import "patterns/headings";
@@ -45,10 +48,10 @@
 /* -- Components -- */
 @import "components/drawer";
 @import "components/canvas";
-@import "components/story";
 @import "components/story-meta";
 @import "components/holding_page";
 @import "components/stat-notices";
+@import "components/number_stat";
 @import "components/ui";
 
 // Stories 

@@ -18,7 +18,7 @@
 		}
 	}
 	p {
-		font-size: em(12px);
+		font-size: rem(12px);
 		line-height: 1.5;
 		margin-bottom: 0;
 		~ p {
@@ -31,10 +31,10 @@
 }
 	.tweet__handle {
 		color: #c5c5c5;
-		font-size: em(14px);
+		font-size: rem(14px);
 	}
 	.tweet__time {
-		font-size: em(12px);
+		font-size: rem(12px);
 		position: absolute;
 		top: 5px;
 		right: 5px;

@@ -79,6 +79,7 @@
 	.circle-indicator-stat {
 		width: 100%;
 		float: left;
+
 		.svg-up-down-arrow {
 			width: 12px;
 			height: 4px;
@@ -104,9 +105,12 @@
 			}
 		}
 	}
+		.circle-indicator-stat__text {
+			font-size: rem(10px);
+		}
 		.circle-indicator-stat__stat {
 			font: {
-				size: 15px;
+				size: rem(15px);
 				weight: bold;
 			}
 			display: inline-block;

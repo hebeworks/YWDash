@@ -33,7 +33,7 @@
     {{#ui/fullscreen-popup visible=notifyMeVisible classes="stat-notices__notify-me-popup"}}
         <h2 class="-alpha">Notify me</h2>
         <div class="dotted-area -dark -top -bottom -pad-double -pad-top -pad-bottom">
-            You can recieve email notifications about new and exsisting Staturtory notices in your area. Please check that the information you wish to recieve is correct and enter your email address.
+            <p class="story__para">You can recieve email notifications about new and exsisting Staturtory notices in your area. Please check that the information you wish to recieve is correct and enter your email address.</p>
         </div>
         <div class="dotted-area -dark -bottom -pad-double -pad-top -pad-bottom">
             <span class="label">Notice Type:</span> 
@@ -67,16 +67,16 @@
 			{{#each item in items}}
             <li class="list__row dotted-area -dark -bottom -dark -pad-top">
                 <div class="list-item">
-                    <h2 class="list-item__summary" title="">
+                    <p class="list-item__summary">
                         <span class="v-align--middle">
                             {{item.proposal}} at {{item.fullAddressSingleLine}}.
                         </span>
-                    </h2>
+                    </p>
                     <div class="btn-list -borderless">
                         <div class="btn -white -inactive">
                             <span class="v-align--middle -pad-left -pad-right">
                                 <span class="-delta">Publication date:</span>
-                                <h2 class="float--right">{{format-date "DD/MM/YYYY" item.publicationDate}}</h2>
+                                <time>{{format-date "DD/MM/YYYY" item.publicationDate}}</time>
                             </span>
                         </div>
                         <div class="btn -dark -inactive {{statnotice-type-icon item.type}}">
