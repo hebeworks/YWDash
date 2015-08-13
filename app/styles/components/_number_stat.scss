@@ -1,5 +1,11 @@
 .number-stat {
 
+    &.-orange {
+        color: $orange;
+    }
+    &.-lime {
+        color: $lime;
+    }
     &.-medium {
         font: {
             size: rem(20px);
