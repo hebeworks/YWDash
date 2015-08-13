@@ -28,6 +28,10 @@
 	position: relative;
 }
 
+.uppercase {
+    text-transform: uppercase;
+}
+
 .bold {
     font-weight: bold;
 }
@@ -90,6 +94,12 @@
 }
 
 /*** MARGIN ***/
+.margin-top {
+    margin-top: $helper-spacing;
+}
+.margin-bottom {
+    margin-bottom: $helper-spacing;
+}
 .half-margin-top {
     margin-top: $helper-spacing / 2;
 }

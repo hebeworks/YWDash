@@ -204,6 +204,20 @@
 				}
 			}
 		}
+		.select2-container {
+			.select2-choice {
+				background-color: $black;
+				border: solid 1px #8e8e8e;
+				.select2-chosen {
+					background-color: $black;
+					color: $white;
+				}
+				.select2-arrow {
+					background-color: $black;
+					color: $white;
+				}
+			}
+		}
 	}
 	&.-dark-grey {
 		.story__card {

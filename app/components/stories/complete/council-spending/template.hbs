@@ -15,43 +15,46 @@
     author="Simon Zimmerman"
 }}
 
-    <main class="river-levels">
-{{!--     	{{
-            select-2
-            content=stations
-            value=selectedStation
-            optionLabelPath="name"
-            placeholder="Select Measurment Station"
-        	}} --}}
-            {{!-- optionValuePath="id" --}}
-
-        <div class="river-levels-gaugeChart">
-            {{stories/story-liquid-gauge-chart value=latestReading.value metres=true max=typicalRangeHigh}}
-			<span class="info-label">No risk of flooding</span>
+    <main class="council-spending">
+        <div class="select2-wrapper -council-spending-directorate">
+            {{
+                select-2
+                content=items
+                value=selectedItem
+                optionLabelPath="directorate"
+                placeholder="Default value here"
+            }}
+        </div><!--
+        --><div class="select2-wrapper -council-spending-date">
+            {{
+                select-2
+                content=items
+                value=selectedItem
+                optionLabelPath="directorate"
+                placeholder="Date"
+            }}
         </div>
-        <div class="river-levels-columnChart">
-        	<div class="river-levels-columnChart-container">
-        		<div class="river-levels-columnChart-container--header"></div>
-        		<div class="river-levels-columnChart-container-inner">
-        			<div class="river-levels-columnChart-container-inner--label-light">Highest</div>
-	        		<div class="river-levels-columnChart-container-inner--line"></div>
-	        		<div class="river-levels-columnChart-container-inner--value-light">{{maxOnRecord.value}}m</div>
-	        		<div class="river-levels-columnChart-container-inner--maxLevel"></div>
-	        		<div class="river-levels-columnChart-container-inner--label">5yr High</div>
-	        		<div class="river-levels-columnChart-container-inner--line"></div>
-	        		<div class="river-levels-columnChart-container-inner--value">{{highestRecent.value}}m</div>
-	        		<div class="river-levels-columnChart-container-inner--highestLevelRecent"></div>
-	        		<div class="river-levels-columnChart-container-inner--label">Flood Risk</div>
-	        		<div class="river-levels-columnChart-container-inner--line-floodRisk"></div>
-	        		<div class="river-levels-columnChart-container-inner--value">{{typicalRangeHigh}}m</div>
-	        		<div class="river-levels-columnChart-container-inner--typicalHighLevel"></div>
-	        		<div class="river-levels-columnChart-container-inner--label-light">Lowest</div>
-	        		<div class="river-levels-columnChart-container-inner--line"></div>
-	        		<div class="river-levels-columnChart-container-inner--value-light">{{minOnRecord.value}}m</div>
-	        		<div class="river-levels-columnChart-container-inner--lowestLevel"></div>
-        		</div>
-        		<div class="river-levels-columnChart-container--footer">0.00m</div>
-        	</div>
+        <div class="council-spending__circle-indicator">
+            <h2 class="gamma bold center uppercase margin-bottom">Total spend for directorate</h2>
+            <div class="circle-indicator -medium">
+                <div class="svg-circle-indicator -orange" data-grunticon-embed></div>
+                <div class="circle-indicator__inner">
+                    <div>
+                        <span class="number-stat">January<br /><span class="number-stat -green">&pound;8,473,704</span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="council-spending__circle-indicator">
+            <h2 class="gamma bold center uppercase margin-bottom">Vs. Total spend for month</h2>
+            <div class="circle-indicator -medium">
+                <div class="svg-circle-indicator -transparent" data-grunticon-embed></div>
+                <div class="circle-indicator__inner">
+                    <div>
+                        <span class="number-stat">January<br /><span class="number-stat -green">&pound;8,473,704</span></span>
+                    </div>
+                </div>
+            </div>
         </div>
     </main>
 {{/stories/story-base}}
