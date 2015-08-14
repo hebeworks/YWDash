@@ -190,13 +190,6 @@
 						}
 					}
 				}
-				.carousel-pager__numbers {
-					a.selected {
-						&:before {
-							background-color: #fff;
-						}
-					}
-				}
 		    .dotted-area {
 					border-color: $white;
 				}
@@ -360,6 +353,43 @@
 		.btn {
 			color: $lighter-blue;
 			background-color: $white;
+		}
+		.story__footer {
+			.pg-of {
+				color: $white;
+				opacity: .7;
+			}
+			.carousel-pager {
+				&__numbers {
+					a {
+						&:before {
+							background-color: #3783ac;
+						}
+						&.selected {
+							&:before {
+								background-color: $white;
+							}
+						}
+						&:hover {
+							&:before {
+								background-color: $white;
+							}
+						}
+					}
+				}
+				&__btn {
+					&.-prev {
+						&:before {
+							border-right-color: #3783ac;
+						}
+					}
+					&.-next {
+						&:before {
+							border-left-color: #3783ac;
+						}
+					}
+				}
+			}
 		}
 	}
 	&.-blue {
