@@ -1,13 +1,30 @@
 
-{{#stories/story-base title=title subTitle=subTitle color="-white" width="-w2" height="-h2" data-ss-colspan="2"}}
+{{#stories/story-base
+    title=title
+    subTitle=subTitle
+    color="-lighter-blue"
+    width="-w2"
+    height="-h2"
+    data-ss-colspan="2"
+}}
     <main class="stat-notices-recent">
         {{#stories/story-slider loaded=loaded}}
             {{#stories/story-slide}}
-                <div class="stat-notices-recent__welcome">
-                    <h3 class="beta">StatNoticesRecent</h3>
-                    {{#link-to 'statnotices'}}<div>Open Stat Notices Route</div>{{/link-to}}
-                    <div class="js-open-statnotices" {{action "switchToStatNotices"}}>Open Stat Notices</div>
-                </div>                   
+                <div class="dotted-area -top -bottom pad-top pad-bottom">
+                    <p class="story__para">Statutory notices are legally required public notices which inform residents of proposed changes about specific things.</p>
+                </div>
+                <ul class="dotted-area -bottom pad-top-half pad-bottom-half stat-notices-recent__notice-list">
+                    <li class="stat-notices-recent__notice-item">
+                        <div class="stat-notices-recent__figure">2</div>
+                        <span class="gamma helvbold block">Licensing</span>
+                    </li>
+                    <li class="stat-notices-recent__notice-item">
+                        <div class="stat-notices-recent__figure">4</div>
+                        <span class="gamma helvbold block">Planning</span>
+                    </li>
+                </ul><!--
+                {{#link-to 'statnotices'}}<div>Open Stat Notices Route</div>{{/link-to}}-->
+                <button class="btn js-open-statnotices" {{action "switchToStatNotices"}}>View Stat Notices</button>                   
             {{/stories/story-slide}}            
             {{#each item in items}}
                 {{#stories/story-slide}}

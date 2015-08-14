@@ -330,11 +330,11 @@
 			}
 		}
 	}
-	&.-light-blue {
+	&.-lighter-blue {
 		.story__card {
 			color: $white;
 			background: {
-				color: $light-blue;
+				color: $lighter-blue;
 			}
 		}
 		.story__inner .icon-cogs {
@@ -346,16 +346,20 @@
 		}
 		.select2-container {
 			.select2-choice, {
-				background-color: darken($light-blue,5);
+				background-color: darken($lighter-blue,5);
 				.select2-chosen {
-					background-color: darken($light-blue,5);
+					background-color: darken($lighter-blue,5);
 					color: $white;
 				}
 				.select2-arrow {
-					background-color: darken($light-blue,5);
+					background-color: darken($lighter-blue,5);
 					color: $white;
 				}
 			}
+		}
+		.btn {
+			color: $lighter-blue;
+			background-color: $white;
 		}
 	}
 	&.-blue {
