@@ -2,18 +2,8 @@
     .select2-wrapper {
         float: left;
         margin-bottom: 0;
-        &.-council-spending-directorate {
-            width: 198px;
-            padding-right: 5px;
-        }
-        &.-council-spending-date {
-            width: 91px;
-            padding-left: 5px;
-        }
     }
 }
     .council-spending__circle-indicator {
-        width: 50%;
-        float: left;
         text-align: center;
     }

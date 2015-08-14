@@ -35,6 +35,13 @@
 .bold {
     font-weight: bold;
 }
+.helvbold {
+    font-family: $helvneuebold;
+}
+
+.block {
+    display: block;
+}
 
 .body-text {
     > * {
@@ -53,7 +60,7 @@
         padding-top: $helper-spacing * 2;
     }
 }
-.-halfpad-top {
+.pad-top-half {
     padding-top: $helper-spacing / 2;
 }
 .pad-right {
@@ -70,7 +77,7 @@
         padding-bottom: $helper-spacing * 2;
     }
 }
-.-halfpad-bottom {
+.pad-bottom-half {
     padding-bottom: $helper-spacing / 2;
 }
 .pad-left {

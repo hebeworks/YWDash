@@ -16,46 +16,46 @@
 }}
 
     <main class="council-spending">
-        <div class="select2-wrapper -council-spending-directorate">
+        <div class="select2-wrapper -select2-wide">
             {{
                 select-2
                 content=items
                 value=selectedItem
                 optionLabelPath="directorate"
-                placeholder="Default value here"
+                placeholder="Directorate values"
             }}
         </div><!--
-        --><div class="select2-wrapper -council-spending-date">
+        --><div class="select2-wrapper -select2-small -select2-calendar">
             {{
                 select-2
                 content=items
                 value=selectedItem
-                optionLabelPath="directorate"
+                optionLabelPath="date"
                 placeholder="Date"
             }}
         </div>
-        <div class="council-spending__circle-indicator">
+        <div class="story__half council-spending__circle-indicator">
             <h2 class="gamma bold center uppercase margin-bottom">Total spend for directorate</h2>
             <div class="circle-indicator -medium">
                 <div class="svg-circle-indicator -orange" data-grunticon-embed></div>
-                <div class="circle-indicator__inner">
+                <div class="circle-indicator-ring -medium">
                     <div>
-                        <span class="gamma">January</span><br />
+                        <span class="gamma helvbold">January</span><br />
                         <span class="number-stat bold -orange">&pound;245,675</span>
-                        <span class="gamma">Budget</span><br />
-                        <span class="number-stat bold -orange">&pound;473,704</span>
+                        <span class="gamma helvbold">Budget</span><br />
+                        <span class="number-stat helvbold -orange">&pound;473,704</span>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="council-spending__circle-indicator">
+        <div class="story__half council-spending__circle-indicator">
             <h2 class="gamma bold center uppercase margin-bottom">Vs. Total spend<br />for month</h2>
             <div class="circle-indicator -medium">
                 <div class="svg-circle-indicator -transparent" data-grunticon-embed></div>
-                <div class="circle-indicator__inner">
+                <div class="circle-indicator-ring -medium">
                     <div>
-                        <span class="gamma">January</span><br />
-                        <span class="number-stat bold -lime">&pound;8,473,704</span>
+                        <span class="gamma helvbold">January</span><br />
+                        <span class="number-stat helvbold -lime">&pound;8,473,704</span>
                     </div>
                 </div>
             </div>

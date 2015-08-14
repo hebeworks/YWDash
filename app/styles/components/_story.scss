@@ -23,6 +23,7 @@
 	}
 	
 	.select2-container {
+		
 		.select2-arrow {
 			color: $black;
 			b {
@@ -329,6 +330,34 @@
 			}
 		}
 	}
+	&.-light-blue {
+		.story__card {
+			color: $white;
+			background: {
+				color: $light-blue;
+			}
+		}
+		.story__inner .icon-cogs {
+			fill: $white;
+			opacity: .3;
+			&:hover {
+				opacity: 1;
+			}
+		}
+		.select2-container {
+			.select2-choice, {
+				background-color: darken($light-blue,5);
+				.select2-chosen {
+					background-color: darken($light-blue,5);
+					color: $white;
+				}
+				.select2-arrow {
+					background-color: darken($light-blue,5);
+					color: $white;
+				}
+			}
+		}
+	}
 	&.-blue {
 		.story__card {
 			color: $white;
@@ -460,6 +489,28 @@
 		}
 	}
 }
+	.select2-wrapper {
+		&.-select2-wide {
+		    width: 198px;
+		    padding-right: 5px;
+		}
+		&.-select2-small {
+		    width: 91px;
+		    padding-left: 5px;
+		}
+		&.-select2-calendar {
+			.select2-container .select2-choice .select2-arrow {
+				@include svg--icon-calendar;
+				margin-top: 5px;
+			    margin-right: 7px;
+			    background-size: contain;
+
+				b {
+					background-image: none !important;
+				}
+			}
+		}
+	}
 	.story__para {
 		font-size: rem(11px);
 	}
@@ -606,6 +657,10 @@
 		            	size: em(12px);
 					}
 				}
+			}
+			.story__half {
+				width: 50%;
+				float: left;
 			}
 			.story__header {
 				.heading {
