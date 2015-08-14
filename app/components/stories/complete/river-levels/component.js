@@ -53,7 +53,21 @@ export default DefaultStory.extend({
         this.$(".river-levels-columnChart-container-inner--highestLevelRecent").height(heightHighestRecentString);
         var heightMaxString = heightMax.toString() + '%';
         this.$(".river-levels-columnChart-container-inner--maxLevel").height(heightMaxString);
-    }.observes("minOnRecord.value", "typicalRangeHigh", "maxOnRecord.value", "highestRecent")
+    }.observes("minOnRecord.value", "typicalRangeHigh", "maxOnRecord.value", "highestRecent"),
+
+    setFloodWarning: function () {
+        var obj = this;
+        var currentLevel = this.get("latestReading.value");
+        var typicalRangeHigh = this.get("typicalRangeHigh");
+        if (currentLevel > typicalRangeHigh) {
+            this.$(".info-label").css({"background-color": "#d0021b"});
+            this.$(".info-label").text("Risk of flooding");
+        }
+        else {
+            this.$(".info-label").css({"background-color": "#468ee5"});
+            this.$(".info-label").text("No risk of flooding");
+        }
+    }.observes("latestReading", "typicalRangeHigh")
 });
 
 
