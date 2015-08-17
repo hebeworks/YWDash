@@ -31,7 +31,7 @@
 
 
     {{#ui/fullscreen-popup visible=notifyMeVisible classes="stat-notices__notify-me-popup"}}
-        <h2 class="-alpha">Notify me</h2>
+        <h2 class="alpha">Notify me</h2>
         <div class="dotted-area -dark -top -bottom pad-double pad-top pad-bottom">
             <p>If you enter your email address and click submit you will be emailed each time new notices are added that match the search type{{#if filterPlace}} and place{{/if}} below.</p> 
         	{{#if filterPlace}}<p>To prevent unwanted notifications, we will only send them to you if they're within 3 miles of your chosen place.</p>{{/if}}
@@ -76,15 +76,9 @@
                     </p>
                     <div class="btn-list -borderless">
                         <div class="btn -white -inactive">
-<<<<<<< HEAD
-                            <span class="v-align--middle pad-left pad-right">
-                                <span class="beta">Publication date:</span>
-                                <time>{{format-date "DD/MM/YYYY" item.publicationDate}}</time>
-=======
                             <span class="v-align--middle -pad-left -pad-right">
-                                <span class="-delta">Publication date:</span>
-                                <span class="-beta"> {{format-date "DD/MM/YYYY" item.publicationDate}}</span>
->>>>>>> 3e9285b3fc29dba9e1a80d068fc2ad2e499f34e9
+                                <span class="beta">Publication date:</span>
+                                <time class="beta"> {{format-date "DD/MM/YYYY" item.publicationDate}}</time>
                             </span>
                         </div>
                         <div class="btn -dark -inactive {{statnotice-type-icon item.type}}">

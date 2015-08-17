@@ -1,15 +1,16 @@
 <div class="stat-notice">
 	<div class="stat-notice__section -two-thirds">
 		<div class="btn-list -borderless pad-top-no">
-	    <div class="btn -white -inactive {{statnotice-type-icon model.type "-black"}} float--left">
-		    <span class="v-align--middle text--center">
-		        {{model.type}}
-		    </span>
-		</div>
-		<div class="btn -white -inactive float--right publication-date">
-			<span class="v-align--middle">
-				<span class="beta">Publication date: {{format-date "DD/MM/YYYY" model.publicationDate}}</span>
-			</span>
+		    <div class="btn -white -inactive {{statnotice-type-icon model.type "-black"}} float--left">
+			    <span class="v-align--middle text--center">
+			        {{model.type}}
+			    </span>
+			</div>
+			<div class="btn -white -inactive float--right publication-date">
+				<span class="v-align--middle">
+					<span class="beta">Publication date: {{format-date "DD/MM/YYYY" model.publicationDate}}</span>
+				</span>
+			</div>
 		</div>
 		<div class="stat-notice__proposal dotted-area -top -bottom pad-top pad-bottom -dark">
 			<h2 class="alpha">{{model.proposal}}</h2>
