@@ -23,12 +23,12 @@ export default Ember.Component.extend({
 		// Check for max width & height
 		var body = {
 			width: this.$('body').width(),
-			height: this.$('body').height()
+			minHeight: this.$('body').height()
 		};
 		
 		var dimensions = {
 			width: this.$().width(),
-			height: this.$().height()
+			minHeight: this.$().height()
 		};
 		
 		if(dimensions.width > body.width) {
