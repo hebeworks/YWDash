@@ -108,6 +108,7 @@
 	}
 		.canvas {
 			height: 100%;
+			width:100%;
 			z-index: 2;
 //			float: left;
 			list-style: none;
@@ -138,7 +139,7 @@
 			.canvas__inner {
 				@include cf;
 				@include centered;
-				//width: 230px;
+				width: 100%;
 				overflow: hidden;
 				overflow-x: hidden;
 				overflow-y: auto;
