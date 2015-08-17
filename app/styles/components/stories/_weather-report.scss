@@ -24,9 +24,11 @@
             @include clean-list;
             @include cf;
             width: 100%;
+            display: table;
+            margin-bottom: 5px;
         }
             .weather-report__hour {
-                float: left;
+                display: table-cell;
                 border-right: solid 1px #747474;
                 border-left: solid 1px #747474;
 
@@ -44,11 +46,14 @@
         @include clean-list;
         @include cf;
         width: 100%;
+        display: table;
+        margin-top: 5px;
     }
         .weather-report__other-day {
-            float: left;
+            display: table-cell;
             border-right: solid 1px #747474;
             border-left: solid 1px #747474;
+            position: relative;
 
             &:first-child {
                 border-left: 0;
@@ -58,6 +63,12 @@
                 border-right: 0;
                 padding-right: 0;
             }
+
+            .icon-weather {
+                position: absolute;
+                top: 20px;
+                right: 10px;
+            }
         }
 
 .icon-weather {
@@ -66,6 +77,7 @@
     display: block;
     text-indent: -99999px;
     overflow: hidden;
+    background-repeat: no-repeat;
     background-size: contain;
     background-position: 50% 50%;
 
