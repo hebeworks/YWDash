@@ -143,9 +143,10 @@ p {
 	@include calc(height, "100% - 100px");
 	top: 100px;
 	overflow-x: hidden;
-	overflow-y: auto;
+	overflow-y: scroll;
 	background-color: #f7f7f7;
 	z-index: 1;
+	-webkit-overflow-scrolling: touch;
 	
 	&.-full {
 		top:0px;
@@ -173,7 +174,9 @@ p {
 	}
 }
 
-
+.caroufredsel_wrapper {
+	cursor: ew-resize !important;
+}
 .gallery-body {
 	@extend %site-body;
 	padding: 30px 40px;
