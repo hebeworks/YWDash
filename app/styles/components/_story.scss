@@ -664,6 +664,8 @@
 				@include backface-visibility(hidden);
 				@include transform-style(preserve-3d);
 				@include transition(opacity .6);
+				position: relative;
+				
 				.heading {
 					margin-bottom: 0;
 					padding-bottom: 5px;
