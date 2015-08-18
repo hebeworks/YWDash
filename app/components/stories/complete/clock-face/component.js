@@ -55,7 +55,13 @@ export default DefaultStory.extend({
     },
 
     setElementRotation: function (el, deg) {
-        el.css({ transform: 'rotateZ(' + deg + 'deg)' })
+        if(deg == 0) {
+            el.removeClass('bounce');
+            setTimeout(function(){ el.addClass('bounce'); },500);
+            el.css({ transform: 'rotateZ(' + deg + 'deg)' })
+        } else {
+            el.css({ transform: 'rotateZ(' + deg + 'deg)' })
+        }
     },
 
     addSeconds: function () {
