@@ -21,6 +21,16 @@
 				bottom:2em;
 			}
 		}
+		@include breakpoint(max-width 999px) {
+			.-centered {
+				width:80%;
+			}	
+		}
+		@include breakpoint(max-width 700px) {
+			.-centered {
+				width:100%;
+			}	
+		}
 	}
 }
  
@@ -117,10 +127,16 @@
 			padding: {
 				top:10px;
 			}
-			
+			@include breakpoint(max-width 705px) {
+				margin: {
+					left:0;
+				}
+			}
 			@include breakpoint(max-width 510px) {
 				width: 100%;
-				margin-left: 0;
+				margin: {
+					left: 0;
+				}
 			}
 			
 			.select2-container {
