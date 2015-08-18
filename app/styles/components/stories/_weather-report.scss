@@ -39,7 +39,6 @@
             .weather-report__hour {
                 display: table-cell;
                 text-align: center;
-                border-right: solid 1px #747474;
                 border-left: solid 1px #747474;
 
                 &:first-child {
@@ -65,7 +64,6 @@
     }
         .weather-report__other-day {
             display: table-cell;
-            border-right: solid 1px #747474;
             border-left: solid 1px #747474;
             position: relative;
 
