@@ -7,6 +7,15 @@
     }
     .weather-report__today {
         margin-bottom: 10px;
+        span {
+            &:nth-child(1) {
+                line-height: 21px;
+            }
+            &:nth-child(2) {
+                position: relative;
+                top: -3px;
+            }
+        }
     }
         .weather-report__today-weather {
             .icon-weather {
@@ -25,11 +34,11 @@
             @include cf;
             width: 100%;
             display: table;
-            text-align: center;
             margin-bottom: 5px;
         }
             .weather-report__hour {
                 display: table-cell;
+                text-align: center;
                 border-right: solid 1px #747474;
                 border-left: solid 1px #747474;
 
@@ -40,6 +49,10 @@
                 &:last-child {
                     border-right: 0;
                     padding-right: 0;
+                }
+
+                .icon-weather {
+                    display: inline-block;
                 }
             }
 
@@ -67,8 +80,8 @@
 
             .icon-weather {
                 position: absolute;
-                top: 20px;
-                right: 10px;
+                top: 17px;
+                right: 3px;
             }
         }
 
@@ -83,8 +96,8 @@
     background-position: 50% 50%;
 
     &.-small {
-        width: 21px;
-        height: 21px;
+        width: 25px;
+        height: 25px;
     }
     &.-cloudy {
         background-image: url(/assets/img/svg/datauri/icon-weather-cloudy.svg);
