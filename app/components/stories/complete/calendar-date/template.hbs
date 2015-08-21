@@ -9,12 +9,12 @@
     viewOnly="true"
 }}
     <main class="calendar">
-        <div class="calendar__day-word">Wednesday</div>
+        <div class="calendar__day-word">{{date.dayOfWeek}}</div>
         <div class="dotted-area -all -rounded -dark pad-top-half pad-right-half pad-bottom-half pad-left">
-            <span class="calendar__day-number">23</span>
-            <span class="calendar__day-suffix">rd</span>
+            <span class="calendar__day-number">{{date.day}}</span>
+            <span class="calendar__day-suffix">{{date.ordinal}}</span>
         </div>
-        <span class="calendar__month">April</span>
-        <span class="calendar__year">2015</span>
+        <span class="calendar__month">{{date.month}}</span>
+        <span class="calendar__year">{{date.year}}</span>
     </main>
 {{/stories/story-base}}
