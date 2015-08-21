@@ -34,8 +34,9 @@
 .carousel-pager {
 	display: inline-block;
 	&__btn {
-		float: left;
 		height: 11px;
+		float: left;
+		overflow: hidden;
 		outline: none;
 		cursor: pointer;
 		text-indent: -9999px;

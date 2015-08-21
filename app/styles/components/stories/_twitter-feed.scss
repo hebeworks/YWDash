@@ -17,11 +17,11 @@
 			text-decoration:none;
 		}
 	}
-	p {
-		font-size: em(12px);
+	.story__para {
+		font-size: rem(12px);
 		line-height: 1.5;
 		margin-bottom: 0;
-		~ p {
+		~ .story__para {
 			margin-bottom: 10px;
 		}
 		a {
@@ -31,10 +31,10 @@
 }
 	.tweet__handle {
 		color: #c5c5c5;
-		font-size: em(14px);
+		font-size: rem(14px);
 	}
 	.tweet__time {
-		font-size: em(12px);
+		font-size: rem(12px);
 		position: absolute;
 		top: 5px;
 		right: 5px;
@@ -95,11 +95,11 @@
 		color: #9b9b9b;
 		margin-bottom: 2px;
 	}
-	p {
+	.story__para {
 		color: #9b9b9b;
 		line-height: 1.2;
 		margin-bottom: 0;
-		~ p {
+		~ .story__para {
 			margin-top: 10px;
 		}
 	}

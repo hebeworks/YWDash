@@ -1,74 +1,141 @@
 .circle-indicator {
-	width: 157px;
-	height: 157px;
 	padding: 10px;
-	float: left;
-	margin-right: 20px;
+	display: inline-block;
 	position: relative;
+
+	&.-small {
+		width: 72px;
+		height: 72px;
+
+		.svg-circle-indicator {
+			width: 130px;
+			height: 130px;
+			> svg {
+				width: 130px;
+				height: 130px;
+			}
+		}
+	}
+	&.-medium {
+		width: 130px;
+		height: 130px;
+
+		.svg-circle-indicator {
+			width: 130px;
+			height: 130px;
+			> svg {
+				width: 130px;
+				height: 130px;
+			}
+		}
+	}
+	&.-large {
+		width: 157px;
+		height: 157px;
+
+		.svg-circle-indicator {
+			width: 157px;
+			height: 157px;
+			> svg {
+				width: 157px;
+				height: 157px;
+			}
+		}
+	}
+
 	.svg-circle-indicator {
 		position: absolute;
 		top: 0;
 		left: 0;
 	}
 }
-	.circle-indicator__inner {
+
+// Although circle indicator-rings are sometimes inside circle-indicators,
+// this isn't always the case, see: Empty Properties story
+.circle-indicator-ring {
+	border-style: solid;
+	border-width: 3px;
+	border-color: #fff;
+	border-radius: 100%;
+	z-index: 2;
+	position: relative;
+	display: table;
+
+	// Sizes
+	&.-small {
+		width: 70px;
+		height: 70px;
+	}
+	&.-medium {
+		width: 110px;
+		height: 110px;
+	}
+	&.-large {
 		width: 137px;
 		height: 137px;
-		border: solid 3px #fff;
-		border-radius: 100%;
-		z-index: 2;
-		position: relative;
-		display: table;
-		> div {
-			display: table-cell;
-			vertical-align: middle;
-			text-align: center;
-		}
-		.svg-calendar {
-			width: 17px;
-			height: 20px;
-			display: block;
-			margin: {
-				right: auto;
-				bottom: 7px;
-				left: auto;
-			}
-			text-indent: -99999px;
-			> svg {
-				width: 17px;
-				height: 20px;
-				fill: #fff;
-				display: block;
-			}
-		}
-		h2,
-		h3,
-		h4 {
-			display: block;
-			font-weight: bold;
-		}
-		h2 {
-			text-decoration: underline;
-			margin-bottom: 5px;
-		}
-		h3 {
-			color: #fff;
-			margin-bottom: 3px;
-		}
-		h4 {
-			color: #7ed320;
-			margin-bottom: 0;
-		}
 	}
 
+	// Colours
+	&.-orange {
+		border-color: $orange;
+	}
+	&.-lime {
+		border-color: $lime;
+	}
+
+	> div {
+		display: table-cell;
+		vertical-align: middle;
+		text-align: center;
+	}
+	.svg-calendar {
+		width: 17px;
+		height: 20px;
+		display: block;
+		margin: {
+			right: auto;
+			bottom: 7px;
+			left: auto;
+		}
+		text-indent: -99999px;
+		> svg {
+			width: 17px;
+			height: 20px;
+			fill: #fff;
+			display: block;
+		}
+	}
+	h2,
+	h3,
+	h4 {
+		display: block;
+		font-weight: bold;
+	}
+	h2 {
+		text-decoration: underline;
+		margin-bottom: 5px;
+	}
+	h3 {
+		color: #fff;
+		margin-bottom: 3px;
+	}
+	h4 {
+		color: #7ed320;
+		margin-bottom: 0;
+	}
+}
+
 .svg-circle-indicator {
-	width: 157px;
-	height: 157px;
 	z-index: 1;
-	> svg {
-		width: 157px;
-		height: 157px;
+
+	&.-green > svg {
 		fill: #7ed321;
+	}
+	&.-orange > svg {
+		fill: #f7a700;
+	}
+	&.-transparent > svg {
+		fill: transparent;
 	}
 }
 
@@ -79,6 +146,7 @@
 	.circle-indicator-stat {
 		width: 100%;
 		float: left;
+
 		.svg-up-down-arrow {
 			width: 12px;
 			height: 4px;
@@ -104,9 +172,12 @@
 			}
 		}
 	}
+		.circle-indicator-stat__text {
+			font-size: rem(10px);
+		}
 		.circle-indicator-stat__stat {
 			font: {
-				size: 15px;
+				size: rem(13px);
 				weight: bold;
 			}
 			display: inline-block;

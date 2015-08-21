@@ -45,6 +45,10 @@ a {
 	color: #000;
 }
 
+p {
+	font-size: rem(15px);
+}
+
 /* -- Wrapper for Dashboard slide */
 .wrapper {
 	width: 100%;
@@ -137,17 +141,17 @@ a {
 	position: relative;
 	width: 100%;
 	@include calc(height, "100% - 100px");
-	top:100px;
+	top: 100px;
+	overflow-x: hidden;
+	overflow-y: scroll;
+	background-color: #f7f7f7;
+	z-index: 1;
+	-webkit-overflow-scrolling: touch;
 	
 	&.-full {
 		top:0px;
 		height:100%;
 	}
-	
-	background: {
-		color: #f1f1f1; // temporary
-	}
-	z-index: 1;
 	
 	.content {
 		&.-centered {
@@ -170,7 +174,9 @@ a {
 	}
 }
 
-
+.caroufredsel_wrapper {
+	cursor: ew-resize !important;
+}
 .gallery-body {
 	@extend %site-body;
 	padding: 30px 40px;

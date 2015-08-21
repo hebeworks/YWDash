@@ -2,13 +2,15 @@
     <div class="story__card -front {{if viewOnly 'js-drag-handle'}}">
         {{#unless viewOnly}}<a href="javascript:;" class="js-cogs icon icon-cogs svg-cogs" data-grunticon-embed>Settings</a>{{/unless}}
         <div class="story__content">
-            <header>
-                <h2 class="heading -gamma">{{title}}</h2>
-                <h3 class="heading -delta">{{subTitle}}</h3>
-            </header>
+            {{#if title}}
+                <header class="story__header">
+                    <h2 class="heading beta">{{title}}</h2>
+                    <h3 class="heading gamma">{{subTitle}}</h3>
+                </header>
+            {{/if}}
         	{{yield}}
             
-            {{#unless viewOnly}}<footer class="story__footer">
+            {{#unless viewOnly}}<footer class="story__footer gamma">
                 {{#if author}}
                         {{#if author}}<div class="author">Author: {{author}}</div>{{/if}}
                 {{/if}}
@@ -19,9 +21,9 @@
     <div class="story__card -back">
         <a href="javascript:;" class="js-cogs icon icon-cogs icon-reverse svg-reverse" data-grunticon-embed>Settings</a>
         <div class="story__content">
-            <header>
-                <h2 class="heading -gamma">{{title}}</h2>
-                <h3 class="heading -delta">{{subTitle}}</h3>
+            <header class="story__header">
+                <h2 class="heading beta">{{title}}</h2>
+                <h3 class="heading gamma">{{subTitle}}</h3>
             </header>
             
             <div class="btn-list">
@@ -29,14 +31,16 @@
                 {{ui/button-link href=feedbackEmail type="mail" title="Contact Author" classNames="btn -blue -half"}}
             </div>
             
-            <div class="">
-                <p><strong>Description</strong></p>
-                <p>{{description}}</p>
-            </div><br>
+            {{#if description}}
+                <div class="">
+                    <h2 class="beta bold half-margin-bottom">Description</h2>
+                    <p class="story__para">{{description}}</p>
+                </div><br />
+            {{/if}}
             {{#if license}}
                 <div class="">
-                    <p><strong>Licence / Attribution</strong></p>
-                    <p>{{{license}}}</p>
+                    <h2 class="beta bold half-margin-bottom">Licence / Attribution</h2>
+                    <p class="story__para">{{{license}}}</p>
                 </div>
             {{/if}}
         </div>
