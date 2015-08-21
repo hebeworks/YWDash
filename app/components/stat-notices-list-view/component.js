@@ -94,7 +94,10 @@ export default DefaultStory.extend({
 		);	
 	},
 
-
+	// validEmail: function(){
+	// 	// todo: add hebeutils from bower to add isValidEmail function
+	// 	return (!Ember.Empty(this.get('userEmail')) && this.get('userEmail').toString().isValidEmail); 
+	// }.observes('userEmail'),
 
 	actions: {
 		filterByType: function (params) {

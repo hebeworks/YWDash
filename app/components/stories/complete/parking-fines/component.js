@@ -5,6 +5,6 @@ export default Ember.Component.extend({
     loaded: false,
     didInsertElement: function() {
         this.set('title', 'Parking Fines');
-        this.set('subTitle', 'Q3 2014/15');
+        this.set('subTitle', 'Q4 2014/15');
     }
 });

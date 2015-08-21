@@ -3,12 +3,13 @@
 	padding: {
 		top:30px;
 		right:40px;
-		bottom:100px;
+		bottom:10px;
 		left:40px;
 	}
 	overflow-y: scroll;
 	
 	&.-intro {
+		@extend .-full;
 		top:0px;
 		text-align: center;
 		color: $dark-grey;
@@ -19,6 +20,16 @@
 				top:1em;
 				bottom:2em;
 			}
+		}
+		@include breakpoint(max-width 999px) {
+			.-centered {
+				width:80%;
+			}	
+		}
+		@include breakpoint(max-width 700px) {
+			.-centered {
+				width:100%;
+			}	
 		}
 	}
 }
@@ -81,34 +92,26 @@
 						@extend .-selected;
 					}
 				}
+				
+				@include breakpoint(max-width 510px) {
+					width: 100%;
+					margin: {
+						left: 0;
+						right:0;
+					}
+				}
 			}
 		}
 	}
 		.stat-notices__inner {
-			
-		}
-		
-		.stat-notices__notify-me-popup {
-			// fullscreen-popup
-			.label {
-				display: inline-block;
-				min-width: 10em;
-				margin-right:10px;
-			}
-			
-			input {
-				width:30em;
-			} 
-			
-			
-			.btn {
-				&.svg-stat-notices-icon-planning, &.svg-stat-notices-icon-licensing {
-					padding: {
-						left:3em;
-					}
-					background: {
-						position: 0.4em center;
-						size: 30% 70%;
+			> .btn-list {
+				padding: {
+					top:0;
+				}
+				
+				.btn {
+					margin: {
+						top:10px;
 					}
 				}
 			}
@@ -120,6 +123,20 @@
 			margin: {
 				left:15px;
 				right:15px;
+			}
+			padding: {
+				top:10px;
+			}
+			@include breakpoint(max-width 705px) {
+				margin: {
+					left:0;
+				}
+			}
+			@include breakpoint(max-width 510px) {
+				width: 100%;
+				margin: {
+					left: 0;
+				}
 			}
 			
 			.select2-container {
@@ -154,12 +171,12 @@
 				float:left;
 				
 				margin: {
-					top:10px;
+					top:18px;
 				}
 				
 				&:first-of-type {
 					margin: {
-						right:10px;
+						right:18px;
 					}
 				}
 					
@@ -169,35 +186,35 @@
 				}
 				
 				&.-half {
-					width:calc(50% - 10px);
+					width:calc(50% - 18px);
 					@include media("<=phoneLarge") {
 						width: 100%;
 					}
 				}
 				
 				&.-two-thirds {
-					width:calc(66% - 10px);
+					width:calc(66% - 18px);
 					@include media("<tablet") {
 						width: 100%;
 					}
 				}
 				
 				&.-one-third {
-					width:calc(33% - 10px);
+					width:calc(33%);
 					@include media(">tablet") {
 						float: right;
 					}
 					@include media(">phoneLarge", "<tablet") {
-						width: calc(50% - 10px);
+						width: calc(50% - 18px);
 						margin: {
-							right: 10px;
-							bottom: 10px;
+							right: 18px;
+							bottom: 18px;
 						}
 					}
 					@include media("<=phoneLarge") {
 						width: 100%;
 						margin: {
-							bottom: 10px;
+							bottom: 18px;
 						}
 					}
 				}
@@ -380,7 +397,7 @@
 						@extend .solid-area.-dark;
 						@extend .solid-area.-rounded;
 					}
-					&.svg-stat-notices-icon-planning {
+					&.svg-stat-notices-icon-planning-black, &.svg-stat-notices-icon-licensing-black {
 						background-position: 1em center;
 						background-size: 15% 60%;
 						padding: {
@@ -405,13 +422,38 @@
 				
 				a.btn {
 					padding: {
-						top:8px;
+						top: 11px;
 					}
 					text-align: center;
 				}
 			}
 		}
 		
+		.stat-notices__notify-me-popup {
+			// fullscreen-popup
+			.label {
+				display: inline-block;
+				min-width: 10em;
+				margin-right:10px;
+			}
+			
+			input {
+				width:30em;
+			} 
+			
+			
+			.btn {
+				&.svg-stat-notices-icon-planning, &.svg-stat-notices-icon-licensing {
+					padding: {
+						left:3em;
+					}
+					background: {
+						position: 0.4em center;
+						size: 30% 70%;
+					}
+				}
+			}
+		}
 		
 			.list__section.-notices {
 				
@@ -439,11 +481,11 @@
 								margin: {
 									top: 0.4em;
 								}
-
+	
 								@include breakpoint(max-width 1100px) {
 									width: 24%;
 								}
-
+	
 								@include breakpoint(max-width 510px) {
 										width: 100%;
 										margin-left: 0;
@@ -484,7 +526,12 @@
 						padding: {
 							right: 20px;
 						}
+						
+						.v-align--middle {
+							overflow:hidden;
+							max-height: 4.4em;
+						}
 					}
 				}
 			}
-	
+

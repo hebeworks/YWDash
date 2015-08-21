@@ -6,8 +6,8 @@ export default DatamillStory.extend({
     loaded: false,
     itemLimit: 4,
     didInsertElement: function() {
-        this.set('title', 'stat-notices-recent TITLE');
-        this.set('subTitle', 'stat-notices-recent SUB TITLE');
+        this.set('title', 'Statutory Notices');
+        this.set('subTitle', 'Newly added in Leeds');
         var obj = this;
         // datamillUrl is a property containing the url for Leeds Data Mill
             // inherited from story-types/datamill-story

@@ -151,7 +151,7 @@ module.exports = function (environment) {
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
     ENV.contentSecurityPolicyHeader = 'Disabled-Content-Security-Policy'
-    ENV.APP.statnoticeURL = 'http://localhost:8080'; // DEV
+    // ENV.APP.statnoticeURL = 'http://localhost:8080'; // DEV
       // ENV.APP.statnoticeURL =  'http://statnotices-preview.azurewebsites.net'; // PREVIEW 
 
   }
