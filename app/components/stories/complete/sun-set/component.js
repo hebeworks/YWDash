@@ -16,7 +16,7 @@ export default DatamillStory.extend({
       this.getData(url)
           .then(
               function(tmpItem){
-                  console.log('sun-rise > getData > success');
+                  console.log('sun-set > getData > success');
                       var id = hebeutils.guid();
                       var item = {
                           id: id,
