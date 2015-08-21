@@ -4,6 +4,9 @@
 /* -- Breakpoint SASS - https://github.com/at-import/breakpoint -- */
 @import '../../bower_components/breakpoint-sass/stylesheets/breakpoint';
 
+// CSS Normalize
+@import '../../bower_components/inuit-normalize.css/generic.normalize';
+
 /* -- media-include - http://include-media.com -- */
 @import '../../bower_components/include-media/dist/_include-media.scss';
 
