@@ -1,130 +1,71 @@
 /* global hebeutils, _, moment */
-import Ember from 'ember';
-import DatamillBase from './../../datamill-base/component';
+import DatamillStory from './../../story-types/datamill-story/component';
 
-export default DatamillBase.extend({
-    tagName: 'div',
-    loaded: false,
-    selectedMonth: '',
-    selectedDay: '',
+export default DatamillStory.extend({
+  tagName: 'div',
+  loaded: false,
+  didInsertElement: function () {
+    this.set('title', 'Leeds Footfall Trends');
+    this.set('subTitle', 'Weekly footfall stats for Leeds City Centre');
+    this.loadAPIData();
+  },
 
-    didInsertElement: function () {
-        this.set('title', 'City Centre Footfall');
-        this.set('subTitle', 'Daily snapshot of footfall in the city');
-//        this.fetchData();
-    },
+  loadAPIData: function() {
+    var obj = this;
+    var url = 'http://api.datapress.io/api/3/action/datastore_search?resource_id=21b55017-3799-4a36-9163-4284dd25f288&limit=1';
+    this.getData(url)
+    .then(
+      function(tmpItem){
+        console.log('weekly-footfall > getData > success');
+        var item = tmpItem.result.records[0];
+        item.weekStarts = moment(item.weekStarts).format('ddd, Do MMMM YYYY');
+        item.weekEnds = moment(item.weekEnds).format('ddd, Do MMMM YYYY');
+        item.previousWeekComparison = item.previousWeekComparison * 100;
+        item.sameWeekPreviousYearComparison = item.sameWeekPreviousYearComparison * 100;
+        item.sameWeekPreviousYear2Comparison = item.sameWeekPreviousYear2Comparison * 100;
+        item.weeklyAverageComparison = item.weeklyAverageComparison * 100;
+        if (item.previousWeekComparison < 0) {
+          item.previousWeekComparisonIndicator = '-negative';
+          item.previousWeekComparisonArrow = '-down'
+        } else {
+          item.previousWeekComparisonIndicator = '-positive';
+          item.previousWeekComparisonArrow = '-up'
+        }
+        if (item.sameWeekPreviousYearComparison < 0) {
+          item.sameWeekPreviousYearComparisonIndicator = '-negative';
+          item.sameWeekPreviousYearComparisonArrow = '-down'
+        } else {
+          item.sameWeekPreviousYearComparisonIndicator = '-positive';
+          item.sameWeekPreviousYearComparisonArrow = '-up'
+        }
+        if (item.sameWeekPreviousYear2Comparison < 0) {
+          item.sameWeekPreviousYear2ComparisonIndicator = '-negative';
+          item.sameWeekPreviousYear2ComparisonArrow = '-down'
+        } else {
+          item.sameWeekPreviousYear2ComparisonIndicator = '-positive';
+          item.sameWeekPreviousYear2ComparisonArrow = '-up'
+        }
+        if (item.weeklyAverageComparison < 0) {
+          item.weeklyAverageComparisonIndicator = '-negative';
+          item.weeklyAverageComparisonArrow = '-down'
+        } else {
+          item.weeklyAverageComparisonIndicator = '-positive';
+          item.weeklyAverageComparisonArrow = '-up'
+        }
+        obj.set('item', item);
+        setTimeout(() => {
+          obj.set('loaded', true);
+        });
+      },
 
-//    fetchData: function () {
-//        // request ckan api for dataset
-//        var obj = this;
-//        var datamillUrl = this.get('datamillUrl');
-//
-//        Ember.$.getJSON(datamillUrl + '/api/3/action/package_show?id=leeds-city-centre-footfall-data')
-//            .then(function (data) {
-//            var resources = [];
-//            data.result.resources.forEach(function (item) {
-//                // format API data here
-//                var resource = {};
-//                resource.text = item["name"];
-//                resource.id = item["id"];
-//                resource.date = item["temporal_coverage_to"];
-//                resources.push(resource);
-//            });
-//
-//            _.sortBy(resources, function (month) {
-//                return month.date;
-//            });
-//
-//            resources.reverse();
-//
-//            obj.set('months', resources);
-//            obj.set('selectedMonth', obj.get('months')[0]);
-//
-//            setTimeout(function () {
-//                obj.set('loaded', true);
-//            });
-//        });
-//    },
-//
-//    fetchMonth: function (resourceID) {
-//        var obj = this;
-//        var data = {
-//            sql: 'SELECT * from "' + this.get('selectedMonth.id') + '"'
-//        };
-//        var datamillUrl = this.get('datamillUrl');
-//
-//        Ember.$.getJSON(datamillUrl + '/api/action/datastore_search_sql?', data).then(function (data) {
-//            var items = [];
-//            data.result.records.forEach(function (item) {
-//                var day = moment(item.Weekday).calendar();
-//                var date = moment(item.Date).calendar();
-//                var friendlyDate = moment(item.Date).format('Do MMMM YYYY');
-//                var result = {
-//                    date: date,
-//                    friendlyDate: friendlyDate,
-//                    total: item.TotalCount,
-//                    hour: item.Hour,
-//                    title: item.Sitename,
-//                    day: day,
-//                    location: item.LocationName
-//                };
-//                items.push(result);
-//            });
-//
-//            var days = obj.getDays(items);
-//
-//            setTimeout(function () {
-//                obj.set('loaded', true);
-//            });
-//        });
-//    }.observes('selectedMonth'),
-//
-//    getDays: function (items) {
-//        var sortedDays = _.sortBy(items, "hour");
-//        var days = _.groupBy(sortedDays, "friendlyDate");
-//        for (var day in days) {
-//            var location = _.groupBy(days[day], 'location');
-//            days[day] = this.convertToArrayWithTotal(location);
-//        }
-//        var tmpDays = this.convertToArrayWithTotal(days);
-//
-//        this.set('days', tmpDays);
-//
-//        // set the default day to display
-//        var firstDay = this.get('days.items')[0];
-//        if (firstDay != null) {
-//            this.set('selectedDay', firstDay);
-//        }
-//    },
-//
-//    convertToArrayWithTotal: function (items) {
-//        var tmp = {
-//            items: []
-//        };
-//
-//        for (var item in items) {
-//            var tmpItem = items[item];
-//            var itemTotal = this.getTotal(tmpItem);
-//            tmpItem.title = item;
-//            tmpItem.total = itemTotal;
-//            tmp.items.push(tmpItem)
-//        }
-//
-//        var total = this.getTotal(tmp.items);
-//        tmp.total = total;
-//        var id = hebeutils.guid();
-//        tmp.id = id;
-//        return tmp;
-//    },
-//
-//    getTotal: function (items) {
-//        var sum = _.reduce(items, function (memo, item) {
-//            if (item.total != null && parseFloat(item.total)) {
-//                return memo + parseFloat(item.total);
-//            } else {
-//                return memo;
-//            }
-//        }, 0);
-//        return sum;
-//    }
+      function(error) {
+        console.log('weekly-footfall > getData > error: ' + error);
+      },
+
+      function(){
+
+      }
+      )
+  }
+
 });
