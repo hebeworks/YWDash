@@ -20,10 +20,10 @@ export default DatamillStory.extend({
         var item = tmpItem.result.records[0];
         item.weekStarts = moment(item.weekStarts).format('ddd, Do MMMM YYYY');
         item.weekEnds = moment(item.weekEnds).format('ddd, Do MMMM YYYY');
-        item.previousWeekComparison = item.previousWeekComparison * 100;
-        item.sameWeekPreviousYearComparison = item.sameWeekPreviousYearComparison * 100;
-        item.sameWeekPreviousYear2Comparison = item.sameWeekPreviousYear2Comparison * 100;
-        item.weeklyAverageComparison = item.weeklyAverageComparison * 100;
+        item.previousWeekComparison = parseInt(item.previousWeekComparison * 100).toPrecisionDigits(2);
+        item.sameWeekPreviousYearComparison = parseInt(item.sameWeekPreviousYearComparison * 100).toPrecisionDigits(2);
+        item.sameWeekPreviousYear2Comparison = parseInt(item.sameWeekPreviousYear2Comparison * 100).toPrecisionDigits(2);
+        item.weeklyAverageComparison = parseInt(item.weeklyAverageComparison * 100).toPrecisionDigits(2);
         if (item.previousWeekComparison < 0) {
           item.previousWeekComparisonIndicator = '-negative';
           item.previousWeekComparisonArrow = '-down'
