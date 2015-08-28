@@ -19,15 +19,15 @@
         </div>
         <ul class="dotted-area -bottom pad-top-half pad-bottom-half stat-notices-recent__notice-list">
             <li class="stat-notices-recent__notice-item">
-                <div class="stat-notices-recent__figure">2</div>
+                <div class="stat-notices-recent__figure">{{licensingTotal}}</div>
                 <span class="gamma helvbold block">Licensing</span>
             </li>
             <li class="stat-notices-recent__notice-item">
-                <div class="stat-notices-recent__figure">4</div>
+                <div class="stat-notices-recent__figure">{{planningTotal}}</div>
                 <span class="gamma helvbold block">Planning</span>
             </li>
         </ul><!--
         {{#link-to 'statnotices'}}<div>Open Stat Notices Route</div>{{/link-to}}-->
-        <button class="btn js-open-statnotices" {{action "switchToStatNotices"}}>View Stat Notices</button>
+        <button class="btn js-open-statnotices" {{action "gotoRoute" 'statnotices.index'}}>View Stat Notices</button>
     </main>
 {{/stories/story-base}}
