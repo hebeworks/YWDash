@@ -7,38 +7,38 @@
     data-ss-colspan="2"
     
     dataSourceUrl="http://leedsdatamill.org/dataset/leeds-city-centre-footfall-data"
-    feedbackEmail="joel@hebeworks.com"
+    feedbackEmail="simon@hebeworks.com"
     description="This Story uses City Centre Footfall data from Leeds Data Mill"
     license="<a href='http://leedsdatamill.org/dataset/leeds-city-centre-footfall-data' target='_blank'>Leeds City Centre Footfall Data</a>, © Leeds City Council, 2015.  This information is licensed under the terms of the Open Government Licence"
-    author="Joel Mercer"
+    author="Simon Zimmerman"
 }}
 <main class="footfall-centre">
     <div class="dotted-area -top -bottom pad-top-half pad-bottom-half">
-        <p class="story__para">Footfall figures for Week 32 are up significantly compared with the same week in 2013 and 2014.</p>
+        <p class="story__para">Figures for the week commencing {{item.weekStarts}} and ending {{item.weekEnds}}.</p>
     </div>
     <div class="circle-indicator -large">
         <div class="svg-circle-indicator -green" data-grunticon-embed></div>
         <div class="circle-indicator-ring -large">
             <div>
                 <i class="svg-calendar" data-grunticon-embed>Calendar icon</i>
-                <h2 class="gamma">Week 32</h2>
+                <h2 class="gamma">Week {{item.week}}</h2>
                 <h3 class="beta">Footfall Total</h3>
-                <h4 class="beta">1,242,101</h4>
+                <h4 class="beta">{{number-thousand-format item.weekTotal}}</h4>
             </div>
         </div>
     </div>
     <aside class="circle-indicator-stats">
         <div class="dotted-area -bottom pad-bottom circle-indicator-stat">
-            <p class="circle-indicator-stat__text">Previous week<br /><span class="circle-indicator-stat__stat -negative">2%</span> <i class="svg-up-down-arrow -down" data-grunticon-embed>Up or Down arrow icon</i></p>
+            <p class="circle-indicator-stat__text">Previous week<br /><span class="circle-indicator-stat__stat {{item.previousWeekComparisonIndicator}}">{{item.previousWeekComparison}}%</span> <i class="svg-up-down-arrow {{item.previousWeekComparisonArrow}}" data-grunticon-embed>Up or Down arrow icon</i></p>
         </div>
         <div class="dotted-area -bottom pad-top pad-bottom circle-indicator-stat">
-            <p class="circle-indicator-stat__text">Same week in 2014<br /><span class="circle-indicator-stat__stat -negative">8%</span> <i class="svg-up-down-arrow -down" data-grunticon-embed>Up or Down arrow icon</i></p>
+            <p class="circle-indicator-stat__text">Same week in 2014<br /><span class="circle-indicator-stat__stat {{item.sameWeekPreviousYearComparisonIndicator}}">{{item.sameWeekPreviousYearComparison}}%</span> <i class="svg-up-down-arrow {{item.sameWeekPreviousYearComparisonArrow}}" data-grunticon-embed>Up or Down arrow icon</i></p>
         </div>
             <div class="dotted-area -bottom pad-top pad-bottom circle-indicator-stat">
-            <p class="circle-indicator-stat__text">Same week in 2013<br /><span class="circle-indicator-stat__stat -positive">13%</span> <i class="svg-up-down-arrow -up" data-grunticon-embed>Up or Down arrow icon</i></p>
+            <p class="circle-indicator-stat__text">Same week in 2013<br /><span class="circle-indicator-stat__stat {{item.sameWeekPreviousYear2ComparisonIndicator}}">{{item.sameWeekPreviousYear2Comparison}}%</span> <i class="svg-up-down-arrow {{item.sameWeekPreviousYear2ComparisonArrow}}" data-grunticon-embed>Up or Down arrow icon</i></p>
         </div>
             <div class="dotted-area pad-top circle-indicator-stat">
-            <p class="circle-indicator-stat__text">2015 Weekly Average<br /><span class="circle-indicator-stat__stat -positive">0.5%</span> <i class="svg-up-down-arrow -up" data-grunticon-embed>Up or Down arrow icon</i></p>
+            <p class="circle-indicator-stat__text">2015 Weekly Average<br /><span class="circle-indicator-stat__stat {{item.weeklyAverageComparisonIndicator}}">{{item.weeklyAverageComparison}}%</span> <i class="svg-up-down-arrow {{item.weeklyAverageComparisonArrow}}" data-grunticon-embed>Up or Down arrow icon</i></p>
         </div>
     </aside>
 
